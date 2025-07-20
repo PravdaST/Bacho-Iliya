@@ -170,7 +170,7 @@ export default function ProductsSection() {
                   </motion.p>
                   
                   <motion.div 
-                    className="space-y-2 text-sm text-gray-600 relative z-10 mb-6 text-left"
+                    className="space-y-2 text-sm text-gray-600 relative z-10 mb-6"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={{
