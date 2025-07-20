@@ -267,10 +267,14 @@ export default function RecipesSection() {
           {recipes.map((recipe, index) => (
             <motion.div 
               key={recipe.id} 
-              className="group"
+              className="group cursor-pointer"
               variants={fadeInVariants}
               whileHover={{ y: -10 }}
               transition={{ duration: 0.3 }}
+              onClick={() => {
+                setSelectedRecipe(recipe);
+                setImageLoaded(false);
+              }}
             >
               <div className="bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-warm-beige/20">
                 <div className="relative overflow-hidden">
@@ -295,14 +299,9 @@ export default function RecipesSection() {
                   >
                     {recipe.description}
                   </motion.p>
-                  <motion.button 
+                  <motion.div 
                     className="text-traditional-red font-semibold hover:text-warm-brown flex items-center gap-2 transition-colors duration-300"
                     whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                      setSelectedRecipe(recipe);
-                      setImageLoaded(false);
-                    }}
                   >
                     Виж рецептата 
                     <motion.div
@@ -311,7 +310,7 @@ export default function RecipesSection() {
                     >
                       <ArrowRight size={16} />
                     </motion.div>
-                  </motion.button>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
