@@ -5,7 +5,7 @@ import { ChefHat, Heart } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-br from-cream to-warm-beige/30">
+    <section id="hero" className="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-br from-cream to-warm-beige/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
