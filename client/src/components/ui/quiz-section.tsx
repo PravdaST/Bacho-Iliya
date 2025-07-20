@@ -227,16 +227,26 @@ export default function QuizSection() {
                           />
                           <label 
                             htmlFor={option.value}
-                            className="p-6 border-2 border-warm-brown/30 rounded-xl text-center hover:border-warm-brown transition-all duration-300 bg-cream/30 hover:bg-cream/50 cursor-pointer block peer-checked:border-warm-brown peer-checked:bg-cream peer-checked:shadow-lg"
+                            className={`p-6 border-2 rounded-xl text-center transition-all duration-300 cursor-pointer block ${
+                              form.watch('weapon') === option.value 
+                                ? 'border-traditional-red bg-traditional-red/10 shadow-lg' 
+                                : 'border-warm-brown/30 bg-cream/30 hover:border-warm-brown hover:bg-cream/50'
+                            }`}
                           >
                             <motion.div 
-                              className="text-3xl text-warm-brown mb-3"
+                              className={`text-3xl mb-3 transition-colors duration-300 ${
+                                form.watch('weapon') === option.value ? 'text-traditional-red' : 'text-warm-brown'
+                              }`}
                               animate={{ rotate: [0, 10, -10, 0] }}
                               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                             >
                               {option.icon}
                             </motion.div>
-                            <p className="font-semibold text-warm-brown">{option.label}</p>
+                            <p className={`font-semibold transition-colors duration-300 ${
+                              form.watch('weapon') === option.value ? 'text-traditional-red' : 'text-warm-brown'
+                            }`}>
+                              {option.label}
+                            </p>
                           </label>
                         </motion.div>
                       ))}
@@ -281,15 +291,29 @@ export default function QuizSection() {
                           />
                           <label 
                             htmlFor={`motivation-${option.value}`}
-                            className="flex items-center p-4 border-2 border-warm-brown/30 rounded-xl cursor-pointer hover:border-warm-brown transition-all duration-300 bg-cream/30 hover:bg-cream/50 peer-checked:border-warm-brown peer-checked:bg-cream peer-checked:shadow-lg"
+                            className={`flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 ${
+                              form.watch('motivation') === option.value 
+                                ? 'border-traditional-red bg-traditional-red/10 shadow-lg' 
+                                : 'border-warm-brown/30 bg-cream/30 hover:border-warm-brown hover:bg-cream/50'
+                            }`}
                           >
                             <motion.div 
-                              className="w-4 h-4 border-2 border-warm-brown rounded-full mr-4 peer-checked:bg-warm-brown flex items-center justify-center"
+                              className={`w-5 h-5 border-2 rounded-full mr-4 flex items-center justify-center transition-all duration-300 ${
+                                form.watch('motivation') === option.value 
+                                  ? 'border-traditional-red bg-traditional-red' 
+                                  : 'border-warm-brown'
+                              }`}
                               whileHover={{ scale: 1.2 }}
                             >
-                              <div className="w-2 h-2 bg-warm-brown rounded-full opacity-0 peer-checked:opacity-100"></div>
+                              <div className={`w-2 h-2 bg-white rounded-full transition-all duration-300 ${
+                                form.watch('motivation') === option.value ? 'opacity-100' : 'opacity-0'
+                              }`}></div>
                             </motion.div>
-                            <span className="font-medium">{option.label}</span>
+                            <span className={`font-medium transition-colors duration-300 ${
+                              form.watch('motivation') === option.value ? 'text-traditional-red font-semibold' : 'text-gray-700'
+                            }`}>
+                              {option.label}
+                            </span>
                           </label>
                         </motion.div>
                       ))}
