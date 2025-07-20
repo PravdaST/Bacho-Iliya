@@ -140,24 +140,7 @@ export default function ProductsSection() {
                     whileHover={{ scale: 1 }}
                   />
                   
-                  {/* Icon */}
-                  <motion.div
-                    className="relative z-10 flex justify-center mb-4"
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
-                    transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
-                  >
-                    <motion.div
-                      className="w-16 h-16 bg-gradient-to-br from-warm-brown to-farm-brown rounded-full flex items-center justify-center"
-                      whileHover={{ 
-                        scale: 1.1,
-                        rotate: 360,
-                        transition: { duration: 0.5 }
-                      }}
-                    >
-                      <IconComponent size={32} className="text-cream" />
-                    </motion.div>
-                  </motion.div>
+                  
 
                   <motion.div
                     className="relative z-10"
@@ -167,7 +150,7 @@ export default function ProductsSection() {
                     <img 
                       src={product.image} 
                       alt={product.name} 
-                      className="w-32 h-32 object-cover rounded-xl mx-auto mb-6 border-2 border-warm-beige/20"
+                      className="w-32 h-32 object-cover rounded-xl mx-auto mb-6 mt-4 border-2 border-warm-beige/20"
                     />
                   </motion.div>
                   
@@ -255,16 +238,11 @@ export default function ProductsSection() {
               {/* Header */}
               <div className="sticky top-0 bg-white border-b border-gray-200 p-6 rounded-t-3xl z-10">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-warm-brown to-farm-brown rounded-full flex items-center justify-center">
-                      <selectedProduct.icon size={24} className="text-cream" />
-                    </div>
-                    <div>
-                      <h3 className="font-playfair text-2xl font-bold text-warm-brown">
-                        {selectedProduct.name}
-                      </h3>
-                      <p className="text-gray-600">{selectedProduct.description}</p>
-                    </div>
+                  <div>
+                    <h3 className="font-playfair text-2xl font-bold text-warm-brown">
+                      {selectedProduct.name}
+                    </h3>
+                    <p className="text-gray-600">{selectedProduct.description}</p>
                   </div>
                   <button
                     onClick={() => setSelectedProduct(null)}
