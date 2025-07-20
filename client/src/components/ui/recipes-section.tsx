@@ -8,7 +8,7 @@ const recipes = [
     id: 1,
     title: "Истинска баница",
     description: "С истинско сирене Бачо Илия и домашно тесто.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    image: "/banica.webp",
     prepTime: "30 мин",
     servings: "6 порции",
     fullRecipe: {
@@ -34,7 +34,7 @@ const recipes = [
     id: 2,
     title: "Шопска салата",
     description: "Класиката с натурено сирене от истинско мляко.",
-    image: "https://images.unsplash.com/photo-1617096200347-cb04ae810b1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    image: "/shopska.webp",
     prepTime: "15 мин",
     servings: "4 порции", 
     fullRecipe: {
@@ -62,7 +62,7 @@ const recipes = [
     id: 3,
     title: "Таратор",
     description: "Освежаващ с кисело мляко Бачо Илия.",
-    image: "https://images.unsplash.com/photo-1551248429-40975aa4de74?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    image: "/tarator.webp",
     prepTime: "10 мин",
     servings: "4 порции",
     fullRecipe: {
@@ -88,7 +88,7 @@ const recipes = [
     id: 4,
     title: "Качамак с кашкавал",
     description: "Традиционен качамак с кашкавал Бачо Илия.",
-    image: "https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    image: "/kachamak.webp",
     prepTime: "25 мин",
     servings: "4 порции",
     fullRecipe: {
@@ -114,7 +114,7 @@ const recipes = [
     id: 5,
     title: "Сирене по шопски",
     description: "Печено сирене със зеленчуци и продукти Бачо Илия.",
-    image: "https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    image: "/sirene-po-shopski.webp",
     prepTime: "35 мин",
     servings: "2 порции",
     fullRecipe: {
@@ -141,7 +141,7 @@ const recipes = [
     id: 6,
     title: "Мляко с ориз",
     description: "Кремообразен десерт с прясно мляко Бачо Илия.",
-    image: "https://images.unsplash.com/photo-1553909489-cd47e0ef937f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    image: "/mlqko-s-oriz.webp",
     prepTime: "40 мин",
     servings: "4 порции",
     fullRecipe: {
@@ -167,7 +167,7 @@ const recipes = [
     id: 7,
     title: "Кисело зеле с кашкавал",
     description: "Зимна традиция с кашкавал Бачо Илия.",
-    image: "https://images.unsplash.com/photo-1594736797933-d0601ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    image: "/kiselozele.webp",
     prepTime: "45 мин",
     servings: "6 порции",
     fullRecipe: {
@@ -193,7 +193,7 @@ const recipes = [
     id: 8,
     title: "Гювеч със сирене",
     description: "Празнично ястие с всички продукти Бачо Илия.",
-    image: "https://images.unsplash.com/photo-1604909052743-94e838986d24?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    image: "/guvech.webp",
     prepTime: "60 мин",
     servings: "6 порции",
     fullRecipe: {
@@ -219,7 +219,7 @@ const recipes = [
 
 export default function RecipesSection() {
   const { ref, isInView } = useScrollAnimation(0.2);
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState<typeof recipes[0] | null>(null);
 
   return (
     <motion.section 
