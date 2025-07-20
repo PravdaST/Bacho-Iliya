@@ -52,14 +52,14 @@ export default function Header() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <motion.h1 
-              className="text-3xl font-bold text-white font-playfair cursor-pointer"
+            <motion.img
+              src="/logo/logo.png"
+              alt="Бачо Илия"
+              className="h-12 w-auto cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Бачо Илия
-            </motion.h1>
+            />
           </motion.div>
 
           {/* Desktop Navigation */}
