@@ -32,8 +32,8 @@ export default function Header() {
     <motion.header 
       className={`backdrop-blur-md border-b sticky top-0 z-50 transition-all duration-500 ${
         scrolled 
-          ? "bg-warm-brown/95 border-warm-brown/50 shadow-xl" 
-          : "bg-warm-brown/80 border-warm-brown/30"
+          ? "bg-traditional-red/95 border-traditional-red/50 shadow-xl" 
+          : "bg-traditional-red/90 border-traditional-red/30"
       }`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -49,7 +49,7 @@ export default function Header() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <motion.h1 
-              className="text-3xl font-bold text-cream font-playfair cursor-pointer"
+              className="text-3xl font-bold text-white font-playfair cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -64,7 +64,7 @@ export default function Header() {
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="relative text-cream hover:text-warm-beige font-semibold text-lg group"
+                className="relative text-white hover:text-white/80 font-semibold text-lg group"
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -72,7 +72,7 @@ export default function Header() {
               >
                 {item.label}
                 <motion.div
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-warm-beige group-hover:w-full transition-all duration-300"
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"
                   whileHover={{ width: "100%" }}
                 />
               </motion.button>
@@ -88,7 +88,7 @@ export default function Header() {
           >
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-cream p-2 relative"
+              className="text-white p-2 relative"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -130,7 +130,7 @@ export default function Header() {
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-warm-brown/95 border-t border-warm-brown/50"
+                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-traditional-red/95 border-t border-traditional-red/50"
                 initial={{ y: -20 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
@@ -139,7 +139,7 @@ export default function Header() {
                   <motion.button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left px-3 py-3 text-cream hover:text-warm-beige font-semibold rounded-lg hover:bg-warm-brown/50 transition-all duration-200"
+                    className="block w-full text-left px-3 py-3 text-white hover:text-white/80 font-semibold rounded-lg hover:bg-traditional-red/50 transition-all duration-200"
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}

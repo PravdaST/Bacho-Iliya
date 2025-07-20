@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <motion.footer 
       ref={ref}
-      className="bg-gradient-to-br from-warm-brown via-farm-brown to-warm-brown text-cream py-16 relative overflow-hidden"
+      className="bg-gradient-to-br from-traditional-red via-red-600 to-traditional-red text-white py-16 relative overflow-hidden"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={staggerContainer}
@@ -18,7 +18,7 @@ export default function Footer() {
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-40 h-40 bg-warm-beige/10 rounded-full"
+            className="absolute w-40 h-40 bg-white/10 rounded-full"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
@@ -50,24 +50,24 @@ export default function Footer() {
               whileHover={{ scale: 1.05 }}
             >
               <motion.div
-                className="w-12 h-12 bg-gradient-to-br from-warm-beige to-cream rounded-full flex items-center justify-center"
+                className="w-12 h-12 bg-gradient-to-br from-white/20 to-white/30 rounded-full flex items-center justify-center"
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <Award size={24} className="text-warm-brown" />
+                <Award size={24} className="text-white" />
               </motion.div>
               <h3 className="font-playfair text-3xl font-bold">
                 Бачо Илия
               </h3>
             </motion.div>
             <motion.p 
-              className="text-cream/90 mb-6 text-lg"
+              className="text-white/90 mb-6 text-lg"
               variants={fadeInVariants}
             >
               Движението за истински вкус. Без компромиси, без лъжи.
             </motion.p>
             <motion.div 
-              className="flex items-center gap-2 text-soft-beige"
+              className="flex items-center gap-2 text-white/80"
               variants={fadeInVariants}
               whileHover={{ scale: 1.05 }}
             >
@@ -78,7 +78,7 @@ export default function Footer() {
           
           <motion.div variants={fadeInVariants}>
             <motion.h4 
-              className="font-semibold mb-6 text-xl text-soft-beige"
+              className="font-semibold mb-6 text-xl text-white/90"
               whileHover={{ x: 5 }}
             >
               Движението
@@ -87,7 +87,7 @@ export default function Footer() {
               {["Истински продукти", "Българска традиция", "Без компромиси"].map((value, index) => (
                 <motion.li 
                   key={value}
-                  className="text-cream/80 hover:text-cream transition-colors cursor-pointer"
+                  className="text-white/80 hover:text-white transition-colors cursor-pointer"
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                   transition={{ delay: 0.5 + index * 0.1 }}
@@ -101,7 +101,7 @@ export default function Footer() {
           
           <motion.div variants={fadeInVariants}>
             <motion.h4 
-              className="font-semibold mb-6 text-xl text-soft-beige"
+              className="font-semibold mb-6 text-xl text-white/90"
               whileHover={{ x: 5 }}
             >
               Последвай ни
@@ -118,14 +118,14 @@ export default function Footer() {
                   variants={fadeInVariants}
                   whileHover={{ scale: 1.2, rotate: 360 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 bg-warm-beige/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-warm-beige/40 transition-all duration-300"
+                  className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/40 transition-all duration-300"
                 >
-                  <Icon size={24} className="text-cream" />
+                  <Icon size={24} className="text-white" />
                 </motion.div>
               ))}
             </motion.div>
             <motion.div 
-              className="flex items-center gap-3 text-cream/80 hover:text-cream transition-colors"
+              className="flex items-center gap-3 text-white/80 hover:text-white transition-colors"
               whileHover={{ x: 5 }}
             >
               <Mail size={18} className="text-traditional-red" />
@@ -139,13 +139,13 @@ export default function Footer() {
           variants={fadeInVariants}
         >
           <motion.p 
-            className="text-cream/60 mb-4"
+            className="text-white/60 mb-4"
             whileHover={{ scale: 1.05 }}
           >
             © 2025 Бачо Илия. Всички права запазени. Движението тепърва започва.
           </motion.p>
           <motion.div
-            className="flex justify-center items-center gap-2 text-soft-beige"
+            className="flex justify-center items-center gap-2 text-white/80"
             animate={{ 
               opacity: [0.7, 1, 0.7] 
             }}
