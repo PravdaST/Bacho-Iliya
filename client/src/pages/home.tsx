@@ -6,7 +6,6 @@ import RecipesSection from "@/components/ui/recipes-section";
 import ProductsSection from "@/components/ui/products-section";
 import Footer from "@/components/ui/footer";
 import FloatingCTA from "@/components/ui/floating-cta";
-import CowSound from "@/components/ui/cow-sound";
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <ProductsSection />
       <Footer />
       <FloatingCTA />
-      <CowSound />
     </div>
   );
 }
