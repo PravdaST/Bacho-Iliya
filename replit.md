@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a Next.js full-stack web application for "Bacho Iliya" (Бачо Илия), a Bulgarian farm products brand. The application features a landing page with an interactive quiz system that collects user preferences about dairy products and traditional Bulgarian foods. The site promotes authentic, traditional Bulgarian dairy products with a focus on quality and heritage.
+This is a React + Express.js full-stack web application for "Bacho Iliya" (Бачо Илия), a Bulgarian farm products brand. The application features a landing page with an interactive quiz system that collects user preferences about dairy products and traditional Bulgarian foods. The site promotes authentic, traditional Bulgarian dairy products with a focus on quality and heritage.
 
 ## User Preferences
 
@@ -11,19 +11,19 @@ Preferred communication style: Simple, everyday language.
 ## System Architecture
 
 ### Frontend Architecture
-- **Framework**: Next.js 14+ with App Router
-- **Routing**: Next.js App Router (file-based routing)
+- **Framework**: React 18 with TypeScript
+- **Routing**: Wouter (lightweight React router)
 - **Styling**: Tailwind CSS with custom design system
 - **UI Components**: Radix UI primitives with shadcn/ui components
 - **State Management**: React Hook Form for forms, TanStack Query for server state
-- **Build Tool**: Next.js with built-in Webpack and esbuild
+- **Build Tool**: Vite with custom configuration for development and production
 
 ### Backend Architecture
-- **Framework**: Next.js API Routes with TypeScript
-- **Module System**: ES modules with Next.js server components
-- **API Design**: RESTful endpoints under `/api` prefix using route handlers
-- **Request Handling**: Next.js Request/Response handling with native Web APIs
-- **Error Management**: Next.js error boundaries and API error handling
+- **Framework**: Express.js with TypeScript
+- **Module System**: ES modules (type: "module")
+- **API Design**: RESTful endpoints under `/api` prefix
+- **Request Handling**: JSON and URL-encoded form data support
+- **Error Management**: Centralized error handling middleware
 
 ### Key Components
 
@@ -133,28 +133,6 @@ The application is designed as a marketing website with lead generation capabili
 - ✓ Implemented beautiful modal design with animations, prep time, and serving info
 - ✓ Fixed all color contrast issues and text readability across all sections
 - ✓ Made floating action buttons consistent in size with red color scheme
-
-**January 2025 - COMPLETE NEXT.JS MIGRATION**:
-- ✓ Complete migration from React+Express+Vite to Next.js App Router
-- ✓ Removed Express.js backend, migrated to Next.js API routes
-- ✓ Created Next.js app structure with app/layout.tsx, app/page.tsx
-- ✓ Migrated all React components to Next.js components directory (1:1 identical)
-- ✓ Converted Express API endpoints to Next.js API route handlers
-- ✓ Updated database integration to work with Next.js server components
-- ✓ Created proper Tailwind CSS configuration with Bulgarian brand colors
-- ✓ Set up proper TypeScript configuration with Next.js paths
-- ✓ Fixed all image paths to match actual files in public directory
-- ✓ Added Header navigation to main page layout
-- ✓ Configured Playfair Display and Inter fonts properly
-- ✓ Resolved hydration mismatch errors with proper mounting checks
-- ✓ Enhanced HeroSection with gradient background and call-to-action button
-
-**January 2025 - Debug Session**:
-- ✓ Fixed critical module resolution error preventing app startup
-- ✓ Resolved '@shared/schema' import issues by updating to relative imports
-- ✓ Updated server/routes.ts, server/storage.ts, and server/db.ts imports
-- ✓ Cleared port 5000 conflicts and successfully restarted the application
-- ✓ Application now runs without errors on port 5000 with Vite HMR working
 
 **January 2025 - Previous Session**:
 - ✓ Migrated from in-memory storage to PostgreSQL database
