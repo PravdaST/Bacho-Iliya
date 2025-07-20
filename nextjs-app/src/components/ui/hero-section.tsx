@@ -54,7 +54,7 @@ export default function HeroSection() {
               opacity: 0 
             }}
             animate={{
-              y: [null, -100, null],
+              y: [0, -100, 0],
               opacity: [0, 1, 0],
             }}
             transition={{

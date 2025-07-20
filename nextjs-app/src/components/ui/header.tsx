@@ -150,13 +150,8 @@ export default function Header() {
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
                     className="block w-full text-left px-4 py-4 text-white hover:text-white/80 font-semibold text-lg rounded-xl transition-all duration-200 touch-manipulation"
-                    style={{
-                      ':hover': {
-                        backgroundColor: 'rgba(226, 37, 38, 0.50)'
-                      }
-                    }}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(226, 37, 38, 0.50)'}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                    onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'rgba(226, 37, 38, 0.50)'}
+                    onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}

@@ -43,11 +43,13 @@ export default function QuizSection() {
 
   const submitQuizMutation = useMutation({
     mutationFn: async (data: QuizFormValues) => {
-      const response = await apiRequest("POST", "/api/quiz", {
-        ...data,
-        userAgent: navigator.userAgent,
+      return await apiRequest("/api/quiz", {
+        method: "POST",
+        body: JSON.stringify({
+          ...data,
+          userAgent: navigator.userAgent,
+        }),
       });
-      return response.json();
     },
     onSuccess: () => {
       setShowSuccess(true);
