@@ -165,7 +165,7 @@ export default function Footer() {
               whileHover={{ x: 5 }}
             >
               <Mail size={18} className="text-traditional-red" />
-              <span>kauza@bachoiliya.bg</span>
+              <span>contact@bacho-iliya.eu</span>
             </motion.div>
           </motion.div>
         </motion.div>
