@@ -131,38 +131,88 @@ export default function Header() {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="lg:hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              className="lg:hidden absolute left-0 right-0 top-full z-50 backdrop-blur-xl"
+              style={{
+                backgroundColor: 'rgba(226, 37, 38, 0.98)',
+                boxShadow: '0 10px 25px rgba(0,0,0,0.25)'
+              }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
               <motion.div 
-                className="px-4 pt-4 pb-6 space-y-2 border-t"
-                style={{
-                  backgroundColor: 'rgba(226, 37, 38, 0.95)',
-                  borderColor: 'rgba(226, 37, 38, 0.50)'
-                }}
-                initial={{ y: -20 }}
+                className="px-6 py-8 space-y-1 border-t border-white/20"
+                initial={{ y: -10 }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
               >
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left px-4 py-4 text-white hover:text-white/80 font-semibold text-lg rounded-xl transition-all duration-200 touch-manipulation"
-                    onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'rgba(226, 37, 38, 0.50)'}
-                    onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
-                    initial={{ x: -20, opacity: 0 }}
+                    className="group relative block w-full text-left px-6 py-5 text-white font-bold text-xl rounded-2xl transition-all duration-300 touch-manipulation overflow-hidden"
+                    initial={{ x: -30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.4, delay: 0.15 + index * 0.08 }}
+                    whileHover={{ 
+                      scale: 1.02,
+                      backgroundColor: 'rgba(255, 255, 255, 0.15)'
+                    }}
+                    whileTap={{ 
+                      scale: 0.98,
+                      backgroundColor: 'rgba(255, 255, 255, 0.25)'
+                    }}
                   >
-                    {item.label}
+                    {/* Background hover effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 opacity-0 group-hover:opacity-100"
+                      initial={{ x: '-100%' }}
+                      whileHover={{ x: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    
+                    {/* Text content */}
+                    <motion.span
+                      className="relative z-10 flex items-center justify-between"
+                      whileHover={{ x: 8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {item.label}
+                      <motion.div
+                        className="w-2 h-2 rounded-full bg-white/60 opacity-0 group-hover:opacity-100"
+                        initial={{ scale: 0 }}
+                        whileHover={{ scale: 1 }}
+                        transition={{ duration: 0.2, delay: 0.1 }}
+                      />
+                    </motion.span>
                   </motion.button>
                 ))}
+                
+                {/* Bottom decoration */}
+                <motion.div
+                  className="mt-6 pt-4 border-t border-white/20 text-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                >
+                  <motion.div
+                    className="inline-flex items-center gap-2 text-white/60 text-sm font-medium"
+                    whileHover={{ scale: 1.05, color: 'rgba(255,255,255,0.8)' }}
+                  >
+                    <motion.div
+                      className="w-8 h-0.5 bg-white/40 rounded-full"
+                      animate={{ scaleX: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <span>Бачо Илия</span>
+                    <motion.div
+                      className="w-8 h-0.5 bg-white/40 rounded-full"
+                      animate={{ scaleX: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                    />
+                  </motion.div>
+                </motion.div>
               </motion.div>
             </motion.div>
           )}
