@@ -5,6 +5,7 @@ import AboutSection from "@/components/ui/about-section";
 import RecipesSection from "@/components/ui/recipes-section";
 import ProductsSection from "@/components/ui/products-section";
 import Footer from "@/components/ui/footer";
+import FloatingCTA from "@/components/ui/floating-cta";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <RecipesSection />
       <ProductsSection />
       <Footer />
+      <FloatingCTA />
     </div>
   );
 }

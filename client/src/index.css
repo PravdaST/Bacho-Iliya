@@ -67,6 +67,28 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(45, 25%, 90%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(25, 45%, 35%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(25, 50%, 30%);
+  }
+
   .forest {
     color: hsl(136, 45%, 25%);
   }
@@ -121,6 +143,70 @@
 
   .border-warm-brown {
     border-color: hsl(25, 45%, 35%);
+  }
+
+  .text-natural-white {
+    color: hsl(0, 0%, 100%);
+  }
+
+  .bg-natural-white {
+    background-color: hsl(0, 0%, 100%);
+  }
+
+  .text-warm-stone {
+    color: hsl(30, 8%, 55%);
+  }
+
+  .bg-tradition-red {
+    background-color: hsl(0, 70%, 55%);
+  }
+
+  .text-soft-beige {
+    color: hsl(45, 35%, 80%);
+  }
+
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .bg-traditional-red {
+    background-color: hsl(0, 70%, 55%);
+  }
+
+  .text-traditional-red {
+    color: hsl(0, 70%, 55%);
+  }
+
+  /* Add floating animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Add pulse animation */
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 2s ease-in-out infinite;
+  }
+
+  /* Add shimmer effect */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
   }
 
   .text-forest {

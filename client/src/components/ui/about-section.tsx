@@ -1,30 +1,97 @@
+import { motion } from "framer-motion";
+import { useScrollAnimation, fadeInVariants, slideInFromLeftVariants, slideInFromRightVariants } from "@/hooks/use-scroll-animation";
+
 export default function AboutSection() {
+  const { ref, isInView } = useScrollAnimation(0.2);
+
   return (
-    <section className="py-20 bg-warm-brown text-cream" id="about">
-      <div className="container mx-auto px-4">
+    <motion.section 
+      ref={ref}
+      className="py-20 bg-gradient-to-br from-warm-brown via-farm-brown to-warm-brown text-cream relative overflow-hidden" 
+      id="about"
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-32 h-32 bg-warm-beige/20 rounded-full"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 8 + i,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 1.5,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <img 
-              src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-              alt="Traditional Bulgarian dairy farm" 
-              className="rounded-2xl shadow-2xl w-full h-auto"
-            />
-          </div>
-          <div>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-8 text-soft-beige">
+          <motion.div
+            variants={slideInFromLeftVariants}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05, rotateY: 5 }}
+              transition={{ duration: 0.3 }}
+              className="relative"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-r from-warm-beige/20 to-cream/20 rounded-3xl blur-lg opacity-75"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Traditional Bulgarian dairy farm" 
+                className="relative rounded-2xl shadow-2xl w-full h-auto border-2 border-warm-beige/30"
+              />
+            </motion.div>
+          </motion.div>
+          
+          <motion.div
+            variants={slideInFromRightVariants}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <motion.h2 
+              className="font-playfair text-4xl md:text-6xl font-bold mb-8 text-soft-beige"
+              variants={fadeInVariants}
+              transition={{ delay: 0.6 }}
+            >
               НАШАТА КАУЗА Е ПРОСТА.
-            </h2>
-            <div className="text-lg text-cream/90 leading-relaxed space-y-6">
-              <p>
+            </motion.h2>
+            <motion.div 
+              className="text-lg text-cream/90 leading-relaxed space-y-6"
+              variants={fadeInVariants}
+              transition={{ delay: 0.8 }}
+            >
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: 1, duration: 0.6 }}
+              >
                 Ние сме в битка с компромиса. Срещу безвкусното, гумено, воднисто нещо, което се преструва на сирене. Срещу лъжата на етикета. Ние вярваме в 100% мляко. Вярваме в истинския вкус. Вярваме, че това, което слагаш на масата си, е избор.
-              </p>
-              <p className="text-soft-beige font-semibold text-xl">
+              </motion.p>
+              <motion.p 
+                className="text-soft-beige font-semibold text-xl"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                transition={{ delay: 1.4, duration: 0.6 }}
+                whileHover={{ scale: 1.05 }}
+              >
                 Избери истинското.
-              </p>
-            </div>
-          </div>
+              </motion.p>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

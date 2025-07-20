@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -12,78 +22,138 @@ export default function Header() {
     }
   };
 
+  const navItems = [
+    { id: "about", label: "ЗА НАС" },
+    { id: "recipes", label: "РЕЦЕПТИ" },
+    { id: "products", label: "ПРОДУКТИ" },
+  ];
+
   return (
-    <header className="bg-warm-brown backdrop-blur-sm border-b border-warm-brown/30 sticky top-0 z-50">
+    <motion.header 
+      className={`backdrop-blur-md border-b sticky top-0 z-50 transition-all duration-500 ${
+        scrolled 
+          ? "bg-warm-brown/95 border-warm-brown/50 shadow-xl" 
+          : "bg-warm-brown/80 border-warm-brown/30"
+      }`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <h1 className="text-3xl font-bold text-natural-white font-playfair">Бачо Илия</h1>
-          </div>
+          <motion.div 
+            className="flex-shrink-0"
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <motion.h1 
+              className="text-3xl font-bold text-cream font-playfair cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              Бачо Илия
+            </motion.h1>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-natural-white hover:text-soft-beige font-semibold transition-colors text-lg"
-            >
-              ЗА НАС
-            </button>
-            <button
-              onClick={() => scrollToSection("recipes")}
-              className="text-natural-white hover:text-soft-beige font-semibold transition-colors text-lg"
-            >
-              РЕЦЕПТИ
-            </button>
-            <button
-              onClick={() => scrollToSection("products")}
-              className="text-natural-white hover:text-soft-beige font-semibold transition-colors text-lg"
-            >
-              ПРОДУКТИ
-            </button>
+            {navItems.map((item, index) => (
+              <motion.button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="relative text-cream hover:text-warm-beige font-semibold text-lg group"
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                whileHover={{ y: -2 }}
+              >
+                {item.label}
+                <motion.div
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-warm-beige group-hover:w-full transition-all duration-300"
+                  whileHover={{ width: "100%" }}
+                />
+              </motion.button>
+            ))}
           </nav>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
+          <motion.div 
+            className="md:hidden"
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-natural-white"
+              className="text-cream p-2 relative"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
+              <AnimatePresence mode="wait">
+                {isMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="h-6 w-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="h-6 w-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </motion.div>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-warm-brown border-t border-warm-brown/30">
-              <button
-                onClick={() => scrollToSection("about")}
-                className="block px-3 py-2 text-natural-white hover:text-soft-beige font-semibold"
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              className="md:hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div 
+                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-warm-brown/95 border-t border-warm-brown/50"
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
               >
-                ЗА НАС
-              </button>
-              <button
-                onClick={() => scrollToSection("recipes")}
-                className="block px-3 py-2 text-natural-white hover:text-soft-beige font-semibold"
-              >
-                РЕЦЕПТИ
-              </button>
-              <button
-                onClick={() => scrollToSection("products")}
-                className="block px-3 py-2 text-natural-white hover:text-soft-beige font-semibold"
-              >
-                ПРОДУКТИ
-              </button>
-            </div>
-          </div>
-        )}
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="block w-full text-left px-3 py-3 text-cream hover:text-warm-beige font-semibold rounded-lg hover:bg-warm-brown/50 transition-all duration-200"
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
+                    whileHover={{ x: 5 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 }
