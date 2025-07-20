@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
 import { Toaster } from "@/components/ui/toaster"
@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import Providers from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
+const playfair = Playfair_Display({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Бачо Илия - Автентични Български Млечни Продукти',
@@ -26,9 +27,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="bg">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${playfair.className}`}>
         <Providers>
-          {children}
+          <TooltipProvider>
+            {children}
+            <Toaster />
+          </TooltipProvider>
         </Providers>
       </body>
     </html>

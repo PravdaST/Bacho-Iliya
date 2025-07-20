@@ -92,6 +92,16 @@ export default function RecipesSection() {
     setMounted(true);
   }, []);
 
+  if (!mounted) {
+    return (
+      <section id="recipes" className="py-20 lg:py-32 bg-gradient-to-br from-golden-yellow/10 to-warm-beige/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-96 bg-white/50 rounded-3xl animate-pulse"></div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="recipes" className="py-20 lg:py-32 bg-gradient-to-br from-golden-yellow/10 to-warm-beige/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

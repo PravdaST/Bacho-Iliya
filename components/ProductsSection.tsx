@@ -10,32 +10,35 @@ const productCategories = [
     id: 1,
     title: "Сирене",
     description: "Традиционно българско сирене от най-качествено овче и краве мляко",
-    mainImage: "/products/sirene/sirene-1.webp",
+    mainImage: "/products/sirene/BI-sirene-400-metal-480x480.png",
     images: [
-      "/products/sirene/sirene-1.webp",
-      "/products/sirene/sirene-2.webp",
-      "/products/sirene/sirene-3.webp"
+      "/products/sirene/BI-sirene-400-metal-480x480.png",
+      "/products/sirene/BI-sirene-300-vac-480x480.png",
+      "/products/sirene/BI-sirene-4KG-480x480.png",
+      "/products/sirene/BI-sirene-800-metal-480x480.png",
+      "/products/sirene/BI-sirene-8KG-480x480.jpg"
     ]
   },
   {
     id: 2,
     title: "Кашкавал",
     description: "Зрял кашкавал с богат вкус и аромат, създаден по стари български рецепти",
-    mainImage: "/products/kashkaval/kashkaval-1.webp",
+    mainImage: "/products/kashkaval/BI-kashkaval-1500-480x480.png",
     images: [
-      "/products/kashkaval/kashkaval-1.webp",
-      "/products/kashkaval/kashkaval-2.webp",
-      "/products/kashkaval/kashkaval-3.webp"
+      "/products/kashkaval/BI-kashkaval-1500-480x480.png",
+      "/products/kashkaval/BI-kashkaval-300-vac-480x480.png",
+      "/products/kashkaval/BI-kashkaval-7000-480x480.jpg"
     ]
   },
   {
     id: 3,
     title: "Кисело мляко",
     description: "Прясно кисело мляко с живи култури, богато на полезни бактерии",
-    mainImage: "/products/kiselo-mlqko/kiselo-mlqko-1.webp",
+    mainImage: "/products/kiselo-mlqko/BI-kiselo-mlyqko-3.6-480x480.jpg",
     images: [
-      "/products/kiselo-mlqko/kiselo-mlqko-1.webp",
-      "/products/kiselo-mlqko/kiselo-mlqko-2.webp"
+      "/products/kiselo-mlqko/BI-kiselo-mlyqko-3.6-480x480.jpg",
+      "/products/kiselo-mlqko/BI-kiselo-mlyqko-2-480x480.jpg",
+      "/products/kiselo-mlqko/BI-kiselo-mlyqko-4.5-480x480.jpg"
     ]
   }
 ];
@@ -48,6 +51,16 @@ export default function ProductsSection() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  if (!mounted) {
+    return (
+      <section id="products" className="py-20 lg:py-32 bg-gradient-to-br from-cream to-warm-beige/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-96 bg-white/50 rounded-3xl animate-pulse"></div>
+        </div>
+      </section>
+    );
+  }
 
   const openGallery = (category: typeof productCategories[0]) => {
     setSelectedGallery(category);

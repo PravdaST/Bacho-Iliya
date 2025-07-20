@@ -149,7 +149,7 @@ export default function QuizSection() {
             {/* City Question */}
             <div>
               <label className="flex items-center gap-3 text-lg font-semibold text-warm-brown mb-4">
-                <Image src="/sirene.webp" alt="Сирене" width={32} height={32} className="rounded" />
+                <Image src="/products/sirene/BI-sirene-400-metal-480x480.png" alt="Сирене" width={32} height={32} className="rounded" />
                 От кой град сте?
               </label>
               <input
@@ -167,7 +167,7 @@ export default function QuizSection() {
             {/* Weapon Question */}
             <div>
               <label className="flex items-center gap-3 text-lg font-semibold text-warm-brown mb-4">
-                <Image src="/kashkaval.webp" alt="Кашкавал" width={32} height={32} className="rounded" />
+                <Image src="/products/kashkaval/BI-kashkaval-1500-480x480.png" alt="Кашкавал" width={32} height={32} className="rounded" />
                 Какво оръжие бихте избрали за бой?
               </label>
               <select
@@ -192,7 +192,7 @@ export default function QuizSection() {
             {/* Motivation Question */}
             <div>
               <label className="flex items-center gap-3 text-lg font-semibold text-warm-brown mb-4">
-                <Image src="/kiselo-mlqko.webp" alt="Кисело мляко" width={32} height={32} className="rounded" />
+                <Image src="/products/kiselo-mlqko/BI-kiselo-mlyqko-3.6-480x480.jpg" alt="Кисело мляко" width={32} height={32} className="rounded" />
                 Каква е вашата мотивация да опитате продуктите на "Бачо Илия"?
               </label>
               <textarea
