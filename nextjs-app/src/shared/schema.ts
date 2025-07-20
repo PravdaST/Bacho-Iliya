@@ -1,16 +1,16 @@
 
-import { pgTable, uuid, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { z } from "zod";
 
 // Table definition for quiz responses
 export const quizResponses = pgTable('quiz_responses', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  city: text('city').notNull(),
-  weapon: text('weapon').notNull(),
-  motivation: text('motivation').notNull(),
-  email: text('email').notNull(),
+  id: serial('id').primaryKey(),
+  city: varchar('city', { length: 255 }).notNull(),
+  weapon: varchar('weapon', { length: 255 }).notNull(),
+  motivation: varchar('motivation', { length: 255 }).notNull(),
+  email: varchar('email', { length: 255 }).notNull(),
   userAgent: text('user_agent'),
-  createdAt: timestamp('created_at').defaultNow().notNull(),
+  submittedAt: timestamp('submitted_at').defaultNow().notNull(),
 });
 
 // Zod schema for validation
