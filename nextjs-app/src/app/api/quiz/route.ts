@@ -1,10 +1,10 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { insertQuizResponseSchema } from "../../../shared/schema";
+import { insertQuizResponseSchema } from "../../shared/schema";
 import { Pool, neonConfig } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-serverless';
-import { quizResponses } from '../../../shared/schema';
+import { quizResponses } from '../../shared/schema';
 import ws from "ws";
 
 neonConfig.webSocketConstructor = ws;
