@@ -271,13 +271,12 @@ export default function RecipesSection() {
             >
               <div className="bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-warm-beige/20">
                 <div className="relative overflow-hidden">
-                  <motion.img 
+                  <img 
                     src={recipe.image} 
                     alt={recipe.title} 
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                    whileHover={{ scale: 1.1 }}
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-warm-brown/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="p-6">
                   <motion.h3 
@@ -331,70 +330,33 @@ export default function RecipesSection() {
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header with Image */}
-              <div className="relative bg-gray-100 rounded-t-3xl overflow-hidden">
-                <motion.img 
+              {/* Header */}
+              <div className="relative">
+                <img 
                   src={selectedRecipe.image} 
                   alt={selectedRecipe.title}
-                  className="w-full h-64 sm:h-72 object-cover"
-                  initial={{ opacity: 0, scale: 1.1 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6 }}
-                  onError={(e) => {
-                    console.log('Image failed to load:', selectedRecipe.image);
-                    e.currentTarget.style.display = 'none';
-                  }}
-                  onLoad={() => {
-                    console.log('Image loaded successfully:', selectedRecipe.image);
-                  }}
+                  className="w-full h-64 object-cover rounded-t-3xl"
                 />
-                
-                {/* Close Button */}
-                <motion.button
+                <button
                   onClick={() => setSelectedRecipe(null)}
-                  className="absolute top-4 right-4 w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/70 transition-all duration-300 z-10"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                  className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors duration-300"
                 >
-                  <X size={20} className="text-white" />
-                </motion.button>
-
-                {/* Recipe Info Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
-                  <motion.h3 
-                    className="font-playfair text-2xl sm:text-3xl font-bold text-white mb-3"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                  >
+                  <X size={20} className="text-gray-700" />
+                </button>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                  <h3 className="font-playfair text-3xl font-bold text-white mb-2">
                     {selectedRecipe.title}
-                  </motion.h3>
-                  <motion.div 
-                    className="flex items-center gap-6 text-white/90"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <div className="flex items-center gap-2 bg-black/30 px-3 py-1 rounded-full">
+                  </h3>
+                  <div className="flex items-center gap-6 text-white/90">
+                    <div className="flex items-center gap-2">
                       <Clock size={16} />
-                      <span className="text-sm font-medium">{selectedRecipe.prepTime}</span>
+                      <span className="text-sm">{selectedRecipe.prepTime}</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-black/30 px-3 py-1 rounded-full">
+                    <div className="flex items-center gap-2">
                       <Users size={16} />
-                      <span className="text-sm font-medium">{selectedRecipe.servings}</span>
+                      <span className="text-sm">{selectedRecipe.servings}</span>
                     </div>
-                  </motion.div>
-                </div>
-
-                {/* Loading placeholder if image fails */}
-                <div className="absolute inset-0 bg-gradient-to-br from-warm-brown/20 to-cream/40 flex items-center justify-center">
-                  <motion.div
-                    className="text-warm-brown opacity-50"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  >
-                    <ChefHat size={48} />
-                  </motion.div>
+                  </div>
                 </div>
               </div>
 
