@@ -1,27 +1,35 @@
+
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { insertQuizResponseSchema } from "../../../shared/schema";
+import { Pool, neonConfig } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-serverless';
+import { quizResponses } from '../../../shared/schema';
+import ws from "ws";
 
-// Mock storage for now - in production you'd use a database
-let quizResponses: any[] = [];
+neonConfig.webSocketConstructor = ws;
+
+// Initialize database connection for Next.js
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const db = drizzle({ client: pool, schema: { quizResponses } });
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const validatedData = insertQuizResponseSchema.parse(body);
     
-    // Add to mock storage
-    const response = {
-      id: quizResponses.length + 1,
-      ...validatedData,
-      submittedAt: new Date(),
-      userAgent: request.headers.get('user-agent') || null
-    };
-    
-    quizResponses.push(response);
+    // Save to PostgreSQL database
+    const [response] = await db
+      .insert(quizResponses)
+      .values({
+        ...validatedData,
+        userAgent: request.headers.get('user-agent') || null
+      })
+      .returning();
     
     return NextResponse.json({ success: true, data: response });
   } catch (error) {
+    console.error('Database error:', error);
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { 
@@ -44,5 +52,17 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  return NextResponse.json({ success: true, data: quizResponses });
+  try {
+    const responses = await db.select().from(quizResponses);
+    return NextResponse.json({ success: true, data: responses });
+  } catch (error) {
+    console.error('Database error:', error);
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: "Internal server error" 
+      },
+      { status: 500 }
+    );
+  }
 }
