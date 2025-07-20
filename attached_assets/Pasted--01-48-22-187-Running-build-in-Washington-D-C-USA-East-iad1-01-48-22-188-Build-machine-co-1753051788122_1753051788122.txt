@@ -1,0 +1,65 @@
+[01:48:22.187] Running build in Washington, D.C., USA (East) – iad1
+[01:48:22.188] Build machine configuration: 2 cores, 8 GB
+[01:48:22.205] Cloning github.com/PravdaST/Bacho-Iliya (Branch: main, Commit: 586d1cf)
+[01:48:23.021] Cloning completed: 816.000ms
+[01:48:23.097] Found .vercelignore
+[01:48:23.111] Removed 26 ignored files defined in .vercelignore
+[01:48:23.112]   /.git/config
+[01:48:23.112]   /.git/description
+[01:48:23.112]   /.git/FETCH_HEAD
+[01:48:23.112]   /.git/HEAD
+[01:48:23.112]   /.git/hooks/applypatch-msg.sample
+[01:48:23.112]   /.git/hooks/commit-msg.sample
+[01:48:23.112]   /.git/hooks/fsmonitor-watchman.sample
+[01:48:23.112]   /.git/hooks/post-update.sample
+[01:48:23.112]   /.git/hooks/pre-applypatch.sample
+[01:48:23.112]   /.git/hooks/pre-commit.sample
+[01:48:23.821] Restored build cache from previous deployment (7jY6J2rCEoEaaB8jLHsmsBJU71L4)
+[01:48:26.367] Running "vercel build"
+[01:48:26.928] Vercel CLI 44.4.3
+[01:48:27.911] Running "install" command: `npm install`...
+[01:48:29.489] 
+[01:48:29.489] up to date, audited 467 packages in 1s
+[01:48:29.489] 
+[01:48:29.489] 161 packages are looking for funding
+[01:48:29.490]   run `npm fund` for details
+[01:48:29.491] 
+[01:48:29.491] found 0 vulnerabilities
+[01:48:29.521] Detected Next.js version: 15.4.2
+[01:48:29.522] Running "npm run build"
+[01:48:29.631] 
+[01:48:29.631] > bacho-iliya-nextjs@1.0.0 build
+[01:48:29.632] > next build
+[01:48:29.632] 
+[01:48:30.375]    ▲ Next.js 15.4.2
+[01:48:30.376] 
+[01:48:30.442]    Creating an optimized production build ...
+[01:48:31.115]  ⚠ Found lockfile missing swc dependencies, run next locally to automatically patch
+[01:48:35.407] Failed to compile.
+[01:48:35.407] 
+[01:48:35.408] ./src/shared/schema.ts
+[01:48:35.408] Error:   [31mx[0m Expected ';', '}' or <eof>
+[01:48:35.408]     ,-[[36;1;4m/vercel/path0/nextjs-app/src/shared/schema.ts[0m:26:1]
+[01:48:35.408]  [2m23[0m |     });
+[01:48:35.409]  [2m24[0m |     
+[01:48:35.409]  [2m25[0m |     export type InsertQuizResponse = z.infer<typeof insertQuizResponseSchema>;
+[01:48:35.409]  [2m26[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m   motivation: z.string().min(1, "Моля изберете мотивация"),
+[01:48:35.409]  [2m27[0m | [35;1m|[0m[35;1m-[0m[35;1m>[0m   email: z.string().email("Моля въведете валиден имейл адрес"),
+[01:48:35.410]     : [35;1m`[0m[35;1m---[0m[33;1m       ^[0m
+[01:48:35.410]     : [35;1m`[0m[35;1m---[0m[35;1m-[0m [35;1mThis is the expression part of an expression statement[0m
+[01:48:35.410]  [2m28[0m |       userAgent: z.string().nullable().optional(),
+[01:48:35.410]  [2m29[0m |     });
+[01:48:35.411]     `----
+[01:48:35.411] 
+[01:48:35.411] Caused by:
+[01:48:35.411]     Syntax Error
+[01:48:35.411] 
+[01:48:35.412] Import trace for requested module:
+[01:48:35.412] ./src/shared/schema.ts
+[01:48:35.412] ./src/app/api/quiz/route.ts
+[01:48:35.412] 
+[01:48:35.425] 
+[01:48:35.426] > Build failed because of webpack errors
+[01:48:35.455] Error: Command "npm run build" exited with 1
+[01:48:35.725] 
+[01:48:38.533] Exiting build container
