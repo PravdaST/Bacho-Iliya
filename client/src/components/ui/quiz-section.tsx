@@ -108,7 +108,7 @@ export default function QuizSection() {
             <h3 className="font-playfair text-2xl font-bold text-warm-brown mb-4">
               Добре дошъл в движението!
             </h3>
-            <p className="text-warm-stone mb-6">
+            <p className="text-gray-700 mb-6">
               Твоят глас е чут. Заедно ще защитим истинския вкус.
             </p>
             <motion.div

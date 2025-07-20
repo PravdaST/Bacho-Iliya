@@ -71,7 +71,8 @@ export default {
         "milk-white": "var(--milk-white)",
         "farm-brown": "var(--farm-brown)",
         "forest": "var(--forest)",
-        "soft-beige": "var(--warm-beige)",
+        "soft-beige": "var(--soft-beige)",
+        "warm-stone": "var(--warm-stone)",
       },
       keyframes: {
         "accordion-down": {

@@ -60,7 +60,7 @@ export default function ProductsSection() {
             СИЛАТА НА ИСТИНСКОТО
           </motion.h2>
           <motion.p 
-            className="text-base sm:text-lg lg:text-xl text-warm-stone max-w-3xl mx-auto px-4"
+            className="text-base sm:text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto px-4"
             variants={fadeInVariants}
           >
             Истинският вкус се постига с истински продукти.
@@ -130,7 +130,7 @@ export default function ProductsSection() {
                   </motion.h3>
                   
                   <motion.p 
-                    className="text-warm-stone mb-6 font-semibold relative z-10"
+                    className="text-gray-700 mb-6 font-semibold relative z-10"
                     initial={{ opacity: 0.8 }}
                     whileHover={{ opacity: 1 }}
                   >
@@ -138,7 +138,7 @@ export default function ProductsSection() {
                   </motion.p>
                   
                   <motion.div 
-                    className="space-y-2 text-sm text-warm-stone/80 relative z-10"
+                    className="space-y-2 text-sm text-gray-600 relative z-10"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={{

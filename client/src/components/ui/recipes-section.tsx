@@ -55,7 +55,7 @@ export default function RecipesSection() {
             РЕЦЕПТИ ЗА ПОБЕДА
           </motion.h2>
           <motion.p 
-            className="text-base sm:text-lg lg:text-xl text-warm-stone max-w-3xl mx-auto px-4"
+            className="text-base sm:text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto px-4"
             variants={fadeInVariants}
           >
             Всяка рецепта е победа. Вдъхнови се за следващата си битка в кухнята.
@@ -92,7 +92,7 @@ export default function RecipesSection() {
                     {recipe.title}
                   </motion.h3>
                   <motion.p 
-                    className="text-warm-stone mb-4"
+                    className="text-gray-700 mb-4"
                     initial={{ opacity: 0.7 }}
                     whileHover={{ opacity: 1 }}
                   >

@@ -7,7 +7,7 @@ export default function AboutSection() {
   return (
     <motion.section 
       ref={ref}
-      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-warm-brown via-farm-brown to-warm-brown text-cream relative overflow-hidden px-4 sm:px-6 lg:px-8" 
+      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-cream via-white to-warm-beige relative overflow-hidden px-4 sm:px-6 lg:px-8" 
       id="about"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -17,7 +17,7 @@ export default function AboutSection() {
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-32 h-32 bg-warm-beige/20 rounded-full"
+            className="absolute w-32 h-32 bg-warm-beige/10 rounded-full"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
@@ -37,7 +37,7 @@ export default function AboutSection() {
       </div>
 
       <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center min-h-[500px]">
           <motion.div
             variants={slideInFromLeftVariants}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -49,9 +49,9 @@ export default function AboutSection() {
             >
               <div className="absolute -inset-4 bg-gradient-to-r from-warm-beige/20 to-cream/20 rounded-3xl blur-lg opacity-75"></div>
               <img 
-                src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                 alt="Traditional Bulgarian dairy farm" 
-                className="relative rounded-2xl shadow-2xl w-full h-auto border-2 border-warm-beige/30"
+                className="relative rounded-2xl shadow-2xl w-full h-auto max-h-96 object-cover border-2 border-warm-beige/30"
               />
             </motion.div>
           </motion.div>
@@ -61,14 +61,14 @@ export default function AboutSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <motion.h2 
-              className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 text-warm-brown"
+              className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 text-gray-900"
               variants={fadeInVariants}
               transition={{ delay: 0.6 }}
             >
               НАШАТА КАУЗА Е ПРОСТА.
             </motion.h2>
             <motion.div 
-              className="text-lg text-gray-800 leading-relaxed space-y-6"
+              className="text-lg text-gray-700 leading-relaxed space-y-6"
               variants={fadeInVariants}
               transition={{ delay: 0.8 }}
             >
@@ -80,7 +80,7 @@ export default function AboutSection() {
                 Ние сме в битка с компромиса. Срещу безвкусното, гумено, воднисто нещо, което се преструва на сирене. Срещу лъжата на етикета. Ние вярваме в 100% мляко. Вярваме в истинския вкус. Вярваме, че това, което слагаш на масата си, е избор.
               </motion.p>
               <motion.p 
-                className="text-warm-brown font-semibold text-xl"
+                className="text-gray-900 font-semibold text-xl"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{ delay: 1.4, duration: 0.6 }}
