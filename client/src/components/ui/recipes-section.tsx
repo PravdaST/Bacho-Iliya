@@ -7,19 +7,19 @@ const recipes = [
     id: 1,
     title: "Истинска баница",
     description: "С истинско сирене Бачо Илия и домашно тесто.",
-    image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+    image: "https://images.unsplash.com/photo-1601651991193-5246c3fc5d2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
   },
   {
     id: 2,
     title: "Шопска салата",
     description: "Класиката с натурено сирене от истинско мляко.",
-    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+    image: "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
   },
   {
     id: 3,
     title: "Таратор",
     description: "Освежаващ с кисело мляко Бачо Илия.",
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+    image: "https://images.unsplash.com/photo-1564093497595-593b96d80180?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
   }
 ];
 

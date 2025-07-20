@@ -1,8 +1,16 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation, fadeInVariants, slideInFromLeftVariants, slideInFromRightVariants } from "@/hooks/use-scroll-animation";
 
 export default function AboutSection() {
   const { ref, isInView } = useScrollAnimation(0.2);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <motion.section 
@@ -47,11 +55,19 @@ export default function AboutSection() {
               transition={{ duration: 0.3 }}
               className="relative"
             >
-              <div className="absolute -inset-4 bg-gradient-to-r from-warm-beige/20 to-cream/20 rounded-3xl blur-lg opacity-75"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              <motion.div 
+                className="absolute -inset-4 bg-gradient-to-r from-warm-beige/20 to-cream/20 rounded-3xl blur-lg opacity-75"
+                style={{
+                  transform: `translateY(${scrollY * 0.1}px)`,
+                }}
+              />
+              <motion.img 
+                src="https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                 alt="Traditional Bulgarian dairy farm" 
                 className="relative rounded-2xl shadow-2xl w-full h-auto max-h-96 object-cover border-2 border-warm-beige/30"
+                style={{
+                  transform: `translateY(${scrollY * 0.15}px)`,
+                }}
               />
             </motion.div>
           </motion.div>

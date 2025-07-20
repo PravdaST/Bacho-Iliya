@@ -8,7 +8,7 @@ const products = [
     name: 'Сирене "Бачо Илия"',
     description: "Истинският вкус. Без компромис.",
     features: ["100% мляко", "Без добавки", "Традиционна рецепта"],
-    image: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
     icon: Star
   },
   {
@@ -16,7 +16,7 @@ const products = [
     name: 'Кашкавал "Бачо Илия"',
     description: "Силата на традицията.",
     features: ["Зреене минимум 60 дни", "Естествен цвят", "Богат вкус"],
-    image: "https://images.unsplash.com/photo-1552767059-ce182ead6c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    image: "https://images.unsplash.com/photo-1571060316726-12c33d3b0ddf?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
     icon: Award
   },
   {
@@ -24,7 +24,7 @@ const products = [
     name: 'Кисело мляко "Бачо Илия"',
     description: "Чиста енергия. Без добавки.",
     features: ["Lactobacillus bulgaricus", "Натурална закваска", "Пълномаслено"],
-    image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
     icon: Shield
   }
 ];
