@@ -24,7 +24,7 @@ export default function HeroSection() {
       <motion.div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1444554107346-8f68a4b7fa85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')`,
           transform: `translateY(${scrollY * 0.5}px)`,
         }}
       />
