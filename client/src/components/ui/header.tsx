@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <motion.header 
-      className={`backdrop-blur-md border-b sticky top-0 z-50 transition-all duration-500 ${
+      className={`backdrop-blur-md border-b z-50 transition-all duration-500 ${
         scrolled 
           ? "shadow-xl" 
           : ""
