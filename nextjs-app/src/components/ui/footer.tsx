@@ -157,7 +157,7 @@ export default function Footer() {
               className="flex items-center gap-3 text-white/80 hover:text-white transition-colors"
               whileHover={{ x: 5 }}
             >
-              <Mail size={18} className="text-traditional-red" />
+              <Mail size={18} className="text-white" />
               <span>contact@bacho-iliya.eu</span>
             </motion.div>
           </motion.div>
