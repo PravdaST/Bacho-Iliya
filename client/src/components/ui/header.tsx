@@ -7,7 +7,7 @@ export default function Header() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     }
   };
@@ -18,29 +18,29 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img 
-              src="/logo/logo.png" 
-              alt="Бачо Илия" 
+            <img
+              src="/logo/logo.png"
+              alt="Бачо Илия"
               className="h-12 w-auto"
             />
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <button 
-              onClick={() => scrollToSection('about')}
+            <button
+              onClick={() => scrollToSection("about")}
               className="text-natural-white hover:text-soft-beige font-semibold transition-colors text-lg"
             >
               ЗА НАС
             </button>
-            <button 
-              onClick={() => scrollToSection('recipes')}
+            <button
+              onClick={() => scrollToSection("recipes")}
               className="text-natural-white hover:text-soft-beige font-semibold transition-colors text-lg"
             >
               РЕЦЕПТИ
             </button>
-            <button 
-              onClick={() => scrollToSection('products')}
+            <button
+              onClick={() => scrollToSection("products")}
               className="text-natural-white hover:text-soft-beige font-semibold transition-colors text-lg"
             >
               ПРОДУКТИ
@@ -53,7 +53,11 @@ export default function Header() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-natural-white"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -63,19 +67,19 @@ export default function Header() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-warm-brown border-t border-warm-brown/30">
               <button
-                onClick={() => scrollToSection('about')}
+                onClick={() => scrollToSection("about")}
                 className="block px-3 py-2 text-natural-white hover:text-soft-beige font-semibold"
               >
                 ЗА НАС
               </button>
               <button
-                onClick={() => scrollToSection('recipes')}
+                onClick={() => scrollToSection("recipes")}
                 className="block px-3 py-2 text-natural-white hover:text-soft-beige font-semibold"
               >
                 РЕЦЕПТИ
               </button>
               <button
-                onClick={() => scrollToSection('products')}
+                onClick={() => scrollToSection("products")}
                 className="block px-3 py-2 text-natural-white hover:text-soft-beige font-semibold"
               >
                 ПРОДУКТИ

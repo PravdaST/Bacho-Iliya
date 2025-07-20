@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Serve logo files statically
-app.use('/logo', express.static(path.resolve(import.meta.dirname, '../logo')));
+app.use('/logo', express.static(path.resolve(import.meta.dirname, '../client/logo')));
 
 app.use((req, res, next) => {
   const start = Date.now();
