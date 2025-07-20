@@ -2,19 +2,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { insertQuizResponseSchema } from "@/shared/schema";
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-serverless';
+import { neon } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-http';
 import { quizResponses } from '@/shared/schema';
 
-// Configure WebSocket for Neon in serverless environment
-if (typeof window === 'undefined') {
-  const ws = require('ws');
-  neonConfig.webSocketConstructor = ws;
-}
-
-// Initialize database connection for Next.js
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const db = drizzle({ client: pool, schema: { quizResponses } });
+// Use HTTP connection for better compatibility with serverless
+const sql = neon(process.env.DATABASE_URL!);
+const db = drizzle(sql, { schema: { quizResponses } });
 
 export async function POST(request: NextRequest) {
   try {
@@ -38,7 +32,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Save to PostgreSQL database
+    // Save to PostgreSQL database using HTTP connection
     const [response] = await db
       .insert(quizResponses)
       .values({
