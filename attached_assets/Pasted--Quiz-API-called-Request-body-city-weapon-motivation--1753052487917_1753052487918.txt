@@ -1,0 +1,52 @@
+
+Quiz API called
+Request body: {
+  city: 'варна',
+  weapon: 'сирене',
+  motivation: 'за спомените от детството',
+  email: 'caspere63@gmail.com',
+  userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
+}
+Validation successful: {
+  city: 'варна',
+  weapon: 'сирене',
+  motivation: 'за спомените от детството',
+  email: 'caspere63@gmail.com',
+  userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
+}
+API Error: Error [NeonDbError]: column "created_at" of relation "quiz_responses" does not exist
+    at execute (.next/server/app/api/quiz/route.js:11:8222)
+    at async gN.execute (.next/server/app/api/quiz/route.js:23:34602)
+    at async gW (.next/server/app/api/quiz/route.js:23:40115)
+    at async m (.next/server/app/api/quiz/route.js:23:43476)
+    at async f (.next/server/app/api/quiz/route.js:23:44480)
+    at async g1 (.next/server/app/api/quiz/route.js:23:45603) {
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '92',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1066',
+  routine: 'checkInsertTargets',
+  sourceError: undefined
+}
+Error stack: NeonDbError: column "created_at" of relation "quiz_responses" does not exist
+    at execute (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:11:8222)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gN.execute (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:34602)
+    at async gW (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:40115)
+    at async rb.do (/var/task/nextjs-app/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21059)
+    at async rb.handle (/var/task/nextjs-app/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25902)
+    at async m (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:43476)
+    at async rb.handleResponse (/var/task/nextjs-app/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:104401)
+    at async f (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:44480)
+    at async g1 (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:45603)
