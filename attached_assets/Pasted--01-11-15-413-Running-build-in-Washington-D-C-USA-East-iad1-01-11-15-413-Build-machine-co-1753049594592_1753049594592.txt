@@ -1,0 +1,71 @@
+[01:11:15.413] Running build in Washington, D.C., USA (East) – iad1
+[01:11:15.413] Build machine configuration: 2 cores, 8 GB
+[01:11:15.431] Cloning github.com/PravdaST/Bacho-Iliya (Branch: main, Commit: c419068)
+[01:11:15.552] Previous build caches not available
+[01:11:16.214] Cloning completed: 783.000ms
+[01:11:16.262] Found .vercelignore
+[01:11:16.271] Removed 26 ignored files defined in .vercelignore
+[01:11:16.272]   /.git/config
+[01:11:16.272]   /.git/description
+[01:11:16.272]   /.git/FETCH_HEAD
+[01:11:16.272]   /.git/HEAD
+[01:11:16.272]   /.git/hooks/applypatch-msg.sample
+[01:11:16.272]   /.git/hooks/commit-msg.sample
+[01:11:16.272]   /.git/hooks/fsmonitor-watchman.sample
+[01:11:16.272]   /.git/hooks/post-update.sample
+[01:11:16.272]   /.git/hooks/pre-applypatch.sample
+[01:11:16.272]   /.git/hooks/pre-commit.sample
+[01:11:18.115] Running "vercel build"
+[01:11:18.606] Vercel CLI 44.4.3
+[01:11:18.914] Running "install" command: `npm install`...
+[01:11:45.679] npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+[01:11:45.728] npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+[01:11:45.978] npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+[01:11:46.964] npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+[01:11:47.186] npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+[01:11:49.254] npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+[01:11:55.132] 
+[01:11:55.133] added 452 packages, and audited 453 packages in 35s
+[01:11:55.133] 
+[01:11:55.134] 161 packages are looking for funding
+[01:11:55.134]   run `npm fund` for details
+[01:11:55.134] 
+[01:11:55.134] found 0 vulnerabilities
+[01:11:55.196] Detected Next.js version: 15.4.2
+[01:11:55.197] Running "npm run build"
+[01:11:55.469] 
+[01:11:55.470] > bacho-iliya-nextjs@1.0.0 build
+[01:11:55.470] > next build
+[01:11:55.470] 
+[01:11:56.148] Attention: Next.js now collects completely anonymous telemetry regarding usage.
+[01:11:56.148] This information is used to shape Next.js' roadmap and prioritize features.
+[01:11:56.148] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[01:11:56.148] https://nextjs.org/telemetry
+[01:11:56.148] 
+[01:11:56.211]    ▲ Next.js 15.4.2
+[01:11:56.212] 
+[01:11:56.284]    Creating an optimized production build ...
+[01:12:14.270]  ✓ Compiled successfully in 14.0s
+[01:12:14.278]    Skipping validation of types
+[01:12:14.278]    Skipping linting
+[01:12:14.545] 
+[01:12:14.545]    We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+[01:12:14.545]    The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+[01:12:14.545] 
+[01:12:14.546]    	- target was set to ES2017 (For top-level `await`. Note: Next.js only polyfills for the esmodules target.)
+[01:12:14.546] 
+[01:12:14.548]    Collecting page data ...
+[01:12:16.574]    Generating static pages (0/5) ...
+[01:12:17.271]    Generating static pages (1/5) 
+[01:12:17.391] Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+[01:12:17.391] ReferenceError: window is not defined
+[01:12:17.392]     at <unknown> (.next/server/app/page.js:10:6108)
+[01:12:17.392]     at Array.map (<anonymous>)
+[01:12:17.392]     at gc (.next/server/app/page.js:10:5995) {
+[01:12:17.392]   digest: '418115122'
+[01:12:17.392] }
+[01:12:17.393] Export encountered an error on /page: /, exiting the build.
+[01:12:17.396]  ⨯ Next.js build worker exited with code: 1 and signal: null
+[01:12:17.425] Error: Command "npm run build" exited with 1
+[01:12:17.674] 
+[01:12:20.747] Exiting build container

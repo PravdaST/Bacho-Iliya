@@ -8,6 +8,8 @@ export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -49,8 +51,8 @@ export default function HeroSection() {
             key={i}
             className="absolute w-2 h-2 bg-warm-beige/20 rounded-full"
             initial={{ 
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: typeof window !== "undefined" ? Math.random() * window.innerWidth : Math.random() * 1200,
+              y: typeof window !== "undefined" ? Math.random() * window.innerHeight : Math.random() * 800,
               opacity: 0 
             }}
             animate={{

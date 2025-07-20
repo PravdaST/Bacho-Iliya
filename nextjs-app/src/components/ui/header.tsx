@@ -9,6 +9,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -60,7 +62,7 @@ export default function Header() {
               className="h-8 sm:h-10 md:h-12 w-auto cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={() => typeof window !== "undefined" && window.scrollTo({ top: 0, behavior: 'smooth' })}
             />
           </motion.div>
 
