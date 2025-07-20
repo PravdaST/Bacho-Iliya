@@ -36,6 +36,9 @@
       ],
       "@/public/*": [
         "./public/*"
+      ],
+      "@shared/*": [
+        "./shared/*"
       ]
     },
     "target": "ES2017"
