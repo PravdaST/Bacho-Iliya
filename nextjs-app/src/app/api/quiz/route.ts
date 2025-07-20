@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { insertQuizResponseSchema } from "@/shared/schema";
+import { insertQuizResponseSchema } from "../../../shared/schema";
 
 // Mock storage for now - in production you'd use a database
 let quizResponses: any[] = [];
