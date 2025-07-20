@@ -23,3 +23,9 @@ export const insertQuizResponseSchema = z.object({
 });
 
 export type InsertQuizResponse = z.infer<typeof insertQuizResponseSchema>;
+  motivation: z.string().min(1, "Моля изберете мотивация"),
+  email: z.string().email("Моля въведете валиден имейл адрес"),
+  userAgent: z.string().nullable().optional(),
+});
+
+export type InsertQuizResponse = z.infer<typeof insertQuizResponseSchema>;
