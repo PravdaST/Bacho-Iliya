@@ -1,0 +1,115 @@
+Error stack: Error: Connection terminated unexpectedly at /var/task/nextjs-app/.next/server/app/api/quiz/route.js:9:29127 at process.processTicksAndRejections (node:internal/process/task_queues:105:5) at async gM.execute (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:34991) at async gU (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:39944) at async rb.do (/var/task/nextjs-app/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21059) at async rb.handle (/var/task/nextjs-app/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25902) at async m (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:43305) at async rb.handleResponse (/var/task/nextjs-app/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:104401) at async f (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:44309) at async g_ (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:45432)
+
+
+
+
+
+Quiz API called
+
+
+
+Request body: {
+
+  city: 'варна',
+
+  weapon: 'сирене',
+
+  motivation: 'защото мразя ментета',
+
+  email: 'caspere63@gmail.com',
+
+  userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
+
+}
+
+
+
+Validation successful: {
+
+  city: 'варна',
+
+  weapon: 'сирене',
+
+  motivation: 'защото мразя ментета',
+
+  email: 'caspere63@gmail.com',
+
+  userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
+
+}
+
+
+
+Uncaught Exception: TypeError: b.mask is not a function
+
+    at a.exports.mask (.next/server/app/api/quiz/route.js:23:60557)
+
+    at r.frame (.next/server/app/api/quiz/route.js:23:48711)
+
+    at r.dispatch (.next/server/app/api/quiz/route.js:23:51540)
+
+    at r.send (.next/server/app/api/quiz/route.js:23:51073)
+
+    at I.send (.next/server/app/api/quiz/route.js:1:29377)
+
+    at Timeout._onTimeout (.next/server/app/api/quiz/route.js:9:958)
+
+
+
+Node.js process exited with exit status: 129. The logs above can help with debugging the issue.
+
+Fatal
+
+TypeError: b.mask is not a function
+
+    at a.exports.mask (.next/server/app/api/quiz/route.js:23:60557)
+
+    at r.frame (.next/server/app/api/quiz/route.js:23:48711)
+
+    at r.dispatch (.next/server/app/api/quiz/route.js:23:51540)
+
+    at r.send (.next/server/app/api/quiz/route.js:23:51073)
+
+    at I.send (.next/server/app/api/quiz/route.js:1:29377)
+
+    at Timeout._onTimeout (.next/server/app/api/quiz/route.js:9:958)
+
+
+
+API Error: Error: Connection terminated unexpectedly
+
+    at <unknown> (.next/server/app/api/quiz/route.js:9:29127)
+
+    at async gM.execute (.next/server/app/api/quiz/route.js:23:34991)
+
+    at async gU (.next/server/app/api/quiz/route.js:23:39944)
+
+    at async m (.next/server/app/api/quiz/route.js:23:43305)
+
+    at async f (.next/server/app/api/quiz/route.js:23:44309)
+
+    at async g_ (.next/server/app/api/quiz/route.js:23:45432)
+
+
+
+Error stack: Error: Connection terminated unexpectedly
+
+    at /var/task/nextjs-app/.next/server/app/api/quiz/route.js:9:29127
+
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+    at async gM.execute (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:34991)
+
+    at async gU (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:39944)
+
+    at async rb.do (/var/task/nextjs-app/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21059)
+
+    at async rb.handle (/var/task/nextjs-app/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25902)
+
+    at async m (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:43305)
+
+    at async rb.handleResponse (/var/task/nextjs-app/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:104401)
+
+    at async f (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:44309)
+
+    at async g_ (/var/task/nextjs-app/.next/server/app/api/quiz/route.js:23:45432)
