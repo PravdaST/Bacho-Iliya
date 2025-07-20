@@ -57,7 +57,7 @@ export default function Header() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <motion.img
-              src="/logo/logo.png"
+              src="/logo.png"
               alt="Бачо Илия"
               className="h-8 sm:h-10 md:h-12 w-auto cursor-pointer"
               whileHover={{ scale: 1.05 }}
