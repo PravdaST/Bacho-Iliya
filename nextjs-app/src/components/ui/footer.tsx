@@ -54,13 +54,6 @@ export default function Footer() {
               className="flex items-center gap-3 mb-4"
               whileHover={{ scale: 1.05 }}
             >
-              <motion.div
-                className="w-12 h-12 bg-gradient-to-br from-white/20 to-white/30 rounded-full flex items-center justify-center"
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              >
-                <Award size={24} className="text-white" />
-              </motion.div>
               <img 
                 src="/logo.png" 
                 alt="Бачо Илия Logo" 
