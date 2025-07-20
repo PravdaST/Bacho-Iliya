@@ -28,10 +28,7 @@ export default function RootLayout({
     <html lang="bg">
       <body className={inter.className}>
         <Providers>
-          <TooltipProvider>
-            <Toaster />
-            {children}
-          </TooltipProvider>
+          {children}
         </Providers>
       </body>
     </html>
