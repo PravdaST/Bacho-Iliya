@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
-import { Toaster } from "@/components/ui/toaster"
-import { TooltipProvider } from "@/components/ui/tooltip"
+// import { Toaster } from "@/components/ui/toaster"
+// import { TooltipProvider } from "@/components/ui/tooltip"
 import Providers from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -29,10 +29,7 @@ export default function RootLayout({
     <html lang="bg">
       <body className={`${inter.className} ${playfair.className}`}>
         <Providers>
-          <TooltipProvider>
-            {children}
-            <Toaster />
-          </TooltipProvider>
+          {children}
         </Providers>
       </body>
     </html>

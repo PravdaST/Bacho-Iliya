@@ -7,17 +7,21 @@ const nextConfig = {
     return config
   },
   images: {
-    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '5000',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.replit.dev',
+        pathname: '/**',
+      },
+    ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/logo/:path*',
-        destination: '/client/logo/:path*',
-      },
-    ]
   },
 }
 
