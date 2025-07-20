@@ -72,11 +72,18 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Бачо Илия - Революцията на истинския вкус",
-    description: "Присъедини се към революцията на истинския български вкус!",
-    images: ["/logo.png"],
+    card: 'summary_large_image',
+    title: 'Бачо Илия - Революцията на истинския вкус',
+    description: 'Присъедини се към революцията на истинския български вкус! Автентични млечни продукти и традиционни деликатеси.',
+    images: ['/logo.png'],
+    site: '@BachoIliya',
+    creator: '@BachoIliya',
   },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.YANDEX_VERIFICATION,
+  },
+  category: 'food',
 };
 
 export default function RootLayout({
