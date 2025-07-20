@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +21,14 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-3xl font-bold text-natural-white font-playfair">Бачо Илия</h1>
+            <Image
+              src="/logo/logo.png"
+              alt="Бачо Илия"
+              width={120}
+              height={48}
+              className="h-12 w-auto"
+              priority
+            />
           </div>
 
           {/* Desktop Navigation */}
