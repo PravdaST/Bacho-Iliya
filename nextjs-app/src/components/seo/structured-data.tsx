@@ -13,7 +13,11 @@ export default function StructuredData() {
       "@type": "PostalAddress",
       "addressCountry": "BG"
     },
-    "sameAs": [],
+    "sameAs": [
+      "https://www.facebook.com/Bacho.Iliya/",
+      "https://www.youtube.com/@bachoiliyabg",
+      "https://www.tiktok.com/@bachoiliyabg"
+    ],
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://bacho-iliya.replit.app#quiz",

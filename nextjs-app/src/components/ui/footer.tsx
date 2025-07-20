@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, Mail, Phone, MapPin, Facebook, Instagram, Award } from "lucide-react";
+import { Heart, Mail, Phone, MapPin, Facebook, Instagram, Award, Youtube } from "lucide-react";
 import { useScrollAnimation, fadeInVariants, staggerContainer } from "@/hooks/use-scroll-animation";
 
 export default function Footer() {
@@ -119,17 +119,46 @@ export default function Footer() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
             >
-              {[Facebook, Instagram].map((Icon, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInVariants}
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/40 transition-all duration-300"
-                >
-                  <Icon size={24} className="text-white" />
-                </motion.div>
-              ))}
+              <motion.a
+                href="https://www.facebook.com/Bacho.Iliya/"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={fadeInVariants}
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/40 transition-all duration-300"
+                aria-label="Следвай ни във Facebook"
+              >
+                <Facebook size={24} className="text-white" />
+              </motion.a>
+              
+              <motion.a
+                href="https://www.youtube.com/@bachoiliyabg"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={fadeInVariants}
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/40 transition-all duration-300"
+                aria-label="Следвай ни в YouTube"
+              >
+                <Youtube size={24} className="text-white" />
+              </motion.a>
+
+              <motion.a
+                href="https://www.tiktok.com/@bachoiliyabg"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={fadeInVariants}
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/40 transition-all duration-300"
+                aria-label="Следвай ни в TikTok"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                  <path d="M12.525 1.058a13.096 13.096 0 0 1 4.376 0 4.048 4.048 0 0 1 3.041 3.041 13.096 13.096 0 0 1 0 4.376 4.048 4.048 0 0 1-3.041 3.041c-1.39.142-2.986.142-4.376 0a4.048 4.048 0 0 1-3.041-3.041 13.096 13.096 0 0 1 0-4.376 4.048 4.048 0 0 1 3.041-3.041zM12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6zM18.9 6.9a1.1 1.1 0 1 0 0-2.2 1.1 1.1 0 0 0 0 2.2z"/>
+                </svg>
+              </motion.a>
             </motion.div>
             <motion.div 
               className="flex items-center gap-3 text-white/80 hover:text-white transition-colors"
