@@ -19,7 +19,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8">
       {/* Background with parallax effect */}
       <motion.div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -65,9 +65,9 @@ export default function HeroSection() {
         ))}
       </div>
       
-      <div className="relative z-10 text-center text-cream px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center text-cream max-w-7xl mx-auto w-full">
         <motion.h1 
-          className="font-playfair text-6xl md:text-8xl font-bold mb-8 leading-tight"
+          className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 leading-tight"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
@@ -101,7 +101,7 @@ export default function HeroSection() {
         </motion.h1>
         
         <motion.p 
-          className="text-2xl md:text-3xl mb-16 font-semibold"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-12 sm:mb-14 lg:mb-16 font-semibold"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
@@ -141,8 +141,8 @@ export default function HeroSection() {
             }}
           >
             <ChevronDown 
-              size={60} 
-              className="text-warm-beige group-hover:text-cream transition-colors duration-300 relative z-10" 
+              size={48} 
+              className="sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-warm-beige group-hover:text-cream transition-colors duration-300 relative z-10" 
             />
           </motion.div>
         </motion.button>

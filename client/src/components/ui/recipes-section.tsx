@@ -29,15 +29,15 @@ export default function RecipesSection() {
   return (
     <motion.section 
       ref={ref}
-      className="py-20 bg-gradient-to-br from-natural-white via-cream/50 to-natural-white relative" 
+      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-natural-white via-cream/50 to-natural-white relative px-4 sm:px-6 lg:px-8" 
       id="recipes"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={staggerContainer}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
           variants={fadeInVariants}
         >
           <motion.div
@@ -49,13 +49,13 @@ export default function RecipesSection() {
             <ChefHat size={48} className="text-warm-brown" />
           </motion.div>
           <motion.h2 
-            className="font-playfair text-4xl md:text-6xl font-bold text-warm-brown mb-6"
+            className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-warm-brown mb-4 sm:mb-6"
             variants={fadeInVariants}
           >
             РЕЦЕПТИ ЗА ПОБЕДА
           </motion.h2>
           <motion.p 
-            className="text-xl text-warm-stone max-w-2xl mx-auto"
+            className="text-base sm:text-lg lg:text-xl text-warm-stone max-w-3xl mx-auto px-4"
             variants={fadeInVariants}
           >
             Всяка рецепта е победа. Вдъхнови се за следващата си битка в кухнята.
@@ -63,7 +63,7 @@ export default function RecipesSection() {
         </motion.div>
 
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           variants={staggerContainer}
         >
           {recipes.map((recipe, index) => (

@@ -7,7 +7,7 @@ export default function AboutSection() {
   return (
     <motion.section 
       ref={ref}
-      className="py-20 bg-gradient-to-br from-warm-brown via-farm-brown to-warm-brown text-cream relative overflow-hidden" 
+      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-warm-brown via-farm-brown to-warm-brown text-cream relative overflow-hidden px-4 sm:px-6 lg:px-8" 
       id="about"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -36,8 +36,8 @@ export default function AboutSection() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
           <motion.div
             variants={slideInFromLeftVariants}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -61,7 +61,7 @@ export default function AboutSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <motion.h2 
-              className="font-playfair text-4xl md:text-6xl font-bold mb-8 text-soft-beige"
+              className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 text-soft-beige"
               variants={fadeInVariants}
               transition={{ delay: 0.6 }}
             >

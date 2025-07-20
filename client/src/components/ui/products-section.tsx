@@ -35,7 +35,7 @@ export default function ProductsSection() {
   return (
     <motion.section 
       ref={ref}
-      className="py-20 bg-gradient-to-br from-cream via-warm-beige/30 to-cream relative overflow-hidden" 
+      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-cream via-warm-beige/30 to-cream relative overflow-hidden px-4 sm:px-6 lg:px-8" 
       id="products"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -48,19 +48,19 @@ export default function ProductsSection() {
         }}></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto relative z-10">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
           variants={fadeInVariants}
         >
           <motion.h2 
-            className="font-playfair text-4xl md:text-6xl font-bold text-warm-brown mb-6"
+            className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-warm-brown mb-4 sm:mb-6"
             variants={fadeInVariants}
           >
             СИЛАТА НА ИСТИНСКОТО
           </motion.h2>
           <motion.p 
-            className="text-xl text-warm-stone max-w-2xl mx-auto"
+            className="text-base sm:text-lg lg:text-xl text-warm-stone max-w-3xl mx-auto px-4"
             variants={fadeInVariants}
           >
             Истинският вкус се постига с истински продукти.
@@ -68,7 +68,7 @@ export default function ProductsSection() {
         </motion.div>
 
         <motion.div 
-          className="grid md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           variants={staggerContainer}
         >
           {products.map((product, index) => {

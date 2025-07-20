@@ -25,7 +25,7 @@ export default function FloatingCTA() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-3 sm:gap-4">
       <AnimatePresence>
         {showPulseCTA && (
           <motion.button
@@ -33,7 +33,7 @@ export default function FloatingCTA() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={scrollToQuiz}
-            className="relative w-16 h-16 bg-gradient-to-r from-traditional-red to-warm-brown rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+            className="relative w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-traditional-red to-warm-brown rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group touch-manipulation"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -64,7 +64,7 @@ export default function FloatingCTA() {
                 ease: "easeInOut" 
               }}
             >
-              <Heart size={24} className="text-cream" />
+              <Heart size={20} className="sm:w-6 sm:h-6 text-cream" />
             </motion.div>
             </div>
 

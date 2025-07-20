@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <motion.footer 
       ref={ref}
-      className="text-white py-16 relative overflow-hidden"
+      className="text-white py-8 sm:py-12 lg:py-16 relative overflow-hidden px-4 sm:px-6 lg:px-8"
       style={{
         background: `linear-gradient(to bottom right, #E22526, #c41e3a, #E22526)`
       }}
@@ -39,13 +39,13 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto relative z-10">
         <motion.div 
-          className="grid md:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
           variants={staggerContainer}
         >
           <motion.div 
-            className="md:col-span-2"
+            className="sm:col-span-2 lg:col-span-2"
             variants={fadeInVariants}
           >
             <motion.div
@@ -59,12 +59,12 @@ export default function Footer() {
               >
                 <Award size={24} className="text-white" />
               </motion.div>
-              <h3 className="font-playfair text-3xl font-bold">
+              <h3 className="font-playfair text-2xl sm:text-3xl font-bold">
                 Бачо Илия
               </h3>
             </motion.div>
             <motion.p 
-              className="text-white/90 mb-6 text-lg"
+              className="text-white/90 mb-4 sm:mb-6 text-base sm:text-lg"
               variants={fadeInVariants}
             >
               Движението за истински вкус. Без компромиси, без лъжи.
@@ -81,7 +81,7 @@ export default function Footer() {
           
           <motion.div variants={fadeInVariants}>
             <motion.h4 
-              className="font-semibold mb-6 text-xl text-white/90"
+              className="font-semibold mb-4 sm:mb-6 text-lg sm:text-xl text-white/90"
               whileHover={{ x: 5 }}
             >
               Движението
@@ -104,7 +104,7 @@ export default function Footer() {
           
           <motion.div variants={fadeInVariants}>
             <motion.h4 
-              className="font-semibold mb-6 text-xl text-white/90"
+              className="font-semibold mb-4 sm:mb-6 text-lg sm:text-xl text-white/90"
               whileHover={{ x: 5 }}
             >
               Последвай ни
@@ -138,11 +138,11 @@ export default function Footer() {
         </motion.div>
         
         <motion.div 
-          className="border-t border-cream/20 mt-12 pt-8 text-center"
+          className="border-t border-cream/20 mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 text-center"
           variants={fadeInVariants}
         >
           <motion.p 
-            className="text-white/60 mb-4"
+            className="text-white/60 mb-3 sm:mb-4 text-sm sm:text-base"
             whileHover={{ scale: 1.05 }}
           >
             © 2025 Бачо Илия. Всички права запазени. Движението тепърва започва.

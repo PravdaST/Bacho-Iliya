@@ -55,7 +55,7 @@ export default function Header() {
             <motion.img
               src="/logo/logo.png"
               alt="Бачо Илия"
-              className="h-12 w-auto cursor-pointer"
+              className="h-8 sm:h-10 md:h-12 w-auto cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -63,12 +63,12 @@ export default function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden lg:flex space-x-6 xl:space-x-8">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="relative text-white hover:text-white/80 font-semibold text-lg group"
+                className="relative text-white hover:text-white/80 font-semibold text-base lg:text-lg group px-2 py-1"
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -85,14 +85,14 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <motion.div 
-            className="md:hidden"
+            className="lg:hidden"
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white p-2 relative"
+              className="text-white p-3 relative touch-manipulation"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -105,7 +105,7 @@ export default function Header() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className="h-6 w-6" />
+                    <X className="h-7 w-7" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -115,7 +115,7 @@ export default function Header() {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className="h-6 w-6" />
+                    <Menu className="h-7 w-7" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -127,14 +127,14 @@ export default function Header() {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="md:hidden"
+              className="lg:hidden"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t"
+                className="px-4 pt-4 pb-6 space-y-2 border-t"
                 style={{
                   backgroundColor: 'rgba(226, 37, 38, 0.95)',
                   borderColor: 'rgba(226, 37, 38, 0.50)'
@@ -147,7 +147,7 @@ export default function Header() {
                   <motion.button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left px-3 py-3 text-white hover:text-white/80 font-semibold rounded-lg transition-all duration-200"
+                    className="block w-full text-left px-4 py-4 text-white hover:text-white/80 font-semibold text-lg rounded-xl transition-all duration-200 touch-manipulation"
                     style={{
                       ':hover': {
                         backgroundColor: 'rgba(226, 37, 38, 0.50)'

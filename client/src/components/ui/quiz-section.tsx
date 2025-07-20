@@ -72,13 +72,13 @@ export default function QuizSection() {
   if (showSuccess) {
     return (
       <motion.section 
-        className="py-20 bg-gradient-to-br from-cream to-warm-beige/30" 
+        className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-cream to-warm-beige/30 px-4 sm:px-6 lg:px-8" 
         id="quiz"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto max-w-5xl">
           <motion.div 
             className="text-center bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-warm-beige/20"
             initial={{ scale: 0.8, opacity: 0 }}
@@ -131,7 +131,7 @@ export default function QuizSection() {
   return (
     <motion.section 
       ref={ref}
-      className="py-20 bg-gradient-to-br from-cream via-warm-beige/20 to-cream" 
+      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-cream via-warm-beige/20 to-cream px-4 sm:px-6 lg:px-8" 
       id="quiz"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -139,17 +139,17 @@ export default function QuizSection() {
     >
       <div className="container mx-auto px-4 max-w-4xl">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
           variants={fadeInVariants}
         >
           <motion.h2 
-            className="font-playfair text-4xl md:text-6xl font-bold text-warm-brown mb-6"
+            className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-warm-brown mb-4 sm:mb-6"
             variants={fadeInVariants}
           >
             Чий вкус ще защитиш?
           </motion.h2>
           <motion.p 
-            className="text-xl text-warm-brown/80 max-w-2xl mx-auto"
+            className="text-base sm:text-lg lg:text-xl text-warm-brown/80 max-w-3xl mx-auto px-4"
             variants={fadeInVariants}
           >
             Стани част от движението. Кажи ни къде цениш истинския вкус, за да го защитим заедно.
@@ -160,7 +160,7 @@ export default function QuizSection() {
           <Form {...form}>
             <motion.form 
               onSubmit={form.handleSubmit(onSubmit)} 
-              className="space-y-8 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-warm-beige/30"
+              className="space-y-6 sm:space-y-8 bg-white/90 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12 border border-warm-beige/30"
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
@@ -178,7 +178,7 @@ export default function QuizSection() {
                     </FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="w-full p-4 border-2 border-warm-brown/30 rounded-xl focus:border-warm-brown bg-cream/30">
+                      <SelectTrigger className="w-full p-3 sm:p-4 text-base sm:text-lg border-2 border-warm-brown/30 rounded-xl focus:border-warm-brown bg-cream/30 touch-manipulation">
                         <SelectValue placeholder="Избери град..." />
                       </SelectTrigger>
                     </FormControl>
@@ -211,7 +211,7 @@ export default function QuizSection() {
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="grid md:grid-cols-3 gap-4"
+                      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
                     >
                       {WEAPON_OPTIONS.map((option) => (
                         <motion.div 

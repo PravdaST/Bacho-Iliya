@@ -69,6 +69,23 @@
 
   html {
     scroll-behavior: smooth;
+    /* Better touch scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Improve touch targets */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  /* Responsive text sizes */
+  @media (max-width: 640px) {
+    body {
+      font-size: 16px; /* Prevent zoom on iOS */
+    }
   }
 
   /* Custom scrollbar */
