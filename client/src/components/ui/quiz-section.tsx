@@ -234,13 +234,24 @@ export default function QuizSection() {
                             }`}
                           >
                             <motion.div 
-                              className={`text-3xl mb-3 transition-colors duration-300 ${
-                                form.watch('weapon') === option.value ? 'text-traditional-red' : 'text-warm-brown'
-                              }`}
-                              animate={{ rotate: [0, 10, -10, 0] }}
+                              className="mb-3"
+                              animate={{ rotate: [0, 2, -2, 0] }}
                               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                              whileHover={{ scale: 1.1 }}
                             >
-                              {option.icon}
+                              {option.isImage ? (
+                                <img 
+                                  src={option.icon} 
+                                  alt={option.label}
+                                  className="w-16 h-16 mx-auto object-contain rounded-lg shadow-md"
+                                />
+                              ) : (
+                                <div className={`text-3xl transition-colors duration-300 ${
+                                  form.watch('weapon') === option.value ? 'text-traditional-red' : 'text-warm-brown'
+                                }`}>
+                                  {option.icon}
+                                </div>
+                              )}
                             </motion.div>
                             <p className={`font-semibold transition-colors duration-300 ${
                               form.watch('weapon') === option.value ? 'text-traditional-red' : 'text-warm-brown'
