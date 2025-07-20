@@ -132,7 +132,7 @@ export default function ProductsSection() {
                 }}
                 onClick={() => setSelectedProduct(product)}
               >
-                <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-500 border border-warm-beige/30 relative overflow-hidden group-hover:bg-white/95"></div>
+                <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-500 border border-warm-beige/30 relative overflow-hidden group-hover:bg-white/95">
                   {/* Hover background effect */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-warm-beige/10 to-cream/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -140,8 +140,6 @@ export default function ProductsSection() {
                     whileHover={{ scale: 1 }}
                   />
                   
-                  
-
                   <motion.div
                     className="relative z-10"
                     whileHover={{ scale: 1.08, rotateY: 5 }}
