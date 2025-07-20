@@ -170,7 +170,7 @@ export default function ProductsSection() {
                   </motion.p>
                   
                   <motion.div 
-                    className="space-y-2 text-sm text-gray-600 relative z-10 mb-6"
+                    className="space-y-2 text-sm text-gray-600 relative z-10 mb-6 text-left"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={{
@@ -191,7 +191,7 @@ export default function ProductsSection() {
                           visible: { opacity: 1, x: 0 }
                         }}
                         whileHover={{ x: 5, scale: 1.05 }}
-                        className="hover:text-warm-brown transition-colors duration-200 cursor-default"
+                        className="hover:text-warm-brown transition-colors duration-200 cursor-default text-left"
                       >
                         ✓ {feature}
                       </motion.p>
