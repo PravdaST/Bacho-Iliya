@@ -59,9 +59,11 @@ export default function Footer() {
               >
                 <Award size={24} className="text-white" />
               </motion.div>
-              <h3 className="font-playfair text-2xl sm:text-3xl font-bold">
-                Бачо Илия
-              </h3>
+              <img 
+                src="/logo.png" 
+                alt="Бачо Илия Logo" 
+                className="h-12 sm:h-16 w-auto object-contain"
+              />
             </motion.div>
             <motion.p 
               className="text-white/90 mb-4 sm:mb-6 text-base sm:text-lg"

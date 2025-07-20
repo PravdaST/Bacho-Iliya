@@ -75,7 +75,7 @@ const products = [
 
 export default function ProductsSection() {
   const { ref, isInView } = useScrollAnimation(0.2);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
 
   return (
     <motion.section 
