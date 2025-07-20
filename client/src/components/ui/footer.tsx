@@ -8,7 +8,10 @@ export default function Footer() {
   return (
     <motion.footer 
       ref={ref}
-      className="bg-gradient-to-br from-traditional-red via-red-600 to-traditional-red text-white py-16 relative overflow-hidden"
+      className="text-white py-16 relative overflow-hidden"
+      style={{
+        background: `linear-gradient(to bottom right, #E22526, #c41e3a, #E22526)`
+      }}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={staggerContainer}

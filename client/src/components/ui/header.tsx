@@ -32,9 +32,13 @@ export default function Header() {
     <motion.header 
       className={`backdrop-blur-md border-b sticky top-0 z-50 transition-all duration-500 ${
         scrolled 
-          ? "bg-traditional-red/95 border-traditional-red/50 shadow-xl" 
-          : "bg-traditional-red/90 border-traditional-red/30"
+          ? "shadow-xl" 
+          : ""
       }`}
+      style={{
+        backgroundColor: scrolled ? 'rgba(226, 37, 38, 0.95)' : 'rgba(226, 37, 38, 0.90)',
+        borderColor: scrolled ? 'rgba(226, 37, 38, 0.50)' : 'rgba(226, 37, 38, 0.30)'
+      }}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -130,7 +134,11 @@ export default function Header() {
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-traditional-red/95 border-t border-traditional-red/50"
+                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t"
+                style={{
+                  backgroundColor: 'rgba(226, 37, 38, 0.95)',
+                  borderColor: 'rgba(226, 37, 38, 0.50)'
+                }}
                 initial={{ y: -20 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
@@ -139,7 +147,14 @@ export default function Header() {
                   <motion.button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left px-3 py-3 text-white hover:text-white/80 font-semibold rounded-lg hover:bg-traditional-red/50 transition-all duration-200"
+                    className="block w-full text-left px-3 py-3 text-white hover:text-white/80 font-semibold rounded-lg transition-all duration-200"
+                    style={{
+                      ':hover': {
+                        backgroundColor: 'rgba(226, 37, 38, 0.50)'
+                      }
+                    }}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(226, 37, 38, 0.50)'}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
