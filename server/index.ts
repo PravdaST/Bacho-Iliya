@@ -7,6 +7,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Serve static files from public directory
+app.use(express.static(path.resolve(import.meta.dirname, '../public')));
+
 // Serve logo files statically
 app.use('/logo', express.static(path.resolve(import.meta.dirname, '../client/logo')));
 
