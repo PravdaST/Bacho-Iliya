@@ -127,20 +127,32 @@ export default function Header() {
           </motion.div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Overlay */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div
-              className="lg:hidden absolute left-0 right-0 top-full z-50 backdrop-blur-xl"
-              style={{
-                backgroundColor: 'rgba(226, 37, 38, 0.98)',
-                boxShadow: '0 10px 25px rgba(0,0,0,0.25)'
-              }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            >
+            <>
+              {/* Background overlay */}
+              <motion.div
+                className="lg:hidden fixed inset-0 bg-black/50 z-40"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setIsMenuOpen(false)}
+              />
+              
+              {/* Menu content */}
+              <motion.div
+                className="lg:hidden fixed left-0 right-0 top-16 z-50 backdrop-blur-xl"
+                style={{
+                  backgroundColor: 'rgba(226, 37, 38, 0.98)',
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.25)'
+                }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
               <motion.div 
                 className="px-6 py-8 space-y-1 border-t border-white/20"
                 initial={{ y: -10 }}
@@ -214,7 +226,7 @@ export default function Header() {
                   </motion.div>
                 </motion.div>
               </motion.div>
-            </motion.div>
+            </>
           )}
         </AnimatePresence>
       </div>
