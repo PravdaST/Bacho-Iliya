@@ -220,6 +220,7 @@ const recipes = [
 export default function RecipesSection() {
   const { ref, isInView } = useScrollAnimation(0.2);
   const [selectedRecipe, setSelectedRecipe] = useState<typeof recipes[0] | null>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <motion.section 
@@ -296,7 +297,10 @@ export default function RecipesSection() {
                     className="text-traditional-red font-semibold hover:text-warm-brown flex items-center gap-2 transition-colors duration-300"
                     whileHover={{ x: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => setSelectedRecipe(recipe)}
+                    onClick={() => {
+                      setSelectedRecipe(recipe);
+                      setImageLoaded(false);
+                    }}
                   >
                     Виж рецептата 
                     <motion.div
@@ -341,10 +345,11 @@ export default function RecipesSection() {
                   transition={{ duration: 0.6 }}
                   onError={(e) => {
                     console.log('Image failed to load:', selectedRecipe.image);
-                    e.currentTarget.style.display = 'none';
+                    setImageLoaded(false);
                   }}
                   onLoad={() => {
                     console.log('Image loaded successfully:', selectedRecipe.image);
+                    setImageLoaded(true);
                   }}
                 />
                 
@@ -385,16 +390,18 @@ export default function RecipesSection() {
                   </motion.div>
                 </div>
 
-                {/* Loading placeholder if image fails */}
-                <div className="absolute inset-0 bg-gradient-to-br from-warm-brown/20 to-cream/40 flex items-center justify-center">
-                  <motion.div
-                    className="text-warm-brown opacity-50"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  >
-                    <ChefHat size={48} />
-                  </motion.div>
-                </div>
+                {/* Loading placeholder - only show when image is not loaded */}
+                {!imageLoaded && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-warm-brown/20 to-cream/40 flex items-center justify-center">
+                    <motion.div
+                      className="text-warm-brown opacity-50"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    >
+                      <ChefHat size={48} />
+                    </motion.div>
+                  </div>
+                )}
               </div>
 
               {/* Content */}
