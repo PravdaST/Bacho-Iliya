@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import StructuredData from "@/components/seo/structured-data";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bacho-iliya.replit.app'),
   title: "Бачо Илия - Революцията на истинския вкус",
   description: "Присъедини се към революцията на истинския български вкус! Автентични млечни продукти и традиционни деликатеси от Бачо Илия. Защити вкуса на България!",
   keywords: [
@@ -12,8 +14,41 @@ export const metadata: Metadata = {
     "българска кухня",
     "качествена храна",
     "истински вкус",
-    "революция на вкуса"
+    "революция на вкуса",
+    "сирене",
+    "кашкавал", 
+    "кисело мляко",
+    "традиционни рецепти",
+    "българска млекарница",
+    "без консерванти",
+    "натурални продукти"
   ],
+  authors: [{ name: "Бачо Илия" }],
+  creator: "Бачо Илия",
+  publisher: "Бачо Илия",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://bacho-iliya.replit.app',
+    languages: {
+      'bg-BG': 'https://bacho-iliya.replit.app',
+    },
+  },
+  category: 'food',
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -51,6 +86,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="bg">
+      <head>
+        <StructuredData />
+      </head>
       <body>{children}</body>
     </html>
   );
