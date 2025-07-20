@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Sword, Mail, Send, CheckCircle } from 'lucide-react';
-import Image from 'next/image';
 
 export default function QuizSection() {
   const [mounted, setMounted] = useState(false);
@@ -21,6 +20,27 @@ export default function QuizSection() {
     setMounted(true);
   }, []);
 
+  const cities = [
+    'София', 'Пловдив', 'Варна', 'Бургас', 'Русе', 'Стара Загора', 
+    'Плевен', 'Сливен', 'Добрич', 'Шумен', 'Перник', 'Хасково', 
+    'Ямбол', 'Пазарджик', 'Благоевград', 'Велико Търново', 'Враца', 
+    'Габрово', 'Асеновград', 'Видин', 'Казанлък', 'Кърджали', 
+    'Кюстендил', 'Монтана', 'Димитровград', 'Търговище', 'Силистра', 
+    'Ловech', 'Гоце Делчев', 'Дупница', 'Разград', 'Свиленград'
+  ];
+
+  const weapons = [
+    { id: 'sirene', name: 'Сирене', description: 'Истинското българско сирене' },
+    { id: 'kashkaval', name: 'Кашкавал', description: 'Силата на традицията' },
+    { id: 'kiselo-mlqko', name: 'Кисело мляко', description: 'Чиста енергия без добавки' }
+  ];
+
+  const motivations = [
+    { id: 'childhood', name: 'За спомените от детството', icon: '👶' },
+    { id: 'family', name: 'За здравето на семейството', icon: '👨‍👩‍👧‍👦' },
+    { id: 'hate-fake', name: 'Защото мразя подправките', icon: '😤' }
+  ];
+
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     if (errors[field]) {
@@ -34,7 +54,6 @@ export default function QuizSection() {
     if (!formData.city.trim()) newErrors.city = 'Градът е задължителен';
     if (!formData.weapon.trim()) newErrors.weapon = 'Оръжието е задължително';
     if (!formData.motivation.trim()) newErrors.motivation = 'Мотивацията е задължителна';
-    if (formData.motivation.length < 10) newErrors.motivation = 'Мотивацията трябва да е поне 10 символа';
     if (!formData.email.trim()) newErrors.email = 'Email-ът е задължителен';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Невалиден email адрес';
 
@@ -58,17 +77,14 @@ export default function QuizSection() {
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.ok) {
         setIsSubmitted(true);
       } else {
-        console.error('Quiz submission failed:', result.message);
-        setErrors({ submit: result.message || 'Възникна грешка при записването' });
+        throw new Error('Грешка при изпращането');
       }
     } catch (error) {
       console.error('Error submitting quiz:', error);
-      setErrors({ submit: 'Възникна грешка при записването' });
+      setErrors({ general: 'Възникна грешка. Моля опитайте отново.' });
     } finally {
       setIsLoading(false);
     }
@@ -82,9 +98,9 @@ export default function QuizSection() {
 
   if (!mounted) {
     return (
-      <section id="quiz" className="py-20 lg:py-32 bg-gradient-to-br from-forest-green/10 to-warm-beige/20">
+      <section id="quiz" className="py-20 lg:py-32 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl h-96 animate-pulse"></div>
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl h-96 animate-pulse"></div>
         </div>
       </section>
     );
@@ -92,26 +108,26 @@ export default function QuizSection() {
 
   if (isSubmitted) {
     return (
-      <section id="quiz" className="py-20 lg:py-32 bg-gradient-to-br from-forest-green/10 to-warm-beige/20">
+      <section id="quiz" className="py-20 lg:py-32 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="bg-white/80 backdrop-blur-sm rounded-3xl p-12 shadow-2xl"
+            className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-12 shadow-2xl"
           >
-            <CheckCircle className="text-forest-green mx-auto mb-6" size={80} />
-            <h2 className="text-3xl font-playfair font-bold text-warm-brown mb-4">
-              Благодарим ви!
+            <CheckCircle className="text-green-400 mx-auto mb-6" size={80} />
+            <h2 className="text-3xl font-playfair font-bold text-white mb-4">
+              Добре дошъл в движението!
             </h2>
-            <p className="text-lg text-gray-700 mb-8">
-              Вашите отговори са записани успешно. Скоро ще се свържем с вас!
+            <p className="text-lg text-gray-300 mb-8">
+              Твоите данни са записани. Войната срещу компромиса тепърва започва!
             </p>
             <button
               onClick={resetForm}
-              className="bg-traditional-red text-white px-8 py-3 rounded-xl hover:bg-traditional-red/90 transition-colors duration-300 font-semibold"
+              className="bg-red-600 text-white px-8 py-3 rounded-xl hover:bg-red-500 transition-colors duration-300 font-semibold"
             >
-              Попълни отново
+              Присъедини друг войн
             </button>
           </motion.div>
         </div>
@@ -120,136 +136,144 @@ export default function QuizSection() {
   }
 
   return (
-    <section id="quiz" className="py-20 lg:py-32 bg-gradient-to-br from-forest-green/10 to-warm-beige/20">
+    <section id="quiz" className="py-20 lg:py-32 bg-gray-900 text-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={mounted ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-bold text-warm-brown mb-6">
-            Тест за познаване
+          <h2 className="text-4xl sm:text-5xl font-playfair font-bold text-white mb-6">
+            Чий вкус ще защитиш?
           </h2>
-          <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">
-            Отговорете на няколко въпроса и открийте какви продукти "Бачо Илия" са най-подходящи за вас!
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Стани част от движението. Кажи ни къде цениш истинския вкус, за да го защитим заедно.
           </p>
         </motion.div>
 
         <motion.form
           onSubmit={handleSubmit}
-          className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl"
+          className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl border border-gray-700"
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="space-y-8">
-            {/* City Question */}
+            {/* Question 1: City */}
             <div>
-              <label className="flex items-center gap-3 text-lg font-semibold text-warm-brown mb-4">
-                <Image src="/products/sirene/BI-sirene-400-metal-480x480.png" alt="Сирене" width={32} height={32} className="rounded" />
-                От кой град сте?
-              </label>
-              <input
-                type="text"
-                value={formData.city}
-                onChange={(e) => handleInputChange('city', e.target.value)}
-                className="w-full p-4 border border-warm-beige rounded-xl focus:ring-2 focus:ring-traditional-red focus:border-traditional-red transition-all duration-300 text-lg"
-                placeholder="Въведете вашия град..."
-              />
-              {errors.city && (
-                <p className="text-traditional-red text-sm mt-2">{errors.city}</p>
-              )}
-            </div>
-
-            {/* Weapon Question */}
-            <div>
-              <label className="flex items-center gap-3 text-lg font-semibold text-warm-brown mb-4">
-                <Image src="/products/kashkaval/BI-kashkaval-1500-480x480.png" alt="Кашкавал" width={32} height={32} className="rounded" />
-                Какво оръжие бихте избрали за бой?
+              <label className="flex items-center gap-3 text-lg font-semibold text-white mb-4">
+                <MapPin className="text-red-400" size={24} />
+                В кой град цениш истинския вкус?
               </label>
               <select
-                value={formData.weapon}
-                onChange={(e) => handleInputChange('weapon', e.target.value)}
-                className="w-full p-4 border border-warm-beige rounded-xl focus:ring-2 focus:ring-traditional-red focus:border-traditional-red transition-all duration-300 text-lg"
+                value={formData.city}
+                onChange={(e) => handleInputChange('city', e.target.value)}
+                className={`w-full bg-gray-700 text-white border ${errors.city ? 'border-red-500' : 'border-gray-600'} rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent transition-all duration-300`}
               >
-                <option value="">Изберете оръжие...</option>
-                <option value="меч">Меч</option>
-                <option value="лък">Лък</option>
-                <option value="копие">Копие</option>
-                <option value="щит">Щит</option>
-                <option value="брадва">Брадва</option>
-                <option value="катана">Катана</option>
-                <option value="кинжал">Кинжал</option>
+                <option value="">Избери град...</option>
+                {cities.map((city) => (
+                  <option key={city} value={city}>{city}</option>
+                ))}
               </select>
-              {errors.weapon && (
-                <p className="text-traditional-red text-sm mt-2">{errors.weapon}</p>
-              )}
+              {errors.city && <p className="text-red-400 text-sm mt-2">{errors.city}</p>}
             </div>
 
-            {/* Motivation Question */}
+            {/* Question 2: Weapon */}
             <div>
-              <label className="flex items-center gap-3 text-lg font-semibold text-warm-brown mb-4">
-                <Image src="/products/kiselo-mlqko/BI-kiselo-mlyqko-3.6-480x480.jpg" alt="Кисело мляко" width={32} height={32} className="rounded" />
-                Каква е вашата мотивация да опитате продуктите на "Бачо Илия"?
+              <label className="flex items-center gap-3 text-lg font-semibold text-white mb-4">
+                <Sword className="text-red-400" size={24} />
+                Кое е твоето оръжие в кухнята?
               </label>
-              <textarea
-                value={formData.motivation}
-                onChange={(e) => handleInputChange('motivation', e.target.value)}
-                className="w-full p-4 border border-warm-beige rounded-xl focus:ring-2 focus:ring-traditional-red focus:border-traditional-red transition-all duration-300 text-lg resize-none"
-                rows={4}
-                placeholder="Разкажете ни защо искате да опитате нашите продукти..."
-              />
-              {errors.motivation && (
-                <p className="text-traditional-red text-sm mt-2">{errors.motivation}</p>
-              )}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {weapons.map((weapon) => (
+                  <motion.button
+                    key={weapon.id}
+                    type="button"
+                    onClick={() => handleInputChange('weapon', weapon.id)}
+                    className={`p-4 rounded-xl border-2 transition-all duration-300 ${
+                      formData.weapon === weapon.id
+                        ? 'border-red-400 bg-red-400/20 text-white'
+                        : 'border-gray-600 bg-gray-700/50 text-gray-300 hover:border-gray-500'
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="font-semibold mb-1">{weapon.name}</div>
+                    <div className="text-sm opacity-75">{weapon.description}</div>
+                  </motion.button>
+                ))}
+              </div>
+              {errors.weapon && <p className="text-red-400 text-sm mt-2">{errors.weapon}</p>}
+            </div>
+
+            {/* Question 3: Motivation */}
+            <div>
+              <label className="flex items-center gap-3 text-lg font-semibold text-white mb-4">
+                <span className="text-red-400 text-xl">⚔️</span>
+                Защо се бориш?
+              </label>
+              <div className="grid grid-cols-1 gap-3">
+                {motivations.map((motivation) => (
+                  <motion.button
+                    key={motivation.id}
+                    type="button"
+                    onClick={() => handleInputChange('motivation', motivation.id)}
+                    className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all duration-300 text-left ${
+                      formData.motivation === motivation.id
+                        ? 'border-red-400 bg-red-400/20 text-white'
+                        : 'border-gray-600 bg-gray-700/50 text-gray-300 hover:border-gray-500'
+                    }`}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                  >
+                    <span className="text-2xl">{motivation.icon}</span>
+                    <span className="font-medium">{motivation.name}</span>
+                  </motion.button>
+                ))}
+              </div>
+              {errors.motivation && <p className="text-red-400 text-sm mt-2">{errors.motivation}</p>}
             </div>
 
             {/* Email */}
             <div>
-              <label className="flex items-center gap-3 text-lg font-semibold text-warm-brown mb-4">
-                <Mail className="text-traditional-red" size={24} />
-                Email адрес за контакт
+              <label className="flex items-center gap-3 text-lg font-semibold text-white mb-4">
+                <Mail className="text-red-400" size={24} />
+                Въведи своя имейл, за да се присъединиш:
               </label>
               <input
                 type="email"
                 value={formData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
-                className="w-full p-4 border border-warm-beige rounded-xl focus:ring-2 focus:ring-traditional-red focus:border-traditional-red transition-all duration-300 text-lg"
-                placeholder="your@email.com"
+                className={`w-full bg-gray-700 text-white border ${errors.email ? 'border-red-500' : 'border-gray-600'} rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent transition-all duration-300`}
+                placeholder="твоят@имейл.bg"
               />
-              {errors.email && (
-                <p className="text-traditional-red text-sm mt-2">{errors.email}</p>
-              )}
+              {errors.email && <p className="text-red-400 text-sm mt-2">{errors.email}</p>}
             </div>
 
-            {errors.submit && (
-              <div className="bg-traditional-red/10 border border-traditional-red/20 rounded-xl p-4">
-                <p className="text-traditional-red text-center">{errors.submit}</p>
-              </div>
-            )}
-
+            {/* Submit Button */}
             <motion.button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-traditional-red text-white font-semibold py-4 px-8 rounded-xl hover:bg-traditional-red/90 transition-all duration-300 flex items-center justify-center gap-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className={`w-full bg-red-600 text-white py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 ${
+                isLoading ? 'opacity-75 cursor-not-allowed' : 'hover:bg-red-500 hover:scale-[1.02]'
+              }`}
+              whileHover={!isLoading ? { scale: 1.02 } : {}}
+              whileTap={!isLoading ? { scale: 0.98 } : {}}
             >
               {isLoading ? (
-                <>
-                  <div className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full"></div>
-                  Изпраща се...
-                </>
+                <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
               ) : (
                 <>
-                  Изпрати отговорите
                   <Send size={20} />
+                  ПРИСЪЕДИНИ СЕ КЪМ ДВИЖЕНИЕТО
                 </>
               )}
             </motion.button>
+
+            {errors.general && (
+              <p className="text-red-400 text-center">{errors.general}</p>
+            )}
           </div>
         </motion.form>
       </div>
