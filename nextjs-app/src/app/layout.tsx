@@ -14,6 +14,16 @@ export const metadata: Metadata = {
     "истински вкус",
     "революция на вкуса"
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/logo.png", sizes: "any", type: "image/png" },
+    ],
+    apple: [
+      { url: "/logo.png" },
+    ],
+    shortcut: ["/favicon.ico"],
+  },
   openGraph: {
     title: "Бачо Илия - Революцията на истинския вкус",
     description: "Присъедини се към революцията на истинския български вкус!",
