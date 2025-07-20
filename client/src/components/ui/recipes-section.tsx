@@ -277,7 +277,6 @@ export default function RecipesSection() {
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                     whileHover={{ scale: 1.1 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-warm-brown/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="p-6">
                   <motion.h3 
