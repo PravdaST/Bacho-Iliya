@@ -18,7 +18,11 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-3xl font-bold text-natural-white font-playfair">Бачо Илия</h1>
+            <img 
+              src="/logo/logo.png" 
+              alt="Бачо Илия" 
+              className="h-12 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
