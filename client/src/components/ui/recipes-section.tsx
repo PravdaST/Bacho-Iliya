@@ -23,33 +23,33 @@ const recipes = [
 
 export default function RecipesSection() {
   return (
-    <section className="py-20 bg-white" id="recepti">
+    <section className="py-20 bg-natural-white" id="recipes">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-forest mb-6">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-warm-brown mb-6">
             РЕЦЕПТИ ЗА ПОБЕДА
           </h2>
-          <p className="text-xl text-warm-gray max-w-2xl mx-auto">
+          <p className="text-xl text-warm-stone max-w-2xl mx-auto">
             Всяка рецепта е победа. Вдъхнови се за следващата си битка в кухнята.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {recipes.map((recipe) => (
-            <div key={recipe.id} className="bg-cream rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div key={recipe.id} className="bg-natural-cream rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
                 src={recipe.image} 
                 alt={recipe.title} 
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="font-playfair text-xl font-bold text-forest mb-3">
+                <h3 className="font-playfair text-xl font-bold text-warm-brown mb-3">
                   {recipe.title}
                 </h3>
-                <p className="text-warm-gray mb-4">
+                <p className="text-warm-stone mb-4">
                   {recipe.description}
                 </p>
-                <button className="text-traditional-red font-semibold hover:underline flex items-center gap-2">
+                <button className="text-tradition-red font-semibold hover:underline flex items-center gap-2">
                   Виж рецептата <ArrowRight size={16} />
                 </button>
               </div>

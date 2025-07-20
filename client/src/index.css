@@ -147,20 +147,77 @@
     color: hsl(25, 8%, 45%);
   }
 
+  /* Natural Colors */
+  .bg-natural-white {
+    background-color: hsl(40, 20%, 98%);
+  }
+
+  .bg-natural-cream {
+    background-color: hsl(40, 60%, 95%);
+  }
+
+  .bg-soft-beige {
+    background-color: hsl(35, 25%, 85%);
+  }
+
+  .bg-warm-stone {
+    background-color: hsl(25, 15%, 60%);
+  }
+
+  .bg-tradition-red {
+    background-color: hsl(8, 70%, 45%);
+  }
+
+  .text-natural-white {
+    color: hsl(40, 20%, 98%);
+  }
+
+  .text-natural-cream {
+    color: hsl(40, 60%, 95%);
+  }
+
+  .text-soft-beige {
+    color: hsl(35, 25%, 85%);
+  }
+
+  .text-warm-stone {
+    color: hsl(25, 15%, 60%);
+  }
+
+  .text-tradition-red {
+    color: hsl(8, 70%, 45%);
+  }
+
   .hover\:bg-traditional-red\/90:hover {
     background-color: hsl(356, 75%, 53%, 0.9);
+  }
+
+  .hover\:bg-tradition-red\/90:hover {
+    background-color: hsl(8, 70%, 45%, 0.9);
   }
 
   .hover\:text-warm-beige:hover {
     color: hsl(48, 75%, 70%);
   }
 
+  .hover\:text-soft-beige:hover {
+    color: hsl(35, 25%, 85%);
+  }
+
   .hover\:border-forest:hover {
     border-color: hsl(136, 45%, 25%);
   }
 
+  .hover\:border-warm-brown:hover {
+    border-color: hsl(25, 45%, 35%);
+  }
+
   .focus\:border-forest:focus {
     border-color: hsl(136, 45%, 25%);
+  }
+
+  .focus\:border-warm-brown:focus {
+    border-color: hsl(25, 45%, 35%);
   }
 
   .focus\:ring-forest\/20:focus {

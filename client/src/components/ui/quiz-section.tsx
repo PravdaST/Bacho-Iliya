@@ -68,21 +68,21 @@ export default function QuizSection() {
 
   if (showSuccess) {
     return (
-      <section className="py-20 bg-gradient-to-b from-cream to-white" id="quiz">
+      <section className="py-20 bg-cream" id="quiz">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center bg-white rounded-2xl shadow-xl p-8 md:p-12">
-            <div className="w-16 h-16 bg-forest rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="text-center bg-natural-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div className="w-16 h-16 bg-warm-brown rounded-full flex items-center justify-center mx-auto mb-4">
               <Check size={32} className="text-cream" />
             </div>
-            <h3 className="font-playfair text-2xl font-bold text-forest mb-4">
+            <h3 className="font-playfair text-2xl font-bold text-warm-brown mb-4">
               Добре дошъл в движението!
             </h3>
-            <p className="text-warm-gray mb-6">
+            <p className="text-warm-stone mb-6">
               Твоят глас е чут. Заедно ще защитим истинския вкус.
             </p>
             <Button 
               onClick={() => setShowSuccess(false)}
-              className="bg-forest text-cream hover:bg-forest/90"
+              className="bg-warm-brown text-cream hover:bg-warm-brown/90"
             >
               Продължи
             </Button>
@@ -93,31 +93,31 @@ export default function QuizSection() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-cream to-white" id="quiz">
+    <section className="py-20 bg-cream" id="quiz">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-forest mb-6">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-warm-brown mb-6">
             Чий вкус ще защитиш?
           </h2>
-          <p className="text-xl text-warm-gray max-w-2xl mx-auto">
+          <p className="text-xl text-warm-brown/80 max-w-2xl mx-auto">
             Стани част от движението. Кажи ни къде цениш истинския вкус, за да го защитим заедно.
           </p>
         </div>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-white rounded-2xl shadow-xl p-8 md:p-12">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-natural-white rounded-2xl shadow-xl p-8 md:p-12 border border-warm-brown/10">
             {/* Question 1: City */}
             <FormField
               control={form.control}
               name="city"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-lg font-semibold text-forest">
+                  <FormLabel className="text-lg font-semibold text-warm-brown">
                     В кой град цениш истинския вкус?
                   </FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="w-full p-4 border-2 border-warm-brown/20 rounded-xl focus:border-forest bg-cream/50">
+                      <SelectTrigger className="w-full p-4 border-2 border-warm-brown/30 rounded-xl focus:border-warm-brown bg-cream/30">
                         <SelectValue placeholder="Избери град..." />
                       </SelectTrigger>
                     </FormControl>
@@ -140,7 +140,7 @@ export default function QuizSection() {
               name="weapon"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-lg font-semibold text-forest mb-4">
+                  <FormLabel className="text-lg font-semibold text-warm-brown mb-4">
                     Кое е твоето оръжие в кухнята?
                   </FormLabel>
                   <FormControl>
@@ -158,10 +158,10 @@ export default function QuizSection() {
                           />
                           <label 
                             htmlFor={option.value}
-                            className="p-6 border-2 border-warm-brown/20 rounded-xl text-center hover:border-forest transition-colors bg-cream/30 hover:bg-cream/50 cursor-pointer block peer-checked:border-forest peer-checked:bg-cream"
+                            className="p-6 border-2 border-warm-brown/30 rounded-xl text-center hover:border-warm-brown transition-colors bg-cream/30 hover:bg-cream/50 cursor-pointer block peer-checked:border-warm-brown peer-checked:bg-cream"
                           >
                             <div className="text-3xl text-warm-brown mb-3">{option.icon}</div>
-                            <p className="font-semibold text-forest">{option.label}</p>
+                            <p className="font-semibold text-warm-brown">{option.label}</p>
                           </label>
                         </div>
                       ))}
@@ -178,7 +178,7 @@ export default function QuizSection() {
               name="motivation"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-lg font-semibold text-forest mb-4">
+                  <FormLabel className="text-lg font-semibold text-warm-brown mb-4">
                     Защо се бориш?
                   </FormLabel>
                   <FormControl>
@@ -196,10 +196,10 @@ export default function QuizSection() {
                           />
                           <label 
                             htmlFor={`motivation-${option.value}`}
-                            className="flex items-center p-4 border-2 border-warm-brown/20 rounded-xl cursor-pointer hover:border-forest transition-colors bg-cream/30 hover:bg-cream/50 peer-checked:border-forest peer-checked:bg-cream"
+                            className="flex items-center p-4 border-2 border-warm-brown/30 rounded-xl cursor-pointer hover:border-warm-brown transition-colors bg-cream/30 hover:bg-cream/50 peer-checked:border-warm-brown peer-checked:bg-cream"
                           >
-                            <div className="w-4 h-4 border-2 border-forest rounded-full mr-4 peer-checked:bg-forest flex items-center justify-center">
-                              <div className="w-2 h-2 bg-forest rounded-full opacity-0 peer-checked:opacity-100"></div>
+                            <div className="w-4 h-4 border-2 border-warm-brown rounded-full mr-4 peer-checked:bg-warm-brown flex items-center justify-center">
+                              <div className="w-2 h-2 bg-warm-brown rounded-full opacity-0 peer-checked:opacity-100"></div>
                             </div>
                             <span className="font-medium">{option.label}</span>
                           </label>
@@ -218,7 +218,7 @@ export default function QuizSection() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-lg font-semibold text-forest">
+                  <FormLabel className="text-lg font-semibold text-warm-brown">
                     Въведи своя имейл, за да се присъединиш:
                   </FormLabel>
                   <FormControl>
@@ -226,7 +226,7 @@ export default function QuizSection() {
                       {...field}
                       type="email"
                       placeholder="твоят@имейл.bg"
-                      className="w-full p-4 border-2 border-warm-brown/20 rounded-xl focus:border-forest bg-cream/50"
+                      className="w-full p-4 border-2 border-warm-brown/30 rounded-xl focus:border-warm-brown bg-cream/30"
                     />
                   </FormControl>
                   <FormMessage />
@@ -237,7 +237,7 @@ export default function QuizSection() {
             <Button
               type="submit"
               disabled={submitQuizMutation.isPending}
-              className="w-full bg-traditional-red hover:bg-traditional-red/90 text-white font-bold py-4 px-8 rounded-xl transition-colors transform hover:scale-105 text-lg"
+              className="w-full bg-tradition-red hover:bg-tradition-red/90 text-cream font-bold py-4 px-8 rounded-xl transition-colors transform hover:scale-105 text-lg"
             >
               {submitQuizMutation.isPending ? "Изпращане..." : "ПРИСЪЕДИНИ СЕ КЪМ ДВИЖЕНИЕТО"}
             </Button>

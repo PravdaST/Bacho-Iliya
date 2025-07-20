@@ -24,32 +24,32 @@ const products = [
 
 export default function ProductsSection() {
   return (
-    <section className="py-20 bg-cream" id="produkti">
+    <section className="py-20 bg-natural-cream" id="products">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-forest mb-6">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-warm-brown mb-6">
             СИЛАТА НА ИСТИНСКОТО
           </h2>
-          <p className="text-xl text-warm-gray max-w-2xl mx-auto">
+          <p className="text-xl text-warm-stone max-w-2xl mx-auto">
             Истинският вкус се постига с истински продукти.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {products.map((product) => (
-            <div key={product.id} className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+            <div key={product.id} className="bg-natural-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
               <img 
                 src={product.image} 
                 alt={product.name} 
                 className="w-32 h-32 object-cover rounded-xl mx-auto mb-6"
               />
-              <h3 className="font-playfair text-2xl font-bold text-forest mb-4">
+              <h3 className="font-playfair text-2xl font-bold text-warm-brown mb-4">
                 {product.name}
               </h3>
-              <p className="text-warm-gray mb-6">
+              <p className="text-warm-stone mb-6 font-semibold">
                 {product.description}
               </p>
-              <div className="space-y-2 text-sm text-warm-gray/80">
+              <div className="space-y-2 text-sm text-warm-stone/80">
                 {product.features.map((feature, index) => (
                   <p key={index}>✓ {feature}</p>
                 ))}

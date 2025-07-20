@@ -13,75 +13,73 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-forest/95 backdrop-blur-sm border-b border-warm-brown/20">
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-traditional-red rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-cream font-playfair font-bold text-lg">БИ</span>
-            </div>
-            <span className="text-cream font-playfair font-bold text-2xl tracking-wide">Бачо Илия</span>
+    <header className="bg-warm-brown/95 backdrop-blur-sm border-b border-warm-brown/30 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <h1 className="text-3xl font-bold text-cream font-playfair">Бачо Илия</h1>
           </div>
-          
+
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8">
             <button 
-              onClick={() => scrollToSection('za-nas')}
-              className="text-cream hover:text-warm-beige transition-colors font-medium"
+              onClick={() => scrollToSection('about')}
+              className="text-cream hover:text-warm-beige font-semibold transition-colors text-lg"
             >
               ЗА НАС
             </button>
             <button 
-              onClick={() => scrollToSection('recepti')}
-              className="text-cream hover:text-warm-beige transition-colors font-medium"
+              onClick={() => scrollToSection('recipes')}
+              className="text-cream hover:text-warm-beige font-semibold transition-colors text-lg"
             >
               РЕЦЕПТИ
             </button>
             <button 
-              onClick={() => scrollToSection('produkti')}
-              className="text-cream hover:text-warm-beige transition-colors font-medium"
+              onClick={() => scrollToSection('products')}
+              className="text-cream hover:text-warm-beige font-semibold transition-colors text-lg"
             >
               ПРОДУКТИ
             </button>
-          </div>
-          
-          {/* Mobile Menu Button */}
+          </nav>
+
+          {/* Mobile menu button */}
           <div className="md:hidden">
-            <button 
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-cream"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
-        
+
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-warm-brown/20">
-            <div className="flex flex-col space-y-4">
-              <button 
-                onClick={() => scrollToSection('za-nas')}
-                className="text-cream hover:text-warm-beige transition-colors font-medium text-left"
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-warm-brown/90 border-t border-warm-brown/30">
+              <button
+                onClick={() => scrollToSection('about')}
+                className="block px-3 py-2 text-cream hover:text-warm-beige font-semibold"
               >
                 ЗА НАС
               </button>
-              <button 
-                onClick={() => scrollToSection('recepti')}
-                className="text-cream hover:text-warm-beige transition-colors font-medium text-left"
+              <button
+                onClick={() => scrollToSection('recipes')}
+                className="block px-3 py-2 text-cream hover:text-warm-beige font-semibold"
               >
                 РЕЦЕПТИ
               </button>
-              <button 
-                onClick={() => scrollToSection('produkti')}
-                className="text-cream hover:text-warm-beige transition-colors font-medium text-left"
+              <button
+                onClick={() => scrollToSection('products')}
+                className="block px-3 py-2 text-cream hover:text-warm-beige font-semibold"
               >
                 ПРОДУКТИ
               </button>
             </div>
           </div>
         )}
-      </nav>
+      </div>
     </header>
   );
 }
