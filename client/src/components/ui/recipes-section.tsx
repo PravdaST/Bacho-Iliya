@@ -29,7 +29,7 @@ export default function RecipesSection() {
   return (
     <motion.section 
       ref={ref}
-      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-natural-white via-cream/50 to-natural-white relative px-4 sm:px-6 lg:px-8" 
+      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white via-cream/50 to-white relative px-4 sm:px-6 lg:px-8" 
       id="recipes"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
