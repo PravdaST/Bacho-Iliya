@@ -1,5 +1,6 @@
-import { ArrowRight, ChefHat } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, ChefHat, X, Clock, Users } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { useScrollAnimation, fadeInVariants, staggerContainer } from "@/hooks/use-scroll-animation";
 
 const recipes = [
@@ -7,24 +8,87 @@ const recipes = [
     id: 1,
     title: "Истинска баница",
     description: "С истинско сирене Бачо Илия и домашно тесто.",
-    image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    prepTime: "30 мин",
+    servings: "6 порции",
+    fullRecipe: {
+      ingredients: [
+        "500г готови кори за баница",
+        "400г сирене Бачо Илия",
+        "4 яйца",
+        "200мл кисело мляко Бачо Илия", 
+        "100мл слънчогледово олио",
+        "сол на вкус"
+      ],
+      instructions: [
+        "Сиренето се разчупва на малки парчета.",
+        "В купа се разбиват яйцата с киселото мляко и олиото.",
+        "Добавя се сиренето и се разбърква.",
+        "Корите се намазват една по една със сместа.",
+        "Навиват се и се нареждат в тава.",
+        "Пече се на 180°C за 45 минути до златист цвят."
+      ]
+    }
   },
   {
     id: 2,
     title: "Шопска салата",
     description: "Класиката с натурено сирене от истинско мляко.",
-    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+    image: "https://images.unsplash.com/photo-1617096200347-cb04ae810b1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    prepTime: "15 мин",
+    servings: "4 порции", 
+    fullRecipe: {
+      ingredients: [
+        "4 домата",
+        "2 краставици",
+        "2 чушки",
+        "1 лук", 
+        "150г сирене Бачо Илия",
+        "маслини",
+        "олио, оцет, сол"
+      ],
+      instructions: [
+        "Доматите се нарязват на кубчета.",
+        "Краставиците се белят и нарязват.",
+        "Чушките се почистват от семената и нарязват.",
+        "Лукът се нарязва на тънки колелца.",
+        "Всичко се смесва в салатник.",
+        "Поръсва се с натурено сирене Бачо Илия.",
+        "Заливаме с олио, оцет и сол на вкус."
+      ]
+    }
   },
   {
     id: 3,
     title: "Таратор",
     description: "Освежаващ с кисело мляко Бачо Илия.",
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+    image: "https://images.unsplash.com/photo-1551248429-40975aa4de74?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+    prepTime: "10 мин",
+    servings: "4 порции",
+    fullRecipe: {
+      ingredients: [
+        "500мл кисело мляко Бачо Илия",
+        "2 краставици",
+        "3-4 скилидки чесън",
+        "2 супени лъжици олио",
+        "орехи, копър, сол"
+      ],
+      instructions: [
+        "Краставиците се белят и нарязват на дребни кубчета.",
+        "Чесънът се смачква със сол.",
+        "Киселото мляко се разбърква с вода до желаната консистенция.",
+        "Добавят се краставиците и чесънът.",
+        "Слага се нарязан копър и счукани орехи.",
+        "Поливаме с олио и оставяме в хладилника.",
+        "Сервира се студен."
+      ]
+    }
   }
 ];
 
 export default function RecipesSection() {
   const { ref, isInView } = useScrollAnimation(0.2);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   return (
     <motion.section 
@@ -102,6 +166,7 @@ export default function RecipesSection() {
                     className="text-traditional-red font-semibold hover:text-warm-brown flex items-center gap-2 transition-colors duration-300"
                     whileHover={{ x: 5 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedRecipe(recipe)}
                   >
                     Виж рецептата 
                     <motion.div
@@ -117,6 +182,121 @@ export default function RecipesSection() {
           ))}
         </motion.div>
       </div>
+
+      {/* Recipe Modal */}
+      <AnimatePresence>
+        {selectedRecipe && (
+          <motion.div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedRecipe(null)}
+          >
+            <motion.div
+              className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="relative">
+                <img 
+                  src={selectedRecipe.image} 
+                  alt={selectedRecipe.title}
+                  className="w-full h-64 object-cover rounded-t-3xl"
+                />
+                <button
+                  onClick={() => setSelectedRecipe(null)}
+                  className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors duration-300"
+                >
+                  <X size={20} className="text-gray-700" />
+                </button>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                  <h3 className="font-playfair text-3xl font-bold text-white mb-2">
+                    {selectedRecipe.title}
+                  </h3>
+                  <div className="flex items-center gap-6 text-white/90">
+                    <div className="flex items-center gap-2">
+                      <Clock size={16} />
+                      <span className="text-sm">{selectedRecipe.prepTime}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users size={16} />
+                      <span className="text-sm">{selectedRecipe.servings}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 space-y-6">
+                <p className="text-gray-700 text-lg">{selectedRecipe.description}</p>
+                
+                {/* Ingredients */}
+                <div>
+                  <h4 className="font-playfair text-xl font-bold text-warm-brown mb-4">
+                    Продукти:
+                  </h4>
+                  <ul className="space-y-2">
+                    {selectedRecipe.fullRecipe.ingredients.map((ingredient, index) => (
+                      <motion.li
+                        key={index}
+                        className="flex items-center gap-3 text-gray-700"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <div className="w-2 h-2 bg-traditional-red rounded-full"></div>
+                        {ingredient}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Instructions */}
+                <div>
+                  <h4 className="font-playfair text-xl font-bold text-warm-brown mb-4">
+                    Приготвяне:
+                  </h4>
+                  <ol className="space-y-3">
+                    {selectedRecipe.fullRecipe.instructions.map((instruction, index) => (
+                      <motion.li
+                        key={index}
+                        className="flex gap-4 text-gray-700"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <span className="flex-shrink-0 w-8 h-8 bg-traditional-red text-white rounded-full flex items-center justify-center text-sm font-semibold">
+                          {index + 1}
+                        </span>
+                        <span className="pt-1">{instruction}</span>
+                      </motion.li>
+                    ))}
+                  </ol>
+                </div>
+
+                {/* CTA */}
+                <div className="pt-4 border-t border-gray-200">
+                  <p className="text-center text-gray-600 mb-4">
+                    Използвайте продукти "Бачо Илия" за истински вкус!
+                  </p>
+                  <motion.button
+                    className="w-full bg-traditional-red text-white font-semibold py-3 px-6 rounded-xl hover:bg-traditional-red/90 transition-colors duration-300"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setSelectedRecipe(null)}
+                  >
+                    Затвори рецептата
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 }
