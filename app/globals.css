@@ -1,26 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --traditional-red: #E22526;
-  --warm-brown: #8B4513;
-  --cream: #F5F5DC;
-  --warm-beige: #F0E68C;
-  --forest-green: #228B22;
-  --golden-yellow: #FFD700;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-}
-
-.font-playfair {
-  font-family: 'Playfair Display', serif;
-}
-
-/* Custom colors for Tailwind */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -32,48 +13,122 @@ body {
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 222.2 84% 4.9%;
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-foreground: 222.2 84% 4.9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
-.text-traditional-red {
-  color: var(--traditional-red);
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-.bg-traditional-red {
-  background-color: var(--traditional-red);
+/* Custom animations and styles from the original project */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
-.text-warm-brown {
-  color: var(--warm-brown);
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
 }
 
-.bg-warm-brown {
-  background-color: var(--warm-brown);
+.animate-bounce-slow {
+  animation: bounce 2s infinite;
 }
 
-.bg-cream {
-  background-color: var(--cream);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.bg-warm-beige {
-  background-color: var(--warm-beige);
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.text-forest-green {
-  color: var(--forest-green);
+/* Bulgarian specific typography */
+.bulgarian-text {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-.bg-forest-green {
-  background-color: var(--forest-green);
+/* Custom red color for brand */
+.brand-red {
+  color: #E22526;
+}
+
+.bg-brand-red {
+  background-color: #E22526;
+}
+
+.border-brand-red {
+  border-color: #E22526;
+}
+
+/* Gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #E22526 0%, #B91C1C 50%, #991B1B 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #E22526 0%, #B91C1C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

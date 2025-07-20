@@ -1,18 +1,25 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['localhost', '127.0.0.1'],
-    unoptimized: true,
+  experimental: {
+    serverComponentsExternalPackages: ['@neondatabase/serverless'],
   },
-  trailingSlash: false,
-  env: {
-    DATABASE_URL: process.env.DATABASE_URL,
-    PGDATABASE: process.env.PGDATABASE,
-    PGHOST: process.env.PGHOST,
-    PGPASSWORD: process.env.PGPASSWORD,
-    PGPORT: process.env.PGPORT,
-    PGUSER: process.env.PGUSER,
+  webpack: (config) => {
+    config.externals.push('@node-rs/argon2', '@node-rs/bcrypt')
+    return config
+  },
+  images: {
+    domains: ['localhost'],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/logo/:path*',
+        destination: '/client/logo/:path*',
+      },
+    ]
   },
 }
 
-export default nextConfig
+module.exports = nextConfig

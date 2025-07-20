@@ -2,11 +2,21 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
+import { Toaster } from "@/components/ui/toaster"
+import { TooltipProvider } from "@/components/ui/tooltip"
+import Providers from './providers'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Бачо Илия - Автентични Български Млечни Продукти',
-  description: 'Открийте вкуса на истинските български млечни продукти от "Бачо Илия". Традиционно сирене, кашкавал и кисело мляко от най-високо качество.',
+  description: 'Открийте традиционните български млечни продукти от най-високо качество. Натурални, автентични и с богата история.',
+  keywords: 'български млечни продукти, сирене, кашкавал, мляко, традиционно, автентично',
+  openGraph: {
+    title: 'Бачо Илия - Автентични Български Млечни Продукти',
+    description: 'Открийте традиционните български млечни продукти от най-високо качество.',
+    type: 'website',
+  }
 }
 
 export default function RootLayout({
@@ -16,7 +26,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="bg">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>
+          <TooltipProvider>
+            <Toaster />
+            {children}
+          </TooltipProvider>
+        </Providers>
+      </body>
     </html>
   )
 }
