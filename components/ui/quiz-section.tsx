@@ -44,7 +44,7 @@ export default function QuizSection() {
       toast({
         title: "Успешно се присъединихте!",
         description: "Добре дошли в движението за истински вкус.",
-        variant: "success",
+        variant: "default",
       });
     } catch (error) {
       toast({
