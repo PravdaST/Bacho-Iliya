@@ -132,7 +132,7 @@ export default function ProductsSection() {
                 }}
                 onClick={() => setSelectedProduct(product)}
               >
-                <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-500 border border-warm-beige/30 relative overflow-hidden">
+                <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-500 border border-warm-beige/30 relative overflow-hidden group-hover:bg-white/95"></div>
                   {/* Hover background effect */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-warm-beige/10 to-cream/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -144,14 +144,19 @@ export default function ProductsSection() {
 
                   <motion.div
                     className="relative z-10"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
+                    whileHover={{ scale: 1.08, rotateY: 5 }}
+                    transition={{ duration: 0.4, type: "spring", stiffness: 300 }}
                   >
-                    <img 
-                      src={product.image} 
-                      alt={product.name} 
-                      className="w-32 h-32 object-cover rounded-xl mx-auto mb-6 mt-4 border-2 border-warm-beige/20"
-                    />
+                    <div className="relative">
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-traditional-red/10 to-warm-beige/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      />
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="relative w-32 h-32 object-cover rounded-xl mx-auto mb-6 mt-4 border-2 border-warm-beige/20 group-hover:border-traditional-red/30 transition-all duration-300"
+                      />
+                    </div>
                   </motion.div>
                   
                   <motion.h3 

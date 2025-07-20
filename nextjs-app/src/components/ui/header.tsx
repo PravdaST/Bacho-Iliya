@@ -10,7 +10,7 @@ export default function Header() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };

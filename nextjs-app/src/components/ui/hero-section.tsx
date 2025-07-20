@@ -9,7 +9,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    
+
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -32,7 +32,7 @@ export default function HeroSection() {
           transform: `translateY(${scrollY * 0.5}px)`,
         }}
       />
-      
+
       {/* Animated gradient overlay */}
       <motion.div 
         className="absolute inset-0"
@@ -68,7 +68,36 @@ export default function HeroSection() {
           />
         ))}
       </div>
-      
+
+      {/* Background overlay with animated elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10">
+        <motion.div
+          className="absolute top-20 left-10 w-2 h-2 bg-warm-beige/30 rounded-full"
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.3, 0.7, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-32 right-16 w-3 h-3 bg-traditional-red/20 rounded-full"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
+      </div>
+
       <div className="relative z-10 text-center text-cream max-w-7xl mx-auto w-full">
         <motion.h1 
           className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 leading-tight"
@@ -103,7 +132,7 @@ export default function HeroSection() {
             започна.
           </motion.span>
         </motion.h1>
-        
+
         <motion.p 
           className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-12 sm:mb-14 lg:mb-16 font-semibold"
           initial={{ opacity: 0, y: 30 }}
@@ -112,7 +141,7 @@ export default function HeroSection() {
         >
           Време е да избереш страна.
         </motion.p>
-        
+
         <motion.button 
           onClick={scrollToQuiz}
           className="group relative"

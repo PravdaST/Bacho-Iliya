@@ -75,7 +75,7 @@ export default function Footer() {
               <span className="font-semibold">Направено с любов в България</span>
             </motion.div>
           </motion.div>
-          
+
           <motion.div variants={fadeInVariants}>
             <motion.h4 
               className="font-semibold mb-4 sm:mb-6 text-lg sm:text-xl text-white/90"
@@ -98,7 +98,7 @@ export default function Footer() {
               ))}
             </ul>
           </motion.div>
-          
+
           <motion.div variants={fadeInVariants}>
             <motion.h4 
               className="font-semibold mb-4 sm:mb-6 text-lg sm:text-xl text-white/90"
@@ -124,7 +124,7 @@ export default function Footer() {
               >
                 <Facebook size={24} className="text-white" />
               </motion.a>
-              
+
               <motion.a
                 href="https://www.youtube.com/@bachoiliyabg"
                 target="_blank"
@@ -162,9 +162,15 @@ export default function Footer() {
             </motion.div>
           </motion.div>
         </motion.div>
-        
+
+        {/* Visual divider */}
         <motion.div 
-          className="border-t border-cream/20 mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 text-center"
+          className="w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mb-8"
+          variants={fadeInVariants}
+        />
+
+        <motion.div 
+          className="text-center text-white/60"
           variants={fadeInVariants}
         >
           <motion.p 
