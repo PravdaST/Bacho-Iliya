@@ -83,14 +83,14 @@ export default function FloatingCTA() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={scrollToTop}
-            className="w-12 h-12 bg-warm-brown/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center justify-center"
-            whileHover={{ scale: 1.1, backgroundColor: "hsl(25, 45%, 30%)" }}
+            className="w-14 h-14 sm:w-16 sm:h-16 bg-traditional-red backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center justify-center"
+            whileHover={{ scale: 1.1, backgroundColor: "hsl(0, 70%, 45%)" }}
             whileTap={{ scale: 0.9 }}
           >
-            <ArrowUp size={20} className="text-cream" />
+            <ArrowUp size={20} className="sm:w-6 sm:h-6 text-white" />
             
             {/* Tooltip */}
-            <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-warm-brown text-cream text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-traditional-red text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
               Нагоре
             </div>
           </motion.button>
