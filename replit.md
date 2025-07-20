@@ -39,8 +39,9 @@ Preferred communication style: Simple, everyday language.
 
 #### Storage Implementation
 - **Interface**: `IStorage` abstraction for data operations
-- **Current**: In-memory storage (`MemStorage`) for development
-- **Production Ready**: Database storage class can be implemented using the same interface
+- **Current**: PostgreSQL database storage (`DatabaseStorage`) for production
+- **Database**: Neon serverless PostgreSQL with Drizzle ORM integration
+- **Migration**: Migrated from in-memory storage to persistent database (January 2025)
 
 #### API Endpoints
 - `POST /api/quiz`: Submit quiz responses with validation
@@ -53,7 +54,7 @@ Preferred communication style: Simple, everyday language.
 2. **Client-Side Validation**: Zod schema validation before submission
 3. **API Request**: TanStack Query mutation sends data to Express backend
 4. **Server Validation**: Backend validates data using shared Zod schema
-5. **Data Storage**: Response stored in memory (development) or database (production)
+5. **Data Storage**: Response stored in PostgreSQL database with Drizzle ORM
 6. **Response Handling**: Success/error feedback displayed to user via toast notifications
 
 ## External Dependencies
@@ -99,3 +100,12 @@ Preferred communication style: Simple, everyday language.
 - **Asset Management**: Separate directory for static assets with Vite alias
 
 The application is designed as a marketing website with lead generation capabilities, collecting user preferences through an engaging quiz format while promoting traditional Bulgarian dairy products.
+
+## Recent Changes
+
+**January 2025**:
+- ✓ Migrated from in-memory storage to PostgreSQL database
+- ✓ Implemented DatabaseStorage class with Drizzle ORM
+- ✓ Added database connection with Neon serverless PostgreSQL
+- ✓ Applied database schema with `npm run db:push`
+- ✓ Quiz responses now persistently stored in database

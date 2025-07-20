@@ -1,4 +1,6 @@
 import { users, quizResponses, type User, type InsertUser, type QuizResponse, type InsertQuizResponse } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -62,4 +64,44 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Database Storage Implementation
+export class DatabaseStorage implements IStorage {
+  async getUser(id: number): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
+    return user;
+  }
+
+  async createQuizResponse(insertResponse: InsertQuizResponse): Promise<QuizResponse> {
+    const [response] = await db
+      .insert(quizResponses)
+      .values({
+        ...insertResponse,
+        userAgent: insertResponse.userAgent || null
+      })
+      .returning();
+    return response;
+  }
+
+  async getAllQuizResponses(): Promise<QuizResponse[]> {
+    return await db.select().from(quizResponses);
+  }
+
+  async getQuizResponsesByCity(city: string): Promise<QuizResponse[]> {
+    return await db.select().from(quizResponses).where(eq(quizResponses.city, city));
+  }
+}
+
+export const storage = new DatabaseStorage();
