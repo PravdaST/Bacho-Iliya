@@ -44,7 +44,8 @@ export class MemStorage implements IStorage {
     const response: QuizResponse = { 
       ...insertResponse, 
       id,
-      submittedAt: new Date()
+      submittedAt: new Date(),
+      userAgent: insertResponse.userAgent || null
     };
     this.quizResponses.set(id, response);
     return response;

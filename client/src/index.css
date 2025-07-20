@@ -1,34 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: hsl(55, 25%, 95%);
-  --foreground: hsl(25, 15%, 25%);
-  --muted: hsl(48, 20%, 92%);
-  --muted-foreground: hsl(25, 8%, 45%);
-  --popover: hsl(55, 25%, 98%);
-  --popover-foreground: hsl(25, 15%, 25%);
+  --background: hsl(50, 40%, 98%);
+  --foreground: hsl(25, 30%, 20%);
+  --muted: hsl(45, 25%, 90%);
+  --muted-foreground: hsl(25, 15%, 45%);
+  --popover: hsl(50, 40%, 98%);
+  --popover-foreground: hsl(25, 30%, 20%);
   --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(25, 15%, 25%);
-  --border: hsl(30, 15%, 85%);
-  --input: hsl(30, 15%, 85%);
-  --primary: hsl(136, 45%, 25%);
-  --primary-foreground: hsl(55, 25%, 95%);
-  --secondary: hsl(48, 20%, 92%);
-  --secondary-foreground: hsl(25, 15%, 15%);
-  --accent: hsl(48, 20%, 92%);
-  --accent-foreground: hsl(25, 15%, 15%);
-  --destructive: hsl(356, 75%, 53%);
-  --destructive-foreground: hsl(55, 25%, 95%);
-  --ring: hsl(25, 15%, 25%);
+  --card-foreground: hsl(25, 30%, 20%);
+  --border: hsl(35, 20%, 80%);
+  --input: hsl(35, 20%, 80%);
+  --primary: hsl(120, 30%, 35%);
+  --primary-foreground: hsl(50, 40%, 98%);
+  --secondary: hsl(45, 25%, 90%);
+  --secondary-foreground: hsl(25, 30%, 15%);
+  --accent: hsl(45, 25%, 90%);
+  --accent-foreground: hsl(25, 30%, 15%);
+  --destructive: hsl(0, 65%, 50%);
+  --destructive-foreground: hsl(50, 40%, 98%);
+  --ring: hsl(25, 30%, 20%);
   --radius: 0.75rem;
-  --forest: hsl(136, 45%, 25%);
-  --warm-brown: hsl(25, 45%, 35%);
-  --cream: hsl(55, 25%, 95%);
-  --warm-beige: hsl(48, 75%, 70%);
-  --traditional-red: hsl(356, 75%, 53%);
-  --warm-gray: hsl(25, 8%, 45%);
+  --forest: hsl(120, 30%, 35%);
+  --warm-brown: hsl(25, 50%, 40%);
+  --cream: hsl(50, 40%, 98%);
+  --warm-beige: hsl(45, 60%, 75%);
+  --traditional-red: hsl(0, 70%, 55%);
+  --warm-gray: hsl(25, 15%, 45%);
+  --bulgarian-green: hsl(120, 30%, 35%);
+  --milk-white: hsl(50, 40%, 98%);
+  --farm-brown: hsl(25, 50%, 40%);
 }
 
 .dark {
@@ -162,8 +167,6 @@
     --tw-ring-color: hsl(136, 45%, 25%, 0.2);
   }
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 .font-playfair {
   font-family: 'Playfair Display', serif;
