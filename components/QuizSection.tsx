@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Sword, Mail, Send, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 
 export default function QuizSection() {
+  const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
     city: '',
     weapon: '',
@@ -15,6 +16,10 @@ export default function QuizSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -74,6 +79,16 @@ export default function QuizSection() {
     setFormData({ city: '', weapon: '', motivation: '', email: '' });
     setErrors({});
   };
+
+  if (!mounted) {
+    return (
+      <section id="quiz" className="py-20 lg:py-32 bg-gradient-to-br from-forest-green/10 to-warm-beige/20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl h-96 animate-pulse"></div>
+        </div>
+      </section>
+    );
+  }
 
   if (isSubmitted) {
     return (

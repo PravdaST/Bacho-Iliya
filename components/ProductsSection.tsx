@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Eye } from 'lucide-react';
 import Image from 'next/image';
@@ -41,8 +41,13 @@ const productCategories = [
 ];
 
 export default function ProductsSection() {
+  const [mounted, setMounted] = useState(false);
   const [selectedGallery, setSelectedGallery] = useState<typeof productCategories[0] | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const openGallery = (category: typeof productCategories[0]) => {
     setSelectedGallery(category);

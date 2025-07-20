@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, Users, ArrowRight, X } from 'lucide-react';
 import Image from 'next/image';
@@ -85,7 +85,12 @@ const recipes = [
 ];
 
 export default function RecipesSection() {
+  const [mounted, setMounted] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState<typeof recipes[0] | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <section id="recipes" className="py-20 lg:py-32 bg-gradient-to-br from-golden-yellow/10 to-warm-beige/20">
