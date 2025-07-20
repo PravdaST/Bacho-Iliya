@@ -61,6 +61,17 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        // Bulgarian farm custom colors
+        "warm-brown": "var(--warm-brown)",
+        "cream": "var(--cream)",
+        "warm-beige": "var(--warm-beige)",
+        "traditional-red": "var(--traditional-red)",
+        "warm-gray": "var(--warm-gray)",
+        "bulgarian-green": "var(--bulgarian-green)",
+        "milk-white": "var(--milk-white)",
+        "farm-brown": "var(--farm-brown)",
+        "forest": "var(--forest)",
+        "soft-beige": "var(--warm-beige)",
       },
       keyframes: {
         "accordion-down": {

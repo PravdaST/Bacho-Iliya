@@ -61,14 +61,14 @@ export default function AboutSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <motion.h2 
-              className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 text-soft-beige"
+              className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 text-warm-brown"
               variants={fadeInVariants}
               transition={{ delay: 0.6 }}
             >
               НАШАТА КАУЗА Е ПРОСТА.
             </motion.h2>
             <motion.div 
-              className="text-lg text-cream/90 leading-relaxed space-y-6"
+              className="text-lg text-gray-800 leading-relaxed space-y-6"
               variants={fadeInVariants}
               transition={{ delay: 0.8 }}
             >
@@ -80,7 +80,7 @@ export default function AboutSection() {
                 Ние сме в битка с компромиса. Срещу безвкусното, гумено, воднисто нещо, което се преструва на сирене. Срещу лъжата на етикета. Ние вярваме в 100% мляко. Вярваме в истинския вкус. Вярваме, че това, което слагаш на масата си, е избор.
               </motion.p>
               <motion.p 
-                className="text-soft-beige font-semibold text-xl"
+                className="text-warm-brown font-semibold text-xl"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{ delay: 1.4, duration: 0.6 }}
