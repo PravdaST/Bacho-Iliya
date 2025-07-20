@@ -5,7 +5,7 @@ import { ChefHat, Heart } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative py-20 lg:py-32 overflow-hidden">
+    <section id="hero" className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-br from-cream to-warm-beige/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -28,6 +28,18 @@ export default function HeroSection() {
             <span className="text-lg text-warm-brown font-semibold">Направено с любов и традиция</span>
             <ChefHat className="text-traditional-red" size={32} />
           </motion.div>
+          
+          <motion.a
+            href="#quiz"
+            className="inline-block bg-traditional-red text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-traditional-red/90 transition-all duration-300 transform hover:scale-105 shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Открийте нашите продукти
+          </motion.a>
         </motion.div>
       </div>
       
