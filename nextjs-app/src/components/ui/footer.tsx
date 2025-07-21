@@ -71,7 +71,7 @@ export default function Footer() {
               variants={fadeInVariants}
               whileHover={{ scale: 1.05 }}
             >
-              <Heart size={20} className="text-traditional-red animate-pulse" />
+              <Heart size={20} className="text-white animate-pulse" />
               <span className="font-semibold">Направено с любов в България</span>
             </motion.div>
           </motion.div>
@@ -190,9 +190,9 @@ export default function Footer() {
               ease: "easeInOut" 
             }}
           >
-            <Heart size={16} className="text-traditional-red" />
+            <Heart size={16} className="text-white" />
             <span className="text-sm">Създадено с вярата в истинското</span>
-            <Heart size={16} className="text-traditional-red" />
+            <Heart size={16} className="text-white" />
           </motion.div>
         </motion.div>
       </div>
