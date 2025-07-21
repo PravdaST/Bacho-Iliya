@@ -17,9 +17,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  experimental: {
-    allowedDevOrigins: ["https://*.replit.dev"]
-  }
+  // Production ready configuration
 };
 
 module.exports = nextConfig;
