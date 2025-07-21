@@ -63,9 +63,10 @@ export async function POST(request: NextRequest) {
       console.log('Attempting to send email to:', validatedData.email);
       
       const emailResult = await resendInstance.emails.send({
-        from: 'Бачо Илия <onboarding@resend.dev>', // Use Resend's default sender
+        from: 'info@resend.dev', // Using Resend's verified domain
         to: [validatedData.email],
         subject: 'Благодарим ти за присъединяването към движението!',
+        replyTo: 'info@bacho-iliya.bg',
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <div style="text-align: center; margin-bottom: 30px;">

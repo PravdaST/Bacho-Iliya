@@ -30,9 +30,13 @@ export async function POST(request: NextRequest) {
       }, { status: 500 });
     }
 
+    // Get the email from request body if provided
+    const body = await request.json().catch(() => ({}));
+    const testEmail = body.email || 'delivered@resend.dev';
+    
     const emailResult = await resendInstance.emails.send({
-      from: 'Бачо Илия <onboarding@resend.dev>',
-      to: ['test@example.com'],
+      from: 'info@resend.dev',
+      to: [testEmail],
       subject: 'Тест имейл от Resend',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
