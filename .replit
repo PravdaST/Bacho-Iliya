@@ -8,7 +8,8 @@ channel = "stable-24_05"
 [deployment]
 deploymentTarget = "static"
 publicDir = ".next"
-build = ["npm", "run", "build"]
+build = ["sh", "-c", "npm run build"]
+run = ["sh", "-c", "npm start"]
 
 [[ports]]
 localPort = 3001
@@ -49,4 +50,4 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd nextjs-app && npm run dev"
+args = "npm run dev"
