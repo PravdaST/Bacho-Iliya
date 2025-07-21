@@ -2,14 +2,14 @@
 nextjs-app/
 client/
 server/
-shared/
 BachoIlia/
 BachoIliya/
 attached_assets/
-*.md
-!README.md
 .replit
 .upm/
 .cache/
 .config/
 .local/
+DEPLOYMENT.md
+VERCEL_TROUBLESHOOTING.md
+replit.md
