@@ -1,0 +1,54 @@
+[13:08:39.661] Running build in Washington, D.C., USA (East) – iad1
+[13:08:39.661] Build machine configuration: 2 cores, 8 GB
+[13:08:39.714] Cloning github.com/PravdaST/Bacho-Iliya (Branch: main, Commit: 613b841)
+[13:08:40.602] Cloning completed: 887.000ms
+[13:08:40.681] Found .vercelignore
+[13:08:40.691] Removed 26 ignored files defined in .vercelignore
+[13:08:40.691]   /.git/config
+[13:08:40.691]   /.git/description
+[13:08:40.691]   /.git/FETCH_HEAD
+[13:08:40.691]   /.git/HEAD
+[13:08:40.691]   /.git/hooks/applypatch-msg.sample
+[13:08:40.691]   /.git/hooks/commit-msg.sample
+[13:08:40.691]   /.git/hooks/fsmonitor-watchman.sample
+[13:08:40.692]   /.git/hooks/post-update.sample
+[13:08:40.692]   /.git/hooks/pre-applypatch.sample
+[13:08:40.692]   /.git/hooks/pre-commit.sample
+[13:08:41.232] Restored build cache from previous deployment (DRysQri7bxyVCo3iQfoopuMuefWy)
+[13:08:43.728] Running "vercel build"
+[13:08:44.206] Vercel CLI 44.4.3
+[13:08:44.546] Running "install" command: `npm install`...
+[13:08:46.063] 
+[13:08:46.064] up to date, audited 467 packages in 1s
+[13:08:46.065] 
+[13:08:46.065] 161 packages are looking for funding
+[13:08:46.066]   run `npm fund` for details
+[13:08:46.066] 
+[13:08:46.066] found 0 vulnerabilities
+[13:08:46.093] Detected Next.js version: 15.4.2
+[13:08:46.094] Running "npm run build"
+[13:08:46.569] 
+[13:08:46.570] > bacho-iliya-nextjs@1.0.0 build
+[13:08:46.570] > next build
+[13:08:46.570] 
+[13:08:47.357]    ▲ Next.js 15.4.2
+[13:08:47.358] 
+[13:08:47.429]    Creating an optimized production build ...
+[13:08:48.135]  ⚠ Found lockfile missing swc dependencies, run next locally to automatically patch
+[13:08:52.395] Failed to compile.
+[13:08:52.396] 
+[13:08:52.396] ./src/app/api/quiz/route.ts
+[13:08:52.397] Module not found: Can't resolve 'nodemailer'
+[13:08:52.397] 
+[13:08:52.398] https://nextjs.org/docs/messages/module-not-found
+[13:08:52.398] 
+[13:08:52.398] ./src/app/api/test-email/route.ts
+[13:08:52.398] Module not found: Can't resolve 'nodemailer'
+[13:08:52.399] 
+[13:08:52.399] https://nextjs.org/docs/messages/module-not-found
+[13:08:52.399] 
+[13:08:52.415] 
+[13:08:52.416] > Build failed because of webpack errors
+[13:08:52.444] Error: Command "npm run build" exited with 1
+[13:08:52.885] 
+[13:08:55.739] Exiting build container
