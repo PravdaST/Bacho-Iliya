@@ -1,1 +1,0 @@
-Next.js project is in ROOT directory /home/runner/workspace
