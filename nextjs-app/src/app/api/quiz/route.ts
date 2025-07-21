@@ -3,7 +3,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend only when needed
+let resend: Resend | null = null;
+
+function getResendInstance() {
+  if (!resend && process.env.RESEND_API_KEY) {
+    resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resend;
+}
 
 const quizSchema = z.object({
   city: z.string().min(1, "Градът е задължителен"),
@@ -23,7 +31,13 @@ export async function POST(request: NextRequest) {
 
     // Send welcome email using Resend
     try {
-      const emailResult = await resend.emails.send({
+      const resendInstance = getResendInstance();
+      if (!resendInstance) {
+        console.log('Resend not configured, skipping email');
+        throw new Error('Resend API key not configured');
+      }
+      
+      const emailResult = await resendInstance.emails.send({
         from: 'Бачо Илия <onboarding@resend.dev>', // Use Resend's default sender
         to: [validatedData.email],
         subject: 'Благодарим ти за присъединяването към движението!',
