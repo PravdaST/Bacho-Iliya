@@ -128,9 +128,8 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation */}
-    
+        <AnimatePresence>
           {isMenuOpen && (
-            <>
             <motion.div
               className="lg:hidden"
               initial={{ height: 0, opacity: 0 }}
@@ -166,9 +165,8 @@ export default function Header() {
                 ))}
               </motion.div>
             </motion.div>
-          </>
           )}
-    </AnimatePresence>
+        </AnimatePresence>
       </div>
     </motion.header>
   );
