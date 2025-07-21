@@ -40,7 +40,7 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
         style={{
-          background: `linear-gradient(135deg, rgba(43, 30, 23, 0.8) 0%, rgba(101, 67, 33, 0.6) 50%, rgba(43, 30, 23, 0.8) 100%)`
+          background: `linear-gradient(135deg, rgba(43, 30, 23, 0.4) 0%, rgba(101, 67, 33, 0.3) 50%, rgba(43, 30, 23, 0.4) 100%)`
         }}
       />
 
@@ -70,7 +70,7 @@ export default function HeroSection() {
       </div>
 
       {/* Background overlay with animated elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/40 z-10">
         <motion.div
           className="absolute top-20 left-10 w-2 h-2 bg-warm-beige/30 rounded-full"
           animate={{
