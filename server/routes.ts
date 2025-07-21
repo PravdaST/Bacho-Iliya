@@ -7,6 +7,10 @@ import * as nodemailer from "nodemailer";
 
 // Email sending function
 async function sendThankYouEmail(email: string, city: string) {
+  console.log(`Attempting to send email to: ${email} from city: ${city}`);
+  console.log(`EMAIL_USER: ${process.env.EMAIL_USER ? 'Set' : 'Not set'}`);
+  console.log(`EMAIL_PASS: ${process.env.EMAIL_PASS ? 'Set' : 'Not set'}`);
+  
   const transporter = nodemailer.createTransport({
     host: 'server6.aleana-wa.eu',
     port: 587, // STARTTLS port
@@ -20,6 +24,16 @@ async function sendThankYouEmail(email: string, city: string) {
       ciphers: 'SSLv3'
     }
   });
+  
+  console.log('Transporter created, testing connection...');
+  
+  try {
+    await transporter.verify();
+    console.log('SMTP connection verified successfully');
+  } catch (verifyError) {
+    console.error('SMTP connection verification failed:', verifyError);
+    throw new Error(`SMTP verification failed: ${verifyError.message}`);
+  }
 
   const mailOptions = {
     from: '"Бачо Илия" <contact@bacho-iliya.eu>',
@@ -66,7 +80,26 @@ async function sendThankYouEmail(email: string, city: string) {
     `
   };
 
-  return transporter.sendMail(mailOptions);
+  console.log('Sending email with options:', {
+    from: mailOptions.from,
+    to: mailOptions.to,
+    subject: mailOptions.subject,
+    htmlLength: mailOptions.html.length
+  });
+  
+  try {
+    const result = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', {
+      messageId: result.messageId,
+      response: result.response,
+      accepted: result.accepted,
+      rejected: result.rejected
+    });
+    return result;
+  } catch (sendError) {
+    console.error('Failed to send email:', sendError);
+    throw new Error(`Email sending failed: ${sendError.message}`);
+  }
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -125,6 +158,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ 
         success: false, 
         message: "Internal server error" 
+      });
+    }
+  });
+
+  // Test email endpoint for debugging
+  app.post("/api/test-email", async (req, res) => {
+    try {
+      const { email, city } = req.body;
+      if (!email || !city) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "Email and city are required" 
+        });
+      }
+      
+      console.log(`Testing email send to: ${email} from city: ${city}`);
+      await sendThankYouEmail(email, city);
+      
+      res.json({ 
+        success: true, 
+        message: "Test email sent successfully",
+        recipient: email,
+        city: city
+      });
+    } catch (error) {
+      console.error('Test email failed:', error);
+      res.status(500).json({ 
+        success: false, 
+        message: "Test email failed",
+        error: error instanceof Error ? error.message : 'Unknown error'
       });
     }
   });
