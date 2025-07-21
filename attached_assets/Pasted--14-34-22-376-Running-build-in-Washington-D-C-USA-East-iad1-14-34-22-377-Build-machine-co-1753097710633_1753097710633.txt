@@ -1,0 +1,643 @@
+[14:34:22.376] Running build in Washington, D.C., USA (East) – iad1
+[14:34:22.377] Build machine configuration: 2 cores, 8 GB
+[14:34:22.389] Cloning github.com/PravdaST/Bacho-Iliya (Branch: main, Commit: f26a630)
+[14:34:23.285] Cloning completed: 896.000ms
+[14:34:23.367] Found .vercelignore
+[14:34:23.376] Removed 26 ignored files defined in .vercelignore
+[14:34:23.376]   /.git/config
+[14:34:23.376]   /.git/description
+[14:34:23.376]   /.git/FETCH_HEAD
+[14:34:23.376]   /.git/HEAD
+[14:34:23.376]   /.git/hooks/applypatch-msg.sample
+[14:34:23.376]   /.git/hooks/commit-msg.sample
+[14:34:23.376]   /.git/hooks/fsmonitor-watchman.sample
+[14:34:23.376]   /.git/hooks/post-update.sample
+[14:34:23.376]   /.git/hooks/pre-applypatch.sample
+[14:34:23.376]   /.git/hooks/pre-commit.sample
+[14:34:23.911] Restored build cache from previous deployment (BW65kMVUMF3RibL91H8U3SHpAoAe)
+[14:34:26.188] Running "vercel build"
+[14:34:26.650] Vercel CLI 44.4.3
+[14:34:26.961] Running "install" command: `npm install`...
+[14:34:31.380] npm warn ERESOLVE overriding peer dependency
+[14:34:31.381] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.382] npm warn Found: @types/react@18.3.23
+[14:34:31.382] npm warn node_modules/@types/react
+[14:34:31.382] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.382] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.382] npm warn
+[14:34:31.383] npm warn Could not resolve dependency:
+[14:34:31.383] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.383] npm warn node_modules/@types/react-dom
+[14:34:31.383] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.385] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.385] npm warn ERESOLVE overriding peer dependency
+[14:34:31.385] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.385] npm warn Found: @types/react@18.3.23
+[14:34:31.386] npm warn node_modules/@types/react
+[14:34:31.387] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.387] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.387] npm warn
+[14:34:31.387] npm warn Could not resolve dependency:
+[14:34:31.387] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.387] npm warn node_modules/@types/react-dom
+[14:34:31.387] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.387] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.387] npm warn ERESOLVE overriding peer dependency
+[14:34:31.387] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.388] npm warn Found: @types/react@18.3.23
+[14:34:31.388] npm warn node_modules/@types/react
+[14:34:31.388] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.388] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.388] npm warn
+[14:34:31.388] npm warn Could not resolve dependency:
+[14:34:31.388] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.388] npm warn node_modules/@types/react-dom
+[14:34:31.388] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.388] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.388] npm warn ERESOLVE overriding peer dependency
+[14:34:31.389] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.389] npm warn Found: @types/react@18.3.23
+[14:34:31.389] npm warn node_modules/@types/react
+[14:34:31.389] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.389] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.389] npm warn
+[14:34:31.389] npm warn Could not resolve dependency:
+[14:34:31.389] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.389] npm warn node_modules/@types/react-dom
+[14:34:31.389] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.389] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.389] npm warn ERESOLVE overriding peer dependency
+[14:34:31.389] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.390] npm warn Found: @types/react@18.3.23
+[14:34:31.390] npm warn node_modules/@types/react
+[14:34:31.390] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.390] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.390] npm warn
+[14:34:31.390] npm warn Could not resolve dependency:
+[14:34:31.390] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.390] npm warn node_modules/@types/react-dom
+[14:34:31.390] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.390] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.391] npm warn ERESOLVE overriding peer dependency
+[14:34:31.391] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.391] npm warn Found: @types/react@18.3.23
+[14:34:31.391] npm warn node_modules/@types/react
+[14:34:31.391] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.391] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.391] npm warn
+[14:34:31.391] npm warn Could not resolve dependency:
+[14:34:31.391] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.415] npm warn node_modules/@types/react-dom
+[14:34:31.415] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.415] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.416] npm warn ERESOLVE overriding peer dependency
+[14:34:31.416] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.416] npm warn Found: @types/react@18.3.23
+[14:34:31.416] npm warn node_modules/@types/react
+[14:34:31.416] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.416] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.416] npm warn
+[14:34:31.417] npm warn Could not resolve dependency:
+[14:34:31.417] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.417] npm warn node_modules/@types/react-dom
+[14:34:31.417] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.417] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.417] npm warn ERESOLVE overriding peer dependency
+[14:34:31.417] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.417] npm warn Found: @types/react@18.3.23
+[14:34:31.418] npm warn node_modules/@types/react
+[14:34:31.418] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.418] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.418] npm warn
+[14:34:31.418] npm warn Could not resolve dependency:
+[14:34:31.418] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.418] npm warn node_modules/@types/react-dom
+[14:34:31.419] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.419] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.422] npm warn ERESOLVE overriding peer dependency
+[14:34:31.422] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.422] npm warn Found: @types/react@18.3.23
+[14:34:31.422] npm warn node_modules/@types/react
+[14:34:31.422] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.422] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.422] npm warn
+[14:34:31.423] npm warn Could not resolve dependency:
+[14:34:31.423] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.423] npm warn node_modules/@types/react-dom
+[14:34:31.423] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.423] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.423] npm warn ERESOLVE overriding peer dependency
+[14:34:31.423] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.423] npm warn Found: @types/react@18.3.23
+[14:34:31.423] npm warn node_modules/@types/react
+[14:34:31.423] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.424] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.424] npm warn
+[14:34:31.424] npm warn Could not resolve dependency:
+[14:34:31.424] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.424] npm warn node_modules/@types/react-dom
+[14:34:31.424] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.424] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.424] npm warn ERESOLVE overriding peer dependency
+[14:34:31.425] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.425] npm warn Found: @types/react@18.3.23
+[14:34:31.425] npm warn node_modules/@types/react
+[14:34:31.425] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.425] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.425] npm warn
+[14:34:31.425] npm warn Could not resolve dependency:
+[14:34:31.426] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.426] npm warn node_modules/@types/react-dom
+[14:34:31.426] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.426] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.426] npm warn ERESOLVE overriding peer dependency
+[14:34:31.426] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.426] npm warn Found: @types/react@18.3.23
+[14:34:31.427] npm warn node_modules/@types/react
+[14:34:31.427] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.427] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.427] npm warn
+[14:34:31.427] npm warn Could not resolve dependency:
+[14:34:31.427] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.427] npm warn node_modules/@types/react-dom
+[14:34:31.428] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.428] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.428] npm warn ERESOLVE overriding peer dependency
+[14:34:31.428] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.428] npm warn Found: @types/react@18.3.23
+[14:34:31.428] npm warn node_modules/@types/react
+[14:34:31.428] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.428] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.429] npm warn
+[14:34:31.429] npm warn Could not resolve dependency:
+[14:34:31.429] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.429] npm warn node_modules/@types/react-dom
+[14:34:31.429] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.429] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.429] npm warn ERESOLVE overriding peer dependency
+[14:34:31.429] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.430] npm warn Found: @types/react@18.3.23
+[14:34:31.430] npm warn node_modules/@types/react
+[14:34:31.430] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.430] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.430] npm warn
+[14:34:31.430] npm warn Could not resolve dependency:
+[14:34:31.430] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.430] npm warn node_modules/@types/react-dom
+[14:34:31.431] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.431] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.431] npm warn ERESOLVE overriding peer dependency
+[14:34:31.431] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.431] npm warn Found: @types/react@18.3.23
+[14:34:31.431] npm warn node_modules/@types/react
+[14:34:31.431] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.431] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.431] npm warn
+[14:34:31.431] npm warn Could not resolve dependency:
+[14:34:31.432] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.432] npm warn node_modules/@types/react-dom
+[14:34:31.432] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.432] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.432] npm warn ERESOLVE overriding peer dependency
+[14:34:31.432] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.432] npm warn Found: @types/react@18.3.23
+[14:34:31.432] npm warn node_modules/@types/react
+[14:34:31.432] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.433] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.433] npm warn
+[14:34:31.433] npm warn Could not resolve dependency:
+[14:34:31.433] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.433] npm warn node_modules/@types/react-dom
+[14:34:31.433] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.433] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.434] npm warn ERESOLVE overriding peer dependency
+[14:34:31.434] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.434] npm warn Found: @types/react@18.3.23
+[14:34:31.434] npm warn node_modules/@types/react
+[14:34:31.434] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.434] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.434] npm warn
+[14:34:31.434] npm warn Could not resolve dependency:
+[14:34:31.434] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.435] npm warn node_modules/@types/react-dom
+[14:34:31.435] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.435] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.435] npm warn ERESOLVE overriding peer dependency
+[14:34:31.435] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.435] npm warn Found: @types/react@18.3.23
+[14:34:31.435] npm warn node_modules/@types/react
+[14:34:31.435] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.435] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.436] npm warn
+[14:34:31.436] npm warn Could not resolve dependency:
+[14:34:31.436] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.436] npm warn node_modules/@types/react-dom
+[14:34:31.436] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.436] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.436] npm warn ERESOLVE overriding peer dependency
+[14:34:31.436] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.436] npm warn Found: @types/react@18.3.23
+[14:34:31.437] npm warn node_modules/@types/react
+[14:34:31.437] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.437] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.440] npm warn
+[14:34:31.440] npm warn Could not resolve dependency:
+[14:34:31.440] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.440] npm warn node_modules/@types/react-dom
+[14:34:31.440] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.441] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.441] npm warn ERESOLVE overriding peer dependency
+[14:34:31.441] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.441] npm warn Found: @types/react@18.3.23
+[14:34:31.441] npm warn node_modules/@types/react
+[14:34:31.441] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.441] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.441] npm warn
+[14:34:31.442] npm warn Could not resolve dependency:
+[14:34:31.442] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.442] npm warn node_modules/@types/react-dom
+[14:34:31.442] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.442] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.442] npm warn ERESOLVE overriding peer dependency
+[14:34:31.442] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.442] npm warn Found: @types/react@18.3.23
+[14:34:31.443] npm warn node_modules/@types/react
+[14:34:31.443] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.443] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.443] npm warn
+[14:34:31.443] npm warn Could not resolve dependency:
+[14:34:31.443] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.443] npm warn node_modules/@types/react-dom
+[14:34:31.443] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.443] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.444] npm warn ERESOLVE overriding peer dependency
+[14:34:31.444] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.444] npm warn Found: @types/react@18.3.23
+[14:34:31.444] npm warn node_modules/@types/react
+[14:34:31.444] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.444] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.444] npm warn
+[14:34:31.444] npm warn Could not resolve dependency:
+[14:34:31.445] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.445] npm warn node_modules/@types/react-dom
+[14:34:31.445] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.445] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.445] npm warn ERESOLVE overriding peer dependency
+[14:34:31.445] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.445] npm warn Found: @types/react@18.3.23
+[14:34:31.445] npm warn node_modules/@types/react
+[14:34:31.445] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.446] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.446] npm warn
+[14:34:31.446] npm warn Could not resolve dependency:
+[14:34:31.446] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.446] npm warn node_modules/@types/react-dom
+[14:34:31.446] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.446] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.446] npm warn ERESOLVE overriding peer dependency
+[14:34:31.446] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.447] npm warn Found: @types/react@18.3.23
+[14:34:31.447] npm warn node_modules/@types/react
+[14:34:31.447] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.447] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.447] npm warn
+[14:34:31.447] npm warn Could not resolve dependency:
+[14:34:31.447] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.447] npm warn node_modules/@types/react-dom
+[14:34:31.447] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.447] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.448] npm warn ERESOLVE overriding peer dependency
+[14:34:31.448] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.448] npm warn Found: @types/react@18.3.23
+[14:34:31.448] npm warn node_modules/@types/react
+[14:34:31.448] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.448] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.448] npm warn
+[14:34:31.448] npm warn Could not resolve dependency:
+[14:34:31.449] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.449] npm warn node_modules/@types/react-dom
+[14:34:31.449] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.449] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.450] npm warn ERESOLVE overriding peer dependency
+[14:34:31.450] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.450] npm warn Found: @types/react@18.3.23
+[14:34:31.450] npm warn node_modules/@types/react
+[14:34:31.450] npm warn   dev @types/react@"19.0.0" from the root project
+[14:34:31.450] npm warn   56 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.450] npm warn
+[14:34:31.450] npm warn Could not resolve dependency:
+[14:34:31.450] npm warn peer @types/react@"^18.0.0" from @types/react-dom@18.3.7
+[14:34:31.451] npm warn node_modules/@types/react-dom
+[14:34:31.451] npm warn   dev @types/react-dom@"19.0.0" from the root project
+[14:34:31.451] npm warn   36 more (@radix-ui/react-accordion, @radix-ui/react-arrow, ...)
+[14:34:31.466] npm warn ERESOLVE overriding peer dependency
+[14:34:31.467] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.467] npm warn Found: react@18.3.1
+[14:34:31.467] npm warn node_modules/react
+[14:34:31.467] npm warn   react@"19.0.0" from the root project
+[14:34:31.467] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.468] npm warn
+[14:34:31.468] npm warn Could not resolve dependency:
+[14:34:31.468] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.468] npm warn node_modules/react-dom
+[14:34:31.468] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.468] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.468] npm warn ERESOLVE overriding peer dependency
+[14:34:31.469] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.469] npm warn Found: react@18.3.1
+[14:34:31.469] npm warn node_modules/react
+[14:34:31.469] npm warn   react@"19.0.0" from the root project
+[14:34:31.469] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.469] npm warn
+[14:34:31.469] npm warn Could not resolve dependency:
+[14:34:31.470] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.470] npm warn node_modules/react-dom
+[14:34:31.470] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.470] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.470] npm warn ERESOLVE overriding peer dependency
+[14:34:31.470] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.471] npm warn Found: react@18.3.1
+[14:34:31.471] npm warn node_modules/react
+[14:34:31.471] npm warn   react@"19.0.0" from the root project
+[14:34:31.471] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.471] npm warn
+[14:34:31.471] npm warn Could not resolve dependency:
+[14:34:31.471] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.472] npm warn node_modules/react-dom
+[14:34:31.472] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.472] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.472] npm warn ERESOLVE overriding peer dependency
+[14:34:31.472] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.472] npm warn Found: react@18.3.1
+[14:34:31.472] npm warn node_modules/react
+[14:34:31.473] npm warn   react@"19.0.0" from the root project
+[14:34:31.473] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.473] npm warn
+[14:34:31.473] npm warn Could not resolve dependency:
+[14:34:31.473] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.473] npm warn node_modules/react-dom
+[14:34:31.473] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.474] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.479] npm warn ERESOLVE overriding peer dependency
+[14:34:31.479] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.479] npm warn Found: react@18.3.1
+[14:34:31.479] npm warn node_modules/react
+[14:34:31.481] npm warn   react@"19.0.0" from the root project
+[14:34:31.481] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.481] npm warn
+[14:34:31.481] npm warn Could not resolve dependency:
+[14:34:31.481] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.481] npm warn node_modules/react-dom
+[14:34:31.482] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.482] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.482] npm warn ERESOLVE overriding peer dependency
+[14:34:31.482] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.482] npm warn Found: react@18.3.1
+[14:34:31.482] npm warn node_modules/react
+[14:34:31.482] npm warn   react@"19.0.0" from the root project
+[14:34:31.483] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.483] npm warn
+[14:34:31.483] npm warn Could not resolve dependency:
+[14:34:31.483] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.483] npm warn node_modules/react-dom
+[14:34:31.483] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.484] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.484] npm warn ERESOLVE overriding peer dependency
+[14:34:31.484] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.484] npm warn Found: react@18.3.1
+[14:34:31.484] npm warn node_modules/react
+[14:34:31.484] npm warn   react@"19.0.0" from the root project
+[14:34:31.485] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.485] npm warn
+[14:34:31.485] npm warn Could not resolve dependency:
+[14:34:31.485] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.485] npm warn node_modules/react-dom
+[14:34:31.485] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.485] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.486] npm warn ERESOLVE overriding peer dependency
+[14:34:31.486] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.486] npm warn Found: react@18.3.1
+[14:34:31.486] npm warn node_modules/react
+[14:34:31.486] npm warn   react@"19.0.0" from the root project
+[14:34:31.486] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.487] npm warn
+[14:34:31.487] npm warn Could not resolve dependency:
+[14:34:31.487] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.487] npm warn node_modules/react-dom
+[14:34:31.487] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.487] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.487] npm warn ERESOLVE overriding peer dependency
+[14:34:31.488] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.488] npm warn Found: react@18.3.1
+[14:34:31.488] npm warn node_modules/react
+[14:34:31.488] npm warn   react@"19.0.0" from the root project
+[14:34:31.488] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.488] npm warn
+[14:34:31.489] npm warn Could not resolve dependency:
+[14:34:31.489] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.489] npm warn node_modules/react-dom
+[14:34:31.489] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.489] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.489] npm warn ERESOLVE overriding peer dependency
+[14:34:31.490] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.490] npm warn Found: react@18.3.1
+[14:34:31.490] npm warn node_modules/react
+[14:34:31.490] npm warn   react@"19.0.0" from the root project
+[14:34:31.490] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.491] npm warn
+[14:34:31.491] npm warn Could not resolve dependency:
+[14:34:31.491] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.491] npm warn node_modules/react-dom
+[14:34:31.491] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.491] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.491] npm warn ERESOLVE overriding peer dependency
+[14:34:31.492] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.492] npm warn Found: react@18.3.1
+[14:34:31.492] npm warn node_modules/react
+[14:34:31.492] npm warn   react@"19.0.0" from the root project
+[14:34:31.492] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.492] npm warn
+[14:34:31.493] npm warn Could not resolve dependency:
+[14:34:31.494] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.494] npm warn node_modules/react-dom
+[14:34:31.495] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.495] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.495] npm warn ERESOLVE overriding peer dependency
+[14:34:31.495] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.495] npm warn Found: react@18.3.1
+[14:34:31.495] npm warn node_modules/react
+[14:34:31.495] npm warn   react@"19.0.0" from the root project
+[14:34:31.496] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.496] npm warn
+[14:34:31.496] npm warn Could not resolve dependency:
+[14:34:31.496] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.496] npm warn node_modules/react-dom
+[14:34:31.496] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.497] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.497] npm warn ERESOLVE overriding peer dependency
+[14:34:31.497] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.497] npm warn Found: react@18.3.1
+[14:34:31.497] npm warn node_modules/react
+[14:34:31.497] npm warn   react@"19.0.0" from the root project
+[14:34:31.497] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.497] npm warn
+[14:34:31.498] npm warn Could not resolve dependency:
+[14:34:31.498] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.498] npm warn node_modules/react-dom
+[14:34:31.498] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.498] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.498] npm warn ERESOLVE overriding peer dependency
+[14:34:31.499] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.499] npm warn Found: react@18.3.1
+[14:34:31.499] npm warn node_modules/react
+[14:34:31.499] npm warn   react@"19.0.0" from the root project
+[14:34:31.499] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.499] npm warn
+[14:34:31.499] npm warn Could not resolve dependency:
+[14:34:31.500] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.500] npm warn node_modules/react-dom
+[14:34:31.500] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.500] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.500] npm warn ERESOLVE overriding peer dependency
+[14:34:31.500] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.501] npm warn Found: react@18.3.1
+[14:34:31.501] npm warn node_modules/react
+[14:34:31.501] npm warn   react@"19.0.0" from the root project
+[14:34:31.501] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.501] npm warn
+[14:34:31.501] npm warn Could not resolve dependency:
+[14:34:31.501] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.501] npm warn node_modules/react-dom
+[14:34:31.501] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.501] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.501] npm warn ERESOLVE overriding peer dependency
+[14:34:31.501] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.501] npm warn Found: react@18.3.1
+[14:34:31.501] npm warn node_modules/react
+[14:34:31.501] npm warn   react@"19.0.0" from the root project
+[14:34:31.501] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.502] npm warn
+[14:34:31.502] npm warn Could not resolve dependency:
+[14:34:31.502] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.502] npm warn node_modules/react-dom
+[14:34:31.502] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.502] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.502] npm warn ERESOLVE overriding peer dependency
+[14:34:31.502] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.502] npm warn Found: react@18.3.1
+[14:34:31.502] npm warn node_modules/react
+[14:34:31.502] npm warn   react@"19.0.0" from the root project
+[14:34:31.502] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.502] npm warn
+[14:34:31.502] npm warn Could not resolve dependency:
+[14:34:31.502] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.502] npm warn node_modules/react-dom
+[14:34:31.502] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.502] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.502] npm warn ERESOLVE overriding peer dependency
+[14:34:31.502] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.502] npm warn Found: react@18.3.1
+[14:34:31.502] npm warn node_modules/react
+[14:34:31.503] npm warn   react@"19.0.0" from the root project
+[14:34:31.503] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.503] npm warn
+[14:34:31.503] npm warn Could not resolve dependency:
+[14:34:31.503] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.503] npm warn node_modules/react-dom
+[14:34:31.503] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.503] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.503] npm warn ERESOLVE overriding peer dependency
+[14:34:31.503] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.503] npm warn Found: react@18.3.1
+[14:34:31.503] npm warn node_modules/react
+[14:34:31.503] npm warn   react@"19.0.0" from the root project
+[14:34:31.503] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.503] npm warn
+[14:34:31.503] npm warn Could not resolve dependency:
+[14:34:31.503] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.503] npm warn node_modules/react-dom
+[14:34:31.503] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.503] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.503] npm warn ERESOLVE overriding peer dependency
+[14:34:31.503] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.503] npm warn Found: react@18.3.1
+[14:34:31.504] npm warn node_modules/react
+[14:34:31.504] npm warn   react@"19.0.0" from the root project
+[14:34:31.504] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.504] npm warn
+[14:34:31.504] npm warn Could not resolve dependency:
+[14:34:31.504] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.504] npm warn node_modules/react-dom
+[14:34:31.504] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.504] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.504] npm warn ERESOLVE overriding peer dependency
+[14:34:31.504] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.504] npm warn Found: react@18.3.1
+[14:34:31.504] npm warn node_modules/react
+[14:34:31.504] npm warn   react@"19.0.0" from the root project
+[14:34:31.504] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.504] npm warn
+[14:34:31.504] npm warn Could not resolve dependency:
+[14:34:31.504] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.504] npm warn node_modules/react-dom
+[14:34:31.504] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.504] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.505] npm warn ERESOLVE overriding peer dependency
+[14:34:31.505] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.505] npm warn Found: react@18.3.1
+[14:34:31.505] npm warn node_modules/react
+[14:34:31.505] npm warn   react@"19.0.0" from the root project
+[14:34:31.505] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.505] npm warn
+[14:34:31.505] npm warn Could not resolve dependency:
+[14:34:31.505] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.506] npm warn node_modules/react-dom
+[14:34:31.506] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.506] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.506] npm warn ERESOLVE overriding peer dependency
+[14:34:31.506] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.506] npm warn Found: react@18.3.1
+[14:34:31.506] npm warn node_modules/react
+[14:34:31.506] npm warn   react@"19.0.0" from the root project
+[14:34:31.506] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.506] npm warn
+[14:34:31.506] npm warn Could not resolve dependency:
+[14:34:31.506] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.506] npm warn node_modules/react-dom
+[14:34:31.506] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.506] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.506] npm warn ERESOLVE overriding peer dependency
+[14:34:31.506] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.506] npm warn Found: react@18.3.1
+[14:34:31.506] npm warn node_modules/react
+[14:34:31.506] npm warn   react@"19.0.0" from the root project
+[14:34:31.506] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.506] npm warn
+[14:34:31.506] npm warn Could not resolve dependency:
+[14:34:31.506] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.506] npm warn node_modules/react-dom
+[14:34:31.506] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.506] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:31.506] npm warn ERESOLVE overriding peer dependency
+[14:34:31.506] npm warn While resolving: bacho-iliya-nextjs@1.0.0
+[14:34:31.506] npm warn Found: react@18.3.1
+[14:34:31.506] npm warn node_modules/react
+[14:34:31.506] npm warn   react@"19.0.0" from the root project
+[14:34:31.506] npm warn   48 more (@radix-ui/react-accordion, ...)
+[14:34:31.506] npm warn
+[14:34:31.506] npm warn Could not resolve dependency:
+[14:34:31.506] npm warn peer react@"^18.3.1" from react-dom@18.3.1
+[14:34:31.507] npm warn node_modules/react-dom
+[14:34:31.507] npm warn   react-dom@"19.0.0" from the root project
+[14:34:31.507] npm warn   26 more (@radix-ui/react-accordion, @radix-ui/react-label, ...)
+[14:34:37.215] npm error code E404
+[14:34:37.216] npm error 404 Not Found - GET https://registry.npmjs.org/@radix-ui%2freact-sheet - Not found
+[14:34:37.216] npm error 404
+[14:34:37.216] npm error 404  '@radix-ui/react-sheet@^1.1.2' is not in this registry.
+[14:34:37.216] npm error 404
+[14:34:37.216] npm error 404 Note that you can also install from a
+[14:34:37.217] npm error 404 tarball, folder, http url, or git url.
+[14:34:37.217] npm error A complete log of this run can be found in: /vercel/.npm/_logs/2025-07-21T11_34_27_194Z-debug-0.log
+[14:34:37.253] Error: Command "npm install" exited with 1
+[14:34:37.514] 
+[14:34:40.294] Exiting build container
