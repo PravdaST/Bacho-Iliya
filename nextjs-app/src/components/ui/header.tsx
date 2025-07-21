@@ -1,20 +1,18 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ChefHat } from "lucide-react";
 
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -23,152 +21,103 @@ export default function Header() {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
+      setIsOpen(false);
     }
   };
 
-  const navItems = [
-    { id: "about", label: "ЗА НАС" },
-    { id: "recipes", label: "РЕЦЕПТИ" },
-    { id: "products", label: "ПРОДУКТИ" },
-  ];
-
   return (
-    <motion.header 
-      className={`backdrop-blur-md border-b z-50 transition-all duration-500 ${
-        scrolled 
-          ? "shadow-xl" 
-          : ""
+    <motion.header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       }`}
-      style={{
-        backgroundColor: scrolled ? 'rgba(226, 37, 38, 0.95)' : 'rgba(226, 37, 38, 0.90)',
-        borderColor: scrolled ? 'rgba(226, 37, 38, 0.50)' : 'rgba(226, 37, 38, 0.30)'
-      }}
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <motion.div 
-            className="flex-shrink-0"
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <motion.div
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={() => scrollToSection("hero")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <motion.img
-              src="/logo.png"
-              alt="Бачо Илия"
-              className="h-8 sm:h-10 md:h-12 w-auto cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => typeof window !== "undefined" && window.scrollTo({ top: 0, behavior: 'smooth' })}
-            />
+            <ChefHat className="w-8 h-8 text-amber-600" />
+            <span className="text-xl md:text-2xl font-bold text-amber-800">
+              Бачо Илия
+            </span>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-6 xl:space-x-8">
-            {navItems.map((item, index) => (
+          <nav className="hidden md:flex items-center space-x-8">
+            {[
+              { name: "Начало", id: "hero" },
+              { name: "За нас", id: "about" },
+              { name: "Рецепти", id: "recipes" },
+              { name: "Продукти", id: "products" },
+              { name: "Квиз", id: "quiz" }
+            ].map((item) => (
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="relative text-white hover:text-white/80 font-semibold text-base lg:text-lg group px-2 py-1"
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                whileHover={{ y: -2 }}
+                className="text-gray-700 hover:text-amber-600 font-medium transition-colors duration-200"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {item.label}
-                <motion.div
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"
-                  whileHover={{ width: "100%" }}
-                />
+                {item.name}
               </motion.button>
             ))}
           </nav>
 
-          {/* Mobile menu button */}
-          <motion.div 
-            className="lg:hidden"
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-lg text-gray-700 hover:text-amber-600 hover:bg-amber-50 transition-colors duration-200"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
-            <motion.button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white p-3 relative touch-manipulation"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <AnimatePresence mode="wait">
-                {isMenuOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="h-7 w-7" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className="h-7 w-7" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
-          </motion.div>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
         {/* Mobile Navigation */}
         <AnimatePresence>
-          {isMenuOpen && (
+          {isOpen && (
             <motion.div
-              className="lg:hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
+              className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg border-t border-gray-200"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <motion.div 
-                className="px-4 pt-4 pb-6 space-y-2 border-t"
-                style={{
-                  backgroundColor: 'rgba(226, 37, 38, 0.95)',
-                  borderColor: 'rgba(226, 37, 38, 0.50)'
-                }}
-                initial={{ y: -20 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                {navItems.map((item, index) => (
+              <nav className="py-4">
+                {[
+                  { name: "Начало", id: "hero" },
+                  { name: "За нас", id: "about" },
+                  { name: "Рецепти", id: "recipes" },
+                  { name: "Продукти", id: "products" },
+                  { name: "Квиз", id: "quiz" }
+                ].map((item, index) => (
                   <motion.button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left px-4 py-4 text-white hover:text-white/80 font-semibold text-lg rounded-xl transition-all duration-200 touch-manipulation"
-                    onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'rgba(226, 37, 38, 0.50)'}
-                    onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.98 }}
+                    className="block w-full text-left px-6 py-3 text-gray-700 hover:text-amber-600 hover:bg-amber-50 font-medium transition-colors duration-200"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
                   >
-                    {item.label}
+                    {item.name}
                   </motion.button>
                 ))}
-              </motion.div>
+              </nav>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
     </motion.header>
   );
-}
+};
+
+export default Header;
