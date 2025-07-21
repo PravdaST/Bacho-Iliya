@@ -2,6 +2,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
+import { db } from '@/lib/db';
+import { quizResponses } from '@/shared/schema';
 
 // Initialize Resend only when needed
 let resend: Resend | null = null;
@@ -28,6 +30,25 @@ export async function POST(request: NextRequest) {
     const validatedData = quizSchema.parse(body);
     
     console.log('Quiz API called. Request body:', validatedData);
+
+    // Save to database
+    try {
+      const dbResult = await db.insert(quizResponses).values({
+        city: validatedData.city,
+        weapon: validatedData.weapon,
+        motivation: validatedData.motivation,
+        email: validatedData.email,
+        userAgent: request.headers.get('user-agent') || null,
+      }).returning();
+      
+      console.log('Data saved to database:', dbResult[0]);
+    } catch (dbError) {
+      console.error('Failed to save to database:', dbError);
+      return NextResponse.json({
+        success: false,
+        error: 'Грешка при записване в базата данни'
+      }, { status: 500 });
+    }
 
     // Send welcome email using Resend
     try {
