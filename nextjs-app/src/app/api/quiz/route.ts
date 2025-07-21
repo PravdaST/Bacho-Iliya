@@ -14,7 +14,7 @@ async function sendThankYouEmail(email: string, city: string) {
   const nodemailer = require('nodemailer');
 
   const transporter = nodemailer.createTransport({
-    host: 'mail.bacho-iliya.eu',
+    host: 'server6.aleana-wa.eu',
     port: 587, // STARTTLS port
     secure: false, // true for 465, false for other ports
     auth: {
@@ -22,6 +22,7 @@ async function sendThankYouEmail(email: string, city: string) {
       pass: process.env.EMAIL_PASS
     },
     tls: {
+      rejectUnauthorized: false,
       ciphers: 'SSLv3'
     }
   });
