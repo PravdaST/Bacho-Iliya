@@ -32,6 +32,8 @@ nextjs-app/
 - ✅ Tailwind CSS styling
 - ✅ Next.js App Router
 - ✅ API routes for data handling
+- ✅ Email notifications with nodemailer
+- ✅ PostgreSQL database integration
 
 ## Getting Started
 
