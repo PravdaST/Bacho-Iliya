@@ -29,7 +29,19 @@ export default function HeroSection() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')`,
+          backgroundPosition: 'center center',
+          backgroundSize: 'cover',
           transform: `translateY(${scrollY * 0.5}px)`,
+        }}
+      />
+      
+      {/* Mobile optimized background for better cow visibility */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200')`,
+          backgroundPosition: 'center 30%',
+          backgroundSize: 'cover',
         }}
       />
 
@@ -70,7 +82,7 @@ export default function HeroSection() {
       </div>
 
       {/* Background overlay with animated elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/40 z-10">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/30 z-10">
         <motion.div
           className="absolute top-20 left-10 w-2 h-2 bg-warm-beige/30 rounded-full"
           animate={{
