@@ -1,0 +1,58 @@
+[14:16:25.382] Running build in Washington, D.C., USA (East) – iad1
+[14:16:25.383] Build machine configuration: 2 cores, 8 GB
+[14:16:25.438] Cloning github.com/PravdaST/Bacho-Iliya (Branch: main, Commit: dd04653)
+[14:16:26.800] Cloning completed: 1.362s
+[14:16:27.061] Found .vercelignore
+[14:16:27.074] Removed 26 ignored files defined in .vercelignore
+[14:16:27.074]   /.git/config
+[14:16:27.074]   /.git/description
+[14:16:27.075]   /.git/FETCH_HEAD
+[14:16:27.075]   /.git/HEAD
+[14:16:27.075]   /.git/hooks/applypatch-msg.sample
+[14:16:27.075]   /.git/hooks/commit-msg.sample
+[14:16:27.075]   /.git/hooks/fsmonitor-watchman.sample
+[14:16:27.076]   /.git/hooks/post-update.sample
+[14:16:27.076]   /.git/hooks/pre-applypatch.sample
+[14:16:27.076]   /.git/hooks/pre-commit.sample
+[14:16:27.177] Restored build cache from previous deployment (AdefGCCgeVAAUy4xEGXdnPEF5yb3)
+[14:16:31.848] Running "vercel build"
+[14:16:32.519] Vercel CLI 44.4.3
+[14:16:33.055] Running "install" command: `npm install`...
+[14:16:37.448] 
+[14:16:37.450] added 18 packages, and audited 488 packages in 4s
+[14:16:37.451] 
+[14:16:37.452] 173 packages are looking for funding
+[14:16:37.452]   run `npm fund` for details
+[14:16:37.452] 
+[14:16:37.453] found 0 vulnerabilities
+[14:16:37.549] Detected Next.js version: 15.4.2
+[14:16:37.550] Running "npm run build"
+[14:16:37.717] 
+[14:16:37.719] > bacho-iliya-nextjs@1.0.0 build
+[14:16:37.720] > next build
+[14:16:37.720] 
+[14:16:38.822]    ▲ Next.js 15.4.2
+[14:16:38.823] 
+[14:16:38.929]    Creating an optimized production build ...
+[14:16:39.884]  ⚠ Found lockfile missing swc dependencies, run next locally to automatically patch
+[14:16:49.007]  ⚠ Found lockfile missing swc dependencies, run next locally to automatically patch
+[14:16:50.385]  ⚠ Found lockfile missing swc dependencies, run next locally to automatically patch
+[14:16:55.730]  ✓ Compiled successfully in 11.0s
+[14:16:55.739]    Skipping validation of types
+[14:16:55.743]    Skipping linting
+[14:16:56.112]    Collecting page data ...
+[14:16:56.314]  ⚠ Found lockfile missing swc dependencies, run next locally to automatically patch
+[14:16:56.625] Error: Missing API key. Pass it to the constructor `new Resend("re_123")`
+[14:16:56.626]     at new w (.next/server/app/api/quiz/route.js:1:6708)
+[14:16:56.626]     at 8656 (.next/server/app/api/quiz/route.js:1:66248)
+[14:16:56.626]     at c (.next/server/webpack-runtime.js:1:127)
+[14:16:56.627]     at <unknown> (.next/server/app/api/quiz/route.js:31:5790)
+[14:16:56.627]     at c.X (.next/server/webpack-runtime.js:1:2110)
+[14:16:56.627]     at <unknown> (.next/server/app/api/quiz/route.js:31:5773)
+[14:16:56.628]     at Object.<anonymous> (.next/server/app/api/quiz/route.js:31:5821)
+[14:16:56.632] 
+[14:16:56.633] > Build error occurred
+[14:16:56.640] [Error: Failed to collect page data for /api/quiz] { type: 'Error' }
+[14:16:56.673] Error: Command "npm run build" exited with 1
+[14:16:57.298] 
+[14:17:00.245] Exiting build container
