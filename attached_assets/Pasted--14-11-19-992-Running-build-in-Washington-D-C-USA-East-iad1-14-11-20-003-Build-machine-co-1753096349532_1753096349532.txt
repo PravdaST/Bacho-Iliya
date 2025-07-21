@@ -1,0 +1,49 @@
+[14:11:19.992] Running build in Washington, D.C., USA (East) – iad1
+[14:11:20.003] Build machine configuration: 2 cores, 8 GB
+[14:11:20.085] Cloning github.com/PravdaST/Bacho-Iliya (Branch: main, Commit: 21be435)
+[14:11:22.281] Cloning completed: 2.194s
+[14:11:22.423] Found .vercelignore
+[14:11:22.432] Removed 26 ignored files defined in .vercelignore
+[14:11:22.432]   /.git/config
+[14:11:22.432]   /.git/description
+[14:11:22.433]   /.git/FETCH_HEAD
+[14:11:22.433]   /.git/HEAD
+[14:11:22.433]   /.git/hooks/applypatch-msg.sample
+[14:11:22.433]   /.git/hooks/commit-msg.sample
+[14:11:22.433]   /.git/hooks/fsmonitor-watchman.sample
+[14:11:22.433]   /.git/hooks/post-update.sample
+[14:11:22.434]   /.git/hooks/pre-applypatch.sample
+[14:11:22.434]   /.git/hooks/pre-commit.sample
+[14:11:22.550] Restored build cache from previous deployment (AdefGCCgeVAAUy4xEGXdnPEF5yb3)
+[14:11:25.027] Running "vercel build"
+[14:11:25.527] Vercel CLI 44.4.3
+[14:11:25.881] Running "install" command: `npm install`...
+[14:11:27.720] 
+[14:11:27.720] up to date, audited 470 packages in 2s
+[14:11:27.721] 
+[14:11:27.721] 161 packages are looking for funding
+[14:11:27.721]   run `npm fund` for details
+[14:11:27.722] 
+[14:11:27.722] found 0 vulnerabilities
+[14:11:27.756] Detected Next.js version: 15.4.2
+[14:11:27.756] Running "npm run build"
+[14:11:27.875] 
+[14:11:27.876] > bacho-iliya-nextjs@1.0.0 build
+[14:11:27.876] > next build
+[14:11:27.876] 
+[14:11:28.805]    ▲ Next.js 15.4.2
+[14:11:28.805] 
+[14:11:28.880]    Creating an optimized production build ...
+[14:11:29.587]  ⚠ Found lockfile missing swc dependencies, run next locally to automatically patch
+[14:11:33.935] Failed to compile.
+[14:11:33.935] 
+[14:11:33.936] ./src/app/api/quiz/route.ts
+[14:11:33.936] Module not found: Can't resolve 'resend'
+[14:11:33.938] 
+[14:11:33.938] https://nextjs.org/docs/messages/module-not-found
+[14:11:33.938] 
+[14:11:33.953] 
+[14:11:33.955] > Build failed because of webpack errors
+[14:11:33.984] Error: Command "npm run build" exited with 1
+[14:11:34.268] 
+[14:11:37.089] Exiting build container
