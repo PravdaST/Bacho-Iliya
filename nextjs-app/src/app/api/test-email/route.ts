@@ -1,11 +1,10 @@
 
 import { NextRequest, NextResponse } from "next/server";
+import nodemailer from 'nodemailer';
 
 // Email sending function
 async function sendTestEmail(email: string) {
-  const nodemailer = require('nodemailer');
-
-  const transporter = nodemailer.createTransporter({
+  const transporter = nodemailer.createTransport({
     host: 'mail.bacho-iliya.eu',
     port: 587, // STARTTLS port
     secure: false, // true for 465, false for other ports
