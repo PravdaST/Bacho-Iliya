@@ -15,12 +15,18 @@ function getResendInstance() {
 export async function POST(request: NextRequest) {
   try {
     console.log('Test email API called');
+    console.log('RESEND_API_KEY present:', !!process.env.RESEND_API_KEY);
+    console.log('RESEND_API_KEY length:', process.env.RESEND_API_KEY?.length || 0);
     
     const resendInstance = getResendInstance();
     if (!resendInstance) {
       return NextResponse.json({
         success: false,
-        error: 'Resend API key not configured'
+        error: 'Resend API key not configured',
+        debug: {
+          hasApiKey: !!process.env.RESEND_API_KEY,
+          keyLength: process.env.RESEND_API_KEY?.length || 0
+        }
       }, { status: 500 });
     }
 

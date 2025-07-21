@@ -52,11 +52,15 @@ export async function POST(request: NextRequest) {
 
     // Send welcome email using Resend
     try {
+      console.log('Checking Resend API key:', process.env.RESEND_API_KEY ? 'Found' : 'Missing');
+      
       const resendInstance = getResendInstance();
       if (!resendInstance) {
         console.log('Resend not configured, skipping email');
         throw new Error('Resend API key not configured');
       }
+      
+      console.log('Attempting to send email to:', validatedData.email);
       
       const emailResult = await resendInstance.emails.send({
         from: 'Бачо Илия <onboarding@resend.dev>', // Use Resend's default sender
