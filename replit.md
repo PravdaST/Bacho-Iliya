@@ -1,8 +1,10 @@
-# Bulgarian Farm Products Webapp - Replit Documentation
+# Bulgarian Farm Products Webapp - Next.js Application
 
 ## Overview
 
-This is a React + Express.js full-stack web application for "Bacho Iliya" (Бачо Илия), a Bulgarian farm products brand. The application features a landing page with an interactive quiz system that collects user preferences about dairy products and traditional Bulgarian foods. The site promotes authentic, traditional Bulgarian dairy products with a focus on quality and heritage.
+**СТАТУС: 100% Next.js приложение, готово за Vercel deployment!**
+
+Това е Next.js 15 уеб приложение за "Бачо Илия" (българска марка за млечни продукти). Приложението включва интерактивна страница с викторина система, която събира потребителски предпочитания за млечни продукти и традиционни български ястия. Сайтът промотира автентични, традиционни български млечни продукти с акцент върху качеството и наследството.
 
 ## User Preferences
 
@@ -10,20 +12,21 @@ Preferred communication style: Simple, everyday language.
 
 ## System Architecture
 
-### Frontend Architecture
-- **Framework**: React 18 with TypeScript
-- **Routing**: Wouter (lightweight React router)
-- **Styling**: Tailwind CSS with custom design system
-- **UI Components**: Radix UI primitives with shadcn/ui components
-- **State Management**: React Hook Form for forms, TanStack Query for server state
-- **Build Tool**: Vite with custom configuration for development and production
+### Next.js Architecture
+- **Framework**: Next.js 15 with App Router и TypeScript
+- **Routing**: Next.js App Router (file-based routing)
+- **Styling**: Tailwind CSS с персонализирана дизайн система
+- **UI Components**: Radix UI primitives с shadcn/ui компоненти
+- **State Management**: React Hook Form за форми, TanStack Query за server state
+- **API Routes**: Next.js API routes в `/src/app/api/`
+- **Deployment**: Vercel-ready с standalone output
 
-### Backend Architecture
-- **Framework**: Express.js with TypeScript
-- **Module System**: ES modules (type: "module")
-- **API Design**: RESTful endpoints under `/api` prefix
-- **Request Handling**: JSON and URL-encoded form data support
-- **Error Management**: Centralized error handling middleware
+### Key Features
+- **Server-Side Rendering (SSR)**: Built-in Next.js SSR support
+- **Static Generation**: Pre-rendered pages for optimal performance
+- **API Routes**: Server functions в `/api/` endpoints
+- **Image Optimization**: Next.js Image компонент с WebP поддръжка
+- **SEO**: Built-in мета данни и structured data
 
 ### Key Components
 
