@@ -1,0 +1,64 @@
+[13:32:39.665] Running build in Washington, D.C., USA (East) – iad1
+[13:32:39.666] Build machine configuration: 2 cores, 8 GB
+[13:32:39.683] Cloning github.com/PravdaST/Bacho-Iliya (Branch: main, Commit: 613b841)
+[13:32:39.690] Skipping build cache, deployment was triggered without cache.
+[13:32:40.880] Cloning completed: 1.197s
+[13:32:40.960] Found .vercelignore
+[13:32:40.970] Removed 26 ignored files defined in .vercelignore
+[13:32:40.970]   /.git/config
+[13:32:40.970]   /.git/description
+[13:32:40.970]   /.git/FETCH_HEAD
+[13:32:40.970]   /.git/HEAD
+[13:32:40.970]   /.git/hooks/applypatch-msg.sample
+[13:32:40.970]   /.git/hooks/commit-msg.sample
+[13:32:40.971]   /.git/hooks/fsmonitor-watchman.sample
+[13:32:40.971]   /.git/hooks/post-update.sample
+[13:32:40.971]   /.git/hooks/pre-applypatch.sample
+[13:32:40.971]   /.git/hooks/pre-commit.sample
+[13:32:43.029] Running "vercel build"
+[13:32:43.527] Vercel CLI 44.4.3
+[13:32:44.205] Running "install" command: `npm install`...
+[13:33:20.186] npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+[13:33:20.218] npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+[13:33:20.469] npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+[13:33:21.437] npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+[13:33:21.573] npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+[13:33:23.778] npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+[13:33:29.145] 
+[13:33:29.145] added 467 packages, and audited 468 packages in 45s
+[13:33:29.145] 
+[13:33:29.145] 161 packages are looking for funding
+[13:33:29.145]   run `npm fund` for details
+[13:33:29.147] 
+[13:33:29.147] found 0 vulnerabilities
+[13:33:29.197] Detected Next.js version: 15.4.2
+[13:33:29.198] Running "npm run build"
+[13:33:29.310] 
+[13:33:29.310] > bacho-iliya-nextjs@1.0.0 build
+[13:33:29.311] > next build
+[13:33:29.311] 
+[13:33:29.908] Attention: Next.js now collects completely anonymous telemetry regarding usage.
+[13:33:29.908] This information is used to shape Next.js' roadmap and prioritize features.
+[13:33:29.909] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[13:33:29.909] https://nextjs.org/telemetry
+[13:33:29.909] 
+[13:33:29.970]    ▲ Next.js 15.4.2
+[13:33:29.970] 
+[13:33:30.040]    Creating an optimized production build ...
+[13:33:38.634] Failed to compile.
+[13:33:38.635] 
+[13:33:38.635] ./src/app/api/quiz/route.ts
+[13:33:38.635] Module not found: Can't resolve 'nodemailer'
+[13:33:38.635] 
+[13:33:38.636] https://nextjs.org/docs/messages/module-not-found
+[13:33:38.636] 
+[13:33:38.636] ./src/app/api/test-email/route.ts
+[13:33:38.636] Module not found: Can't resolve 'nodemailer'
+[13:33:38.636] 
+[13:33:38.637] https://nextjs.org/docs/messages/module-not-found
+[13:33:38.637] 
+[13:33:38.648] 
+[13:33:38.649] > Build failed because of webpack errors
+[13:33:38.682] Error: Command "npm run build" exited with 1
+[13:33:38.933] 
+[13:33:41.882] Exiting build container
