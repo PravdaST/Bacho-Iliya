@@ -1,0 +1,52 @@
+[14:31:10.123] Running build in Washington, D.C., USA (East) – iad1
+[14:31:10.123] Build machine configuration: 2 cores, 8 GB
+[14:31:10.136] Cloning github.com/PravdaST/Bacho-Iliya (Branch: main, Commit: f5f25f9)
+[14:31:11.072] Cloning completed: 935.000ms
+[14:31:11.151] Found .vercelignore
+[14:31:11.166] Removed 26 ignored files defined in .vercelignore
+[14:31:11.167]   /.git/config
+[14:31:11.167]   /.git/description
+[14:31:11.167]   /.git/FETCH_HEAD
+[14:31:11.167]   /.git/HEAD
+[14:31:11.167]   /.git/hooks/applypatch-msg.sample
+[14:31:11.167]   /.git/hooks/commit-msg.sample
+[14:31:11.167]   /.git/hooks/fsmonitor-watchman.sample
+[14:31:11.167]   /.git/hooks/post-update.sample
+[14:31:11.167]   /.git/hooks/pre-applypatch.sample
+[14:31:11.167]   /.git/hooks/pre-commit.sample
+[14:31:11.642] Restored build cache from previous deployment (BW65kMVUMF3RibL91H8U3SHpAoAe)
+[14:31:13.394] Running "vercel build"
+[14:31:13.989] Vercel CLI 44.4.3
+[14:31:14.290] Running "install" command: `npm install`...
+[14:31:26.646] npm error code ERESOLVE
+[14:31:26.647] npm error ERESOLVE could not resolve
+[14:31:26.647] npm error
+[14:31:26.648] npm error While resolving: bacho-iliya-nextjs@1.0.0
+[14:31:26.648] npm error Found: drizzle-orm@0.39.3
+[14:31:26.648] npm error node_modules/drizzle-orm
+[14:31:26.648] npm error   drizzle-orm@"^0.36.4" from the root project
+[14:31:26.649] npm error   peer drizzle-orm@">=0.23.13" from drizzle-zod@0.5.1
+[14:31:26.649] npm error   node_modules/drizzle-zod
+[14:31:26.649] npm error
+[14:31:26.650] npm error Could not resolve dependency:
+[14:31:26.650] npm error drizzle-orm@"^0.36.4" from the root project
+[14:31:26.650] npm error
+[14:31:26.650] npm error Conflicting peer dependency: @types/react@19.1.8
+[14:31:26.650] npm error node_modules/@types/react
+[14:31:26.650] npm error   peer @types/react@"^19" from bun-types@1.2.19
+[14:31:26.650] npm error   node_modules/bun-types
+[14:31:26.651] npm error     peerOptional bun-types@"*" from drizzle-orm@0.36.4
+[14:31:26.651] npm error     node_modules/drizzle-orm
+[14:31:26.651] npm error       drizzle-orm@"^0.36.4" from the root project
+[14:31:26.651] npm error
+[14:31:26.651] npm error Fix the upstream dependency conflict, or retry
+[14:31:26.652] npm error this command with --force or --legacy-peer-deps
+[14:31:26.652] npm error to accept an incorrect (and potentially broken) dependency resolution.
+[14:31:26.652] npm error
+[14:31:26.652] npm error
+[14:31:26.652] npm error For a full report see:
+[14:31:26.652] npm error /vercel/.npm/_logs/2025-07-21T11_31_14_523Z-eresolve-report.txt
+[14:31:26.653] npm error A complete log of this run can be found in: /vercel/.npm/_logs/2025-07-21T11_31_14_523Z-debug-0.log
+[14:31:26.688] Error: Command "npm install" exited with 1
+[14:31:26.916] 
+[14:31:29.757] Exiting build container
