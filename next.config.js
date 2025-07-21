@@ -1,8 +1,7 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    allowedDevOrigins: ["https://*.replit.dev"],
-  },
+  // Configuration for Next.js
 };
 
 module.exports = nextConfig;
