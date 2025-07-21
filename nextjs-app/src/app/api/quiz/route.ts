@@ -11,9 +11,13 @@ const db = drizzle(sql, { schema: { quizResponses } });
 
 // Email sending function
 async function sendThankYouEmail(email: string, city: string) {
+  console.log(`[VERCEL] Attempting to send email to: ${email} from city: ${city}`);
+  console.log(`[VERCEL] EMAIL_USER: ${process.env.EMAIL_USER ? 'Set' : 'Not set'}`);
+  console.log(`[VERCEL] EMAIL_PASS: ${process.env.EMAIL_PASS ? 'Set' : 'Not set'}`);
+  
   const nodemailer = require('nodemailer');
 
-  const transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransporter({
     host: 'server6.aleana-wa.eu',
     port: 587, // STARTTLS port
     secure: false, // true for 465, false for other ports
@@ -26,6 +30,16 @@ async function sendThankYouEmail(email: string, city: string) {
       ciphers: 'SSLv3'
     }
   });
+  
+  console.log('[VERCEL] Transporter created, testing connection...');
+  
+  try {
+    await transporter.verify();
+    console.log('[VERCEL] SMTP connection verified successfully');
+  } catch (verifyError: any) {
+    console.error('[VERCEL] SMTP connection verification failed:', verifyError);
+    throw new Error(`SMTP verification failed: ${verifyError.message}`);
+  }
 
   const mailOptions = {
     from: '"Бачо Илия" <contact@bacho-iliya.eu>',
@@ -72,7 +86,26 @@ async function sendThankYouEmail(email: string, city: string) {
     `
   };
 
-  return transporter.sendMail(mailOptions);
+  console.log('[VERCEL] Sending email with options:', {
+    from: mailOptions.from,
+    to: mailOptions.to,
+    subject: mailOptions.subject,
+    htmlLength: mailOptions.html.length
+  });
+  
+  try {
+    const result = await transporter.sendMail(mailOptions);
+    console.log('[VERCEL] Email sent successfully:', {
+      messageId: result.messageId,
+      response: result.response,
+      accepted: result.accepted,
+      rejected: result.rejected
+    });
+    return result;
+  } catch (sendError: any) {
+    console.error('[VERCEL] Failed to send email:', sendError);
+    throw new Error(`Email sending failed: ${sendError.message}`);
+  }
 }
 
 
