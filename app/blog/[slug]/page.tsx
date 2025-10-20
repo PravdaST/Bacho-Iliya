@@ -90,7 +90,7 @@ export default function BlogPostPage() {
       <div className="min-h-screen bg-old-paper flex items-center justify-center pt-32">
         <div className="text-center">
           <h1 className="font-handwritten text-4xl text-walnut mb-4">Статията не е намерена</h1>
-          <Link href="/blog" className="text-bulgarian-red font-serif hover:underline">
+          <Link href="/blog" className="text-bulgarian-red font-handwritten hover:underline">
             Обратно към блога
           </Link>
         </div>
@@ -111,7 +111,7 @@ export default function BlogPostPage() {
             animate={{ opacity: 1, x: 0 }}
             className="mb-8"
           >
-            <Link href="/blog" className="inline-flex items-center gap-2 text-bulgarian-red font-serif hover:underline">
+            <Link href="/blog" className="inline-flex items-center gap-2 text-bulgarian-red font-handwritten hover:underline">
               <span>←</span>
               <span>Обратно към блога</span>
             </Link>
@@ -132,7 +132,7 @@ export default function BlogPostPage() {
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-4 text-walnut/70 font-serif">
+            <div className="flex flex-wrap items-center gap-4 text-walnut/70 font-handwritten">
               <span>{post.date}</span>
               <span>•</span>
               <div className="flex items-center gap-2">
@@ -161,7 +161,7 @@ export default function BlogPostPage() {
             transition={{ delay: 0.3 }}
             className="prose prose-lg max-w-none mb-16"
           >
-            <div className="font-serif text-lg text-walnut/90 leading-relaxed">
+            <div className="font-handwritten text-2xl text-walnut/90 leading-relaxed">
               <p>{post.content}</p>
             </div>
           </motion.div>
@@ -189,10 +189,10 @@ export default function BlogPostPage() {
                   <h3 className="font-handwritten text-2xl text-walnut mb-2">
                     {relatedPost.title}
                   </h3>
-                  <p className="font-serif text-walnut/70 text-sm">
+                  <p className="font-handwritten text-walnut/70 text-base">
                     {relatedPost.excerpt}
                   </p>
-                  <div className="mt-4 flex items-center gap-2 text-bulgarian-red font-serif text-sm">
+                  <div className="mt-4 flex items-center gap-2 text-bulgarian-red font-handwritten text-base">
                     <span>Прочети повече</span>
                     <span>→</span>
                   </div>

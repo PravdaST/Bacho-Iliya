@@ -95,7 +95,7 @@ export default function BlogPage() {
             Истории от българското село
           </h1>
 
-          <p className="font-serif text-walnut text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="font-handwritten text-walnut text-xl max-w-3xl mx-auto leading-relaxed">
             Традиции, рецепти и тайни от кухнята на Бачо Илия
           </p>
         </motion.div>
@@ -144,14 +144,14 @@ export default function BlogPage() {
                   </h2>
 
                   {/* Excerpt */}
-                  <p className="font-serif text-walnut/80 text-base leading-relaxed mb-4">
+                  <p className="font-handwritten text-walnut/80 text-lg leading-relaxed mb-4">
                     {post.excerpt}
                   </p>
 
                   {/* Read More Link */}
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-2 text-bulgarian-red font-serif text-sm hover:gap-3 transition-all"
+                    className="inline-flex items-center gap-2 text-bulgarian-red font-handwritten text-base hover:gap-3 transition-all"
                   >
                     <span>Прочети повече</span>
                     <span>→</span>
