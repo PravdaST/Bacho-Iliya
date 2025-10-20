@@ -553,7 +553,7 @@ export default function Home() {
 
                 {/* Stamp corner */}
                 <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full border-4 border-bulgarian-red bg-old-paper flex items-center justify-center shadow-xl">
-                  <span className="text-sunflower text-xl">★</span>
+                  <span className="text-sunflower text-xl"></span>
                 </div>
 
                 {/* Aged corners */}
@@ -610,9 +610,7 @@ export default function Home() {
                   <span className="font-handwritten text-walnut text-lg font-semibold">Над 2,500 семейства вече участват</span>
                 </div>
 
-                {/* Star decorations */}
-                <div className="absolute -top-2 -left-2 text-sunflower text-2xl">★</div>
-                <div className="absolute -bottom-2 -right-2 text-bulgarian-red text-2xl">★</div>
+                {/* Corner decorations */}
 
                 {/* Vintage texture */}
                 <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
@@ -774,7 +772,7 @@ export default function Home() {
 
               {/* Stamp in corner */}
               <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full border-4 border-sunflower bg-old-paper flex items-center justify-center shadow-xl">
-                <span className="text-bulgarian-red text-2xl">★</span>
+                <span className="text-bulgarian-red text-2xl"></span>
               </div>
             </div>
 
@@ -861,11 +859,6 @@ export default function Home() {
                   5-годишната ми дъщеря сега иска само Бачо Илия!"
                 </p>
 
-                {/* Stars */}
-                <div className="flex gap-2 mt-3 justify-end text-sunflower text-2xl">
-                  ★★★★★
-                </div>
-
                 {/* Washi Tape at top */}
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-sunflower/30 opacity-60"
                   style={{ transform: 'translateX(-50%) rotate(-2deg)' }} />
@@ -902,11 +895,6 @@ export default function Home() {
                   Пробвах Бачо Илия и плаках като малко дете."
                 </p>
 
-                {/* Stars */}
-                <div className="flex gap-2 mt-3 justify-end text-sunflower text-2xl">
-                  ★★★★★
-                </div>
-
                 {/* Washi Tape at top-right corner */}
                 <div className="absolute -top-3 right-8 w-20 h-8 bg-bulgarian-red/20 opacity-60"
                   style={{ transform: 'rotate(12deg)' }} />
@@ -934,7 +922,7 @@ export default function Home() {
 
                 {/* Handwritten Caption */}
                 <div className="font-handwritten text-walnut text-xl mb-3">
-                  Елена, Варна 🌊
+                  Елена, Варна
                 </div>
 
                 {/* Handwritten Quote */}
@@ -943,11 +931,6 @@ export default function Home() {
                   Бачо Илия: само мляко, сол и култура.
                   Точно това искам!"
                 </p>
-
-                {/* Stars */}
-                <div className="flex gap-2 mt-3 justify-end text-sunflower text-2xl">
-                  ★★★★★
-                </div>
 
                 {/* Washi Tape diagonal */}
                 <div className="absolute -top-4 -right-2 w-28 h-8 bg-faded-denim/20 opacity-60"
@@ -968,9 +951,6 @@ export default function Home() {
               style={{ transform: 'rotate(-5deg)' }}
             >
               <div className="w-40 h-40 rounded-full border-8 border-bulgarian-red bg-old-paper shadow-2xl flex flex-col items-center justify-center relative">
-                {/* Star Decoration */}
-                <div className="absolute -top-2 text-sunflower text-3xl">★</div>
-
                 {/* Number */}
                 <div className="font-handwritten text-5xl font-bold text-bulgarian-red mb-1">98%</div>
 
@@ -994,9 +974,6 @@ export default function Home() {
               style={{ transform: 'rotate(2deg)' }}
             >
               <div className="w-40 h-40 rounded-full border-8 border-sunflower bg-old-paper shadow-2xl flex flex-col items-center justify-center relative">
-                {/* Star Decoration */}
-                <div className="absolute -top-2 text-bulgarian-red text-3xl">★</div>
-
                 {/* Number */}
                 <div className="font-handwritten text-4xl font-bold text-walnut mb-1">2,500+</div>
 
@@ -1020,9 +997,6 @@ export default function Home() {
               style={{ transform: 'rotate(5deg)' }}
             >
               <div className="w-40 h-40 rounded-full border-8 border-faded-denim bg-old-paper shadow-2xl flex flex-col items-center justify-center relative">
-                {/* Star Decoration */}
-                <div className="absolute -top-2 text-sunflower text-3xl">★</div>
-
                 {/* Number */}
                 <div className="font-handwritten text-5xl font-bold text-walnut mb-1">4.9</div>
 
