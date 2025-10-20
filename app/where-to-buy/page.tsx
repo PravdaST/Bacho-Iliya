@@ -5,6 +5,7 @@ import { useScrollAnimation, fadeInVariants, staggerContainer } from "@/hooks/us
 import { getAllStores, getAllCities, getStoresByCity, StoreLocation } from "@/lib/stores-data";
 import { useState } from "react";
 import { MapPinIcon, PhoneIcon, ClockIcon, PackageIcon } from "lucide-react";
+import { TruckIcon, SnowflakeIcon, PackageIcon as BoxIcon } from "@/components/ui/Icon";
 
 export default function WhereToBuyPage() {
   const { ref: heroRef, isInView: heroInView } = useScrollAnimation(0.1);
@@ -400,15 +401,24 @@ export default function WhereToBuyPage() {
               {/* Features */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-8">
                 <div className="bg-white/50 p-4 border-l-4 border-sunflower">
-                  <p className="font-handwritten text-xl text-walnut mb-1">🚚 Бърза доставка</p>
+                  <div className="flex items-center gap-2 mb-1">
+                    <TruckIcon className="text-sunflower" size={24} />
+                    <p className="font-handwritten text-xl text-walnut">Бърза доставка</p>
+                  </div>
                   <p className="font-serif text-sm text-walnut/70">До 24-48 часа</p>
                 </div>
                 <div className="bg-white/50 p-4 border-l-4 border-faded-denim">
-                  <p className="font-handwritten text-xl text-walnut mb-1">❄️ Хладилна логистика</p>
+                  <div className="flex items-center gap-2 mb-1">
+                    <SnowflakeIcon className="text-faded-denim" size={24} />
+                    <p className="font-handwritten text-xl text-walnut">Хладилна логистика</p>
+                  </div>
                   <p className="font-serif text-sm text-walnut/70">Перфектно състояние</p>
                 </div>
                 <div className="bg-white/50 p-4 border-l-4 border-bulgarian-red">
-                  <p className="font-handwritten text-xl text-walnut mb-1">📦 Безплатна доставка</p>
+                  <div className="flex items-center gap-2 mb-1">
+                    <BoxIcon className="text-bulgarian-red" size={24} />
+                    <p className="font-handwritten text-xl text-walnut">Безплатна доставка</p>
+                  </div>
                   <p className="font-serif text-sm text-walnut/70">При поръчка над 50 лв</p>
                 </div>
               </div>

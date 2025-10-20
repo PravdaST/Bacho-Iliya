@@ -32,7 +32,7 @@ export default function Header() {
     { type: "link", href: "/recipes", label: "РЕЦЕПТИ" },
     { type: "link", href: "/where-to-buy", label: "МАГАЗИНИ" },
     { type: "link", href: "/blog", label: "БЛОГ" },
-    { type: "scroll", id: "giveaway", label: "РАЗДАВАНЕ" },
+    { type: "link", href: "/#giveaway", label: "РАЗДАВАНЕ" },
   ];
 
   return (

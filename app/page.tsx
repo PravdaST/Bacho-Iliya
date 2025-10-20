@@ -17,6 +17,7 @@ import ImagePlaceholder from '@/components/ImagePlaceholder';
 // import VideoCarousel from '@/components/VideoCarousel'; // Temporarily disabled until video files are added
 import { motion } from 'framer-motion';
 import { Heart, Award, Clock, Users } from 'lucide-react';
+import { ClockIcon } from '@/components/ui/Icon';
 // SEO Schema Components
 import { OrganizationSchema, GiveawayEventSchema } from '@/components/seo';
 
@@ -153,6 +154,10 @@ export default function Home() {
             }}
           />
           <div className="absolute inset-0 bg-walnut/70" />
+          {/* Wood texture overlay */}
+          <div className="absolute inset-0 bg-dark-wood opacity-30 mix-blend-overlay" />
+          {/* Shevitsa pattern decoration */}
+          <div className="absolute inset-0 bg-shevitsa-zigzag opacity-20" />
         </div>
 
         {/* Opened Notebook - Two Pages */}
@@ -306,7 +311,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative">
           {/* Handwritten Title */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-16 border-shevitsa-top pt-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -617,9 +622,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-vintage-paper opacity-30" />
 
         <div className="max-w-7xl mx-auto relative">
-          {/* Handwritten Title */}
+          {/* Handwritten Title with Rushnik Border */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-16 border-rushnik pb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -651,8 +656,11 @@ export default function Home() {
                     href={`/recipes/${recipe.slug}`}
                     className="block group"
                   >
-                    {/* Aged Recipe Card */}
-                    <div className="bg-old-paper border-4 border-walnut/30 shadow-2xl p-6 relative hover:shadow-vintage-lg transition-all hover:scale-105">
+                    {/* Aged Recipe Card with Tablecloth Pattern */}
+                    <div className="bg-old-paper border-4 border-walnut/30 shadow-2xl p-6 relative hover:shadow-vintage-lg transition-all hover:scale-105 overflow-hidden">
+                      {/* Tablecloth pattern overlay */}
+                      <div className="absolute inset-0 bg-tablecloth opacity-30 pointer-events-none" />
+                      <div className="relative z-10">
                       {/* Recipe Photo with Sepia */}
                       <div className="relative h-64 md:h-80 overflow-hidden mb-6 border-2 border-walnut/20" style={{
                         filter: 'sepia(0.4) contrast(1.05)',
@@ -674,8 +682,9 @@ export default function Home() {
                         <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-walnut/60" />
 
                         {/* Time Badge - Vintage Stamp Style */}
-                        <div className="absolute top-3 right-3 bg-bulgarian-red/90 px-3 py-1 text-xs font-mono text-white font-bold tracking-wide border-2 border-white shadow-lg z-10">
-                          ⏱ {recipe.time}
+                        <div className="absolute top-3 right-3 bg-bulgarian-red/90 px-3 py-1 text-xs font-mono text-white font-bold tracking-wide border-2 border-white shadow-lg z-10 flex items-center gap-1">
+                          <ClockIcon size={14} className="text-white" />
+                          {recipe.time}
                         </div>
                       </div>
 
@@ -721,6 +730,7 @@ export default function Home() {
 
                       {/* View Recipe Indicator */}
                       <div className="absolute inset-0 bg-bulgarian-red/0 group-hover:bg-bulgarian-red/5 transition-colors pointer-events-none" />
+                      </div>
                     </div>
                   </Link>
                 </motion.div>
@@ -1104,7 +1114,7 @@ export default function Home() {
                   Попълни бързо данните си - име, email, телефон. Отнема само 2 минути. Безплатно е, без скрити условия!
                 </p>
                 <div className="flex items-center gap-2 text-faded-denim">
-                  <span className="text-3xl">⏱️</span>
+                  <ClockIcon size={32} className="text-faded-denim" />
                   <span className="font-handwritten text-xl text-walnut">Простичко като боб!</span>
                 </div>
               </div>
