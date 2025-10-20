@@ -343,6 +343,78 @@ export default function WhereToBuyPage() {
             </motion.div>
           )}
 
+          {/* Coming Soon - Online Delivery */}
+          <motion.div
+            variants={fadeInVariants}
+            className="lg:ml-16 mt-16 bg-sunflower/10 p-10 border-2 border-sunflower/40 relative overflow-hidden"
+          >
+            {/* Decorative corner elements */}
+            <div className="absolute top-0 left-0 w-20 h-20 bg-sunflower/20 rounded-full blur-2xl" />
+            <div className="absolute bottom-0 right-0 w-24 h-24 bg-faded-denim/20 rounded-full blur-2xl" />
+
+            <div className="relative z-10 text-center">
+              {/* Truck Icon */}
+              <div className="mb-4 flex justify-center">
+                <motion.div
+                  className="bg-sunflower text-walnut p-4 rounded-full shadow-lg"
+                  animate={{
+                    x: [0, 10, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </motion.div>
+              </div>
+
+              {/* Coming Soon Badge */}
+              <motion.div
+                className="inline-block bg-bulgarian-red text-white px-6 py-2 font-mono text-sm tracking-wider border-2 border-walnut/30 mb-4"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                ОЧАКВАЙТЕ СКОРО
+              </motion.div>
+
+              {/* Main Heading */}
+              <h3 className="font-handwritten text-5xl md:text-6xl text-bulgarian-red mb-4 leading-tight">
+                Скоро доставяме до вашата врата!
+              </h3>
+
+              {/* Description */}
+              <p className="font-serif text-xl md:text-2xl text-walnut/80 leading-relaxed max-w-2xl mx-auto mb-6">
+                Работим усилено, за да направим автентичните продукти на Бачо Илия достъпни навсякъде в България.
+                Следете ни за новини!
+              </p>
+
+              {/* Features */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-8">
+                <div className="bg-white/50 p-4 border-l-4 border-sunflower">
+                  <p className="font-handwritten text-xl text-walnut mb-1">🚚 Бърза доставка</p>
+                  <p className="font-serif text-sm text-walnut/70">До 24-48 часа</p>
+                </div>
+                <div className="bg-white/50 p-4 border-l-4 border-faded-denim">
+                  <p className="font-handwritten text-xl text-walnut mb-1">❄️ Хладилна логистика</p>
+                  <p className="font-serif text-sm text-walnut/70">Перфектно състояние</p>
+                </div>
+                <div className="bg-white/50 p-4 border-l-4 border-bulgarian-red">
+                  <p className="font-handwritten text-xl text-walnut mb-1">📦 Безплатна доставка</p>
+                  <p className="font-serif text-sm text-walnut/70">При поръчка над 50 лв</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Bottom note */}
           <motion.div
             variants={fadeInVariants}

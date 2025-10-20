@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Mono&family=Inter:wght@400;600;700&family=Caveat:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Mono&family=Inter:wght@400;600;700&family=Caveat:wght@400;600;700&family=Amatic+SC:wght@400;700&family=Permanent+Marker&display=swap');
 @import "tailwindcss";
 
 /* ============================================
@@ -12,6 +12,17 @@
   --color-old-paper: #F5E6D3;
   --color-walnut: #4A3728;
   --color-faded-denim: #4682B4;
+
+  /* Bulgarian Village Earth Tones (NEW) */
+  --color-terracotta: #CC6633;        /* Теракота за селски топлина */
+  --color-clay: #8B6F47;               /* Глина за земност */
+  --color-ochre: #CC7722;              /* Охра за винтидж */
+  --color-olive-green: #6B8E23;        /* Маслинено за природа */
+  --color-wheat: #F5DEB3;              /* Пшеничено */
+  --color-barn-red: #B22222;           /* Хамбар червено */
+  --color-cream-white: #FAF0E6;        /* Кремаво бяло */
+  --color-dark-wood: #5D4E37;          /* Тъмно дърво */
+  --color-light-wood: #D2B48C;         /* Светло дърво */
 
   /* Legacy colors (backward compatibility) */
   --color-cream: #F5F5DC;
@@ -37,6 +48,8 @@
   --font-family-mono: 'PT Mono', 'Courier New', monospace;
   --font-family-sans: Inter, system-ui, -apple-system, sans-serif;
   --font-family-handwritten: Caveat, cursive;
+  --font-family-village: 'Amatic SC', 'Permanent Marker', cursive;  /* Автентичен селски font */
+  --font-family-rustic: 'Permanent Marker', cursive;                /* Груб рустик font */
   --font-family-playfair: 'PT Serif', 'Playfair Display', serif;
 
   /* Custom Box Shadows */
@@ -107,6 +120,57 @@ html {
                 repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(200, 180, 160, 0.1) 10px, rgba(200, 180, 160, 0.1) 20px);
   }
 
+  /* Bulgarian Traditional Patterns */
+  .bg-shevitsa-zigzag {
+    background: linear-gradient(135deg, transparent 25%, var(--color-bulgarian-red) 25%, var(--color-bulgarian-red) 50%, transparent 50%, transparent 75%, var(--color-bulgarian-red) 75%, var(--color-bulgarian-red));
+    background-size: 20px 20px;
+    opacity: 0.1;
+  }
+
+  .bg-shevitsa-diamond {
+    background: repeating-conic-gradient(from 45deg at 50% 50%, transparent 0deg, var(--color-sunflower) 90deg, transparent 180deg, var(--color-bulgarian-red) 270deg);
+    background-size: 40px 40px;
+    opacity: 0.08;
+  }
+
+  .bg-cross-stitch {
+    background-image: repeating-linear-gradient(0deg, var(--color-terracotta) 0px, transparent 1px, transparent 8px),
+                      repeating-linear-gradient(90deg, var(--color-terracotta) 0px, transparent 1px, transparent 8px);
+    opacity: 0.15;
+  }
+
+  .bg-tablecloth {
+    background-image: repeating-linear-gradient(0deg, var(--color-cream-white) 0px, transparent 2px, transparent 30px, var(--color-cream-white) 32px),
+                      repeating-linear-gradient(90deg, var(--color-cream-white) 0px, transparent 2px, transparent 30px, var(--color-cream-white) 32px);
+    background-color: var(--color-wheat);
+  }
+
+  /* Wood Textures */
+  .bg-light-wood {
+    background: linear-gradient(90deg, #D2B48C 0%, #C9A87C 10%, #D2B48C 20%, #BFA77A 30%, #D2B48C 40%, #C9A87C 50%, #D2B48C 60%, #BFA77A 70%, #D2B48C 80%, #C9A87C 90%, #D2B48C 100%);
+    background-size: 400px 100%;
+  }
+
+  .bg-dark-wood {
+    background: linear-gradient(90deg, #5D4E37 0%, #6B5C42 10%, #5D4E37 20%, #534433 30%, #5D4E37 40%, #6B5C42 50%, #5D4E37 60%, #534433 70%, #5D4E37 80%, #6B5C42 90%, #5D4E37 100%);
+    background-size: 400px 100%;
+  }
+
+  .bg-barn-wood {
+    background: repeating-linear-gradient(0deg, var(--color-barn-red) 0px, var(--color-barn-red) 120px, #A01F1F 120px, #A01F1F 121px);
+  }
+
+  /* Textile Borders (for headers/dividers) */
+  .border-shevitsa-top {
+    border-top: 8px solid var(--color-bulgarian-red);
+    border-image: repeating-linear-gradient(90deg, var(--color-bulgarian-red) 0px, var(--color-bulgarian-red) 10px, var(--color-sunflower) 10px, var(--color-sunflower) 20px, var(--color-bulgarian-red) 20px) 8;
+  }
+
+  .border-rushnik {
+    border-top: 12px solid var(--color-cream-white);
+    border-image: repeating-linear-gradient(90deg, var(--color-bulgarian-red) 0px, var(--color-bulgarian-red) 8px, var(--color-sunflower) 8px, var(--color-sunflower) 16px, var(--color-olive-green) 16px, var(--color-olive-green) 24px) 12;
+  }
+
   .shadow-vintage {
     box-shadow: var(--shadow-vintage);
   }
@@ -124,73 +188,107 @@ html {
   /* 3 weights only: 400 (regular), 600 (semibold), 700 (bold) */
 
   .heading-display {
-    font-family: var(--font-family-serif);
-    font-size: 48px;
+    font-family: var(--font-family-village);  /* Using village font for authentic feel */
+    font-size: 56px;
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 768px) {
+    .heading-display {
+      font-size: 72px;
+    }
   }
 
   .heading-h1 {
-    font-family: var(--font-family-serif);
+    font-family: var(--font-family-village);  /* Using village font */
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .heading-h1 {
+      font-size: 56px;
+    }
+  }
+
+  .heading-h2 {
+    font-family: var(--font-family-village);  /* Using village font */
     font-size: 32px;
     font-weight: 700;
     line-height: 1.3;
   }
 
   @media (min-width: 768px) {
-    .heading-h1 {
-      font-size: 48px;
-    }
-  }
-
-  .heading-h2 {
-    font-family: var(--font-family-serif);
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.4;
-  }
-
-  @media (min-width: 768px) {
     .heading-h2 {
-      font-size: 32px;
+      font-size: 40px;
     }
   }
 
   .heading-h3 {
-    font-family: var(--font-family-serif);
-    font-size: 24px;
+    font-family: var(--font-family-handwritten);
+    font-size: 28px;
     font-weight: 600;
     line-height: 1.4;
   }
 
-  /* Body Text */
+  @media (min-width: 768px) {
+    .heading-h3 {
+      font-size: 32px;
+    }
+  }
+
+  /* Body Text - Enhanced for better readability */
   .body-large {
-    font-family: var(--font-family-sans);
-    font-size: 18px;
+    font-family: var(--font-family-serif);
+    font-size: 20px;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.7;
+  }
+
+  @media (min-width: 768px) {
+    .body-large {
+      font-size: 22px;
+      line-height: 1.8;
+    }
   }
 
   .body-base {
-    font-family: var(--font-family-sans);
-    font-size: 16px;
+    font-family: var(--font-family-serif);
+    font-size: 18px;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.7;
+  }
+
+  @media (min-width: 768px) {
+    .body-base {
+      font-size: 20px;
+      line-height: 1.8;
+    }
   }
 
   .body-small {
     font-family: var(--font-family-sans);
     font-size: 16px;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   /* Special Typography */
   .text-handwritten {
     font-family: var(--font-family-handwritten);
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .text-village {
+    font-family: var(--font-family-village);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
   }
 
   .text-mono {
@@ -199,21 +297,21 @@ html {
     font-weight: 400;
   }
 
-  /* Spacing Rhythm - 8px base unit */
+  /* Bulgarian Village Spacing - More generous breathing room */
   .section-spacing {
-    @apply py-12 md:py-20;
+    @apply py-16 md:py-28;
   }
 
   .section-spacing-tight {
-    @apply py-8 md:py-12;
+    @apply py-12 md:py-20;
   }
 
   .content-spacing {
-    @apply space-y-6 md:space-y-8;
+    @apply space-y-8 md:space-y-12;
   }
 
   .content-spacing-tight {
-    @apply space-y-4 md:space-y-6;
+    @apply space-y-6 md:space-y-8;
   }
 
   /* Container Widths */
