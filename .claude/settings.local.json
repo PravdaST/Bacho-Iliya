@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__context7__resolve-library-id",
+      "Bash(git remote add origin https://github.com/PravdaST/Bacho-Iliya.git)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

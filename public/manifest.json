@@ -1,0 +1,52 @@
+{
+  "name": "Бачо Илия - Революцията на истинския вкус",
+  "short_name": "Бачо Илия",
+  "description": "Автентични български млечни продукти и деликатеси",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8B4513",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["food", "shopping", "lifestyle"],
+  "lang": "bg",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "Кулинарни рецепти",
+      "short_name": "Рецепти",
+      "description": "Традиционни рецепти за български млечни продукти",
+      "url": "/#recipes",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Наши продукти",
+      "short_name": "Продукти",
+      "description": "Автентични български млечни продукти",
+      "url": "/#products",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
