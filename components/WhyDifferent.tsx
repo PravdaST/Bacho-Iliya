@@ -44,7 +44,7 @@ export default function WhyDifferent() {
           <h2 className="font-handwritten text-bulgarian-red mb-4" style={{ fontSize: '52px', lineHeight: 1.2 }}>
             Защо хиляди семейства<br className="hidden md:block" /> избират Бачо Илия?
           </h2>
-          <p className="font-serif text-walnut text-xl max-w-2xl mx-auto">
+          <p className="font-handwritten text-walnut text-xl max-w-2xl mx-auto">
             Три неща които правят продуктите ни различни
           </p>
         </motion.div>

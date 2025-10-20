@@ -171,7 +171,7 @@ export default function RegisterPage() {
             <h1 className="font-handwritten text-4xl md:text-5xl text-bulgarian-red mb-2">
               Формуляр за регистрация
             </h1>
-            <p className="font-serif text-walnut text-lg">
+            <p className="font-handwritten text-walnut text-lg">
               Попълнете внимателно всички полета
             </p>
           </div>
@@ -268,14 +268,14 @@ export default function RegisterPage() {
               type="button"
               onClick={handleBack}
               disabled={isSubmitting}
-              className="flex-1 px-8 py-4 border-4 border-walnut/40 text-walnut font-serif font-bold text-lg hover:bg-walnut/5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-8 py-4 border-4 border-walnut/40 text-walnut font-handwritten font-bold text-lg hover:bg-walnut/5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               ← НАЗАД
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 px-8 py-4 bg-bulgarian-red border-4 border-walnut/40 text-white font-serif font-bold text-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-xl relative overflow-hidden"
+              className="flex-1 px-8 py-4 bg-bulgarian-red border-4 border-walnut/40 text-white font-handwritten font-bold text-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-xl relative overflow-hidden"
             >
               {/* Vintage texture */}
               <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />

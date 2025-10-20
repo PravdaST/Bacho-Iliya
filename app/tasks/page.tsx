@@ -141,7 +141,7 @@ export default function TasksPage() {
             <h1 className="font-handwritten text-4xl md:text-5xl text-bulgarian-red mb-2">
               Списък със задачи
             </h1>
-            <p className="font-serif text-walnut text-lg mb-3">
+            <p className="font-handwritten text-walnut text-lg mb-3">
               Здравей, {userData.name}! 👋
             </p>
             <p className="font-handwritten text-xl text-walnut">
@@ -156,7 +156,7 @@ export default function TasksPage() {
               <p className="font-mono text-lg md:text-xl font-bold text-bulgarian-red">{entryId || 'Loading...'}</p>
               <button
                 onClick={handleCopyCode}
-                className="px-4 py-2 bg-bulgarian-red border-2 border-walnut/30 text-white text-sm font-serif font-bold hover:scale-105 transition-all inline-flex items-center gap-2 flex-shrink-0"
+                className="px-4 py-2 bg-bulgarian-red border-2 border-walnut/30 text-white text-sm font-handwritten font-bold hover:scale-105 transition-all inline-flex items-center gap-2 flex-shrink-0"
               >
                 {copied ? '✓ КОПИРАН' : 'КОПИРАЙ'}
               </button>
@@ -208,7 +208,7 @@ export default function TasksPage() {
                   <h3 className="font-handwritten text-2xl text-walnut mb-1">
                     БОНУС Участия! 🎁
                   </h3>
-                  <p className="font-serif text-sm text-walnut/70">
+                  <p className="font-handwritten text-sm text-walnut/70">
                     Всяко споделяне = допълнително участие
                   </p>
                 </div>
@@ -245,7 +245,7 @@ export default function TasksPage() {
             <button
               type="button"
               onClick={handleBack}
-              className="flex-1 px-8 py-4 border-4 border-walnut/40 text-walnut font-serif font-bold text-lg hover:bg-walnut/5 transition-all"
+              className="flex-1 px-8 py-4 border-4 border-walnut/40 text-walnut font-handwritten font-bold text-lg hover:bg-walnut/5 transition-all"
             >
               ← НАЗАД
             </button>
@@ -253,7 +253,7 @@ export default function TasksPage() {
               onClick={handleContinue}
               disabled={!allCompleted}
               className={`
-                flex-1 px-8 py-4 border-4 border-walnut/40 font-serif font-bold text-lg transition-all shadow-xl relative overflow-hidden
+                flex-1 px-8 py-4 border-4 border-walnut/40 font-handwritten font-bold text-lg transition-all shadow-xl relative overflow-hidden
                 ${
                   allCompleted
                     ? 'bg-bulgarian-red text-white hover:scale-105'

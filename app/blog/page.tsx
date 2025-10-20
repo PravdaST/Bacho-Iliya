@@ -174,7 +174,7 @@ export default function BlogPage() {
             <p className="font-handwritten text-2xl text-walnut mb-2">
               Скоро още истории!
             </p>
-            <p className="font-serif text-walnut/70">
+            <p className="font-handwritten text-walnut/70">
               Работим по нови статии за вас. Следете блога за още рецепти, традиции и новини от Бачо Илия.
             </p>
           </motion.div>

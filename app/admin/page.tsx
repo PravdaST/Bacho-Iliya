@@ -183,7 +183,7 @@ export default function AdminPage() {
             <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
               <Lock className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-2xl font-serif font-bold text-amber-900" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h1 className="text-2xl font-handwritten font-bold text-amber-900" style={{ fontFamily: 'Playfair Display, serif' }}>
               Админ Панел
             </h1>
             <p className="text-amber-700 mt-2">Бачо Илия - Раздаване</p>
@@ -232,7 +232,7 @@ export default function AdminPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border-2 border-amber-200">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-serif font-bold text-amber-900" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <h1 className="text-3xl font-handwritten font-bold text-amber-900" style={{ fontFamily: 'Playfair Display, serif' }}>
                 Админ Панел
               </h1>
               <p className="text-amber-700 mt-1">Управление на раздаването</p>
@@ -421,7 +421,7 @@ export default function AdminPage() {
                 <div className="w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Trophy className="w-10 h-10 text-white" />
                 </div>
-                <h2 className="text-3xl font-serif font-bold text-amber-900 mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h2 className="text-3xl font-handwritten font-bold text-amber-900 mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
                   Победител!
                 </h2>
                 <p className="text-amber-700">Поздравления на спечелилия!</p>

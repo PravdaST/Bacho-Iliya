@@ -84,7 +84,7 @@ export default function LiveCounter({ className = '' }: LiveCounterProps) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="text-2xl font-serif font-bold text-amber-900 tabular-nums"
+              className="text-2xl font-handwritten font-bold text-amber-900 tabular-nums"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
               {count.toLocaleString('bg-BG')}

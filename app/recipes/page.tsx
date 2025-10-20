@@ -24,7 +24,7 @@ export default function RecipesPage() {
           <h1 className="font-handwritten text-bulgarian-red mb-4" style={{ fontSize: '56px', lineHeight: 1.2 }}>
             Бабините рецепти
           </h1>
-          <p className="font-serif text-walnut text-xl max-w-3xl mx-auto">
+          <p className="font-handwritten text-walnut text-xl max-w-3xl mx-auto">
             Открийте вкуса на детството с автентични рецепти, направени с натурални
             млечни продукти - точно както бабите правеха преди 30+ години.
           </p>
@@ -207,7 +207,7 @@ export default function RecipesPage() {
               </p>
               <Link
                 href="/"
-                className="inline-block bg-bulgarian-red text-white px-10 py-5 font-serif text-xl md:text-2xl font-bold uppercase shadow-2xl hover:scale-105 transition-all border-4 border-dashed border-white relative overflow-hidden group"
+                className="inline-block bg-bulgarian-red text-white px-10 py-5 font-handwritten text-xl md:text-2xl font-bold uppercase shadow-2xl hover:scale-105 transition-all border-4 border-dashed border-white relative overflow-hidden group"
               >
                 <span className="relative z-10">Участвай в Раздаването →</span>
                 {/* Hover effect */}

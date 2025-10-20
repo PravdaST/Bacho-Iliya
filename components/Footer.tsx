@@ -159,7 +159,7 @@ export default function Footer() {
           variants={fadeInVariants}
         >
           <motion.p
-            className="font-serif text-white/60 mb-3 sm:mb-4 text-sm sm:text-base"
+            className="font-handwritten text-white/60 mb-3 sm:mb-4 text-sm sm:text-base"
           >
             © 2025 Бачо Илия. Всички права запазени. Движението тепърва започва.
           </motion.p>

@@ -73,7 +73,7 @@ export default function RecipePage({ params }: Props) {
               <div className="mb-6">
                 <Link
                   href="/recipes"
-                  className="font-serif text-walnut hover:text-bulgarian-red transition-colors inline-flex items-center gap-2"
+                  className="font-handwritten text-walnut hover:text-bulgarian-red transition-colors inline-flex items-center gap-2"
                 >
                   ← Всички рецепти
                 </Link>
@@ -333,7 +333,7 @@ export default function RecipePage({ params }: Props) {
                 {recipe.storyBg}
               </p>
               <div className="mt-8 pt-6 border-t border-dashed border-walnut/30">
-                <p className="font-serif text-walnut text-lg">
+                <p className="font-handwritten text-walnut text-lg">
                   Всички продукти са направени по традиционни рецепти, без консерванти
                   и химия, точно както бабите правеха преди 30+ години. Вкусът от детството
                   на вашата трапеза!
@@ -378,14 +378,14 @@ export default function RecipePage({ params }: Props) {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="/"
-                    className="inline-block bg-bulgarian-red text-white px-10 py-5 font-serif text-xl font-bold uppercase shadow-2xl hover:scale-105 transition-all border-4 border-dashed border-bulgarian-red relative overflow-hidden group"
+                    className="inline-block bg-bulgarian-red text-white px-10 py-5 font-handwritten text-xl font-bold uppercase shadow-2xl hover:scale-105 transition-all border-4 border-dashed border-bulgarian-red relative overflow-hidden group"
                   >
                     <span className="relative z-10">Участвай в Раздаването →</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-bulgarian-red via-sunflower/20 to-bulgarian-red opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </Link>
                   <Link
                     href="/recipes"
-                    className="inline-block bg-white border-4 border-walnut text-walnut px-10 py-5 font-serif text-xl font-bold uppercase hover:bg-old-paper transition-all hover:scale-105 shadow-xl"
+                    className="inline-block bg-white border-4 border-walnut text-walnut px-10 py-5 font-handwritten text-xl font-bold uppercase hover:bg-old-paper transition-all hover:scale-105 shadow-xl"
                   >
                     Още Рецепти
                   </Link>

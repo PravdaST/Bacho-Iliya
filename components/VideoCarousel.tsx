@@ -89,7 +89,7 @@ export default function VideoCarousel() {
   const duplicatedVideos = [...videos, ...videos];
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-traditional-red to-warm-red relative overflow-hidden">
+    <section className="py-16 px-4 bg-gradient-to-br from-bulgarian-red to-bulgarian-red relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-12"

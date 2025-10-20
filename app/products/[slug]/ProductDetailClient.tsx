@@ -121,7 +121,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 </motion.h1>
 
                 <motion.p
-                  className="font-serif text-lg text-walnut/80 leading-relaxed mb-8"
+                  className="font-handwritten text-lg text-walnut/80 leading-relaxed mb-8"
                   variants={fadeInVariants}
                 >
                   {product.fullDescription}
@@ -212,7 +212,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 {product.ingredients.map((ingredient, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-bulgarian-red flex-shrink-0 mt-1" />
-                    <span className="font-serif text-walnut/80 leading-relaxed">
+                    <span className="font-handwritten text-walnut/80 leading-relaxed">
                       {ingredient}
                     </span>
                   </li>
@@ -235,7 +235,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   <p className="font-mono text-xs tracking-wider text-walnut/60 mb-2">
                     НАЧИН НА СЪХРАНЕНИЕ
                   </p>
-                  <p className="font-serif text-walnut/80 leading-relaxed">
+                  <p className="font-handwritten text-walnut/80 leading-relaxed">
                     {product.storage}
                   </p>
                 </div>
@@ -244,7 +244,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   <p className="font-mono text-xs tracking-wider text-walnut/60 mb-2">
                     ГОДНОСТ
                   </p>
-                  <p className="font-serif text-walnut/80 leading-relaxed">
+                  <p className="font-handwritten text-walnut/80 leading-relaxed">
                     {product.shelfLife}
                   </p>
                 </div>
@@ -282,36 +282,36 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 </thead>
                 <tbody>
                   <tr className="border-b-2 border-walnut/20">
-                    <td className="px-6 py-4 font-serif text-walnut/80">Енергийна стойност</td>
+                    <td className="px-6 py-4 font-handwritten text-walnut/80">Енергийна стойност</td>
                     <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.energy}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20">
-                    <td className="px-6 py-4 font-serif text-walnut/80">Мазнини</td>
+                    <td className="px-6 py-4 font-handwritten text-walnut/80">Мазнини</td>
                     <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.fat}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20 bg-old-paper/30">
-                    <td className="px-6 py-4 pl-12 font-serif text-sm text-walnut/70">от които наситени</td>
+                    <td className="px-6 py-4 pl-12 font-handwritten text-sm text-walnut/70">от които наситени</td>
                     <td className="px-6 py-4 text-right font-mono text-sm text-walnut/80">{product.nutritionPer100g.saturatedFat}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20">
-                    <td className="px-6 py-4 font-serif text-walnut/80">Въглехидрати</td>
+                    <td className="px-6 py-4 font-handwritten text-walnut/80">Въглехидрати</td>
                     <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.carbohydrates}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20 bg-old-paper/30">
-                    <td className="px-6 py-4 pl-12 font-serif text-sm text-walnut/70">от които захари</td>
+                    <td className="px-6 py-4 pl-12 font-handwritten text-sm text-walnut/70">от които захари</td>
                     <td className="px-6 py-4 text-right font-mono text-sm text-walnut/80">{product.nutritionPer100g.sugars}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20">
-                    <td className="px-6 py-4 font-serif text-walnut/80">Белтъчини</td>
+                    <td className="px-6 py-4 font-handwritten text-walnut/80">Белтъчини</td>
                     <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.protein}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 font-serif text-walnut/80">Сол</td>
+                    <td className="px-6 py-4 font-handwritten text-walnut/80">Сол</td>
                     <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.salt}</td>
                   </tr>
                   {product.nutritionPer100g.calcium && (
                     <tr className="bg-old-paper/30">
-                      <td className="px-6 py-4 font-serif text-walnut/80">Калций</td>
+                      <td className="px-6 py-4 font-handwritten text-walnut/80">Калций</td>
                       <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.calcium}</td>
                     </tr>
                   )}
@@ -344,7 +344,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   className="bg-white p-6 shadow-lg border-l-4 border-bulgarian-red relative"
                 >
                   <div className="absolute top-4 right-4 w-2 h-2 bg-sunflower rounded-full" />
-                  <p className="font-serif text-walnut/80 leading-relaxed">
+                  <p className="font-handwritten text-walnut/80 leading-relaxed">
                     {feature}
                   </p>
                 </motion.div>
@@ -379,7 +379,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   >
                     <div className="absolute -top-3 left-8 w-20 h-6 bg-faded-denim/40 border-l-2 border-r-2 border-faded-denim/60" />
 
-                    <p className="font-serif text-walnut/80 italic leading-relaxed mb-4 text-lg">
+                    <p className="font-handwritten text-walnut/80 italic leading-relaxed mb-4 text-lg">
                       "{testimonial.quote}"
                     </p>
 

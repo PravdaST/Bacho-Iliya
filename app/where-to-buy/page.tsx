@@ -77,7 +77,7 @@ export default function WhereToBuyPage() {
           </motion.h1>
 
           <motion.p
-            className="font-serif text-xl md:text-2xl text-walnut/80 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="font-handwritten text-xl md:text-2xl text-walnut/80 mb-8 max-w-3xl mx-auto leading-relaxed"
             variants={fadeInVariants}
           >
             Бачо Илия е навсякъде в България. Открий най-близкия до теб магазин и се насладѝ на истинския вкус.
@@ -122,7 +122,7 @@ export default function WhereToBuyPage() {
             </h2>
 
             {/* Description */}
-            <p className="font-serif text-xl md:text-2xl text-walnut/80 leading-relaxed max-w-2xl mx-auto mb-10">
+            <p className="font-handwritten text-xl md:text-2xl text-walnut/80 leading-relaxed max-w-2xl mx-auto mb-10">
               Работим усилено, за да направим автентичните продукти на Бачо Илия достъпни навсякъде в България. Следете ни за новини!
             </p>
 
@@ -133,21 +133,21 @@ export default function WhereToBuyPage() {
                   <TruckIcon className="text-sunflower" size={28} />
                   <p className="font-handwritten text-2xl text-walnut">Бърза доставка</p>
                 </div>
-                <p className="font-serif text-walnut/70">До 24-48 часа</p>
+                <p className="font-handwritten text-walnut/70">До 24-48 часа</p>
               </div>
               <div className="bg-white/60 p-6 border-l-4 border-faded-denim">
                 <div className="flex items-center gap-3 mb-2">
                   <SnowflakeIcon className="text-faded-denim" size={28} />
                   <p className="font-handwritten text-2xl text-walnut">Хладилна логистика</p>
                 </div>
-                <p className="font-serif text-walnut/70">Перфектно състояние</p>
+                <p className="font-handwritten text-walnut/70">Перфектно състояние</p>
               </div>
               <div className="bg-white/60 p-6 border-l-4 border-bulgarian-red">
                 <div className="flex items-center gap-3 mb-2">
                   <BoxIcon className="text-bulgarian-red" size={28} />
                   <p className="font-handwritten text-2xl text-walnut">Безплатна доставка</p>
                 </div>
-                <p className="font-serif text-walnut/70">При поръчка над 50 лв</p>
+                <p className="font-handwritten text-walnut/70">При поръчка над 50 лв</p>
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function WhereToBuyPage() {
             <h2 className="font-handwritten text-4xl md:text-5xl text-walnut mb-4">
               Намери ни в цяла България
             </h2>
-            <p className="font-serif text-lg text-walnut/70">
+            <p className="font-handwritten text-lg text-walnut/70">
               Открий най-близкия до теб магазин
             </p>
           </div>
@@ -280,7 +280,7 @@ export default function WhereToBuyPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Име, град или адрес..."
-                className="w-full px-5 py-3 border-2 border-walnut/30 bg-white font-serif text-lg text-walnut focus:outline-none focus:border-bulgarian-red transition-colors duration-300"
+                className="w-full px-5 py-3 border-2 border-walnut/30 bg-white font-handwritten text-lg text-walnut focus:outline-none focus:border-bulgarian-red transition-colors duration-300"
               />
             </div>
           </div>
@@ -327,7 +327,7 @@ export default function WhereToBuyPage() {
                     <div className="flex items-start gap-3">
                       <MapPinIcon className="w-5 h-5 text-bulgarian-red flex-shrink-0 mt-1" />
                       <div>
-                        <p className="font-serif text-walnut/80 leading-relaxed">
+                        <p className="font-handwritten text-walnut/80 leading-relaxed">
                           {store.address}
                         </p>
                         <p className="font-mono text-sm text-walnut/60 tracking-wider mt-1">
@@ -339,7 +339,7 @@ export default function WhereToBuyPage() {
                     {/* Working hours */}
                     <div className="flex items-start gap-3">
                       <ClockIcon className="w-5 h-5 text-bulgarian-red flex-shrink-0 mt-1" />
-                      <p className="font-serif text-walnut/80 leading-relaxed">
+                      <p className="font-handwritten text-walnut/80 leading-relaxed">
                         {store.workingHours}
                       </p>
                     </div>
@@ -360,7 +360,7 @@ export default function WhereToBuyPage() {
                     {/* Products count */}
                     <div className="flex items-start gap-3 pt-3 border-t border-walnut/20">
                       <PackageIcon className="w-5 h-5 text-bulgarian-red flex-shrink-0 mt-1" />
-                      <p className="font-serif text-sm text-walnut/70">
+                      <p className="font-handwritten text-sm text-walnut/70">
                         {store.products.length} продукта от Бачо Илия
                       </p>
                     </div>
@@ -368,7 +368,7 @@ export default function WhereToBuyPage() {
                     {/* Description */}
                     {store.description && (
                       <div className="mt-4 pt-4 border-t border-walnut/20">
-                        <p className="font-serif text-sm text-walnut/70 italic leading-relaxed">
+                        <p className="font-handwritten text-sm text-walnut/70 italic leading-relaxed">
                           {store.description}
                         </p>
                       </div>
@@ -390,7 +390,7 @@ export default function WhereToBuyPage() {
               <p className="font-handwritten text-2xl text-walnut/80 mb-2">
                 Няма намерени магазини
               </p>
-              <p className="font-serif text-walnut/70">
+              <p className="font-handwritten text-walnut/70">
                 Опитай друг град или промени търсенето
               </p>
             </div>
@@ -407,7 +407,7 @@ export default function WhereToBuyPage() {
           <p className="font-handwritten text-3xl md:text-4xl text-walnut mb-4 leading-relaxed">
             Не можеш да намериш продуктите ни в твоя град?
           </p>
-          <p className="font-serif text-xl text-walnut/80 leading-relaxed mb-6">
+          <p className="font-handwritten text-xl text-walnut/80 leading-relaxed mb-6">
             Свържи се с нас и ние ще направим всичко възможно да ги доставим до теб.
             Истинският вкус трябва да бъде достъпен за всички!
           </p>

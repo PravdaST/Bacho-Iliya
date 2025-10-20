@@ -103,7 +103,7 @@ export default function RecentEntries({ className = '' }: RecentEntriesProps) {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
             >
-              <p className="font-serif font-semibold text-amber-900 truncate" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <p className="font-handwritten font-semibold text-amber-900 truncate" style={{ fontFamily: 'Playfair Display, serif' }}>
                 {displayName}
               </p>
               <p className="text-sm text-amber-700">

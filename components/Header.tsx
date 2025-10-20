@@ -86,7 +86,7 @@ export default function Header() {
               item.type === "link" ? (
                 <Link key={item.href} href={item.href!}>
                   <motion.div
-                    className="relative text-white hover:text-old-paper font-serif text-base lg:text-lg font-bold group px-2 py-1 cursor-pointer tracking-wide"
+                    className="relative text-white hover:text-old-paper font-handwritten text-base lg:text-lg font-bold group px-2 py-1 cursor-pointer tracking-wide"
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -103,7 +103,7 @@ export default function Header() {
                 <motion.button
                   key={item.label}
                   onClick={() => scrollToSection((item as any).id)}
-                  className="relative text-white hover:text-old-paper font-serif text-base lg:text-lg font-bold group px-2 py-1 tracking-wide"
+                  className="relative text-white hover:text-old-paper font-handwritten text-base lg:text-lg font-bold group px-2 py-1 tracking-wide"
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -185,7 +185,7 @@ export default function Header() {
                   item.type === "link" ? (
                     <Link key={item.href} href={item.href!}>
                       <motion.div
-                        className="block w-full text-left px-4 py-4 text-white hover:text-old-paper font-serif text-lg font-bold tracking-wide border-2 border-transparent hover:border-old-paper/30 transition-all duration-200 touch-manipulation relative z-10"
+                        className="block w-full text-left px-4 py-4 text-white hover:text-old-paper font-handwritten text-lg font-bold tracking-wide border-2 border-transparent hover:border-old-paper/30 transition-all duration-200 touch-manipulation relative z-10"
                         initial={{ x: -20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
@@ -200,7 +200,7 @@ export default function Header() {
                     <motion.button
                       key={item.label}
                       onClick={() => scrollToSection((item as any).id)}
-                      className="block w-full text-left px-4 py-4 text-white hover:text-old-paper font-serif text-lg font-bold tracking-wide border-2 border-transparent hover:border-old-paper/30 transition-all duration-200 touch-manipulation relative z-10"
+                      className="block w-full text-left px-4 py-4 text-white hover:text-old-paper font-handwritten text-lg font-bold tracking-wide border-2 border-transparent hover:border-old-paper/30 transition-all duration-200 touch-manipulation relative z-10"
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}

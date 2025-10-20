@@ -75,7 +75,7 @@ export default function ProductsPage() {
           </motion.h1>
 
           <motion.p
-            className="font-serif text-xl md:text-2xl text-walnut/80 max-w-3xl mx-auto leading-relaxed"
+            className="font-handwritten text-xl md:text-2xl text-walnut/80 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -157,7 +157,7 @@ export default function ProductsPage() {
                         {product.name}
                       </h3>
 
-                      <p className="font-serif text-walnut/70 text-base text-center leading-relaxed line-clamp-3 mb-4">
+                      <p className="font-handwritten text-walnut/70 text-base text-center leading-relaxed line-clamp-3 mb-4">
                         {product.shortDescription}
                       </p>
 
@@ -198,7 +198,7 @@ export default function ProductsPage() {
           <p className="font-handwritten text-3xl md:text-4xl text-walnut mb-4 leading-relaxed">
             Всички продукти са направени в България от местно мляко.
           </p>
-          <p className="font-serif text-xl text-walnut/80 mb-6 leading-relaxed">
+          <p className="font-handwritten text-xl text-walnut/80 mb-6 leading-relaxed">
             Търсете ни в магазините из цялата страна!
           </p>
           <Link href="/where-to-buy">

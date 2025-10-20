@@ -124,7 +124,7 @@ export default function ProductCarousel({ products, selectedProducts, onToggle }
               onClick={() => goToIndex(idx)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 idx === centerIndex
-                  ? 'w-8 bg-traditional-red'
+                  ? 'w-8 bg-bulgarian-red'
                   : 'w-2 bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Отиди на продукт ${idx + 1}`}
@@ -201,7 +201,7 @@ export default function ProductCarousel({ products, selectedProducts, onToggle }
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-traditional-red text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg whitespace-nowrap"
+                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-bulgarian-red text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg whitespace-nowrap"
                     >
                       ⭐ На фокус
                     </motion.div>

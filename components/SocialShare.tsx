@@ -179,7 +179,7 @@ export default function SocialShare({
                   <h3 className="font-handwritten text-2xl text-walnut">
                     Сподели с приятели
                   </h3>
-                  <p className="font-serif text-xs text-walnut/60 mt-1">
+                  <p className="font-handwritten text-xs text-walnut/60 mt-1">
                     Разпространи добрата новина!
                   </p>
                 </div>

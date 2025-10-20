@@ -190,16 +190,22 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Brand Name - Embossed */}
-                <h1 className="font-serif text-5xl md:text-6xl font-bold text-white mb-4 leading-tight" style={{
-                  textShadow: '3px 3px 6px rgba(0,0,0,0.5)'
-                }}>
-                  БАЧО<br />ИЛИЯ
-                </h1>
+                {/* Brand Logo */}
+                <div className="relative mb-4">
+                  <Image
+                    src="/logo.png"
+                    alt="Бачо Илия"
+                    width={300}
+                    height={120}
+                    className="mx-auto drop-shadow-2xl"
+                    priority
+                    sizes="(max-width: 768px) 250px, 300px"
+                  />
+                </div>
 
                 <div className="w-20 h-1 bg-sunflower mx-auto my-6" />
 
-                <p className="font-serif text-xl text-white/90 uppercase tracking-widest">
+                <p className="font-handwritten text-xl text-white/90 uppercase tracking-widest">
                   Традиция<br />от 1970
                 </p>
 
@@ -266,7 +272,7 @@ export default function Home() {
                     href="#giveaway"
                     className="block w-full bg-bulgarian-red text-white text-center px-8 py-4 shadow-xl hover:scale-105 transition-transform duration-300 mb-6"
                   >
-                    <p className="font-serif text-xl md:text-2xl font-bold uppercase">
+                    <p className="font-handwritten text-xl md:text-2xl font-bold uppercase">
                       УЧАСТВАЙ СЕГА →
                     </p>
                   </a>
@@ -319,7 +325,7 @@ export default function Home() {
             <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl md:text-4xl lg:text-5xl">
               Защо Бачо Илия?
             </h2>
-            <p className="font-serif text-walnut text-xl max-w-3xl mx-auto">
+            <p className="font-handwritten text-walnut text-xl max-w-3xl mx-auto">
               Семейството ти заслужава продукти направени с любов, без химия, точно като бабините
             </p>
           </motion.div>
@@ -477,7 +483,7 @@ export default function Home() {
             style={{ transform: 'rotate(-1deg)' }}
           >
             <div className="bg-bulgarian-red text-white px-8 py-5 text-center shadow-2xl border-4 border-walnut/30 relative">
-              <p className="font-serif text-xl font-bold uppercase tracking-wide">Участвай в раздаването сега</p>
+              <p className="font-handwritten text-xl font-bold uppercase tracking-wide">Участвай в раздаването сега</p>
 
               {/* Vintage texture overlay */}
               <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />
@@ -489,7 +495,7 @@ export default function Home() {
             <h2 className="font-handwritten text-bulgarian-red mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
               Кои продукти искаш за твоето семейство?
             </h2>
-            <p className="font-serif text-walnut text-xl leading-relaxed mb-4">
+            <p className="font-handwritten text-walnut text-xl leading-relaxed mb-4">
               Знаем колко е трудно да намериш храна, на която да се довериш.
               Затова искаме да ти дадем шанс да опиташ нашите продукти - <strong>напълно безплатно</strong>.
             </p>
@@ -504,7 +510,7 @@ export default function Home() {
                   style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }}
                 />
               </div>
-              <p className="font-serif text-walnut text-lg font-semibold">Бачо Илия казва:</p>
+              <p className="font-handwritten text-walnut text-lg font-semibold">Бачо Илия казва:</p>
             </div>
             <p className="font-handwritten text-walnut text-xl italic leading-relaxed">
               "Хиляди семейства вече се радват на истинския вкус. Дойде ред и на твоето!"
@@ -566,7 +572,7 @@ export default function Home() {
                 px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 shadow-lg
                 ${
                   selectedProducts.length > 0
-                    ? 'bg-traditional-red text-white hover:bg-red-700 hover:shadow-2xl hover:scale-105'
+                    ? 'bg-bulgarian-red text-white hover:bg-red-700 hover:shadow-2xl hover:scale-105'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }
               `}
@@ -601,7 +607,7 @@ export default function Home() {
                   <div className="w-10 h-10 rounded-full border-4 border-bulgarian-red bg-old-paper flex items-center justify-center">
                     <span className="text-bulgarian-red text-xl font-bold">✓</span>
                   </div>
-                  <span className="font-serif text-walnut text-lg font-semibold">Над 2,500 семейства вече участват</span>
+                  <span className="font-handwritten text-walnut text-lg font-semibold">Над 2,500 семейства вече участват</span>
                 </div>
 
                 {/* Star decorations */}
@@ -632,7 +638,7 @@ export default function Home() {
             <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl md:text-4xl lg:text-5xl">
               Бабините рецепти
             </h2>
-            <p className="font-serif text-walnut text-xl max-w-3xl mx-auto">
+            <p className="font-handwritten text-walnut text-xl max-w-3xl mx-auto">
               Традиционни български ястия, направени с любов и продукти Бачо Илия
             </p>
           </motion.div>
@@ -778,7 +784,7 @@ export default function Home() {
               className="inline-block relative group"
             >
               <div className="bg-bulgarian-red px-10 py-5 border-4 border-dashed border-white shadow-2xl relative overflow-hidden">
-                <p className="font-serif text-white text-xl md:text-2xl font-bold uppercase tracking-wide relative z-10">
+                <p className="font-handwritten text-white text-xl md:text-2xl font-bold uppercase tracking-wide relative z-10">
                   Виж Всички Рецепти →
                 </p>
 
@@ -818,7 +824,7 @@ export default function Home() {
             >
               Семейни спомени...
             </motion.h2>
-            <p className="font-serif text-walnut text-xl max-w-2xl mx-auto">
+            <p className="font-handwritten text-walnut text-xl max-w-2xl mx-auto">
               Истории от родители, след като опитаха продуктите на Бачо Илия
             </p>
           </div>
@@ -1052,7 +1058,7 @@ export default function Home() {
             <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl md:text-4xl lg:text-5xl">
               Как се участва?
             </h2>
-            <p className="font-serif text-walnut text-xl">
+            <p className="font-handwritten text-walnut text-xl">
               Само 3 прости стъпки до истинските млечни продукти
             </p>
           </motion.div>
@@ -1072,10 +1078,10 @@ export default function Home() {
                   <span className="font-mono text-white text-3xl font-bold">01</span>
                 </div>
 
-                <h3 className="font-serif text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
+                <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
                   Избери продуктите
                 </h3>
-                <p className="font-serif text-walnut text-lg leading-relaxed mb-4">
+                <p className="font-handwritten text-walnut text-lg leading-relaxed mb-4">
                   Маркирай кои млечни продукти искаш да спечелиш за твоето семейство. Можеш да избереш всички - без ограничения!
                 </p>
                 <div className="flex items-center gap-2 text-sunflower">
@@ -1107,10 +1113,10 @@ export default function Home() {
                   <span className="font-mono text-white text-3xl font-bold">02</span>
                 </div>
 
-                <h3 className="font-serif text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
+                <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
                   Регистрирай се
                 </h3>
-                <p className="font-serif text-walnut text-lg leading-relaxed mb-4">
+                <p className="font-handwritten text-walnut text-lg leading-relaxed mb-4">
                   Попълни бързо данните си - име, email, телефон. Отнема само 2 минути. Безплатно е, без скрити условия!
                 </p>
                 <div className="flex items-center gap-2 text-faded-denim">
@@ -1136,10 +1142,10 @@ export default function Home() {
                   <span className="font-mono text-white text-3xl font-bold">03</span>
                 </div>
 
-                <h3 className="font-serif text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
+                <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
                   Сподели и участвай
                 </h3>
-                <p className="font-serif text-walnut text-lg leading-relaxed mb-4">
+                <p className="font-handwritten text-walnut text-lg leading-relaxed mb-4">
                   Харесай, коментирай и сподели във Facebook. Всяко споделяне ти дава допълнително участие в раздаването!
                 </p>
                 <div className="flex items-center gap-2 text-bulgarian-red">
@@ -1167,7 +1173,7 @@ export default function Home() {
             >
               <div className="bg-bulgarian-red px-12 py-6 shadow-2xl relative overflow-hidden">
                 <div className="relative z-10">
-                  <p className="font-serif text-white text-2xl md:text-3xl font-bold uppercase tracking-wide mb-2">
+                  <p className="font-handwritten text-white text-2xl md:text-3xl font-bold uppercase tracking-wide mb-2">
                     Започни сега
                   </p>
                   <p className="font-handwritten text-white/90 text-lg">

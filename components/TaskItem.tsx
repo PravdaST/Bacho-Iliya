@@ -85,7 +85,7 @@ export default function TaskItem({
           {/* Action button */}
           <button
             onClick={handleAction}
-            className="px-6 py-3 font-serif font-bold transition-all mb-2 bg-bulgarian-red text-white border-2 border-walnut/30 hover:scale-105 shadow-lg"
+            className="px-6 py-3 font-handwritten font-bold transition-all mb-2 bg-bulgarian-red text-white border-2 border-walnut/30 hover:scale-105 shadow-lg"
           >
             {actionLabel}
           </button>

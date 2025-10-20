@@ -79,7 +79,7 @@ export default function FAQ() {
                 Бачовият бележник
               </h2>
             </div>
-            <p className="font-serif text-walnut text-lg">
+            <p className="font-handwritten text-walnut text-lg">
               Всичко, което искаш да знаеш - с думите на дядото
             </p>
           </motion.div>

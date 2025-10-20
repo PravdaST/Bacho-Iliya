@@ -64,7 +64,7 @@ export default function AboutPage() {
 
         {/* Milkylux Section */}
         <section className="mb-16">
-          <div className="bg-gradient-to-br from-traditional-red to-warm-red text-vintage-cream rounded-lg p-8 shadow-vintage">
+          <div className="bg-gradient-to-br from-bulgarian-red to-bulgarian-red text-vintage-cream rounded-lg p-8 shadow-vintage">
             <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
               <div className="flex-1">
                 <h2 className="font-display text-3xl mb-4">
@@ -83,7 +83,7 @@ export default function AboutPage() {
                   href="https://milkylux.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-vintage-cream text-traditional-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-parchment transition-all hover:scale-105 shadow-lg"
+                  className="inline-block bg-vintage-cream text-bulgarian-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-parchment transition-all hover:scale-105 shadow-lg"
                 >
                   Разгледай Milkylux →
                 </a>
@@ -141,7 +141,7 @@ export default function AboutPage() {
           <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-8 shadow-vintage">
             <div className="space-y-6">
               <div className="flex gap-4 pb-6 border-b border-traditional-brown/20">
-                <div className="flex-shrink-0 w-16 h-16 bg-traditional-red text-vintage-cream rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-16 h-16 bg-bulgarian-red text-vintage-cream rounded-full flex items-center justify-center font-bold text-lg">
                   1995
                 </div>
                 <div>
@@ -156,7 +156,7 @@ export default function AboutPage() {
               </div>
 
               <div className="flex gap-4 pb-6 border-b border-traditional-brown/20">
-                <div className="flex-shrink-0 w-16 h-16 bg-traditional-red text-vintage-cream rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-16 h-16 bg-bulgarian-red text-vintage-cream rounded-full flex items-center justify-center font-bold text-lg">
                   2003
                 </div>
                 <div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
               </div>
 
               <div className="flex gap-4 pb-6 border-b border-traditional-brown/20">
-                <div className="flex-shrink-0 w-16 h-16 bg-traditional-red text-vintage-cream rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-16 h-16 bg-bulgarian-red text-vintage-cream rounded-full flex items-center justify-center font-bold text-lg">
                   2015
                 </div>
                 <div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
               </div>
 
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-16 h-16 bg-traditional-red text-vintage-cream rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-16 h-16 bg-bulgarian-red text-vintage-cream rounded-full flex items-center justify-center font-bold text-lg">
                   2025
                 </div>
                 <div>
@@ -205,7 +205,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-gradient-to-r from-traditional-red to-warm-red text-vintage-cream rounded-lg p-8 text-center shadow-vintage">
+        <section className="bg-gradient-to-r from-bulgarian-red to-bulgarian-red text-vintage-cream rounded-lg p-8 text-center shadow-vintage">
           <h2 className="font-display text-3xl mb-4">
             Опитай Продуктите Безплатно
           </h2>
@@ -216,13 +216,13 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/"
-              className="inline-block bg-vintage-cream text-traditional-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-parchment transition-all hover:scale-105 shadow-lg"
+              className="inline-block bg-vintage-cream text-bulgarian-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-parchment transition-all hover:scale-105 shadow-lg"
             >
               Участвай в Раздаването 🎁
             </Link>
             <Link
               href="/products"
-              className="inline-block bg-transparent border-2 border-vintage-cream text-vintage-cream px-8 py-4 rounded-lg font-bold text-lg hover:bg-vintage-cream hover:text-traditional-red transition-all hover:scale-105"
+              className="inline-block bg-transparent border-2 border-vintage-cream text-vintage-cream px-8 py-4 rounded-lg font-bold text-lg hover:bg-vintage-cream hover:text-bulgarian-red transition-all hover:scale-105"
             >
               Виж Продуктите
             </Link>

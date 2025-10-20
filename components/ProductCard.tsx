@@ -84,7 +84,7 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
               </h3>
 
               {/* Description - smaller serif */}
-              <p className="font-serif text-walnut/70 text-sm leading-relaxed">
+              <p className="font-handwritten text-walnut/70 text-sm leading-relaxed">
                 {product.description}
               </p>
 

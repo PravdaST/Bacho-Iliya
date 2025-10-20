@@ -136,7 +136,7 @@ export default function SuccessPage() {
             <h1 className="font-handwritten text-5xl md:text-6xl text-bulgarian-red mb-3">
               Успешно участие!
             </h1>
-            <p className="font-serif text-2xl text-walnut mb-2">
+            <p className="font-handwritten text-2xl text-walnut mb-2">
               Благодарим ти, {userData.name}!
             </p>
             <p className="font-handwritten text-xl text-walnut">
@@ -157,11 +157,11 @@ export default function SuccessPage() {
             </motion.p>
             <button
               onClick={handleCopyCode}
-              className="px-8 py-4 bg-bulgarian-red border-2 border-walnut/30 text-white font-serif font-bold text-lg hover:scale-105 transition-all inline-flex items-center gap-2 shadow-xl"
+              className="px-8 py-4 bg-bulgarian-red border-2 border-walnut/30 text-white font-handwritten font-bold text-lg hover:scale-105 transition-all inline-flex items-center gap-2 shadow-xl"
             >
               {copied ? '✓ КОПИРАН!' : 'КОПИРАЙ КОДА'}
             </button>
-            <p className="font-serif text-xs text-walnut/70 mt-4">Запази този код - ще ти трябва при теглене на наградата</p>
+            <p className="font-handwritten text-xs text-walnut/70 mt-4">Запази този код - ще ти трябва при теглене на наградата</p>
           </div>
 
           {/* Personal Info */}
@@ -356,7 +356,7 @@ export default function SuccessPage() {
           {/* Info */}
           <div className="mt-4 p-3 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg border border-amber-200">
             <p className="text-sm text-amber-900">
-              <strong className="font-serif" style={{ fontFamily: 'Playfair Display, serif' }}>Как работи:</strong> Всеки приятел, който се регистрира през твоя линк, ти носи <strong className="font-serif" style={{ fontFamily: 'Playfair Display, serif' }}>+3 допълнителни участия</strong> в томболата!
+              <strong className="font-handwritten" style={{ fontFamily: 'Playfair Display, serif' }}>Как работи:</strong> Всеки приятел, който се регистрира през твоя линк, ти носи <strong className="font-handwritten" style={{ fontFamily: 'Playfair Display, serif' }}>+3 допълнителни участия</strong> в томболата!
             </p>
           </div>
         </div>

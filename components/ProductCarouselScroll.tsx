@@ -86,7 +86,7 @@ export default function ProductCarouselScroll({ products, selectedProducts, onTo
                 {/* Centered indicator */}
                 {isCentered && (
                   <div className="mt-4 text-center">
-                    <span className="inline-block bg-traditional-red text-white px-4 py-1 rounded-full text-xs font-bold">
+                    <span className="inline-block bg-bulgarian-red text-white px-4 py-1 rounded-full text-xs font-bold">
                       ⭐ На фокус
                     </span>
                   </div>
@@ -105,7 +105,7 @@ export default function ProductCarouselScroll({ products, selectedProducts, onTo
             onClick={() => scrollToIndex(idx)}
             className={`h-2.5 rounded-full transition-all duration-300 ${
               idx === activeIndex
-                ? 'w-10 bg-traditional-red'
+                ? 'w-10 bg-bulgarian-red'
                 : 'w-2.5 bg-gray-300 hover:bg-gray-400'
             }`}
             aria-label={`Scroll to product ${idx + 1}`}

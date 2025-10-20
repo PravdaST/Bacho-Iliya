@@ -242,7 +242,7 @@ export default function QuizSection() {
                             htmlFor={option.value}
                             className={`p-6 border-2 rounded-xl text-center transition-all duration-300 cursor-pointer block ${
                               form.watch('weapon') === option.value 
-                                ? 'border-traditional-red bg-traditional-red/10 shadow-lg' 
+                                ? 'border-bulgarian-red bg-bulgarian-red/10 shadow-lg' 
                                 : 'border-warm-brown/30 bg-cream/30 hover:border-warm-brown hover:bg-cream/50'
                             }`}
                           >
@@ -260,14 +260,14 @@ export default function QuizSection() {
                                 />
                               ) : (
                                 <div className={`text-3xl transition-colors duration-300 ${
-                                  form.watch('weapon') === option.value ? 'text-traditional-red' : 'text-warm-brown'
+                                  form.watch('weapon') === option.value ? 'text-bulgarian-red' : 'text-warm-brown'
                                 }`}>
                                   {option.icon}
                                 </div>
                               )}
                             </motion.div>
                             <p className={`font-semibold transition-colors duration-300 ${
-                              form.watch('weapon') === option.value ? 'text-traditional-red' : 'text-warm-brown'
+                              form.watch('weapon') === option.value ? 'text-bulgarian-red' : 'text-warm-brown'
                             }`}>
                               {option.label}
                             </p>
@@ -317,14 +317,14 @@ export default function QuizSection() {
                             htmlFor={`motivation-${option.value}`}
                             className={`flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 ${
                               form.watch('motivation') === option.value 
-                                ? 'border-traditional-red bg-traditional-red/10 shadow-lg' 
+                                ? 'border-bulgarian-red bg-bulgarian-red/10 shadow-lg' 
                                 : 'border-warm-brown/30 bg-cream/30 hover:border-warm-brown hover:bg-cream/50'
                             }`}
                           >
                             <motion.div 
                               className={`w-5 h-5 border-2 rounded-full mr-4 flex items-center justify-center transition-all duration-300 ${
                                 form.watch('motivation') === option.value 
-                                  ? 'border-traditional-red bg-traditional-red' 
+                                  ? 'border-bulgarian-red bg-bulgarian-red' 
                                   : 'border-warm-brown'
                               }`}
                               whileHover={{ scale: 1.2 }}
@@ -334,7 +334,7 @@ export default function QuizSection() {
                               }`}></div>
                             </motion.div>
                             <span className={`font-medium transition-colors duration-300 ${
-                              form.watch('motivation') === option.value ? 'text-traditional-red font-semibold' : 'text-gray-700'
+                              form.watch('motivation') === option.value ? 'text-bulgarian-red font-semibold' : 'text-gray-700'
                             }`}>
                               {option.label}
                             </span>
@@ -387,7 +387,7 @@ export default function QuizSection() {
                 <Button
                   type="submit"
                   disabled={submitQuizMutation.isPending}
-                  className="relative w-full bg-gradient-to-r from-traditional-red to-warm-brown hover:from-traditional-red/90 hover:to-warm-brown/90 text-cream font-bold py-4 px-8 rounded-xl text-lg overflow-hidden group"
+                  className="relative w-full bg-gradient-to-r from-bulgarian-red to-warm-brown hover:from-bulgarian-red/90 hover:to-warm-brown/90 text-cream font-bold py-4 px-8 rounded-xl text-lg overflow-hidden group"
                 >
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-warm-beige/20 to-cream/20"

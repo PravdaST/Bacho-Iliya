@@ -133,7 +133,7 @@ export default function ProductCarouselSwiper({ products, selectedProducts, onTo
             key={idx}
             onClick={() => setActiveIndex(idx)}
             className={`h-2 rounded-full transition-all ${
-              idx === activeIndex ? 'w-8 bg-traditional-red' : 'w-2 bg-gray-300'
+              idx === activeIndex ? 'w-8 bg-bulgarian-red' : 'w-2 bg-gray-300'
             }`}
           />
         ))}

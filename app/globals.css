@@ -20,13 +20,11 @@
   --color-terracotta: #CC6633;         /* Warm: Terracotta */
 
   /* DEPRECATED: Keep for backward compatibility only */
-  --color-traditional-red: #C41E3A;
   --color-faded-denim: #4682B4;
   --color-clay: #8B6F47;
   --color-ochre: #CC7722;
   --color-olive-green: #6B8E23;
   --color-wheat: #F5DEB3;
-  --color-barn-red: #B22222;
   --color-dark-wood: #5D4E37;
   --color-light-wood: #D2B48C;
   --color-cream: #F5F5DC;
@@ -161,7 +159,7 @@ html {
   }
 
   .bg-barn-wood {
-    background: repeating-linear-gradient(0deg, var(--color-barn-red) 0px, var(--color-barn-red) 120px, #A01F1F 120px, #A01F1F 121px);
+    background: repeating-linear-gradient(0deg, var(--color-bulgarian-red) 0px, var(--color-bulgarian-red) 120px, #A01F1F 120px, #A01F1F 121px);
   }
 
   /* Textile Borders (for headers/dividers) */
@@ -368,6 +366,6 @@ html {
   }
 
   .btn-traditional {
-    @apply px-8 py-4 rounded-lg bg-traditional-red text-white font-bold text-lg hover:bg-red-700 transition-all hover:scale-105 shadow-lg;
+    @apply px-8 py-4 rounded-lg bg-bulgarian-red text-white font-bold text-lg hover:bg-red-700 transition-all hover:scale-105 shadow-lg;
   }
 }
