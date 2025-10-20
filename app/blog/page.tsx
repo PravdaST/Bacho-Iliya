@@ -2,10 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { ClockIcon } from "@/components/ui/Icon";
 
-// Placeholder blog posts
 const blogPosts = [
   {
     id: 1,

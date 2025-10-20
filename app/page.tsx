@@ -887,7 +887,7 @@ export default function Home() {
 
                 {/* Handwritten Caption */}
                 <div className="font-handwritten text-walnut text-xl mb-3">
-                  Иван, Пловдив 🌾
+                  Иван, Пловдив
                 </div>
 
                 {/* Handwritten Quote */}

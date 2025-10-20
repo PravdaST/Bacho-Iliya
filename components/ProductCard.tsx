@@ -93,7 +93,7 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
                 onClick={handleFlip}
                 className="w-full py-2 text-xs font-mono text-walnut/60 hover:text-walnut transition-colors border-t border-dashed border-walnut/20 mt-3"
               >
-                ↻ Виж бележката на Бачо
+                » Виж бележката на Бачо
               </button>
             </div>
 
@@ -162,7 +162,7 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
               onClick={handleFlip}
               className="w-full py-2 text-sm font-mono text-walnut/60 hover:text-walnut transition-colors border-t border-dashed border-walnut/20"
             >
-              ↺ Обратно към снимката
+              « Обратно към снимката
             </button>
           </div>
         </div>
@@ -191,11 +191,8 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
 
                 {/* Inner Content */}
                 <div className="absolute inset-2 flex flex-col items-center justify-center">
-                  {/* Star */}
-                  <div className="text-sunflower text-2xl mb-1">★</div>
-
                   {/* Text */}
-                  <div className="font-mono text-xs font-bold text-bulgarian-red text-center leading-tight">
+                  <div className="font-mono text-xs font-bold text-bulgarian-red text-center leading-tight mb-1">
                     ОДОБРЕНО
                   </div>
 
