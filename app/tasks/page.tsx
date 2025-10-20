@@ -151,9 +151,9 @@ export default function TasksPage() {
 
           {/* Entry ID */}
           <div className="relative mb-8 bg-bulgarian-red/5 border-l-4 border-bulgarian-red p-4">
-            <p className="font-mono text-xs text-walnut/60 uppercase mb-2">Твоят номер за потвърждение:</p>
+            <p className="font-handwritten text-xs text-walnut/60 uppercase mb-2">Твоят номер за потвърждение:</p>
             <div className="flex items-center justify-between gap-4">
-              <p className="font-mono text-lg md:text-xl font-bold text-bulgarian-red">{entryId || 'Loading...'}</p>
+              <p className="font-handwritten text-lg md:text-xl font-bold text-bulgarian-red">{entryId || 'Loading...'}</p>
               <button
                 onClick={handleCopyCode}
                 className="px-4 py-2 bg-bulgarian-red border-2 border-walnut/30 text-white text-sm font-handwritten font-bold hover:scale-105 transition-all inline-flex items-center gap-2 flex-shrink-0"
@@ -167,7 +167,7 @@ export default function TasksPage() {
           <div className="relative mb-8 pb-6 border-b border-dashed border-walnut/20">
             <div className="flex items-center justify-between mb-3">
               <p className="font-handwritten text-2xl text-walnut">Прогрес:</p>
-              <p className="font-mono text-3xl font-bold text-bulgarian-red">
+              <p className="font-handwritten text-3xl font-bold text-bulgarian-red">
                 {completedCount}/{totalTasks}
               </p>
             </div>
@@ -214,7 +214,7 @@ export default function TasksPage() {
                 </div>
                 <div className="text-center bg-white border-4 border-sunflower px-6 py-4">
                   <p className="text-4xl font-bold text-bulgarian-red">{shareCount}</p>
-                  <p className="text-xs font-mono text-walnut uppercase">Споделяния</p>
+                  <p className="text-xs font-handwritten text-walnut uppercase">Споделяния</p>
                 </div>
               </div>
               <p className="font-handwritten text-lg text-bulgarian-red text-center">

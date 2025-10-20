@@ -123,7 +123,7 @@ export default function BlogPostPage() {
             className="mb-8"
           >
             <div className="mb-4">
-              <span className="inline-block bg-bulgarian-red text-white px-4 py-1 text-sm font-mono tracking-wider">
+              <span className="inline-block bg-bulgarian-red text-white px-4 py-1 text-sm font-handwritten tracking-wider">
                 {post.category}
               </span>
             </div>
@@ -182,7 +182,7 @@ export default function BlogPostPage() {
                   className="block bg-white p-6 border-2 border-walnut/20 hover:shadow-xl transition-shadow"
                 >
                   <div className="mb-3">
-                    <span className="inline-block bg-bulgarian-red text-white px-3 py-1 text-xs font-mono tracking-wider">
+                    <span className="inline-block bg-bulgarian-red text-white px-3 py-1 text-xs font-handwritten tracking-wider">
                       {relatedPost.category}
                     </span>
                   </div>

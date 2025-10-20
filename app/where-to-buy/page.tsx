@@ -64,7 +64,7 @@ export default function WhereToBuyPage() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeInVariants} className="mb-6">
-            <span className="inline-block bg-bulgarian-red text-white px-6 py-2 font-mono text-sm tracking-wider">
+            <span className="inline-block bg-bulgarian-red text-white px-6 py-2 font-handwritten text-sm tracking-wider">
               НАМЕРИ НИ
             </span>
           </motion.div>
@@ -109,7 +109,7 @@ export default function WhereToBuyPage() {
 
             {/* Coming Soon Badge */}
             <motion.div
-              className="inline-block bg-bulgarian-red text-white px-6 py-2 font-mono text-sm tracking-wider mb-6"
+              className="inline-block bg-bulgarian-red text-white px-6 py-2 font-handwritten text-sm tracking-wider mb-6"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -212,7 +212,7 @@ export default function WhereToBuyPage() {
                         <p className="font-handwritten text-sm text-walnut">
                           {store.name}
                         </p>
-                        <p className="font-mono text-xs text-walnut/60">
+                        <p className="font-handwritten text-xs text-walnut/60">
                           {store.city}
                         </p>
                       </div>
@@ -222,7 +222,7 @@ export default function WhereToBuyPage() {
               </div>
 
               {/* Map integration note */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-bulgarian-red text-white px-6 py-2 font-mono text-xs tracking-wider">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-bulgarian-red text-white px-6 py-2 font-handwritten text-xs tracking-wider">
                 ИНТЕРАКТИВНА КАРТА
               </div>
             </div>
@@ -246,7 +246,7 @@ export default function WhereToBuyPage() {
               <div className="flex flex-wrap gap-3">
                 <button
                   onClick={() => setSelectedCity("all")}
-                  className={`px-5 py-2 font-mono text-sm tracking-wider border-2 transition-all duration-300 ${
+                  className={`px-5 py-2 font-handwritten text-sm tracking-wider border-2 transition-all duration-300 ${
                     selectedCity === "all"
                       ? 'bg-bulgarian-red text-white border-bulgarian-red'
                       : 'bg-white text-walnut border-walnut/30 hover:border-bulgarian-red'
@@ -258,7 +258,7 @@ export default function WhereToBuyPage() {
                   <button
                     key={city}
                     onClick={() => setSelectedCity(city)}
-                    className={`px-5 py-2 font-mono text-sm tracking-wider border-2 transition-all duration-300 ${
+                    className={`px-5 py-2 font-handwritten text-sm tracking-wider border-2 transition-all duration-300 ${
                       selectedCity === city
                         ? 'bg-bulgarian-red text-white border-bulgarian-red'
                         : 'bg-white text-walnut border-walnut/30 hover:border-bulgarian-red'
@@ -286,7 +286,7 @@ export default function WhereToBuyPage() {
           </div>
 
           {/* Results count */}
-          <p className="font-mono text-sm text-walnut/60 tracking-wider">
+          <p className="font-handwritten text-sm text-walnut/60 tracking-wider">
             НАМЕРЕНИ МАГАЗИНИ: {filteredStores.length}
           </p>
         </motion.div>
@@ -312,7 +312,7 @@ export default function WhereToBuyPage() {
 
                 <div className="p-6">
                   {/* Store type badge */}
-                  <span className={`inline-block ${getStoreTypeColor(store.type)} text-white px-3 py-1 text-xs font-mono tracking-wider mb-4`}>
+                  <span className={`inline-block ${getStoreTypeColor(store.type)} text-white px-3 py-1 text-xs font-handwritten tracking-wider mb-4`}>
                     {getStoreTypeLabel(store.type)}
                   </span>
 
@@ -330,7 +330,7 @@ export default function WhereToBuyPage() {
                         <p className="font-handwritten text-walnut/80 leading-relaxed">
                           {store.address}
                         </p>
-                        <p className="font-mono text-sm text-walnut/60 tracking-wider mt-1">
+                        <p className="font-handwritten text-sm text-walnut/60 tracking-wider mt-1">
                           {store.city}
                         </p>
                       </div>
@@ -350,7 +350,7 @@ export default function WhereToBuyPage() {
                         <PhoneIcon className="w-5 h-5 text-bulgarian-red flex-shrink-0 mt-1" />
                         <a
                           href={`tel:${store.phone}`}
-                          className="font-mono text-walnut/80 hover:text-bulgarian-red transition-colors duration-300"
+                          className="font-handwritten text-walnut/80 hover:text-bulgarian-red transition-colors duration-300"
                         >
                           {store.phone}
                         </a>
@@ -376,7 +376,7 @@ export default function WhereToBuyPage() {
                   </div>
 
                   {/* View on map button */}
-                  <button className="mt-6 w-full bg-old-paper border-2 border-bulgarian-red/30 text-bulgarian-red px-4 py-3 font-mono text-sm tracking-wider hover:bg-bulgarian-red hover:text-white transition-colors duration-300">
+                  <button className="mt-6 w-full bg-old-paper border-2 border-bulgarian-red/30 text-bulgarian-red px-4 py-3 font-handwritten text-sm tracking-wider hover:bg-bulgarian-red hover:text-white transition-colors duration-300">
                     ПОКАЖИ НА КАРТАТА →
                   </button>
                 </div>
@@ -412,7 +412,7 @@ export default function WhereToBuyPage() {
             Истинският вкус трябва да бъде достъпен за всички!
           </p>
           <a href="mailto:contact@bacho-iliya.eu">
-            <button className="bg-bulgarian-red text-white px-8 py-4 font-mono text-sm tracking-wider hover:bg-walnut transition-colors duration-300">
+            <button className="bg-bulgarian-red text-white px-8 py-4 font-handwritten text-sm tracking-wider hover:bg-walnut transition-colors duration-300">
               СВЪРЖИ СЕ С НАС →
             </button>
           </a>

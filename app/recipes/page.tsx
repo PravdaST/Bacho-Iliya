@@ -126,7 +126,7 @@ export default function RecipesPage() {
                       <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-walnut/60" />
 
                       {/* Difficulty Badge */}
-                      <div className="absolute top-3 right-3 bg-bulgarian-red/90 px-3 py-1 text-xs font-mono text-white font-bold tracking-wide border-2 border-white shadow-lg">
+                      <div className="absolute top-3 right-3 bg-bulgarian-red/90 px-3 py-1 text-xs font-handwritten text-white font-bold tracking-wide border-2 border-white shadow-lg">
                         {recipe.difficulty}
                       </div>
                     </div>
@@ -146,7 +146,7 @@ export default function RecipesPage() {
                       {recipe.bachoProducts.map((product, idx) => (
                         <span
                           key={idx}
-                          className="bg-old-paper text-walnut text-xs px-2 py-1 border border-walnut/40 font-mono"
+                          className="bg-old-paper text-walnut text-xs px-2 py-1 border border-walnut/40 font-handwritten"
                         >
                           {product}
                         </span>
@@ -154,7 +154,7 @@ export default function RecipesPage() {
                     </div>
 
                     {/* Meta Info */}
-                    <div className="flex items-center justify-center gap-6 text-sm text-walnut border-t border-dashed border-walnut/30 pt-4 font-mono">
+                    <div className="flex items-center justify-center gap-6 text-sm text-walnut border-t border-dashed border-walnut/30 pt-4 font-handwritten">
                       <span className="flex items-center gap-1">
                         <ClockIcon className="w-4 h-4" /> {recipe.prepTime}
                       </span>

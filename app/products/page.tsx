@@ -60,7 +60,7 @@ export default function ProductsPage() {
             transition={{ duration: 0.5 }}
             className="mb-6"
           >
-            <span className="inline-block bg-bulgarian-red text-white px-6 py-2 font-mono text-sm tracking-wider">
+            <span className="inline-block bg-bulgarian-red text-white px-6 py-2 font-handwritten text-sm tracking-wider">
               НАШИТЕ ПРОДУКТИ
             </span>
           </motion.div>
@@ -98,7 +98,7 @@ export default function ProductsPage() {
                 key={category.key || 'all'}
                 onClick={() => setSelectedCategory(category.key)}
                 className={`
-                  px-6 py-3 font-mono text-sm tracking-wider border-2 transition-all duration-300
+                  px-6 py-3 font-handwritten text-sm tracking-wider border-2 transition-all duration-300
                   ${selectedCategory === category.key
                     ? 'bg-bulgarian-red text-white border-bulgarian-red'
                     : 'bg-white text-walnut border-walnut/30 hover:border-bulgarian-red'
@@ -112,7 +112,7 @@ export default function ProductsPage() {
 
           {/* Product count */}
           <div className="text-center">
-            <span className="font-mono text-walnut/60 text-sm tracking-wider">
+            <span className="font-handwritten text-walnut/60 text-sm tracking-wider">
               НАМЕРЕНИ ПРОДУКТИ: <span className="font-bold text-bulgarian-red">{products.length}</span>
             </span>
           </div>
@@ -146,7 +146,7 @@ export default function ProductsPage() {
                       />
 
                       {/* Category badge */}
-                      <div className="absolute top-3 right-3 bg-bulgarian-red text-white px-3 py-1 text-xs font-mono tracking-wider">
+                      <div className="absolute top-3 right-3 bg-bulgarian-red text-white px-3 py-1 text-xs font-handwritten tracking-wider">
                         {getCategoryLabel(product.category)}
                       </div>
                     </div>
@@ -166,7 +166,7 @@ export default function ProductsPage() {
                         {product.sizes.map((size) => (
                           <span
                             key={size.size}
-                            className="text-xs font-mono text-walnut/60 bg-old-paper px-3 py-1 border border-walnut/20"
+                            className="text-xs font-handwritten text-walnut/60 bg-old-paper px-3 py-1 border border-walnut/20"
                           >
                             {size.size}
                           </span>
@@ -175,7 +175,7 @@ export default function ProductsPage() {
 
                       {/* View details */}
                       <div className="text-center">
-                        <span className="inline-block font-mono text-xs text-bulgarian-red tracking-wider group-hover:underline">
+                        <span className="inline-block font-handwritten text-xs text-bulgarian-red tracking-wider group-hover:underline">
                           ВИЖ ПОВЕЧЕ →
                         </span>
                       </div>
@@ -202,7 +202,7 @@ export default function ProductsPage() {
             Търсете ни в магазините из цялата страна!
           </p>
           <Link href="/where-to-buy">
-            <button className="bg-bulgarian-red text-white px-8 py-4 font-mono text-sm tracking-wider hover:bg-walnut transition-colors duration-300">
+            <button className="bg-bulgarian-red text-white px-8 py-4 font-handwritten text-sm tracking-wider hover:bg-walnut transition-colors duration-300">
               НАМЕРИ МАГАЗИН →
             </button>
           </Link>

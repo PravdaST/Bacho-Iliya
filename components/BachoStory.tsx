@@ -115,23 +115,23 @@ export default function BachoStory() {
 
               {/* Header stamp */}
               <div className="border-t-2 border-b-2 border-walnut/40 py-3 mb-6 relative">
-                <h3 className="font-mono text-walnut text-xs uppercase tracking-widest text-center">
+                <h3 className="font-handwritten text-walnut text-xs uppercase tracking-widest text-center">
                   СПОМЕНИ ОТ ТРАДИЦИЯТА
                 </h3>
               </div>
 
               <blockquote className="space-y-5 relative">
-                <p className="font-mono text-walnut text-sm md:text-base leading-loose">
+                <p className="font-handwritten text-walnut text-sm md:text-base leading-loose">
                   Преди 30 години, моята баба ме научи как се прави истинско сирене.
                   Не от книга. Не от фабрика. От традиция, предавана от поколения.
                 </p>
 
-                <p className="font-mono text-walnut text-sm md:text-base leading-loose">
+                <p className="font-handwritten text-walnut text-sm md:text-base leading-loose">
                   Днес правя същото сирене, по същите бабини рецепти, с любов и търпение.
                   Без химия. Без бързане. Точно както тогава.
                 </p>
 
-                <p className="font-mono text-walnut text-sm md:text-base leading-loose font-bold">
+                <p className="font-handwritten text-walnut text-sm md:text-base leading-loose font-bold">
                   Защото някои неща не трябва да се променят.
                 </p>
 

@@ -128,10 +128,10 @@ export default function FAQ() {
                   aria-expanded={openIndex === index}
                 >
                   <div className="flex items-start gap-3">
-                    <span className="font-mono text-bulgarian-red font-bold flex-shrink-0">
+                    <span className="font-handwritten text-bulgarian-red font-bold flex-shrink-0">
                       {String(index + 1).padStart(2, '0')}.
                     </span>
-                    <h3 className="font-mono text-lg md:text-xl text-walnut font-bold group-hover:text-bulgarian-red transition-colors">
+                    <h3 className="font-handwritten text-lg md:text-xl text-walnut font-bold group-hover:text-bulgarian-red transition-colors">
                       {faq.question}
                     </h3>
                   </div>

@@ -29,12 +29,12 @@ export default function ProgressBar({ currentStep, totalSteps }: ProgressBarProp
         <div className="text-center mb-6 pb-4 border-b-2 border-dashed border-walnut/30">
           <div className="flex items-center justify-center gap-3 mb-2">
             <div className="text-bulgarian-red text-2xl">★</div>
-            <p className="font-mono text-xs uppercase tracking-widest text-walnut font-bold">
+            <p className="font-handwritten text-xs uppercase tracking-widest text-walnut font-bold">
               ФОРМУЛЯР ЗА УЧАСТИЕ
             </p>
             <div className="text-bulgarian-red text-2xl">★</div>
           </div>
-          <p className="font-mono text-xs text-walnut/60">
+          <p className="font-handwritten text-xs text-walnut/60">
             №{documentNumber}
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function ProgressBar({ currentStep, totalSteps }: ProgressBarProp
                 `}>
                   {/* Step Label */}
                   <div className="text-center">
-                    <p className="font-mono text-sm text-walnut font-bold tracking-wide">
+                    <p className="font-handwritten text-sm text-walnut font-bold tracking-wide">
                       {step.labelBg}
                     </p>
                   </div>
@@ -103,7 +103,7 @@ export default function ProgressBar({ currentStep, totalSteps }: ProgressBarProp
 
         {/* Document Footer - Current Step Indicator */}
         <div className="text-center pt-4 border-t-2 border-dashed border-walnut/30">
-          <p className="font-mono text-sm text-walnut">
+          <p className="font-handwritten text-sm text-walnut">
             <span className="font-bold text-bulgarian-red">{steps[currentStep - 1]?.label}</span>
             {currentStep < totalSteps && ' — Моля, продължете'}
             {currentStep === totalSteps && ' — Участието завършено!'}

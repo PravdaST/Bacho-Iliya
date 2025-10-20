@@ -91,7 +91,7 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
               {/* Flip Indicator */}
               <button
                 onClick={handleFlip}
-                className="w-full py-2 text-xs font-mono text-walnut/60 hover:text-walnut transition-colors border-t border-dashed border-walnut/20 mt-3"
+                className="w-full py-2 text-xs font-handwritten text-walnut/60 hover:text-walnut transition-colors border-t border-dashed border-walnut/20 mt-3"
               >
                 » Виж бележката на Бачо
               </button>
@@ -160,7 +160,7 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
             {/* Flip Back Button */}
             <button
               onClick={handleFlip}
-              className="w-full py-2 text-sm font-mono text-walnut/60 hover:text-walnut transition-colors border-t border-dashed border-walnut/20"
+              className="w-full py-2 text-sm font-handwritten text-walnut/60 hover:text-walnut transition-colors border-t border-dashed border-walnut/20"
             >
               « Обратно към снимката
             </button>
@@ -192,12 +192,12 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
                 {/* Inner Content */}
                 <div className="absolute inset-2 flex flex-col items-center justify-center">
                   {/* Text */}
-                  <div className="font-mono text-xs font-bold text-bulgarian-red text-center leading-tight mb-1">
+                  <div className="font-handwritten text-xs font-bold text-bulgarian-red text-center leading-tight mb-1">
                     ОДОБРЕНО
                   </div>
 
                   {/* Year */}
-                  <div className="font-mono text-xs text-bulgarian-red">
+                  <div className="font-handwritten text-xs text-bulgarian-red">
                     {new Date().getFullYear()}
                   </div>
                 </div>

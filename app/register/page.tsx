@@ -179,7 +179,7 @@ export default function RegisterPage() {
           {/* Selected Products */}
           {selectedProductsList.length > 0 && (
             <div className="relative mb-8 bg-bulgarian-red/5 border-l-4 border-bulgarian-red p-4">
-              <p className="font-mono text-xs text-walnut/60 uppercase mb-2">Избрани продукти:</p>
+              <p className="font-handwritten text-xs text-walnut/60 uppercase mb-2">Избрани продукти:</p>
               <div className="flex flex-wrap gap-2">
                 {selectedProductsList.map((product) => (
                   <span
@@ -210,7 +210,7 @@ export default function RegisterPage() {
                 `}
                 placeholder="__________________________"
               />
-              {errors.name && <p className="mt-2 font-mono text-sm text-bulgarian-red">{errors.name}</p>}
+              {errors.name && <p className="mt-2 font-handwritten text-sm text-bulgarian-red">{errors.name}</p>}
             </div>
 
             {/* Email */}
@@ -230,7 +230,7 @@ export default function RegisterPage() {
                 `}
                 placeholder="__________________________"
               />
-              {errors.email && <p className="mt-2 font-mono text-sm text-bulgarian-red">{errors.email}</p>}
+              {errors.email && <p className="mt-2 font-handwritten text-sm text-bulgarian-red">{errors.email}</p>}
             </div>
 
             {/* Phone */}
@@ -250,8 +250,8 @@ export default function RegisterPage() {
                 `}
                 placeholder="__________________________"
               />
-              {errors.phone && <p className="mt-2 font-mono text-sm text-bulgarian-red">{errors.phone}</p>}
-              <p className="mt-2 font-mono text-xs text-walnut/60">Формат: 10 цифри (напр. 0888123456)</p>
+              {errors.phone && <p className="mt-2 font-handwritten text-sm text-bulgarian-red">{errors.phone}</p>}
+              <p className="mt-2 font-handwritten text-xs text-walnut/60">Формат: 10 цифри (напр. 0888123456)</p>
             </div>
           </div>
 

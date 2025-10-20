@@ -146,9 +146,9 @@ export default function SuccessPage() {
 
           {/* Entry ID - Certificate Style */}
           <div className="relative mb-8 text-center bg-bulgarian-red/5 border-4 border-bulgarian-red p-8">
-            <p className="font-mono text-xs text-walnut/60 uppercase tracking-wider mb-3">Твоят уникален номер на участие:</p>
+            <p className="font-handwritten text-xs text-walnut/60 uppercase tracking-wider mb-3">Твоят уникален номер на участие:</p>
             <motion.p
-              className="font-mono text-4xl md:text-5xl font-bold text-bulgarian-red mb-6 tracking-wider"
+              className="font-handwritten text-4xl md:text-5xl font-bold text-bulgarian-red mb-6 tracking-wider"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5, type: "spring", stiffness: 150 }}
@@ -290,7 +290,7 @@ export default function SuccessPage() {
                 value={referralLink}
                 readOnly
                 aria-label="Твоя уникален препоръчителен линк"
-                className="flex-1 px-4 py-2 bg-amber-50 border border-amber-200 rounded-lg text-sm font-mono text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                className="flex-1 px-4 py-2 bg-amber-50 border border-amber-200 rounded-lg text-sm font-handwritten text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
               />
               <button
                 onClick={handleCopyReferralLink}

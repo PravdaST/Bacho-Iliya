@@ -141,7 +141,7 @@ export default function SocialShare({
       {/* Main Share Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 bg-bulgarian-red text-white px-6 py-3 font-mono text-sm tracking-wider border-2 border-walnut/30 shadow-lg hover:bg-walnut transition-colors duration-300"
+        className="flex items-center gap-2 bg-bulgarian-red text-white px-6 py-3 font-handwritten text-sm tracking-wider border-2 border-walnut/30 shadow-lg hover:bg-walnut transition-colors duration-300"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -192,7 +192,7 @@ export default function SocialShare({
                       <motion.button
                         key={social.name}
                         onClick={() => handleShare(social.name.toLowerCase(), social.url)}
-                        className={`${social.color} text-white px-4 py-3 flex items-center gap-2 font-mono text-xs tracking-wider transition-all duration-200`}
+                        className={`${social.color} text-white px-4 py-3 flex items-center gap-2 font-handwritten text-xs tracking-wider transition-all duration-200`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -206,7 +206,7 @@ export default function SocialShare({
                 {/* Copy Link Button */}
                 <motion.button
                   onClick={handleCopyLink}
-                  className="w-full bg-old-paper border-2 border-walnut/30 text-walnut px-4 py-3 flex items-center justify-center gap-2 font-mono text-xs tracking-wider hover:bg-sunflower/20 transition-colors duration-200"
+                  className="w-full bg-old-paper border-2 border-walnut/30 text-walnut px-4 py-3 flex items-center justify-center gap-2 font-handwritten text-xs tracking-wider hover:bg-sunflower/20 transition-colors duration-200"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

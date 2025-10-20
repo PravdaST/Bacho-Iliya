@@ -244,7 +244,7 @@ export default function Home() {
                 {/* Header */}
                 <div>
                   <div className="text-right mb-6">
-                    <p className="font-mono text-xs text-walnut/60">
+                    <p className="font-handwritten text-xs text-walnut/60">
                       {new Date().toLocaleDateString('bg-BG')}
                     </p>
                   </div>
@@ -427,7 +427,7 @@ export default function Home() {
                 style={{ transform: 'rotate(1deg)' }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <h4 className="font-mono text-xl font-bold text-walnut uppercase tracking-wide">Безплатно</h4>
+                  <h4 className="font-handwritten text-xl font-bold text-walnut uppercase tracking-wide">Безплатно</h4>
                 </div>
                 <p className="font-handwritten text-walnut text-2xl leading-relaxed">
                   Напълно безплатно участие - без номера, без скрити условия!
@@ -443,7 +443,7 @@ export default function Home() {
                 style={{ transform: 'rotate(-1deg)' }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <h4 className="font-mono text-xl font-bold text-walnut uppercase tracking-wide">2 Минути</h4>
+                  <h4 className="font-handwritten text-xl font-bold text-walnut uppercase tracking-wide">2 Минути</h4>
                 </div>
                 <p className="font-handwritten text-walnut text-2xl leading-relaxed">
                   Само 2 минути за регистрация - простичко като боб!
@@ -459,7 +459,7 @@ export default function Home() {
                 style={{ transform: 'rotate(0.5deg)' }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <h4 className="font-mono text-xl font-bold text-walnut uppercase tracking-wide">Бабини Рецепти</h4>
+                  <h4 className="font-handwritten text-xl font-bold text-walnut uppercase tracking-wide">Бабини Рецепти</h4>
                 </div>
                 <p className="font-handwritten text-walnut text-2xl leading-relaxed">
                   Традиционни рецепти от преди 50 години - нищо не съм променил
@@ -688,7 +688,7 @@ export default function Home() {
                         <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-walnut/60" />
 
                         {/* Time Badge - Vintage Stamp Style */}
-                        <div className="absolute top-3 right-3 bg-bulgarian-red/90 px-3 py-1 text-xs font-mono text-white font-bold tracking-wide border-2 border-white shadow-lg z-10 flex items-center gap-1">
+                        <div className="absolute top-3 right-3 bg-bulgarian-red/90 px-3 py-1 text-xs font-handwritten text-white font-bold tracking-wide border-2 border-white shadow-lg z-10 flex items-center gap-1">
                           <ClockIcon size={14} className="text-white" />
                           {recipe.time}
                         </div>
@@ -713,7 +713,7 @@ export default function Home() {
                               />
                             </div>
                             <div>
-                              <p className="font-mono text-xs text-walnut/70 uppercase tracking-wide mb-1">Бачов съвет:</p>
+                              <p className="font-handwritten text-xs text-walnut/70 uppercase tracking-wide mb-1">Бачов съвет:</p>
                               <p className="font-handwritten text-walnut text-xl leading-relaxed">
                                 "{recipe.bachoTip}"
                               </p>
@@ -765,7 +765,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <p className="font-mono text-sm text-walnut uppercase tracking-wide mb-2">Бачо Илия казва:</p>
+                  <p className="font-handwritten text-sm text-walnut uppercase tracking-wide mb-2">Бачо Илия казва:</p>
                   <p className="font-handwritten text-walnut text-2xl md:text-3xl leading-relaxed">
                     "Всяка рецепта е спомен. Всеки залък е връщане у дома."
                   </p>
@@ -972,10 +972,10 @@ export default function Home() {
                 <div className="absolute -top-2 text-sunflower text-3xl">★</div>
 
                 {/* Number */}
-                <div className="font-mono text-5xl font-bold text-bulgarian-red mb-1">98%</div>
+                <div className="font-handwritten text-5xl font-bold text-bulgarian-red mb-1">98%</div>
 
                 {/* Label */}
-                <div className="font-mono text-xs text-walnut text-center leading-tight px-2">
+                <div className="font-handwritten text-xs text-walnut text-center leading-tight px-2">
                   КУПУВАТ<br/>ОТНОВО
                 </div>
 
@@ -998,10 +998,10 @@ export default function Home() {
                 <div className="absolute -top-2 text-bulgarian-red text-3xl">★</div>
 
                 {/* Number */}
-                <div className="font-mono text-4xl font-bold text-walnut mb-1">2,500+</div>
+                <div className="font-handwritten text-4xl font-bold text-walnut mb-1">2,500+</div>
 
                 {/* Label */}
-                <div className="font-mono text-xs text-walnut text-center leading-tight px-2">
+                <div className="font-handwritten text-xs text-walnut text-center leading-tight px-2">
                   ДОВОЛНИ<br/>СЕМЕЙСТВА
                 </div>
 
@@ -1024,10 +1024,10 @@ export default function Home() {
                 <div className="absolute -top-2 text-sunflower text-3xl">★</div>
 
                 {/* Number */}
-                <div className="font-mono text-5xl font-bold text-walnut mb-1">4.9</div>
+                <div className="font-handwritten text-5xl font-bold text-walnut mb-1">4.9</div>
 
                 {/* Label */}
-                <div className="font-mono text-xs text-walnut text-center leading-tight px-2">
+                <div className="font-handwritten text-xs text-walnut text-center leading-tight px-2">
                   СРЕДНА<br/>ОЦЕНКА
                 </div>
 
@@ -1075,7 +1075,7 @@ export default function Home() {
               <div className="bg-white p-8 shadow-2xl border-4 border-sunflower/30 relative" style={{ transform: 'rotate(-1deg)' }}>
                 {/* Step Number Badge */}
                 <div className="absolute -top-8 -left-8 w-20 h-20 rounded-full bg-bulgarian-red border-4 border-white flex items-center justify-center shadow-xl">
-                  <span className="font-mono text-white text-3xl font-bold">01</span>
+                  <span className="font-handwritten text-white text-3xl font-bold">01</span>
                 </div>
 
                 <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
@@ -1091,7 +1091,7 @@ export default function Home() {
               </div>
             </div>
             <div className="order-2 hidden md:block">
-              <div className="text-9xl opacity-10 font-mono text-walnut">01</div>
+              <div className="text-9xl opacity-10 font-handwritten text-walnut">01</div>
             </div>
           </motion.div>
 
@@ -1104,13 +1104,13 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="order-2 md:order-1 hidden md:block">
-              <div className="text-9xl opacity-10 font-mono text-walnut text-right">02</div>
+              <div className="text-9xl opacity-10 font-handwritten text-walnut text-right">02</div>
             </div>
             <div className="order-1 md:order-2">
               <div className="bg-white p-8 shadow-2xl border-4 border-faded-denim/30 relative ml-auto" style={{ transform: 'rotate(1deg)' }}>
                 {/* Step Number Badge */}
                 <div className="absolute -top-8 -right-8 w-20 h-20 rounded-full bg-bulgarian-red border-4 border-white flex items-center justify-center shadow-xl">
-                  <span className="font-mono text-white text-3xl font-bold">02</span>
+                  <span className="font-handwritten text-white text-3xl font-bold">02</span>
                 </div>
 
                 <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
@@ -1139,7 +1139,7 @@ export default function Home() {
               <div className="bg-white p-8 shadow-2xl border-4 border-bulgarian-red/30 relative" style={{ transform: 'rotate(-0.5deg)' }}>
                 {/* Step Number Badge */}
                 <div className="absolute -top-8 -left-8 w-20 h-20 rounded-full bg-bulgarian-red border-4 border-white flex items-center justify-center shadow-xl">
-                  <span className="font-mono text-white text-3xl font-bold">03</span>
+                  <span className="font-handwritten text-white text-3xl font-bold">03</span>
                 </div>
 
                 <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
@@ -1155,7 +1155,7 @@ export default function Home() {
               </div>
             </div>
             <div className="order-2 hidden md:block">
-              <div className="text-9xl opacity-10 font-mono text-walnut">03</div>
+              <div className="text-9xl opacity-10 font-handwritten text-walnut">03</div>
             </div>
           </motion.div>
 

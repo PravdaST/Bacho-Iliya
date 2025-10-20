@@ -158,7 +158,7 @@ export default function UserStatsDashboard({
         <div className="bg-white border-2 border-walnut/20 rounded-lg p-3 flex items-center gap-2">
           <div className="flex-1">
             <p className="text-xs text-walnut/60 mb-1">Твоят реферален код:</p>
-            <p className="font-mono font-bold text-bulgarian-red">{referralCode}</p>
+            <p className="font-handwritten font-bold text-bulgarian-red">{referralCode}</p>
           </div>
           <motion.button
             whileHover={{ scale: 1.1 }}
@@ -270,7 +270,7 @@ export default function UserStatsDashboard({
           <div className="flex items-center gap-3">
             <div className="flex-1 min-w-0">
               <p className="text-xs text-walnut/60 mb-1">Твоят уникален линк:</p>
-              <p className="font-mono text-sm text-bulgarian-red truncate font-bold">
+              <p className="font-handwritten text-sm text-bulgarian-red truncate font-bold">
                 {referralUrl}
               </p>
             </div>

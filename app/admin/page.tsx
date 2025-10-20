@@ -364,7 +364,7 @@ export default function AdminPage() {
               <tbody>
                 {filteredEntries.map((entry, index) => (
                   <tr key={entry.id} className={index % 2 === 0 ? 'bg-amber-50' : 'bg-white'}>
-                    <td className="px-4 py-3 text-sm font-mono text-amber-700 whitespace-nowrap">{entry.entry_id}</td>
+                    <td className="px-4 py-3 text-sm font-handwritten text-amber-700 whitespace-nowrap">{entry.entry_id}</td>
                     <td className="px-4 py-3 text-sm text-gray-900">{entry.name}</td>
                     <td className="hidden md:table-cell px-4 py-3 text-sm text-gray-700">{entry.email}</td>
                     <td className="hidden lg:table-cell px-4 py-3 text-sm text-gray-700">{entry.phone}</td>
@@ -435,7 +435,7 @@ export default function AdminPage() {
                   </div>
                   <div>
                     <p className="text-sm text-amber-700 font-medium mb-1">Entry ID:</p>
-                    <p className="text-lg font-bold text-amber-900 font-mono">{winner.entry_id}</p>
+                    <p className="text-lg font-bold text-amber-900 font-handwritten">{winner.entry_id}</p>
                   </div>
                   <div>
                     <p className="text-sm text-amber-700 font-medium mb-1">Email:</p>

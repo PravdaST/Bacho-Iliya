@@ -84,7 +84,7 @@ export default function BlogPage() {
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="inline-block bg-bulgarian-red text-white px-6 py-2 font-mono text-sm tracking-wider mb-6"
+            className="inline-block bg-bulgarian-red text-white px-6 py-2 font-handwritten text-sm tracking-wider mb-6"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
           >
@@ -121,7 +121,7 @@ export default function BlogPage() {
                   </div>
 
                   {/* Category Badge */}
-                  <div className="absolute top-3 left-3 bg-bulgarian-red text-white px-3 py-1 text-xs font-mono tracking-wider">
+                  <div className="absolute top-3 left-3 bg-bulgarian-red text-white px-3 py-1 text-xs font-handwritten tracking-wider">
                     {post.category}
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export default function BlogPage() {
                 {/* Content */}
                 <div className="p-6">
                   {/* Date & Read Time */}
-                  <div className="flex items-center gap-3 mb-3 text-walnut/60 text-sm font-mono">
+                  <div className="flex items-center gap-3 mb-3 text-walnut/60 text-sm font-handwritten">
                     <span>{post.date}</span>
                     <span>•</span>
                     <div className="flex items-center gap-1">

@@ -100,7 +100,7 @@ export default function RecipePage({ params }: Props) {
                   <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-walnut/60" />
 
                   {/* Difficulty Badge */}
-                  <div className="absolute top-4 right-4 bg-bulgarian-red/90 px-4 py-2 text-sm font-mono text-white font-bold tracking-wide border-2 border-white shadow-lg">
+                  <div className="absolute top-4 right-4 bg-bulgarian-red/90 px-4 py-2 text-sm font-handwritten text-white font-bold tracking-wide border-2 border-white shadow-lg">
                     {recipe.difficulty}
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export default function RecipePage({ params }: Props) {
               <div className="flex justify-center mb-2">
                 <ClockIcon className="w-10 h-10 text-walnut" />
               </div>
-              <div className="font-mono text-xs text-walnut/70 uppercase mb-1">Подготовка</div>
+              <div className="font-handwritten text-xs text-walnut/70 uppercase mb-1">Подготовка</div>
               <div className="font-handwritten text-2xl text-bulgarian-red">{recipe.prepTime}</div>
               {/* Paper texture */}
               <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
@@ -143,7 +143,7 @@ export default function RecipePage({ params }: Props) {
               <div className="flex justify-center mb-2">
                 <FlameIcon className="w-10 h-10 text-bulgarian-red" />
               </div>
-              <div className="font-mono text-xs text-walnut/70 uppercase mb-1">Готвене</div>
+              <div className="font-handwritten text-xs text-walnut/70 uppercase mb-1">Готвене</div>
               <div className="font-handwritten text-2xl text-bulgarian-red">{recipe.cookTime}</div>
               {/* Paper texture */}
               <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
@@ -152,7 +152,7 @@ export default function RecipePage({ params }: Props) {
               <div className="flex justify-center mb-2">
                 <PlateIcon className="w-10 h-10 text-walnut" />
               </div>
-              <div className="font-mono text-xs text-walnut/70 uppercase mb-1">Порции</div>
+              <div className="font-handwritten text-xs text-walnut/70 uppercase mb-1">Порции</div>
               <div className="font-handwritten text-2xl text-bulgarian-red">{recipe.servings}</div>
               {/* Paper texture */}
               <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
@@ -239,7 +239,7 @@ export default function RecipePage({ params }: Props) {
                       key={idx}
                       className="flex gap-4 pb-6 border-b border-dashed border-walnut/30 last:border-0 last:pb-0"
                     >
-                      <div className="flex-shrink-0 w-10 h-10 bg-bulgarian-red text-white flex items-center justify-center font-mono font-bold border-2 border-walnut/20">
+                      <div className="flex-shrink-0 w-10 h-10 bg-bulgarian-red text-white flex items-center justify-center font-handwritten font-bold border-2 border-walnut/20">
                         {idx + 1}
                       </div>
                       <div className="flex-1">

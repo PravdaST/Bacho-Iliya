@@ -49,7 +49,7 @@
   --font-family-serif: 'PT Serif', Georgia, serif;
   --font-family-mono: 'PT Mono', 'Courier New', monospace;
   --font-family-sans: Inter, system-ui, -apple-system, sans-serif;
-  --font-family-handwritten: Caveat, cursive;
+  --font-family-handwritten: 'Amatic SC', 'Permanent Marker', cursive;  /* БАХ МУ МАМАТА - автентичен кирилица ръкописен шрифт! */
   --font-family-village: 'Amatic SC', 'Permanent Marker', cursive;  /* Автентичен селски font */
   --font-family-rustic: 'Permanent Marker', cursive;                /* Груб рустик font */
   --font-family-playfair: 'PT Serif', 'Playfair Display', serif;

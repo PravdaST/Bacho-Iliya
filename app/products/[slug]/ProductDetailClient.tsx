@@ -49,7 +49,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
         <div className="max-w-7xl mx-auto mb-8">
           <Link href="/products">
             <motion.div
-              className="inline-flex items-center gap-2 text-bulgarian-red hover:text-walnut font-mono text-sm tracking-wider transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-bulgarian-red hover:text-walnut font-handwritten text-sm tracking-wider transition-colors duration-300"
               whileHover={{ x: -5 }}
             >
               ← ВСИЧКИ ПРОДУКТИ
@@ -106,7 +106,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <motion.div variants={fadeInVariants} className="space-y-6">
               <div>
                 <motion.span
-                  className="inline-block bg-bulgarian-red text-white px-4 py-1 font-mono text-xs tracking-wider border border-walnut/30 mb-4"
+                  className="inline-block bg-bulgarian-red text-white px-4 py-1 font-handwritten text-xs tracking-wider border border-walnut/30 mb-4"
                   variants={fadeInVariants}
                 >
                   {getCategoryLabel(product.category)}
@@ -138,7 +138,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     <motion.button
                       key={size.size}
                       onClick={() => setSelectedSize(size)}
-                      className={`px-6 py-3 font-mono text-sm tracking-wider border-2 transition-all duration-300 ${
+                      className={`px-6 py-3 font-handwritten text-sm tracking-wider border-2 transition-all duration-300 ${
                         selectedSize.size === size.size
                           ? 'bg-bulgarian-red text-white border-walnut/50'
                           : 'bg-white text-walnut border-walnut/30 hover:border-bulgarian-red'
@@ -175,7 +175,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   className="bg-sunflower/20 p-6 border-l-4 border-sunflower relative mt-8"
                 >
                   <div className="absolute top-3 right-3 w-3 h-3 bg-bulgarian-red rounded-full" />
-                  <p className="font-mono text-xs tracking-wider text-walnut/60 mb-2">
+                  <p className="font-handwritten text-xs tracking-wider text-walnut/60 mb-2">
                     СЪВЕТ ОТ БАЧО ИЛИЯ
                   </p>
                   <p className="font-handwritten text-lg text-walnut/90 leading-relaxed">
@@ -232,7 +232,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               </h3>
               <div className="space-y-4">
                 <div>
-                  <p className="font-mono text-xs tracking-wider text-walnut/60 mb-2">
+                  <p className="font-handwritten text-xs tracking-wider text-walnut/60 mb-2">
                     НАЧИН НА СЪХРАНЕНИЕ
                   </p>
                   <p className="font-handwritten text-walnut/80 leading-relaxed">
@@ -241,7 +241,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 </div>
                 <div className="w-full h-px bg-faded-denim/30" />
                 <div>
-                  <p className="font-mono text-xs tracking-wider text-walnut/60 mb-2">
+                  <p className="font-handwritten text-xs tracking-wider text-walnut/60 mb-2">
                     ГОДНОСТ
                   </p>
                   <p className="font-handwritten text-walnut/80 leading-relaxed">
@@ -275,7 +275,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     <th className="px-6 py-4 text-left font-handwritten text-xl border-r-2 border-walnut/30">
                       Хранителна стойност
                     </th>
-                    <th className="px-6 py-4 text-right font-mono text-sm tracking-wider">
+                    <th className="px-6 py-4 text-right font-handwritten text-sm tracking-wider">
                       КОЛИЧЕСТВО
                     </th>
                   </tr>
@@ -283,36 +283,36 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 <tbody>
                   <tr className="border-b-2 border-walnut/20">
                     <td className="px-6 py-4 font-handwritten text-walnut/80">Енергийна стойност</td>
-                    <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.energy}</td>
+                    <td className="px-6 py-4 text-right font-handwritten text-walnut">{product.nutritionPer100g.energy}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20">
                     <td className="px-6 py-4 font-handwritten text-walnut/80">Мазнини</td>
-                    <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.fat}</td>
+                    <td className="px-6 py-4 text-right font-handwritten text-walnut">{product.nutritionPer100g.fat}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20 bg-old-paper/30">
                     <td className="px-6 py-4 pl-12 font-handwritten text-sm text-walnut/70">от които наситени</td>
-                    <td className="px-6 py-4 text-right font-mono text-sm text-walnut/80">{product.nutritionPer100g.saturatedFat}</td>
+                    <td className="px-6 py-4 text-right font-handwritten text-sm text-walnut/80">{product.nutritionPer100g.saturatedFat}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20">
                     <td className="px-6 py-4 font-handwritten text-walnut/80">Въглехидрати</td>
-                    <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.carbohydrates}</td>
+                    <td className="px-6 py-4 text-right font-handwritten text-walnut">{product.nutritionPer100g.carbohydrates}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20 bg-old-paper/30">
                     <td className="px-6 py-4 pl-12 font-handwritten text-sm text-walnut/70">от които захари</td>
-                    <td className="px-6 py-4 text-right font-mono text-sm text-walnut/80">{product.nutritionPer100g.sugars}</td>
+                    <td className="px-6 py-4 text-right font-handwritten text-sm text-walnut/80">{product.nutritionPer100g.sugars}</td>
                   </tr>
                   <tr className="border-b-2 border-walnut/20">
                     <td className="px-6 py-4 font-handwritten text-walnut/80">Белтъчини</td>
-                    <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.protein}</td>
+                    <td className="px-6 py-4 text-right font-handwritten text-walnut">{product.nutritionPer100g.protein}</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-handwritten text-walnut/80">Сол</td>
-                    <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.salt}</td>
+                    <td className="px-6 py-4 text-right font-handwritten text-walnut">{product.nutritionPer100g.salt}</td>
                   </tr>
                   {product.nutritionPer100g.calcium && (
                     <tr className="bg-old-paper/30">
                       <td className="px-6 py-4 font-handwritten text-walnut/80">Калций</td>
-                      <td className="px-6 py-4 text-right font-mono text-walnut">{product.nutritionPer100g.calcium}</td>
+                      <td className="px-6 py-4 text-right font-handwritten text-walnut">{product.nutritionPer100g.calcium}</td>
                     </tr>
                   )}
                 </tbody>
@@ -393,7 +393,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                         <p className="font-handwritten text-lg text-walnut">
                           {testimonial.name}
                         </p>
-                        <p className="font-mono text-xs text-walnut/60 tracking-wider">
+                        <p className="font-handwritten text-xs text-walnut/60 tracking-wider">
                           {testimonial.location}
                         </p>
                       </div>
@@ -440,7 +440,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                         </p>
 
                         <div className="mt-4 text-center">
-                          <span className="inline-block font-mono text-xs text-bulgarian-red tracking-wider">
+                          <span className="inline-block font-handwritten text-xs text-bulgarian-red tracking-wider">
                             ВИЖ РЕЦЕПТАТА →
                           </span>
                         </div>

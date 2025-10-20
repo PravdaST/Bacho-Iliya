@@ -164,7 +164,7 @@ export default function Leaderboard({
                   </div>
 
                   {variant === "full" && (
-                    <p className="text-xs text-walnut/60 font-mono">
+                    <p className="text-xs text-walnut/60 font-handwritten">
                       {formatLeaderboardEmail(entry.email)}
                     </p>
                   )}
