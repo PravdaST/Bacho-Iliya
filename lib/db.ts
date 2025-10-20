@@ -3,15 +3,22 @@ import postgres from 'postgres';
 
 let db: ReturnType<typeof drizzle> | null = null;
 let dbError: Error | null = null;
+let isInitialized = false;
 
-// Initialize database connection
-try {
-  const connectionString = process.env.DATABASE_URL;
+// Lazy initialization of database connection (only when accessed)
+function initializeDatabase() {
+  if (isInitialized) return;
+  isInitialized = true;
 
-  if (!connectionString) {
-    console.warn('⚠️  DATABASE_URL is not set. Database features will be disabled.');
-    dbError = new Error('DATABASE_URL is not configured');
-  } else {
+  try {
+    const connectionString = process.env.DATABASE_URL;
+
+    if (!connectionString) {
+      console.warn('⚠️  DATABASE_URL is not set. Database features will be disabled.');
+      dbError = new Error('DATABASE_URL is not configured');
+      return;
+    }
+
     console.log('🔌 Attempting to connect to database...');
 
     // Create postgres client with error handling
@@ -24,18 +31,19 @@ try {
 
     db = drizzle(client);
     console.log('✅ Database connection initialized successfully');
+  } catch (error) {
+    dbError = error instanceof Error ? error : new Error('Unknown database error');
+    console.error('❌ Failed to initialize database connection:', dbError.message);
+    db = null;
   }
-} catch (error) {
-  dbError = error instanceof Error ? error : new Error('Unknown database error');
-  console.error('❌ Failed to initialize database connection:', dbError.message);
-  db = null;
 }
 
-// Export db instance
+// Export db instance with lazy initialization
 export { db };
 
 // Helper to check if database is available
 export const isDatabaseAvailable = () => {
+  initializeDatabase(); // Lazy init
   return !!db && !dbError;
 };
 
@@ -46,6 +54,8 @@ export const getDatabaseError = () => {
 
 // Test database connection
 export const testDatabaseConnection = async (): Promise<{ success: boolean; error?: string }> => {
+  initializeDatabase(); // Lazy init
+
   if (!db) {
     return { success: false, error: dbError?.message || 'Database not initialized' };
   }
