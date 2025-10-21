@@ -43,7 +43,7 @@ export default function Header() {
           : "shadow-xl"
       }`}
       style={{
-        backgroundColor: scrolled ? 'rgba(226, 37, 38, 0.95)' : 'rgba(226, 37, 38, 0.90)',
+        backgroundColor: scrolled ? '#DC143C' : 'rgba(220, 20, 60, 0.95)',
       }}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -73,7 +73,10 @@ export default function Header() {
                   width={120}
                   height={48}
                   className="h-full w-auto object-contain"
+                  style={{ imageRendering: 'crisp-edges' }}
                   priority
+                  unoptimized
+                  quality={100}
                   sizes="(max-width: 640px) 32px, (max-width: 768px) 40px, 48px"
                 />
               </motion.div>

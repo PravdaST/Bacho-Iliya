@@ -38,6 +38,9 @@ export default function Footer() {
                   width={120}
                   height={64}
                   className="h-full w-auto object-contain"
+                  style={{ imageRendering: 'crisp-edges' }}
+                  unoptimized
+                  quality={100}
                   sizes="(max-width: 640px) 48px, 64px"
                 />
               </div>

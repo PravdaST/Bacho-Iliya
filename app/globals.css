@@ -45,14 +45,14 @@
   --color-primary-800: #806d00;
   --color-primary-900: #665700;
 
-  /* Font Families */
-  --font-family-serif: 'PT Serif', Georgia, serif;
-  --font-family-mono: 'PT Mono', 'Courier New', monospace;
-  --font-family-sans: Inter, system-ui, -apple-system, sans-serif;
-  --font-family-handwritten: 'Amatic SC', 'Permanent Marker', cursive;  /* БАХ МУ МАМАТА - автентичен кирилица ръкописен шрифт! */
-  --font-family-village: 'Amatic SC', 'Permanent Marker', cursive;  /* Автентичен селски font */
-  --font-family-rustic: 'Permanent Marker', cursive;                /* Груб рустик font */
-  --font-family-playfair: 'PT Serif', 'Playfair Display', serif;
+  /* Font Families - 100% Caveat Coverage - Нормални малки и големи букви */
+  --font-family-serif: 'Caveat', cursive;    /* Променено на Caveat - автентичен ръкописен с нормални букви */
+  --font-family-mono: 'PT Mono', 'Courier New', monospace;  /* Запазен PT Mono за номера и код */
+  --font-family-sans: 'Caveat', cursive;     /* Променено на Caveat - автентичен ръкописен с нормални букви */
+  --font-family-handwritten: 'Caveat', cursive;  /* Caveat - автентичен кирилица ръкописен с нормални малки букви! */
+  --font-family-village: 'Caveat', cursive;  /* Променено на Caveat - автентичен ръкописен с нормални букви */
+  --font-family-rustic: 'Caveat', cursive;   /* Променено на Caveat - автентичен ръкописен с нормални букви */
+  --font-family-playfair: 'Caveat', cursive; /* Променено на Caveat - автентичен ръкописен с нормални букви */
 
   /* Custom Box Shadows */
   --shadow-vintage: 0 2px 8px rgba(139, 69, 19, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -71,6 +71,20 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: #F5F5DC;
+  font-family: var(--font-family-handwritten);  /* 100% Caveat coverage */
+}
+
+/* Всички параграфи са 18px по подразбиране */
+p {
+  font-size: 18px;
+  font-weight: 600;  /* SemiBold за по-добра четливост с Caveat */
+  line-height: 1.7;
+}
+
+/* Tailwind text-xs класът = 16px за по-добра четливост */
+.text-xs {
+  font-size: 16px !important;
+  line-height: 1.5;
 }
 
 /* ============================================
@@ -190,50 +204,50 @@ html {
 
   .heading-large {
     font-family: var(--font-family-village);
-    font-size: 40px;
+    font-size: 48px;  /* Увеличено от 40px (+20%) */
     font-weight: 700;
     line-height: 1.2;
   }
 
   .heading-medium {
     font-family: var(--font-family-serif);
-    font-size: 20px;
+    font-size: 24px;  /* Увеличено от 20px (+20%) */
     font-weight: 700;
     line-height: 1.3;
   }
 
   .body-text {
     font-family: var(--font-family-serif);
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px;  /* Увеличено от 16px (+12.5%) */
+    font-weight: 600;  /* SemiBold за Caveat */
     line-height: 1.6;
   }
 
   /* Backward compatibility */
   .heading-display {
     font-family: var(--font-family-village);
-    font-size: 40px;
+    font-size: 48px;  /* Увеличено от 40px (+20%) */
     font-weight: 700;
     line-height: 1.2;
   }
 
   .heading-h1 {
     font-family: var(--font-family-village);
-    font-size: 40px;
+    font-size: 48px;  /* Увеличено от 40px (+20%) */
     font-weight: 700;
     line-height: 1.2;
   }
 
   .heading-h2 {
     font-family: var(--font-family-serif);
-    font-size: 20px;
+    font-size: 24px;  /* Увеличено от 20px (+20%) */
     font-weight: 700;
     line-height: 1.3;
   }
 
   .heading-h3 {
     font-family: var(--font-family-serif);
-    font-size: 20px;
+    font-size: 24px;  /* Увеличено от 20px (+20%) */
     font-weight: 700;
     line-height: 1.3;
   }
@@ -241,57 +255,57 @@ html {
   /* Body Text - Enhanced for better readability */
   .body-large {
     font-family: var(--font-family-serif);
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 24px;  /* Увеличено от 20px (+20%) */
+    font-weight: 600;  /* SemiBold за Caveat */
     line-height: 1.7;
   }
 
   @media (min-width: 768px) {
     .body-large {
-      font-size: 22px;
+      font-size: 26px;  /* Увеличено от 22px (+18%) */
       line-height: 1.8;
     }
   }
 
   .body-base {
     font-family: var(--font-family-serif);
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 22px;  /* Увеличено от 18px (+22%) */
+    font-weight: 600;  /* SemiBold за Caveat */
     line-height: 1.7;
   }
 
   @media (min-width: 768px) {
     .body-base {
-      font-size: 20px;
+      font-size: 24px;  /* Увеличено от 20px (+20%) */
       line-height: 1.8;
     }
   }
 
   .body-small {
     font-family: var(--font-family-sans);
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px;  /* Увеличено от 16px (+12.5%) */
+    font-weight: 600;  /* SemiBold за Caveat */
     line-height: 1.6;
   }
 
   /* Special Typography */
   .text-handwritten {
     font-family: var(--font-family-handwritten);
-    font-size: 28px;
+    font-size: 32px;  /* Увеличено от 28px (+14%) */
     font-weight: 600;
     line-height: 1.3;
   }
 
   .text-village {
     font-family: var(--font-family-village);
-    font-size: 32px;
+    font-size: 38px;  /* Увеличено от 32px (+18%) */
     font-weight: 700;
     line-height: 1.2;
   }
 
   .text-mono {
     font-family: var(--font-family-mono);
-    font-size: 16px;
+    font-size: 18px;  /* Увеличено от 16px (+12.5%) */
     font-weight: 400;
   }
 
