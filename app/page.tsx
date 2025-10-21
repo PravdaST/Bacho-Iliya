@@ -50,7 +50,7 @@ export default function Home() {
     },
     {
       title: "Снежанка салата",
-      image: "/snezhanka.webp",
+      image: "/recipes/snejanka salata.jpg",
       time: "20 мин",
       slug: "snezhanka-salad",
       bachoTip: "Създадена през 70-те, но с бабина душа! Цедено кисело мляко, краставици, чесън и орехи. 'Сух таратор' го наричат селяните."
@@ -64,56 +64,56 @@ export default function Home() {
     },
     {
       title: "Чушки бюрек",
-      image: "/chushki-burek.webp",
+      image: "/recipes/piperki-burek.webp",
       time: "35 мин",
       slug: "chushki-burek",
       bachoTip: "Печени чушки, пълнеж от сирене и яйца, панирани и изпържени. Лятна класика - ароматни, сочни, истински!"
     },
     {
       title: "Миш-маш",
-      image: "/mish-mash.webp",
+      image: "/recipes/mishmash.jpg",
       time: "25 мин",
       slug: "mish-mash",
       bachoTip: "Българско national dish! Лук, чушки, домати, сирене и яйца. Бърз обяд или закуска - без месо, но сита."
     },
     {
       title: "Пълнени чушки",
-      image: "/palneni-chushki.webp",
+      image: "/recipes/palneni_chushki_recepta.jpg",
       time: "70 мин",
       slug: "palneni-chushki",
       bachoTip: "Класика от бабината трапеза! Кайма с ориз в сладки чушки, задушени в доматен сос. Лято, есен, зима - винаги вкусни! Хапката топи в устата."
     },
     {
       title: "Тиквеник",
-      image: "/tikvenik.webp",
+      image: "/recipes/tikvenik.jpg",
       time: "50 мин",
       slug: "tikvenik",
       bachoTip: "Сладката баница за Бъдни вечер! Настъргана тиква, орехи, канела и мед между точени кори. Книгата 'Стари български рецепти' я нарича емблема на България!"
     },
     {
       title: "Мусака",
-      image: "/musaka.webp",
+      image: "/recipes/musaka.jpg",
       time: "80 мин",
       slug: "musaka-classic",
       bachoTip: "Най-обичаното ястие в България! Кайма с лук, картофи и пухкава заливка от яйца и кисело мляко. Мирише на неделя при баба!"
     },
     {
       title: "Боб яхния",
-      image: "/bob-yahnia.webp",
+      image: "/recipes/bob-qhniq.jpg",
       time: "90 мин",
       slug: "bob-yahnia",
       bachoTip: "Зимна топлина в чиния! Боб на червено с лук, чубрица и лют пипер. Ако искаш по-селски - сложи сушени чушки. Хляб и лютеница задължително!"
     },
     {
       title: "Млечна баница",
-      image: "/mlechna-banica.webp",
+      image: "/recipes/mlechna-banitsa.jpg",
       time: "45 мин",
       slug: "mlechna-banica",
       bachoTip: "Водеща рецепта във всяка българска готварска книга! Кори, мляко, яйца и масло. Сутрин със захар, обед като основно - винаги работи!"
     },
     {
       title: "Кюфтета",
-      image: "/kyufteta.webp",
+      image: "/recipes/kufteta.webp",
       time: "30 мин",
       slug: "kyufteta-parzeni",
       bachoTip: "Най-любимото, най-готвеното, най-популярното! Кайма с лук, чесън, чубрица и сода. Пържени до златисто. Със зелена салата и лютеница - рай!"
