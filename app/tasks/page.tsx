@@ -206,7 +206,7 @@ export default function TasksPage() {
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h3 className="font-handwritten text-2xl text-walnut mb-1">
-                    БОНУС Участия! 🎁
+                    БОНУС Участия!
                   </h3>
                   <p className="font-handwritten text-sm text-walnut/70">
                     Всяко споделяне = допълнително участие

@@ -99,7 +99,6 @@ export default function AboutPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-6 shadow-vintage">
-              <div className="text-4xl mb-4 text-center">🐄</div>
               <h3 className="font-display text-xl text-traditional-brown mb-3 text-center">
                 Добро Мляко = Добро Сирене
               </h3>
@@ -110,7 +109,6 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-6 shadow-vintage">
-              <div className="text-4xl mb-4 text-center">⏰</div>
               <h3 className="font-display text-xl text-traditional-brown mb-3 text-center">
                 Без Бързане
               </h3>
@@ -121,7 +119,6 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-6 shadow-vintage">
-              <div className="text-4xl mb-4 text-center">📝</div>
               <h3 className="font-display text-xl text-traditional-brown mb-3 text-center">
                 Четете Етикета
               </h3>
@@ -218,7 +215,7 @@ export default function AboutPage() {
               href="/"
               className="inline-block bg-vintage-cream text-bulgarian-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-parchment transition-all hover:scale-105 shadow-lg"
             >
-              Участвай в Раздаването 🎁
+              Участвай в Раздаването
             </Link>
             <Link
               href="/products"

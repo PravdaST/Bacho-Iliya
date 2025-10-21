@@ -52,7 +52,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
 
   return (
     <div className="bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl p-8 text-white shadow-xl">
-      <h3 className="text-2xl font-bold text-center mb-6">⏰ До раздаването остават:</h3>
+      <h3 className="text-2xl font-bold text-center mb-6">До раздаването остават:</h3>
 
       <div className="grid grid-cols-4 gap-4">
         {timeUnits.map((unit, index) => (

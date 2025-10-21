@@ -42,11 +42,11 @@ export default function SocialShare({
 
   // Pre-filled Bulgarian messages for each platform
   const messages = {
-    whatsapp: `🧀 ${title}\n\n${description}\n\n${url}\n\n${hashtagString}`,
-    viber: `🧀 ${title}\n\n${description}\n\n${url}`,
-    telegram: `🧀 ${title}\n\n${description}\n\n${url}\n\n${hashtagString}`,
+    whatsapp: `${title}\n\n${description}\n\n${url}\n\n${hashtagString}`,
+    viber: `${title}\n\n${description}\n\n${url}`,
+    telegram: `${title}\n\n${description}\n\n${url}\n\n${hashtagString}`,
     facebook: `${title}\n\n${description}`,
-    twitter: `🧀 ${title}\n\n${hashtagString}`,
+    twitter: `${title}\n\n${hashtagString}`,
     linkedin: `${title}\n\n${description}`,
     email: {
       subject: title,
