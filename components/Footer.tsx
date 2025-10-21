@@ -20,7 +20,7 @@ export default function Footer() {
 
       <div className="container mx-auto relative z-10">
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8"
           variants={staggerContainer}
         >
           <motion.div
@@ -81,6 +81,35 @@ export default function Footer() {
                   <a
                     href={link.href}
                     className="font-handwritten text-lg text-white/80 hover:text-white transition-colors inline-block"
+                  >
+                    {link.label}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div variants={fadeInVariants}>
+            <motion.h4
+              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white/90"
+            >
+              Правна информация
+            </motion.h4>
+            <ul className="space-y-3">
+              {[
+                { label: "Общи условия", href: "/terms" },
+                { label: "Поверителност", href: "/privacy" },
+                { label: "Бисквитки", href: "/cookies" }
+              ].map((link, index) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                  transition={{ delay: 0.5 + index * 0.1 }}
+                >
+                  <a
+                    href={link.href}
+                    className="font-handwritten text-base text-white/80 hover:text-white transition-colors inline-block"
                   >
                     {link.label}
                   </a>
