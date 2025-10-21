@@ -7,7 +7,8 @@
       "Bash(git commit -m \"feat: Bulgarian Village Design Overhaul + Where-to-Buy Coming Soon\n\n✨ PHASE 1: Where-to-Buy Page Enhancement\n- Added ''Очаквайте скоро'' coming soon delivery section\n- Animated truck icon with delivery features\n- Promise cards: Fast delivery, cold logistics, free shipping\n\n🎨 PHASE 2: Complete Bulgarian Village Design System\n- New earth tone color palette (terracotta, clay, ochre, olive, wheat)\n- Added authentic Bulgarian fonts (Amatic SC, Permanent Marker)\n- Traditional Bulgarian shevitsa patterns (zigzag, diamond, cross-stitch)\n- Wood textures (light wood, dark wood, barn wood)\n- Textile patterns (tablecloth, rushnik borders)\n- Improved typography scale (40-72px headings vs 32-48px)\n- Enhanced body text (18-22px vs 16-18px) with better line-height\n- More generous spacing (py-16/28 vs py-12/20)\n- Added .text-village and .text-handwritten classes\n\n📐 Design Philosophy:\n- Mix of authentic village (1950-70) + traditional house (1900-50)\n- Warm, earthy, rustic Bulgarian aesthetic\n- Better readability and breathing room\n- Preserved all functionality\n\n🏗️ Technical:\n- All builds passing (28/28 static pages)\n- No breaking changes to existing components\n- Backward compatible color scheme\n- Ready for production deployment\")",
       "Bash(git push origin master)",
       "Bash(git push origin master:main)",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(findstr /i \"tarator banica shopska\")"
     ],
     "deny": [],
     "ask": []

@@ -36,7 +36,7 @@ export default function Home() {
   const recipes = [
     {
       title: "Баница със сирене",
-      image: "/banica.webp",
+      image: "/recipes/banitsa.webp",
       time: "45 мин",
       slug: "traditional-banitsa",
       bachoTip: "Традиционна баница - трета в света! Разбъркай сиренето на едро с яйца и кисело мляко. Моята баба казваше 'Корите да са маслени, а сиренето - разкъсано с ръце!'"
@@ -57,7 +57,7 @@ export default function Home() {
     },
     {
       title: "Шопска салата",
-      image: "/shopska.webp",
+      image: "/recipes/shopska.webp",
       time: "10 мин",
       slug: "shopska-salad",
       bachoTip: "Национална гордост! Домати, краставици, чушки и сирене на едро. Сиренето отгоре - не размесвай! Така е правилно."
