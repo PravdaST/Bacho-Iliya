@@ -176,7 +176,7 @@ export const products: Product[] = [
     name: 'Airan',
     nameBg: 'Айран',
     description: 'Освежаващ традиционен айран',
-    image: '/products/airan/BI-Airan-480x480.png',
+    image: '/products/airan/Ayran-1000-480x480.jpg',
     bachoRecommendation: 'В жегата - животоспасяващ! Работиш ли на градина, това ти е спасението. Баща ми така преживя лятото.',
   },
   {

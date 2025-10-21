@@ -13,7 +13,6 @@ import BachoStory from '@/components/BachoStory';
 import WhyDifferent from '@/components/WhyDifferent';
 import StickyCTA from '@/components/StickyCTA';
 import OptimizedVideo from '@/components/OptimizedVideo';
-import ImagePlaceholder from '@/components/ImagePlaceholder';
 // import VideoCarousel from '@/components/VideoCarousel'; // Temporarily disabled until video files are added
 import { motion } from 'framer-motion';
 import { Heart, Award, Clock, Users } from 'lucide-react';
@@ -840,17 +839,19 @@ export default function Home() {
               <div className="bg-white p-4 shadow-2xl" style={{ transform: 'rotate(-3deg)' }}>
                 {/* Polaroid Photo */}
                 <div className="relative h-64 bg-gray-100 mb-4">
-                  <ImagePlaceholder
-                    category="people"
-                    description="Снимка на Мария"
-                    aspectRatio="portrait"
-                    size="medium"
+                  <Image
+                    src="/recipes/banitsa.webp"
+                    alt="Баница със сирене Бачо Илия"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    className="object-cover"
+                    loading="lazy"
                   />
                 </div>
 
                 {/* Handwritten Caption */}
                 <div className="font-handwritten text-walnut text-xl mb-3">
-                  Мария, София 🏡
+                  Мария, София
                 </div>
 
                 {/* Handwritten Quote */}
@@ -876,11 +877,13 @@ export default function Home() {
               <div className="bg-white p-4 shadow-2xl" style={{ transform: 'rotate(4deg)' }}>
                 {/* Polaroid Photo */}
                 <div className="relative h-64 bg-gray-100 mb-4">
-                  <ImagePlaceholder
-                    category="people"
-                    description="Снимка на Иван"
-                    aspectRatio="portrait"
-                    size="medium"
+                  <Image
+                    src="/recipes/shopska.webp"
+                    alt="Шопска салата с продукти Бачо Илия"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    className="object-cover"
+                    loading="lazy"
                   />
                 </div>
 
@@ -912,11 +915,13 @@ export default function Home() {
               <div className="bg-white p-4 shadow-2xl" style={{ transform: 'rotate(-2deg)' }}>
                 {/* Polaroid Photo */}
                 <div className="relative h-64 bg-gray-100 mb-4">
-                  <ImagePlaceholder
-                    category="people"
-                    description="Снимка на Елена"
-                    aspectRatio="portrait"
-                    size="medium"
+                  <Image
+                    src="/recipes/snezhanka.webp"
+                    alt="Снежанка салата с продукти Бачо Илия"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    className="object-cover"
+                    loading="lazy"
                   />
                 </div>
 

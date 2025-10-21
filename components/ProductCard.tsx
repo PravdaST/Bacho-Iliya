@@ -87,14 +87,6 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
               <p className="font-handwritten text-walnut/70 text-sm leading-relaxed">
                 {product.description}
               </p>
-
-              {/* Flip Indicator */}
-              <button
-                onClick={handleFlip}
-                className="w-full py-2 text-xs font-handwritten text-walnut/60 hover:text-walnut transition-colors border-t border-dashed border-walnut/20 mt-3"
-              >
-                » Виж бележката на Бачо
-              </button>
             </div>
 
             {/* Aging effect on frame */}
