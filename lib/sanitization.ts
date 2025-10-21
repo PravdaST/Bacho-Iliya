@@ -1,31 +1,32 @@
 /**
  * Input Sanitization & Validation Utilities
  * Protects against XSS, SQL injection, and other security vulnerabilities
+ *
+ * Note: Removed DOMPurify/jsdom dependency for Vercel Edge compatibility
  */
 
-import DOMPurify from 'isomorphic-dompurify';
-
 // ==================================
-// XSS PROTECTION
+// XSS PROTECTION - Lightweight (no jsdom dependency)
 // ==================================
 
 /**
  * Sanitize HTML to prevent XSS attacks
  * @param dirty - Potentially dangerous HTML string
- * @param allowedTags - Optional array of allowed HTML tags
+ * @param allowedTags - Optional array of allowed HTML tags (NOT IMPLEMENTED - strips all HTML)
  * @returns Sanitized HTML string
  */
 export function sanitizeHTML(
   dirty: string,
   allowedTags?: string[]
 ): string {
-  const config = {
-    ALLOWED_TAGS: allowedTags || [],
-    ALLOWED_ATTR: [],
-    KEEP_CONTENT: true,
-  };
-
-  return String(DOMPurify.sanitize(dirty, config as any));
+  // Simple regex-based HTML stripping for Vercel Edge compatibility
+  return dirty
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/javascript:/gi, '')
+    .replace(/on\w+\s*=/gi, '')
+    .trim();
 }
 
 /**
@@ -34,11 +35,14 @@ export function sanitizeHTML(
  * @returns Safe plain text
  */
 export function sanitizeText(input: string): string {
-  // Remove all HTML tags and return plain text
-  return String(DOMPurify.sanitize(input, {
-    ALLOWED_TAGS: [],
-    KEEP_CONTENT: true,
-  } as any)).trim();
+  // Remove all HTML tags, scripts, and dangerous patterns
+  return input
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/javascript:/gi, '')
+    .replace(/on\w+\s*=/gi, '')
+    .replace(/[<>]/g, '')
+    .trim();
 }
 
 /**
