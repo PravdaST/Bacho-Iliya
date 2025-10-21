@@ -52,32 +52,32 @@ export default function TasksPage() {
   const tasksList = [
     {
       id: 'facebook',
-      icon: '❤️',
+      icon: '1',
       title: 'Харесай поста за раздаването',
-      description: 'Харесай нашия пост за раздаването във Facebook страницата на Бачо Илия',
+      description: 'Отвори Facebook страницата на Бачо Илия и харесай поста за раздаването',
       actionLabel: 'Харесай поста',
       actionUrl: 'https://www.facebook.com/Bacho.Iliya/',
-      instruction: 'Отвори поста и натисни "Харесай" ❤️',
+      instruction: 'Отвори поста и натисни "Харесай"',
       isCompleted: tasks.facebook,
     },
     {
       id: 'instagram',
-      icon: '💬',
-      title: 'Коментирай поста',
-      description: 'Остави коментар под поста за раздаването: "Искам Бачо Илия 🎉" - Това е твоето участие!',
+      icon: '2',
+      title: 'Коментирай: Искам Бачо Илия',
+      description: 'Остави коментар под поста за раздаването с текст: "Искам Бачо Илия"',
       actionLabel: 'Коментирай сега',
       actionUrl: 'https://www.facebook.com/Bacho.Iliya/',
-      instruction: 'Напиши: Искам Бачо Илия 💬',
+      instruction: 'Напиши точно: Искам Бачо Илия',
       isCompleted: tasks.instagram,
     },
     {
       id: 'share',
-      icon: '📢',
-      title: 'Сподели за БОНУС участия! 🎁',
-      description: 'Всяко споделяне ти дава ДОПЪЛНИТЕЛНО участие в раздаването! Колкото повече споделяш, толкова по-големи са шансовете ти да спечелиш!',
+      icon: '3',
+      title: 'Сподели за БОНУС участия',
+      description: 'Всяко споделяне ти дава ДОПЪЛНИТЕЛНО участие в раздаването! Колкото повече споделяш, толкова по-големи са шансовете ти да спечелиш',
       actionLabel: 'Сподели сега',
       actionUrl: 'https://www.facebook.com/sharer/sharer.php?u=https://bacho-iliya.eu',
-      instruction: 'Сподели за БОНУС участие! 🚀',
+      instruction: 'Сподели за БОНУС участие',
       isCompleted: tasks.share,
     },
   ];
@@ -150,10 +150,10 @@ export default function TasksPage() {
           </div>
 
           {/* Entry ID */}
-          <div className="relative mb-8 bg-bulgarian-red/5 border-l-4 border-bulgarian-red p-4">
-            <p className="font-handwritten text-xs text-walnut/60 uppercase mb-2">Твоят номер за потвърждение:</p>
+          <div className="relative mb-8 bg-bulgarian-red/5 border-l-4 border-bulgarian-red p-6">
+            <p className="font-handwritten text-base md:text-lg text-walnut/80 font-bold uppercase mb-3">Твоят номер за потвърждение:</p>
             <div className="flex items-center justify-between gap-4">
-              <p className="font-handwritten text-lg md:text-xl font-bold text-bulgarian-red">{entryId || 'Loading...'}</p>
+              <p className="font-handwritten text-2xl md:text-3xl font-bold text-bulgarian-red">{entryId || 'Loading...'}</p>
               <button
                 onClick={handleCopyCode}
                 className="px-4 py-2 bg-bulgarian-red border-2 border-walnut/30 text-white text-sm font-handwritten font-bold hover:scale-105 transition-all inline-flex items-center gap-2 flex-shrink-0"
