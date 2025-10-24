@@ -45,14 +45,14 @@
   --color-primary-800: #806d00;
   --color-primary-900: #665700;
 
-  /* Font Families - 100% Caveat Coverage - Нормални малки и големи букви */
-  --font-family-serif: 'Caveat', cursive;    /* Променено на Caveat - автентичен ръкописен с нормални букви */
+  /* Font Families - Mobile-First Readability */
+  --font-family-serif: 'Georgia', 'Times New Roman', serif;    /* Четлив serif за body text */
   --font-family-mono: 'PT Mono', 'Courier New', monospace;  /* Запазен PT Mono за номера и код */
-  --font-family-sans: 'Caveat', cursive;     /* Променено на Caveat - автентичен ръкописен с нормални букви */
-  --font-family-handwritten: 'Caveat', cursive;  /* Caveat - автентичен кирилица ръкописен с нормални малки букви! */
-  --font-family-village: 'Caveat', cursive;  /* Променено на Caveat - автентичен ръкописен с нормални букви */
-  --font-family-rustic: 'Caveat', cursive;   /* Променено на Caveat - автентичен ръкописен с нормални букви */
-  --font-family-playfair: 'Caveat', cursive; /* Променено на Caveat - автентичен ръкописен с нормални букви */
+  --font-family-sans: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;     /* Readable sans-serif за текст */
+  --font-family-handwritten: 'Caveat', cursive;  /* Caveat САМО за headings и декоративни елементи */
+  --font-family-village: 'Caveat', cursive;  /* Village character за заглавия */
+  --font-family-rustic: 'Caveat', cursive;   /* Rustic за специални акценти */
+  --font-family-playfair: 'Georgia', serif; /* Readable serif fallback */
 
   /* Custom Box Shadows */
   --shadow-vintage: 0 2px 8px rgba(139, 69, 19, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -71,20 +71,40 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: #F5F5DC;
-  font-family: var(--font-family-handwritten);  /* 100% Caveat coverage */
+  font-family: var(--font-family-sans);  /* Readable sans-serif by default */
 }
 
-/* Всички параграфи са 18px по подразбиране */
+/* Readable paragraph text - especially important on mobile */
 p {
-  font-size: 18px;
-  font-weight: 600;  /* SemiBold за по-добра четливост с Caveat */
-  line-height: 1.7;
+  font-family: var(--font-family-sans);
+  font-size: 18px;  /* Increased for better mobile readability */
+  font-weight: 400;  /* Normal weight for readability */
+  line-height: 1.8;  /* Increased line-height for mobile */
 }
 
-/* Tailwind text-xs класът = 16px за по-добра четливост */
+@media (min-width: 640px) {
+  p {
+    font-size: 20px;  /* Even larger on desktop */
+  }
+}
+
+@media (min-width: 1024px) {
+  p {
+    font-size: 21px;  /* Optimal on large screens */
+  }
+}
+
+/* Restore Tailwind text-xs to default */
 .text-xs {
-  font-size: 16px !important;
-  line-height: 1.5;
+  font-size: 0.75rem !important;  /* 12px - Tailwind default */
+  line-height: 1rem !important;
+}
+
+/* Handwritten class for personality - use sparingly */
+.font-handwritten,
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-handwritten) !important;
+  line-height: 2.0;  /* More spacing for script fonts */
 }
 
 /* ============================================

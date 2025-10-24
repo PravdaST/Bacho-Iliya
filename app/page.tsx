@@ -10,7 +10,6 @@ import ProgressBar from '@/components/ProgressBar';
 import ProductCard from '@/components/ProductCard';
 import FAQ from '@/components/FAQ';
 import BachoStory from '@/components/BachoStory';
-import WhyDifferent from '@/components/WhyDifferent';
 import StickyCTA from '@/components/StickyCTA';
 import OptimizedVideo from '@/components/OptimizedVideo';
 // import VideoCarousel from '@/components/VideoCarousel'; // Temporarily disabled until video files are added
@@ -155,12 +154,96 @@ export default function Home() {
           <div className="absolute inset-0 bg-walnut/70" />
           {/* Wood texture overlay */}
           <div className="absolute inset-0 bg-dark-wood opacity-30 mix-blend-overlay" />
-          {/* Shevitsa pattern decoration */}
-          <div className="absolute inset-0 bg-shevitsa-zigzag opacity-20" />
         </div>
 
-        {/* Opened Notebook - Two Pages */}
-        <div className="relative z-10 max-w-6xl mx-auto">
+        {/* MOBILE: Single Clean Card Design */}
+        <div className="relative z-10 max-w-lg mx-auto md:hidden">
+          <div className="bg-old-paper border-4 border-walnut/60 shadow-2xl relative overflow-hidden">
+            {/* Paper Texture */}
+            <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+
+            {/* Logo Header - Red Banner */}
+            <div className="bg-bulgarian-red border-b-4 border-walnut/60 p-6 text-center relative">
+              <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-walnut/30 to-transparent" />
+              <div className="relative">
+                <div className="w-20 h-20 mx-auto mb-3">
+                  <Image
+                    src="/Bachi ilia head logo_.webp"
+                    alt="Бачо Илия"
+                    width={80}
+                    height={80}
+                    className="object-contain drop-shadow-2xl"
+                    key="mobile-head-logo"
+                  />
+                </div>
+                <div className="mb-3">
+                  <Image
+                    src="/logo.png"
+                    alt="Бачо Илия"
+                    width={200}
+                    height={80}
+                    className="mx-auto drop-shadow-2xl"
+                    priority
+                    key="mobile-brand-logo"
+                  />
+                </div>
+                <div className="w-16 h-0.5 bg-sunflower mx-auto my-2" />
+                <p className="font-handwritten text-sm text-white/90 uppercase tracking-wider">
+                  Традиция от 1970
+                </p>
+              </div>
+            </div>
+
+            {/* Content - Clean Card */}
+            <div className="relative p-6">
+              {/* Date */}
+              <div className="text-right mb-4">
+                <p className="text-xs text-walnut/60">
+                  {new Date().toLocaleDateString('bg-BG')}
+                </p>
+              </div>
+
+              {/* Handwritten Message */}
+              <h2 className="font-handwritten text-2xl text-walnut mb-3 leading-relaxed">
+                Скъпи приятелю,
+              </h2>
+
+              <p className="font-handwritten text-lg text-walnut leading-relaxed mb-4">
+                Искам да споделя с теб вкуса от детството.
+              </p>
+
+              {/* Quote Box */}
+              <div className="bg-bulgarian-red/10 border-l-4 border-bulgarian-red p-3 mb-5">
+                <p className="font-handwritten text-base text-bulgarian-red italic leading-relaxed">
+                  "Раздавам БЕЗПЛАТНО истински млечни продукти!"
+                </p>
+              </div>
+
+              {/* CTA */}
+              <a
+                href="#giveaway"
+                className="block w-full bg-bulgarian-red text-white text-center px-6 py-4 shadow-xl hover:scale-105 transition-transform duration-300 mb-4 min-h-[56px] focus:outline-none focus:ring-4 focus:ring-sunflower focus:ring-offset-2"
+                aria-label="Участвай в раздаването на продукти Бачо Илия"
+              >
+                <p className="font-handwritten text-xl font-bold uppercase">
+                  УЧАСТВАЙ СЕГА →
+                </p>
+              </a>
+
+              {/* Signature */}
+              <div className="text-right">
+                <p className="font-handwritten text-lg text-walnut mb-1">С уважение,</p>
+                <p className="font-handwritten text-2xl text-bulgarian-red">Бачо Илия</p>
+              </div>
+
+              {/* Coffee Ring Stain */}
+              <div className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-walnut/10 blur-md opacity-40" />
+            </div>
+          </div>
+        </div>
+
+        {/* DESKTOP: Opened Notebook - Two Pages */}
+        <div className="relative z-10 max-w-6xl mx-auto hidden md:block">
           <div className="grid md:grid-cols-2 gap-0 shadow-2xl" style={{ perspective: '2000px' }}>
 
             {/* LEFT PAGE - Cover/Brand */}
@@ -269,7 +352,8 @@ export default function Home() {
                 <div>
                   <a
                     href="#giveaway"
-                    className="block w-full bg-bulgarian-red text-white text-center px-8 py-4 shadow-xl hover:scale-105 transition-transform duration-300 mb-6"
+                    className="block w-full bg-bulgarian-red text-white text-center px-6 py-5 sm:px-8 sm:py-4 shadow-xl hover:scale-105 transition-transform duration-300 mb-6 min-h-[56px] sm:min-h-[64px] focus:outline-none focus:ring-4 focus:ring-sunflower focus:ring-offset-2"
+                    aria-label="Участвай в раздаването на продукти Бачо Илия"
                   >
                     <p className="font-handwritten text-xl md:text-2xl font-bold uppercase">
                       УЧАСТВАЙ СЕГА →
@@ -503,14 +587,15 @@ export default function Home() {
           </div>
 
           {/* Products - Scattered Vintage Photos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 px-4">
+          <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 overflow-x-auto md:overflow-x-visible px-4 snap-x snap-mandatory md:snap-none scroll-smooth pb-4">
             {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                isSelected={selectedProducts.includes(product.id)}
-                onToggle={() => toggleProduct(product.id)}
-              />
+              <div key={product.id} className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-auto snap-center">
+                <ProductCard
+                  product={product}
+                  isSelected={selectedProducts.includes(product.id)}
+                  onToggle={() => toggleProduct(product.id)}
+                />
+              </div>
             ))}
           </div>
 
@@ -548,8 +633,9 @@ export default function Home() {
             <button
               onClick={handleContinue}
               disabled={selectedProducts.length === 0}
+              aria-label="Продължи към регистрация"
               className={`
-                px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 shadow-lg
+                px-8 py-5 sm:px-12 sm:py-4 rounded-full text-lg font-bold transition-all duration-300 shadow-lg min-h-[56px] focus:outline-none focus:ring-4 focus:ring-sunflower focus:ring-offset-2
                 ${
                   selectedProducts.length > 0
                     ? 'bg-bulgarian-red text-white hover:bg-red-700 hover:shadow-2xl hover:scale-105'
@@ -600,8 +686,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Different Section */}
-      <WhyDifferent />
 
       {/* Video Carousel Section - Temporarily disabled until video files are added */}
       {/* <VideoCarousel /> */}
@@ -1002,26 +1086,29 @@ export default function Home() {
           </motion.div>
 
           {/* Staggered Recipe Cards - Asymmetric Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16">
+          <div className="flex md:grid md:grid-cols-2 gap-6 md:gap-12 mb-16 overflow-x-auto md:overflow-x-visible px-4 md:px-0 snap-x snap-mandatory md:snap-none scroll-smooth pb-4">
             {recipes.map((recipe, index) => {
               const rotations = ['-2deg', '1.5deg', '-1deg', '2deg'];
               const rotation = rotations[index % rotations.length];
 
               return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30, rotate: 0 }}
-                  whileInView={{ opacity: 1, y: 0, rotate: parseFloat(rotation) }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  style={{ transform: `rotate(${rotation})` }}
-                >
-                  <Link
-                    href={`/recipes/${recipe.slug}`}
-                    className="block group"
+                <div key={index} className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-auto snap-center">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="md:[&>*]:rotate-0"
                   >
+                    <Link
+                      href={`/recipes/${recipe.slug}`}
+                      className="block group"
+                    >
                     {/* Aged Recipe Card with Tablecloth Pattern */}
-                    <div className="bg-old-paper border-4 border-walnut/30 shadow-2xl p-6 relative hover:shadow-vintage-lg transition-all hover:scale-105 overflow-hidden">
+                    <div
+                      className="bg-old-paper border-4 border-walnut/30 shadow-2xl p-4 sm:p-6 relative hover:shadow-vintage-lg transition-all hover:scale-105 overflow-hidden"
+                      style={{ transform: `rotate(${rotation})` }}
+                    >
                       {/* Tablecloth pattern overlay */}
                       <div className="absolute inset-0 bg-tablecloth opacity-30 pointer-events-none" />
                       <div className="relative z-10">
@@ -1097,7 +1184,8 @@ export default function Home() {
                       </div>
                     </div>
                   </Link>
-                </motion.div>
+                  </motion.div>
+                </div>
               );
             })}
           </div>

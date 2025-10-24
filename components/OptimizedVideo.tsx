@@ -74,44 +74,61 @@ export default function OptimizedVideo({
 
   return (
     <div className="relative w-full h-full">
-      {/* Loading skeleton */}
-      {!isLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-vintage-cream to-parchment animate-pulse" />
-      )}
-
-      {/* Poster image fallback */}
-      {posterSrc && !isLoaded && (
+      {/* Mobile: Static poster image only (save data & performance) */}
+      {isMobile ? (
         <div className="absolute inset-0">
           <Image
-            src={posterSrc}
-            alt="Video background"
+            src={posterSrc || '/bacho-video-poster.webp'}
+            alt="Бачо Илия традиция"
             fill
-            className="object-cover"
+            className={`object-cover ${className}`}
             priority
-            quality={50}
-            unoptimized
+            quality={85}
+            sizes="100vw"
           />
         </div>
-      )}
+      ) : (
+        <>
+          {/* Desktop: Full video with lazy loading */}
+          {/* Loading skeleton */}
+          {!isLoaded && (
+            <div className="absolute inset-0 bg-gradient-to-br from-vintage-cream to-parchment animate-pulse" />
+          )}
 
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        poster={posterSrc}
-        onLoadedData={handleLoadedData}
-        className={`${className} object-cover ${!isLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
-        style={style}
-      >
-        {shouldLoad && (
-          <source src={videoSrc} type="video/mp4" />
-        )}
-        {/* Fallback text for browsers that don't support video */}
-        <p>Your browser doesn&apos;t support HTML5 video.</p>
-      </video>
+          {/* Poster image fallback */}
+          {posterSrc && !isLoaded && (
+            <div className="absolute inset-0">
+              <Image
+                src={posterSrc}
+                alt="Video background"
+                fill
+                className="object-cover"
+                priority
+                quality={50}
+                unoptimized
+              />
+            </div>
+          )}
+
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={posterSrc}
+            onLoadedData={handleLoadedData}
+            className={`${className} object-cover ${!isLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+            style={style}
+          >
+            {shouldLoad && (
+              <source src={videoSrc} type="video/mp4" />
+            )}
+            <p>Your browser doesn&apos;t support HTML5 video.</p>
+          </video>
+        </>
+      )}
     </div>
   );
 }

@@ -51,18 +51,18 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl p-8 text-white shadow-xl">
-      <h3 className="text-2xl font-bold text-center mb-6">До раздаването остават:</h3>
+    <div className="bg-bulgarian-red rounded-2xl p-4 sm:p-8 text-white shadow-xl">
+      <h3 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6">До раздаването остават:</h3>
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         {timeUnits.map((unit, index) => (
           <div key={index} className="text-center">
-            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 mb-2">
-              <div className="text-4xl font-bold tabular-nums">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3 sm:p-4 mb-2">
+              <div className="text-2xl sm:text-4xl font-bold tabular-nums">
                 {unit.value.toString().padStart(2, '0')}
               </div>
             </div>
-            <div className="text-sm font-medium opacity-90">
+            <div className="text-xs sm:text-sm font-medium opacity-90">
               {unit.value === 1 ? unit.labelSingle : unit.label}
             </div>
           </div>

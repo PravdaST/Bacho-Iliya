@@ -18,6 +18,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`;
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    };
+  }, [isMenuOpen]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -175,7 +190,7 @@ export default function Header() {
               <motion.div
                 className="px-4 pt-4 pb-6 space-y-2 border-t-4 border-walnut/30 relative"
                 style={{
-                  backgroundColor: 'rgba(226, 37, 38, 0.95)',
+                  backgroundColor: 'rgba(220, 20, 60, 0.95)',
                 }}
                 initial={{ y: -20 }}
                 animate={{ y: 0 }}
