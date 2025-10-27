@@ -10,7 +10,7 @@ interface SEOHeadProps {
 export default function SEOHead({
   title = "Бачо Илия | Bacho Ilia - Автентични Български Млечни Продукти | Безплатно Раздаване",
   description = "Спечелете автентични млечни продукти от Бачо Илия (Bacho Ilia, Bacho Iliya). Истинско българско сирене, кисело мляко и кашкавал по бабините рецепти. 100% естествени продукти без консерванти.",
-  canonical = "https://bacho-ilia.bg",
+  canonical = "https://bacho-iliya.eu",
   ogImage = "/bacho-ilia-main.webp"
 }: SEOHeadProps) {
 
@@ -20,13 +20,13 @@ export default function SEOHead({
       // Organization Schema
       {
         "@type": "Organization",
-        "@id": "https://bacho-ilia.bg/#organization",
+        "@id": "https://bacho-iliya.eu/#organization",
         "name": "Бачо Илия",
         "alternateName": ["Bacho Ilia", "Bacho Iliya", "Бачо Илиа", "Bacho Ilija"],
-        "url": "https://bacho-ilia.bg",
+        "url": "https://bacho-iliya.eu",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://bacho-ilia.bg/bacho-ilia-main.webp",
+          "url": "https://bacho-iliya.eu/bacho-ilia-main.webp",
           "width": 800,
           "height": 800
         },
@@ -57,7 +57,7 @@ export default function SEOHead({
       // Product Schema - Sirene
       {
         "@type": "Product",
-        "@id": "https://bacho-ilia.bg/#sirene",
+        "@id": "https://bacho-iliya.eu/#sirene",
         "name": "Българско Сирене Бачо Илия",
         "brand": {
           "@type": "Brand",
@@ -82,15 +82,15 @@ export default function SEOHead({
       // WebSite Schema
       {
         "@type": "WebSite",
-        "@id": "https://bacho-ilia.bg/#website",
-        "url": "https://bacho-ilia.bg",
+        "@id": "https://bacho-iliya.eu/#website",
+        "url": "https://bacho-iliya.eu",
         "name": "Бачо Илия - Автентични Български Млечни Продукти",
         "alternateName": "Bacho Ilia",
         "description": "Традиционни български млечни продукти без консерванти",
         "inLanguage": "bg-BG",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://bacho-ilia.bg/?s={search_term_string}",
+          "target": "https://bacho-iliya.eu/?s={search_term_string}",
           "query-input": "required name=search_term_string"
         }
       },
@@ -114,7 +114,7 @@ export default function SEOHead({
       // FAQPage Schema
       {
         "@type": "FAQPage",
-        "@id": "https://bacho-ilia.bg/#faq",
+        "@id": "https://bacho-iliya.eu/#faq",
         "mainEntity": [
           {
             "@type": "Question",

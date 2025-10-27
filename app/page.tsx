@@ -11,7 +11,6 @@ import ProductCard from '@/components/ProductCard';
 import FAQ from '@/components/FAQ';
 import BachoStory from '@/components/BachoStory';
 import StickyCTA from '@/components/StickyCTA';
-import OptimizedVideo from '@/components/OptimizedVideo';
 // import VideoCarousel from '@/components/VideoCarousel'; // Temporarily disabled until video files are added
 import { motion } from 'framer-motion';
 import { Heart, Award, Clock, Users } from 'lucide-react';
@@ -138,247 +137,165 @@ export default function Home() {
         }}
       />
 
-      {/* Hero - Opening Branded Notebook */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 px-4" style={{ position: 'relative', zIndex: 10 }}>
-        {/* Background Video - Softly Blurred */}
-        <div className="absolute inset-0">
-          <OptimizedVideo
-            desktopSrc="/bacho-video.mp4"
-            mobileSrc="/bacho-video-mobile.mp4"
-            posterSrc="/bacho-video-poster.webp"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              filter: 'sepia(0.6) contrast(1.05) brightness(0.4) blur(3px)',
-            }}
-          />
-          <div className="absolute inset-0 bg-walnut/70" />
-          {/* Wood texture overlay */}
-          <div className="absolute inset-0 bg-dark-wood opacity-30 mix-blend-overlay" />
-        </div>
+      {/* Hero - Beautiful Mobile-First Design */}
+      <section className="relative h-dvh flex items-center justify-center overflow-hidden px-4" style={{ position: 'relative', zIndex: 10 }}>
+        {/* Gradient Background - Beautiful & Fast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-walnut via-bulgarian-red to-sunflower/80" />
 
-        {/* MOBILE: Single Clean Card Design */}
-        <div className="relative z-10 max-w-lg mx-auto md:hidden">
-          <div className="bg-old-paper border-4 border-walnut/60 shadow-2xl relative overflow-hidden">
-            {/* Paper Texture */}
-            <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+        {/* Vintage Paper Texture Overlay */}
+        <div className="absolute inset-0 bg-vintage-paper opacity-20 mix-blend-overlay" />
 
-            {/* Logo Header - Red Banner */}
-            <div className="bg-bulgarian-red border-b-4 border-walnut/60 p-6 text-center relative">
-              <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-walnut/30 to-transparent" />
-              <div className="relative">
-                <div className="w-20 h-20 mx-auto mb-3">
-                  <Image
-                    src="/Bachi ilia head logo_.webp"
-                    alt="Бачо Илия"
-                    width={80}
-                    height={80}
-                    className="object-contain drop-shadow-2xl"
-                    key="mobile-head-logo"
-                  />
-                </div>
-                <div className="mb-3">
-                  <Image
-                    src="/logo.png"
-                    alt="Бачо Илия"
-                    width={200}
-                    height={80}
-                    className="mx-auto drop-shadow-2xl"
-                    priority
-                    key="mobile-brand-logo"
-                  />
-                </div>
-                <div className="w-16 h-0.5 bg-sunflower mx-auto my-2" />
-                <p className="font-handwritten text-sm text-white/90 uppercase tracking-wider">
-                  Традиция от 1970
-                </p>
-              </div>
+        {/* Animated Floating Decorations */}
+        <motion.div
+          className="absolute top-10 left-5 w-16 h-16 rounded-full bg-sunflower/30 blur-2xl"
+          animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-20 h-20 rounded-full bg-old-paper/40 blur-2xl"
+          animate={{ y: [0, 20, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <motion.div
+          className="absolute top-1/3 right-5 w-12 h-12 rounded-full bg-bulgarian-red/20 blur-xl"
+          animate={{ x: [0, -15, 0], y: [0, 15, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        />
+
+        {/* Main Content - Centered & Clean */}
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          {/* Logo - Animated Entry */}
+          <motion.div
+            className="mb-6 md:mb-8"
+            initial={{ scale: 0, rotate: -180, opacity: 0 }}
+            animate={{ scale: 1, rotate: 0, opacity: 1 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+          >
+            <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto mb-4 drop-shadow-2xl">
+              <Image
+                src="/Bachi ilia head logo_.webp"
+                alt="Бачо Илия"
+                width={128}
+                height={128}
+                className="object-contain"
+                priority
+              />
             </div>
+            <div className="relative inline-block">
+              <Image
+                src="/logo.png"
+                alt="Бачо Илия"
+                width={280}
+                height={100}
+                className="mx-auto drop-shadow-2xl"
+                priority
+                sizes="(max-width: 768px) 280px, 350px"
+              />
+            </div>
+          </motion.div>
 
-            {/* Content - Clean Card */}
-            <div className="relative p-6">
-              {/* Date */}
-              <div className="text-right mb-4">
-                <p className="text-xs text-walnut/60">
-                  {new Date().toLocaleDateString('bg-BG')}
-                </p>
-              </div>
+          {/* Animated Divider */}
+          <motion.div
+            className="w-20 h-1 bg-sunflower mx-auto mb-6 md:mb-8"
+            initial={{ width: 0 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          />
 
-              {/* Handwritten Message */}
-              <h2 className="font-handwritten text-2xl text-walnut mb-3 leading-relaxed">
-                Скъпи приятелю,
-              </h2>
+          {/* Main Headline - Bold & Clear */}
+          <motion.h1
+            className="font-handwritten text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-old-paper mb-4 md:mb-6 leading-tight drop-shadow-lg"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            Вкусът от детството<br />
+            <span className="text-sunflower">напълно безплатно</span>
+          </motion.h1>
 
-              <p className="font-handwritten text-lg text-walnut leading-relaxed mb-4">
-                Искам да споделя с теб вкуса от детството.
+          {/* Subtitle - Emotional & Simple */}
+          <motion.p
+            className="font-handwritten text-xl sm:text-2xl md:text-3xl text-old-paper/95 mb-8 md:mb-10 leading-relaxed max-w-2xl mx-auto drop-shadow-md"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            Истински млечни продукти,<br className="hidden sm:block" /> направени точно както баба ги правеше
+          </motion.p>
+
+          {/* CTA Button - PROMINENT */}
+          <motion.div
+            initial={{ y: 30, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
+          >
+            <a
+              href="#giveaway"
+              className="inline-block bg-old-paper text-bulgarian-red px-8 py-5 md:px-12 md:py-6 shadow-2xl hover:scale-110 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-300 min-h-[64px] focus:outline-none focus:ring-4 focus:ring-sunflower focus:ring-offset-4 focus:ring-offset-bulgarian-red group relative overflow-hidden"
+              aria-label="Участвай в раздаването на продукти Бачо Илия"
+            >
+              {/* Shine effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-sunflower/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+              <p className="font-handwritten text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide relative z-10">
+                УЧАСТВАЙ СЕГА →
               </p>
+            </a>
+          </motion.div>
 
-              {/* Quote Box */}
-              <div className="bg-bulgarian-red/10 border-l-4 border-bulgarian-red p-3 mb-5">
-                <p className="font-handwritten text-base text-bulgarian-red italic leading-relaxed">
-                  "Раздавам БЕЗПЛАТНО истински млечни продукти!"
-                </p>
-              </div>
-
-              {/* CTA */}
-              <a
-                href="#giveaway"
-                className="block w-full bg-bulgarian-red text-white text-center px-6 py-4 shadow-xl hover:scale-105 transition-transform duration-300 mb-4 min-h-[56px] focus:outline-none focus:ring-4 focus:ring-sunflower focus:ring-offset-2"
-                aria-label="Участвай в раздаването на продукти Бачо Илия"
-              >
-                <p className="font-handwritten text-xl font-bold uppercase">
-                  УЧАСТВАЙ СЕГА →
-                </p>
-              </a>
-
-              {/* Signature */}
-              <div className="text-right">
-                <p className="font-handwritten text-lg text-walnut mb-1">С уважение,</p>
-                <p className="font-handwritten text-2xl text-bulgarian-red">Бачо Илия</p>
-              </div>
-
-              {/* Coffee Ring Stain */}
-              <div className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-walnut/10 blur-md opacity-40" />
+          {/* Trust Badge - Clean & Simple */}
+          <motion.div
+            className="mt-8 md:mt-10 flex items-center justify-center gap-2 text-old-paper/90"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <div className="flex items-center gap-1">
+              <span className="text-sunflower text-lg">★★★★★</span>
             </div>
-          </div>
+            <span className="font-handwritten text-base md:text-lg">
+              Над 2,500 семейства вече участват
+            </span>
+          </motion.div>
+
+          {/* Subtle Badge - Tradition */}
+          <motion.div
+            className="mt-6 inline-block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
+            <div className="bg-old-paper/20 backdrop-blur-sm border-2 border-old-paper/40 px-6 py-2">
+              <p className="font-handwritten text-sm md:text-base text-old-paper uppercase tracking-widest">
+                Традиция от 1970
+              </p>
+            </div>
+          </motion.div>
         </div>
 
-        {/* DESKTOP: Opened Notebook - Two Pages */}
-        <div className="relative z-10 max-w-6xl mx-auto hidden md:block">
-          <div className="grid md:grid-cols-2 gap-0 shadow-2xl" style={{ perspective: '2000px' }}>
-
-            {/* LEFT PAGE - Cover/Brand */}
-            <div
-              className="bg-bulgarian-red border-4 border-walnut/60 relative overflow-hidden min-h-[600px] flex items-center justify-center"
-              style={{
-                transform: 'rotateY(5deg)',
-                transformOrigin: 'right center',
-              }}
+        {/* Scroll Indicator - Animated */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-2"
+          >
+            <span className="font-handwritten text-old-paper/70 text-sm">Виж повече</span>
+            <svg
+              className="w-6 h-6 text-old-paper/70"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              {/* Leather Texture */}
-              <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-walnut/30 to-transparent" />
-
-              {/* Embossed Design */}
-              <div className="relative text-center p-8">
-                {/* Logo */}
-                <div className="mb-8">
-                  <div className="relative w-32 h-32 mx-auto mb-6">
-                    <Image
-                      src="/Bachi ilia head logo_.webp"
-                      alt="Бачо Илия"
-                      width={128}
-                      height={128}
-                      className="object-contain drop-shadow-2xl"
-                    />
-                  </div>
-                </div>
-
-                {/* Brand Logo */}
-                <div className="relative mb-4">
-                  <Image
-                    src="/logo.png"
-                    alt="Бачо Илия"
-                    width={300}
-                    height={120}
-                    className="mx-auto drop-shadow-2xl"
-                    priority
-                    sizes="(max-width: 768px) 250px, 300px"
-                  />
-                </div>
-
-                <div className="w-20 h-1 bg-sunflower mx-auto my-6" />
-
-                <p className="font-handwritten text-xl text-white/90 uppercase tracking-widest">
-                  Традиция<br />от 1970
-                </p>
-
-                {/* Decorative Border */}
-                <div className="absolute top-4 left-4 right-4 bottom-4 border-2 border-white/20 pointer-events-none" />
-              </div>
-            </div>
-
-            {/* RIGHT PAGE - Content with Lines */}
-            <div
-              className="bg-old-paper border-4 border-walnut/60 border-l-0 relative overflow-hidden min-h-[600px]"
-              style={{
-                transform: 'rotateY(-5deg)',
-                transformOrigin: 'left center',
-              }}
-            >
-              {/* Notebook Lines */}
-              <div className="absolute inset-0 pointer-events-none">
-                {[...Array(18)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute left-0 right-0 border-b border-faded-denim/15"
-                    style={{ top: `${(i + 1) * 5.5}%` }}
-                  />
-                ))}
-              </div>
-
-              {/* Vertical Margin Line */}
-              <div className="absolute left-12 top-0 bottom-0 w-px bg-bulgarian-red/30" />
-
-              {/* Paper Texture */}
-              <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
-
-              {/* Content - Handwritten Note */}
-              <div className="relative p-8 md:p-12 h-full flex flex-col justify-between">
-                {/* Header */}
-                <div>
-                  <div className="text-right mb-6">
-                    <p className="font-handwritten text-xs text-walnut/60">
-                      {new Date().toLocaleDateString('bg-BG')}
-                    </p>
-                  </div>
-
-                  <h2 className="font-handwritten text-3xl md:text-4xl text-walnut mb-6 leading-relaxed">
-                    Скъпи приятелю,
-                  </h2>
-
-                  <p className="font-handwritten text-xl md:text-2xl text-walnut leading-relaxed mb-6">
-                    Искам да споделя с теб<br />
-                    вкуса от детството.
-                  </p>
-
-                  <div className="bg-bulgarian-red/10 border-l-4 border-bulgarian-red p-4 mb-6">
-                    <p className="font-handwritten text-lg md:text-xl text-bulgarian-red italic leading-relaxed">
-                      "Раздавам БЕЗПЛАТНО<br />
-                      истински млечни продукти!"
-                    </p>
-                  </div>
-                </div>
-
-                {/* CTA */}
-                <div>
-                  <a
-                    href="#giveaway"
-                    className="block w-full bg-bulgarian-red text-white text-center px-6 py-5 sm:px-8 sm:py-4 shadow-xl hover:scale-105 transition-transform duration-300 mb-6 min-h-[56px] sm:min-h-[64px] focus:outline-none focus:ring-4 focus:ring-sunflower focus:ring-offset-2"
-                    aria-label="Участвай в раздаването на продукти Бачо Илия"
-                  >
-                    <p className="font-handwritten text-xl md:text-2xl font-bold uppercase">
-                      УЧАСТВАЙ СЕГА →
-                    </p>
-                  </a>
-
-                  {/* Signature */}
-                  <div className="text-right">
-                    <p className="font-handwritten text-2xl text-walnut mb-1">С уважение,</p>
-                    <p className="font-handwritten text-3xl text-bulgarian-red">Бачо Илия</p>
-                  </div>
-                </div>
-
-                {/* Coffee Ring Stain */}
-                <div className="absolute bottom-4 left-4 w-16 h-16 rounded-full bg-walnut/10 blur-md opacity-40" />
-              </div>
-            </div>
-
-          </div>
-
-          {/* Binding Shadow */}
-          <div className="absolute top-0 bottom-0 left-1/2 w-8 -translate-x-1/2 bg-gradient-to-r from-walnut/40 via-walnut/60 to-walnut/40 pointer-events-none"
-            style={{ filter: 'blur(8px)' }}
-          />
-        </div>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Bacho Story Section - BUILD EMOTIONAL CONNECTION FIRST */}
