@@ -328,10 +328,10 @@ export default function WhereToBuyPage() {
           <div className="absolute bottom-0 right-0 w-32 h-32 border-b-4 border-r-4 border-cream/10" />
 
           <div className="relative z-10 text-center">
-            <h2 className="font-heading text-4xl md:text-5xl mb-6 leading-tight">
+            <h2 className="font-heading text-4xl md:text-5xl text-white mb-6 leading-tight">
               Не можеш да намериш продуктите ни в твоя град?
             </h2>
-            <p className="font-body text-xl leading-relaxed mb-8 max-w-2xl mx-auto text-cream/90">
+            <p className="font-body text-xl text-white leading-relaxed mb-8 max-w-2xl mx-auto">
               Свържи се с нас и ние ще направим всичко възможно да ги доставим до теб.
               Истинският вкус трябва да бъде достъпен за всички!
             </p>
