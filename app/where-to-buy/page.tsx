@@ -286,14 +286,6 @@ export default function WhereToBuyPage() {
                       </div>
                     )}
 
-                    {/* Products count */}
-                    <div className="flex items-start gap-3 pt-4 border-t border-dark-walnut/10">
-                      <PackageIcon className="w-5 h-5 text-accent-gold flex-shrink-0 mt-1" />
-                      <p className="font-body text-sm text-dark-walnut/60">
-                        {store.products.length} продукта от Бачо Илия
-                      </p>
-                    </div>
-
                     {/* Description */}
                     {store.description && (
                       <div className="mt-4 pt-4 border-t border-dark-walnut/10">
@@ -303,11 +295,6 @@ export default function WhereToBuyPage() {
                       </div>
                     )}
                   </div>
-
-                  {/* Map button - Heritage style */}
-                  <button className="mt-6 w-full bg-cream border-2 border-heritage-red/30 text-heritage-red px-6 py-4 font-body font-bold text-sm tracking-wider uppercase hover:bg-heritage-red hover:text-cream hover:border-heritage-red transition-all duration-300">
-                    Покажи на картата →
-                  </button>
                 </div>
 
                 {/* Decorative corner */}

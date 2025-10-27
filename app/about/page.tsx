@@ -28,10 +28,10 @@ export default function AboutPage() {
         {/* Content */}
         <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
           <div className="container mx-auto max-w-5xl">
-            <h1 className="font-handwritten text-5xl md:text-6xl lg:text-7xl text-vintage-cream mb-4 drop-shadow-lg">
+            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white mb-4 drop-shadow-lg">
               Историята на Бачо Илия
             </h1>
-            <p className="font-handwritten text-2xl md:text-3xl text-vintage-cream/95 max-w-3xl drop-shadow-md font-semibold">
+            <p className="font-body text-2xl md:text-3xl text-white/95 max-w-3xl drop-shadow-md font-semibold">
               От 1995 година правим сирене точно както ти баба го правеше
             </p>
           </div>
