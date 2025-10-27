@@ -14,7 +14,8 @@
       "mcp__playwright__browser_take_screenshot",
       "Bash(npx tsc:*)",
       "mcp__context7__get-library-docs",
-      "mcp__playwright__browser_close"
+      "mcp__playwright__browser_close",
+      "Bash(dir /b:*)"
     ],
     "deny": [],
     "ask": []
