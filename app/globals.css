@@ -125,6 +125,22 @@ h1, h2, h3, h4, h5, h6 {
   color: #3A2A1A;  /* dark-walnut */
 }
 
+/* CRITICAL FIX: Force white text on red backgrounds */
+.bg-bulgarian-red .font-handwritten,
+.bg-bulgarian-red.font-handwritten,
+.bg-bulgarian-red *,
+.bg-walnut .font-handwritten,
+.bg-walnut.font-handwritten,
+.bg-walnut * {
+  color: #FFFFFF !important;
+}
+
+/* Ensure text-white always works regardless of other classes */
+.text-white,
+.text-white * {
+  color: #FFFFFF !important;
+}
+
 /* ============================================
    CUSTOM SCROLLBAR
    ============================================ */

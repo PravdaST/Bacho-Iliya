@@ -15,7 +15,9 @@
       "Bash(npx tsc:*)",
       "mcp__context7__get-library-docs",
       "mcp__playwright__browser_close",
-      "Bash(dir /b:*)"
+      "Bash(dir /b:*)",
+      "Read(//c/Users/User/Downloads/бацхо илия/**)",
+      "Bash(if exist .next rd /s /q .next)"
     ],
     "deny": [],
     "ask": []

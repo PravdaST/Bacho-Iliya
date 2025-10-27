@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useGiveawayStore, products } from '@/lib/store';
+import { recipes as allRecipes } from '@/lib/recipes-data';
 import ReferralDetector from '@/components/ReferralDetector';
 import ProgressBar from '@/components/ProgressBar';
 import ProductCard from '@/components/ProductCard';
@@ -31,92 +32,22 @@ export default function Home() {
     router.push('/register');
   };
 
-  const recipes = [
-    {
-      title: "Баница със сирене",
-      image: "/recipes/banitsa.webp",
-      time: "45 мин",
-      slug: "traditional-banitsa",
-      bachoTip: "Традиционна баница - трета в света! Разбъркай сиренето на едро с яйца и кисело мляко. Моята баба казваше 'Корите да са маслени, а сиренето - разкъсано с ръце!'"
-    },
-    {
-      title: "Таратор",
-      image: "/tarator.webp",
-      time: "15 мин",
-      slug: "tarator-classic",
-      bachoTip: "Рецептата от 1956 от 'Книга за домакинята' - кисело мляко, краставици, копър, чесън. Моят таратор е като от село - гъст и наситен!"
-    },
-    {
-      title: "Снежанка салата",
-      image: "/recipes/snejanka salata.jpg",
-      time: "20 мин",
-      slug: "snezhanka-salad",
-      bachoTip: "Създадена през 70-те, но с бабина душа! Цедено кисело мляко, краставици, чесън и орехи. 'Сух таратор' го наричат селяните."
-    },
-    {
-      title: "Шопска салата",
-      image: "/recipes/shopska.webp",
-      time: "10 мин",
-      slug: "shopska-salad",
-      bachoTip: "Национална гордост! Домати, краставици, чушки и сирене на едро. Сиренето отгоре - не размесвай! Така е правилно."
-    },
-    {
-      title: "Чушки бюрек",
-      image: "/recipes/piperki-burek.webp",
-      time: "35 мин",
-      slug: "chushki-burek",
-      bachoTip: "Печени чушки, пълнеж от сирене и яйца, панирани и изпържени. Лятна класика - ароматни, сочни, истински!"
-    },
-    {
-      title: "Миш-маш",
-      image: "/recipes/mishmash.jpg",
-      time: "25 мин",
-      slug: "mish-mash",
-      bachoTip: "Българско national dish! Лук, чушки, домати, сирене и яйца. Бърз обяд или закуска - без месо, но сита."
-    },
-    {
-      title: "Пълнени чушки",
-      image: "/recipes/palneni_chushki_recepta.jpg",
-      time: "70 мин",
-      slug: "palneni-chushki",
-      bachoTip: "Класика от бабината трапеза! Кайма с ориз в сладки чушки, задушени в доматен сос. Лято, есен, зима - винаги вкусни! Хапката топи в устата."
-    },
-    {
-      title: "Тиквеник",
-      image: "/recipes/tikvenik.jpg",
-      time: "50 мин",
-      slug: "tikvenik",
-      bachoTip: "Сладката баница за Бъдни вечер! Настъргана тиква, орехи, канела и мед между точени кори. Книгата 'Стари български рецепти' я нарича емблема на България!"
-    },
-    {
-      title: "Мусака",
-      image: "/recipes/musaka.jpg",
-      time: "80 мин",
-      slug: "musaka-classic",
-      bachoTip: "Най-обичаното ястие в България! Кайма с лук, картофи и пухкава заливка от яйца и кисело мляко. Мирише на неделя при баба!"
-    },
-    {
-      title: "Боб яхния",
-      image: "/recipes/bob-qhniq.jpg",
-      time: "90 мин",
-      slug: "bob-yahnia",
-      bachoTip: "Зимна топлина в чиния! Боб на червено с лук, чубрица и лют пипер. Ако искаш по-селски - сложи сушени чушки. Хляб и лютеница задължително!"
-    },
-    {
-      title: "Млечна баница",
-      image: "/recipes/mlechna-banitsa.jpg",
-      time: "45 мин",
-      slug: "mlechna-banica",
-      bachoTip: "Водеща рецепта във всяка българска готварска книга! Кори, мляко, яйца и масло. Сутрин със захар, обед като основно - винаги работи!"
-    },
-    {
-      title: "Кюфтета",
-      image: "/recipes/kufteta.webp",
-      time: "30 мин",
-      slug: "kyufteta-parzeni",
-      bachoTip: "Най-любимото, най-готвеното, най-популярното! Кайма с лук, чесън, чубрица и сода. Пържени до златисто. Със зелена салата и лютеница - рай!"
-    },
-  ];
+  // Use recipes from recipes-data.ts with correct structure and slugs
+  const recipes = allRecipes.slice(0, 12).map(recipe => {
+    // Calculate total time
+    const prepMinutes = parseInt(recipe.prepTime) || 0;
+    const cookMinutes = parseInt(recipe.cookTime) || 0;
+    const totalMinutes = prepMinutes + cookMinutes;
+    const timeDisplay = totalMinutes > 0 ? `${totalMinutes} мин` : recipe.difficulty;
+
+    return {
+      title: recipe.titleBg,
+      image: recipe.image,
+      time: timeDisplay,
+      slug: recipe.slug,
+      bachoTip: recipe.tips[0]?.tipBg || recipe.descriptionBg
+    };
+  });
 
   return (
     <>

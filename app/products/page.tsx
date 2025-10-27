@@ -161,18 +161,6 @@ export default function ProductsPage() {
                         {product.shortDescription}
                       </p>
 
-                      {/* Size options */}
-                      <div className="flex justify-center gap-2 mb-4">
-                        {product.sizes.map((size) => (
-                          <span
-                            key={size.size}
-                            className="text-xs font-handwritten text-walnut/60 bg-old-paper px-3 py-1 border border-walnut/20"
-                          >
-                            {size.size}
-                          </span>
-                        ))}
-                      </div>
-
                       {/* View details */}
                       <div className="text-center">
                         <span className="inline-block font-handwritten text-xs text-bulgarian-red tracking-wider group-hover:underline">
