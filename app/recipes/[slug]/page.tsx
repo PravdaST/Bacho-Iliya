@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { getRecipeBySlug } from '@/lib/recipes-data';
 import { ClockIcon, FlameIcon, PlateIcon, CheckIcon } from '@/components/icons/RecipeIcons';
+import { RecipeSchema, BreadcrumbSchema } from '@/components/seo';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -20,41 +21,18 @@ export default function RecipePage({ params }: Props) {
     notFound();
   }
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Recipe',
-    name: recipe.titleBg,
-    description: recipe.descriptionBg,
-    image: recipe.image,
-    author: {
-      '@type': 'Organization',
-      name: 'Бачо Илия',
-      alternateName: ['Bacho Ilia', 'Bacho Iliya', 'Bacho Ilya'],
-    },
-    prepTime: `PT${recipe.prepTime}`,
-    cookTime: `PT${recipe.cookTime}`,
-    totalTime: `PT${recipe.prepTime} + ${recipe.cookTime}`,
-    recipeYield: recipe.servings,
-    recipeIngredient: recipe.ingredients.map((i) => i.itemBg),
-    recipeInstructions: recipe.instructions.map((inst, idx) => ({
-      '@type': 'HowToStep',
-      position: idx + 1,
-      text: inst.stepBg,
-    })),
-    keywords: [
-      'Бачо Илия',
-      'Bacho Ilia',
-      ...recipe.bachoProducts,
-      'българска рецепта',
-    ].join(', '),
-  };
-
   return (
     <>
-      {/* JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      {/* Google 2025 Compliant Recipe Schema */}
+      <RecipeSchema recipe={recipe} />
+
+      {/* Breadcrumb Schema for better SERP display */}
+      <BreadcrumbSchema
+        items={[
+          { name: 'Начало', url: '/' },
+          { name: 'Рецепти', url: '/recipes' },
+          { name: recipe.titleBg, url: `/recipes/${slug}` },
+        ]}
       />
 
       <div className="min-h-screen bg-old-paper relative overflow-hidden">

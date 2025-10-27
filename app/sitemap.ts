@@ -1,8 +1,10 @@
 /**
  * Dynamic Sitemap Generator for Bacho Ilia
  *
- * Automatically generates sitemap.xml with all pages, products, and recipes.
- * Includes priority and changefreq for optimal SEO.
+ * Google 2025 compliant sitemap with image extensions.
+ * - Removed priority/changeFreq (Google ignores them since 2025)
+ * - Added image extensions for better image SEO
+ * - Using accurate lastModified dates
  *
  * Access at: https://bacho-iliya.eu/sitemap.xml
  */
@@ -18,90 +20,82 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const products = getAllProducts();
   const recipeSlugs = getAllRecipeSlugs();
 
-  // Static pages
+  // Static pages with images
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1.0,
+      lastModified: new Date('2025-01-27'),
+      // Home page has logo + product images
+      images: [
+        `${BASE_URL}/logo.png`,
+        `${BASE_URL}/Bachi ilia head logo_.webp`,
+      ],
     },
     {
       url: `${BASE_URL}/products`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      lastModified: new Date('2025-01-20'),
+      images: products.map(p => `${BASE_URL}${p.image}`),
     },
     {
       url: `${BASE_URL}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
+      lastModified: new Date('2025-01-27'),
+      images: [
+        `${BASE_URL}/logo.png`,
+        `${BASE_URL}/Bachi ilia head logo_.webp`,
+      ],
     },
     {
       url: `${BASE_URL}/where-to-buy`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      lastModified: new Date('2025-01-20'),
     },
     {
       url: `${BASE_URL}/recipes`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
+      lastModified: new Date('2025-01-20'),
+      images: [
+        `${BASE_URL}/recipes/banitsa.webp`,
+        `${BASE_URL}/tarator.webp`,
+        `${BASE_URL}/recipes/shopska.webp`,
+      ],
     },
     {
       url: `${BASE_URL}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.6,
+      lastModified: new Date('2025-01-15'),
     },
     {
       url: `${BASE_URL}/register`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.85,
+      lastModified: new Date('2025-01-27'),
     },
     {
       url: `${BASE_URL}/success`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
+      lastModified: new Date('2025-01-15'),
     },
     {
       url: `${BASE_URL}/terms`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
+      lastModified: new Date('2025-01-10'),
     },
     {
       url: `${BASE_URL}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
+      lastModified: new Date('2025-01-10'),
     },
     {
       url: `${BASE_URL}/cookies`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
+      lastModified: new Date('2025-01-10'),
     },
   ];
 
-  // Dynamic product pages
+  // Dynamic product pages with product images
   const productPages: MetadataRoute.Sitemap = products.map((product) => ({
     url: `${BASE_URL}/products/${product.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
+    lastModified: new Date('2025-01-20'),
+    images: [`${BASE_URL}${product.image}`],
   }));
 
-  // Dynamic recipe pages
+  // Dynamic recipe pages with recipe images
   const recipePages: MetadataRoute.Sitemap = recipeSlugs.map((slug) => ({
     url: `${BASE_URL}/recipes/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
+    lastModified: new Date('2025-01-20'),
+    // Add recipe image if available
+    images: [`${BASE_URL}/recipes/${slug}.webp`],
   }));
 
   return [...staticPages, ...productPages, ...recipePages];
