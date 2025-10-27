@@ -31,7 +31,7 @@ export default function AboutPage() {
             <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white mb-4 drop-shadow-lg">
               Историята на Бачо Илия
             </h1>
-            <p className="font-body text-2xl md:text-3xl text-white/95 max-w-3xl drop-shadow-md font-semibold">
+            <p className="font-body text-2xl md:text-3xl text-white max-w-3xl drop-shadow-md font-semibold">
               От 1995 година правим сирене точно както ти баба го правеше
             </p>
           </div>
