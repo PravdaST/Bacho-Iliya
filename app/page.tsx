@@ -475,35 +475,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Selected count - Vintage Paper Card */}
-          {selectedProducts.length > 0 && (
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0, rotate: 0 }}
-              animate={{ scale: 1, opacity: 1, rotate: 1 }}
-              transition={{ duration: 0.3 }}
-              className="text-center mb-6"
-              style={{ transform: 'rotate(1deg)' }}
-            >
-              <div className="inline-block bg-old-paper px-8 py-4 shadow-2xl border-4 border-sunflower/40 relative">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">✓</span>
-                  <p className="font-handwritten text-walnut text-2xl">
-                    Избрани: <span className="font-bold text-bulgarian-red">{selectedProducts.length}</span> {selectedProducts.length === 1 ? 'продукт' : 'продукта'}
-                  </p>
-                </div>
-
-                {/* Stamp corner */}
-                <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full border-4 border-bulgarian-red bg-old-paper flex items-center justify-center shadow-xl">
-                  <span className="text-sunflower text-xl"></span>
-                </div>
-
-                {/* Aged corners */}
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-walnut/40" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-walnut/40" />
-              </div>
-            </motion.div>
-          )}
-
           {/* Continue Button */}
           <div className="text-center">
             <button

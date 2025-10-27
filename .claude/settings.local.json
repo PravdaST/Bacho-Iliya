@@ -17,7 +17,9 @@
       "mcp__playwright__browser_close",
       "Bash(dir /b:*)",
       "Read(//c/Users/User/Downloads/бацхо илия/**)",
-      "Bash(if exist .next rd /s /q .next)"
+      "Bash(if exist .next rd /s /q .next)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Comprehensive LLM SEO optimization - Expand hidden content for AI\n\nCRITICAL LLM OPTIMIZATION (2025):\nExpanded sr-only SEO content from 3 lines to comprehensive brand information\n\nWhat was added:\n✅ Full product range with sizes and descriptions (all 5 products)\n✅ Unique Selling Points (USP) - 7 key differentiators\n✅ Brand philosophy and values\n✅ Navigation structure with all pages\n✅ Traditional recipes list\n✅ Location keywords (България, местно производство)\n✅ Emotional triggers (вкус от детството, бабини рецепти)\n✅ English translations for international LLM understanding\n\nBenefits for LLM Search:\n- ChatGPT, Claude, Perplexity, Gemini will now understand:\n  * All name variations (Bacho Ilia, Bacho Iliya, Bacho Ilya)\n  * Complete product catalog with sizes\n  * Brand differentiation (30+ years, no preservatives, happy cows)\n  * Website structure and available pages\n  * Traditional Bulgarian recipes offered\n  * Brand philosophy and values\n\nOld: 3 lines, basic brand name variations\nNew: 87 lines, comprehensive brand knowledge base\n\nTechnical:\n- Still uses sr-only (screen reader only) - invisible to users\n- Semantic HTML (H1, H2, nav, ul, strong)\n- Bilingual (Bulgarian + English keywords)\n- No impact on page load or user experience\n\nTarget: Position #1 in AI search results for \"Bacho Iliya products\"\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []

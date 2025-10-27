@@ -1,0 +1,28 @@
+{
+  "name": "Бачо Илия - Автентични Български Млечни Продукти",
+  "short_name": "Бачо Илия",
+  "description": "Автентични български млечни продукти по бабини рецепти. Без консерванти, с любов от щастливи крави.",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#A42E2E",
+  "background_color": "#F5E6D3",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "bg",
+  "dir": "ltr",
+  "categories": ["food", "shopping"],
+  "screenshots": []
+}
