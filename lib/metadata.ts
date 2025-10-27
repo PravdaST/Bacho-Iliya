@@ -19,7 +19,7 @@ import type { Product } from './products-data';
 // BASE CONFIGURATION
 // ============================================
 
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bacho-ilia.eu';
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bacho-iliya.eu';
 export const SITE_NAME = 'Bacho Ilia / Бачо Илия';
 export const SITE_DESCRIPTION = 'Автентични български млечни продукти с богата история и традиция. Сирена, кисели млека и млечни продукти от висококачествено мляко.';
 export const DEFAULT_OG_IMAGE = `${BASE_URL}/og-images/default.jpg`;
@@ -312,6 +312,85 @@ export function generateAboutMetadata(): Metadata {
       'български млечни традиции',
       'производител млечни продукти българия',
     ],
+  });
+}
+
+// ============================================
+// CONTACTS PAGE METADATA
+// ============================================
+
+export function generateContactsMetadata(): Metadata {
+  return generateMetadata({
+    title: 'Контакти - Свържи Се С Нас',
+    description: 'Имаш въпрос за продуктите на Бачо Илия? Свържи се с нас чрез телефон, имейл или контактна форма. Производствен цех в Бяла Черква, обл. Търговище.',
+    path: '/contacts',
+    ogImage: `${BASE_URL}/og-images/contacts.jpg`,
+    keywords: [
+      'контакти бачо илия',
+      'телефон бачо илия',
+      'имейл бачо илия',
+      'адрес производство млечни продукти',
+      'милкилукс контакти',
+    ],
+  });
+}
+
+// ============================================
+// BLOG PAGE METADATA
+// ============================================
+
+export function generateBlogMetadata(): Metadata {
+  return generateMetadata({
+    title: 'Блог - Истории от Българското Село',
+    description: 'Традиции, рецепти и тайни от кухнята на Бачо Илия. Открий истории за българските млечни продукти, бабини рецепти и селския живот.',
+    path: '/blog',
+    ogImage: `${BASE_URL}/og-images/blog.jpg`,
+    keywords: [
+      'блог бачо илия',
+      'български традиции',
+      'селски живот българия',
+      'истории за млечни продукти',
+      'бабини рецепти',
+    ],
+  });
+}
+
+// ============================================
+// PRIVACY POLICY METADATA
+// ============================================
+
+export function generatePrivacyMetadata(): Metadata {
+  return generateMetadata({
+    title: 'Политика за Поверителност',
+    description: 'Политика за поверителност на Бачо Илия. Научи как защитаваме твоите лични данни и как ги използваме.',
+    path: '/privacy',
+    noIndex: true, // Legal pages usually not indexed
+  });
+}
+
+// ============================================
+// TERMS OF SERVICE METADATA
+// ============================================
+
+export function generateTermsMetadata(): Metadata {
+  return generateMetadata({
+    title: 'Общи Условия',
+    description: 'Общи условия за ползване на уебсайта на Бачо Илия и участие в промоции и раздавания.',
+    path: '/terms',
+    noIndex: true,
+  });
+}
+
+// ============================================
+// COOKIES POLICY METADATA
+// ============================================
+
+export function generateCookiesMetadata(): Metadata {
+  return generateMetadata({
+    title: 'Политика за Бисквитки',
+    description: 'Информация за използваните бисквитки (cookies) на уебсайта на Бачо Илия и как да ги управляваш.',
+    path: '/cookies',
+    noIndex: true,
   });
 }
 
