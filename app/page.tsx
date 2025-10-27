@@ -137,157 +137,111 @@ export default function Home() {
         }}
       />
 
-      {/* Hero - Beautiful Mobile-First Design */}
-      <section className="relative h-dvh flex items-center justify-center overflow-hidden px-4" style={{ position: 'relative', zIndex: 10 }}>
-        {/* Gradient Background - Beautiful & Fast */}
-        <div className="absolute inset-0 bg-gradient-to-br from-walnut via-bulgarian-red to-sunflower/80" />
-
-        {/* Vintage Paper Texture Overlay */}
-        <div className="absolute inset-0 bg-vintage-paper opacity-20 mix-blend-overlay" />
-
-        {/* Animated Floating Decorations */}
-        <motion.div
-          className="absolute top-10 left-5 w-16 h-16 rounded-full bg-sunflower/30 blur-2xl"
-          animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-10 w-20 h-20 rounded-full bg-old-paper/40 blur-2xl"
-          animate={{ y: [0, 20, 0], scale: [1, 1.2, 1] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-        <motion.div
-          className="absolute top-1/3 right-5 w-12 h-12 rounded-full bg-bulgarian-red/20 blur-xl"
-          animate={{ x: [0, -15, 0], y: [0, 15, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        />
-
-        {/* Main Content - Centered & Clean */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          {/* Logo - Animated Entry */}
-          <motion.div
-            className="mb-6 md:mb-8"
-            initial={{ scale: 0, rotate: -180, opacity: 0 }}
-            animate={{ scale: 1, rotate: 0, opacity: 1 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-          >
-            <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto mb-4 drop-shadow-2xl">
-              <Image
-                src="/Bachi ilia head logo_.webp"
-                alt="Бачо Илия"
-                width={128}
-                height={128}
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="relative inline-block">
-              <Image
-                src="/logo.png"
-                alt="Бачо Илия"
-                width={280}
-                height={100}
-                className="mx-auto drop-shadow-2xl"
-                priority
-                sizes="(max-width: 768px) 280px, 350px"
-              />
-            </div>
-          </motion.div>
-
-          {/* Animated Divider */}
-          <motion.div
-            className="w-20 h-1 bg-sunflower mx-auto mb-6 md:mb-8"
-            initial={{ width: 0 }}
-            animate={{ width: 80 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+      {/* Hero - Heritage & Craft Style with Big Photography */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden" style={{ position: 'relative', zIndex: 10 }}>
+        {/* Hero Image Background */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero-bacho-workshop.webp"
+            alt="Бачо Илия в работилницата"
+            fill
+            className="object-cover"
+            priority
           />
+        </div>
 
-          {/* Main Headline - Bold & Clear */}
+        {/* Dark Overlay for Text Readability - Increased for better contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-walnut/70 via-dark-walnut/60 to-dark-walnut/70" />
+
+        {/* Main Content - Centered & Clean - HERITAGE STYLE */}
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
+          {/* Additional text background for extra contrast */}
+          <div className="absolute inset-0 bg-dark-walnut/30 blur-3xl" />
+
+          {/* Main Headline - Heritage Typography - CREAM COLOR for elegance */}
           <motion.h1
-            className="font-handwritten text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-old-paper mb-4 md:mb-6 leading-tight drop-shadow-lg"
+            className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-cream mb-6 md:mb-8 leading-tight drop-shadow-2xl relative z-10"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            Вкусът от детството<br />
+            <span className="text-accent-gold">напълно безплатно</span>
+          </motion.h1>
+
+          {/* Subtitle - Clean & Elegant - CREAM COLOR for elegance */}
+          <motion.p
+            className="font-body text-xl sm:text-2xl md:text-3xl text-cream mb-10 md:mb-12 leading-relaxed max-w-2xl mx-auto drop-shadow-lg relative z-10"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Вкусът от детството<br />
-            <span className="text-sunflower">напълно безплатно</span>
-          </motion.h1>
-
-          {/* Subtitle - Emotional & Simple */}
-          <motion.p
-            className="font-handwritten text-xl sm:text-2xl md:text-3xl text-old-paper/95 mb-8 md:mb-10 leading-relaxed max-w-2xl mx-auto drop-shadow-md"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
             Истински млечни продукти,<br className="hidden sm:block" /> направени точно както баба ги правеше
           </motion.p>
 
-          {/* CTA Button - PROMINENT */}
+          {/* CTA Button - Heritage Style with HIGH CONTRAST */}
           <motion.div
+            className="relative z-10"
             initial={{ y: 30, opacity: 0, scale: 0.9 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
+            transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
           >
             <a
               href="#giveaway"
-              className="inline-block bg-old-paper text-bulgarian-red px-8 py-5 md:px-12 md:py-6 shadow-2xl hover:scale-110 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-300 min-h-[64px] focus:outline-none focus:ring-4 focus:ring-sunflower focus:ring-offset-4 focus:ring-offset-bulgarian-red group relative overflow-hidden"
+              className="inline-block bg-white text-dark-walnut px-10 py-6 md:px-14 md:py-7 shadow-2xl hover:scale-105 hover:shadow-[0_30px_80px_rgba(0,0,0,0.8)] transition-all duration-300 min-h-[64px] focus:outline-none focus:ring-4 focus:ring-accent-gold focus:ring-offset-4 focus:ring-offset-transparent group relative overflow-hidden border-2 border-dark-walnut"
               aria-label="Участвай в раздаването на продукти Бачо Илия"
             >
-              {/* Shine effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-sunflower/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-
-              <p className="font-handwritten text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide relative z-10">
+              <p className="font-heading text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-wider relative z-10">
                 УЧАСТВАЙ СЕГА →
               </p>
             </a>
           </motion.div>
 
-          {/* Trust Badge - Clean & Simple */}
+          {/* Trust Badge - CREAM COLOR for elegance */}
           <motion.div
-            className="mt-8 md:mt-10 flex items-center justify-center gap-2 text-old-paper/90"
+            className="mt-10 md:mt-12 flex items-center justify-center gap-2 text-cream relative z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
           >
             <div className="flex items-center gap-1">
-              <span className="text-sunflower text-lg">★★★★★</span>
+              <span className="text-accent-gold text-lg">★★★★★</span>
             </div>
-            <span className="font-handwritten text-base md:text-lg">
+            <span className="font-body text-base md:text-lg">
               Над 2,500 семейства вече участват
             </span>
           </motion.div>
 
-          {/* Subtle Badge - Tradition */}
+          {/* Heritage Badge - CREAM COLOR for elegance */}
           <motion.div
-            className="mt-6 inline-block"
+            className="mt-6 inline-block relative z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <div className="bg-old-paper/20 backdrop-blur-sm border-2 border-old-paper/40 px-6 py-2">
-              <p className="font-handwritten text-sm md:text-base text-old-paper uppercase tracking-widest">
+            <div className="bg-cream/20 backdrop-blur-sm border-2 border-cream/50 px-8 py-3">
+              <p className="font-heading text-sm md:text-base text-cream uppercase tracking-widest">
                 Традиция от 1970
               </p>
             </div>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator - Animated */}
+        {/* Scroll Indicator - CREAM COLOR for elegance */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="font-handwritten text-old-paper/70 text-sm">Виж повече</span>
+            <span className="font-body text-cream text-sm drop-shadow-lg">Виж повече</span>
             <svg
-              className="w-6 h-6 text-old-paper/70"
+              className="w-6 h-6 text-cream drop-shadow-lg"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

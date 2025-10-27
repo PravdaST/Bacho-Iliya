@@ -141,7 +141,7 @@ export default function RootLayout({
 
         <QueryProvider>
           <Header />
-          <main className="flex-1 pt-20">
+          <main className="flex-1 pt-18">
             {children}
           </main>
           <Footer />

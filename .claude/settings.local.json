@@ -8,7 +8,13 @@
       "Bash(git push origin master)",
       "Bash(git push origin master:main)",
       "Bash(npm run build)",
-      "Bash(findstr /i \"tarator banica shopska\")"
+      "Bash(findstr /i \"tarator banica shopska\")",
+      "WebFetch(domain:milkylux.com)",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_take_screenshot",
+      "Bash(npx tsc:*)",
+      "mcp__context7__get-library-docs",
+      "mcp__playwright__browser_close"
     ],
     "deny": [],
     "ask": []

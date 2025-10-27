@@ -1,25 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Mono&family=Inter:wght@400;600;700&family=Caveat:wght@400;600;700&family=Amatic+SC:wght@400;700&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@400;700&display=swap');
 @import "tailwindcss";
 
 /* ============================================
    TAILWIND V4 THEME CONFIGURATION
    ============================================ */
 @theme {
-  /* CORE: Bulgarian Flag Colors - Red, White, Blue */
-  --color-bulgarian-red: #DC143C;      /* Primary: Bulgarian Red */
-  --color-bulgarian-blue: #0066CC;     /* Accent: Bulgarian Blue */
-  --color-white: #FFFFFF;              /* Base: Pure White */
+  /* ============================================
+     HERITAGE & CRAFT COLOR PALETTE - 4 Colors
+     ============================================ */
 
-  /* SUPPORTING: Minimal Earth Tones */
-  --color-walnut: #4A3728;             /* Text: Dark Brown */
-  --color-old-paper: #F5E6D3;          /* Background: Warm Beige */
-  --color-cream-white: #FAF0E6;        /* Cards: Soft Cream */
+  /* PRIMARY PALETTE */
+  --color-dark-walnut: #3A2A1A;        /* Main text & headers */
+  --color-cream: #F5E6D3;              /* Backgrounds & light text */
+  --color-heritage-red: #A42E2E;       /* CTA & accents */
+  --color-accent-gold: #B8860B;        /* Highlights & special elements */
 
-  /* ACCENT: Very Limited Palette */
-  --color-sunflower: #FFD700;          /* Highlight: Golden Yellow */
-  --color-terracotta: #CC6633;         /* Warm: Terracotta */
+  /* BACKWARD COMPATIBILITY - Map old colors to new palette */
+  --color-bulgarian-red: #A42E2E;      /* → heritage-red */
+  --color-walnut: #3A2A1A;             /* → dark-walnut */
+  --color-old-paper: #F5E6D3;          /* → cream */
+  --color-sunflower: #B8860B;          /* → accent-gold */
+  --color-white: #FFFFFF;              /* Pure white */
 
-  /* DEPRECATED: Keep for backward compatibility only */
+  /* DEPRECATED - Remove after testing */
+  --color-cream-white: #F5E6D3;
+  --color-terracotta: #CC6633;
+  --color-bulgarian-blue: #0066CC;
   --color-faded-denim: #4682B4;
   --color-clay: #8B6F47;
   --color-ochre: #CC7722;
@@ -27,7 +33,6 @@
   --color-wheat: #F5DEB3;
   --color-dark-wood: #5D4E37;
   --color-light-wood: #D2B48C;
-  --color-cream: #F5F5DC;
   --color-warm-brown: #8B4513;
   --color-vintage-cream: #FFF8E7;
   --color-vintage-yellow: #F4E4C1;
@@ -45,14 +50,24 @@
   --color-primary-800: #806d00;
   --color-primary-900: #665700;
 
-  /* Font Families - Mobile-First Readability */
-  --font-family-serif: 'Georgia', 'Times New Roman', serif;    /* Четлив serif за body text */
-  --font-family-mono: 'PT Mono', 'Courier New', monospace;  /* Запазен PT Mono за номера и код */
-  --font-family-sans: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;     /* Readable sans-serif за текст */
-  --font-family-handwritten: 'Caveat', cursive;  /* Caveat САМО за headings и декоративни елементи */
-  --font-family-village: 'Caveat', cursive;  /* Village character за заглавия */
-  --font-family-rustic: 'Caveat', cursive;   /* Rustic за специални акценти */
-  --font-family-playfair: 'Georgia', serif; /* Readable serif fallback */
+  /* ============================================
+     HERITAGE & CRAFT TYPOGRAPHY - 2 Fonts
+     ============================================ */
+
+  /* PRIMARY FONTS */
+  --font-family-heading: 'Playfair Display', Georgia, serif;  /* Elegant serif for headings */
+  --font-family-body: 'Lato', system-ui, -apple-system, sans-serif;  /* Clean sans-serif for body */
+
+  /* BACKWARD COMPATIBILITY - Map old fonts to new system */
+  --font-family-handwritten: 'Playfair Display', Georgia, serif;  /* → heading */
+  --font-family-village: 'Playfair Display', Georgia, serif;      /* → heading */
+  --font-family-serif: 'Lato', system-ui, sans-serif;             /* → body */
+  --font-family-sans: 'Lato', system-ui, sans-serif;              /* → body */
+  --font-family-playfair: 'Playfair Display', Georgia, serif;    /* Native support */
+
+  /* DEPRECATED */
+  --font-family-mono: 'Courier New', monospace;
+  --font-family-rustic: 'Playfair Display', serif;
 
   /* Custom Box Shadows */
   --shadow-vintage: 0 2px 8px rgba(139, 69, 19, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -69,28 +84,29 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: #F5F5DC;
-  font-family: var(--font-family-sans);  /* Readable sans-serif by default */
+  color: #3A2A1A;  /* dark-walnut */
+  background: #F5E6D3;  /* cream */
+  font-family: var(--font-family-body);  /* Lato */
 }
 
-/* Readable paragraph text - especially important on mobile */
+/* Readable paragraph text - Heritage style */
 p {
-  font-family: var(--font-family-sans);
-  font-size: 18px;  /* Increased for better mobile readability */
-  font-weight: 400;  /* Normal weight for readability */
-  line-height: 1.8;  /* Increased line-height for mobile */
+  font-family: var(--font-family-body);
+  font-size: 18px;  /* Mobile-first readability */
+  font-weight: 400;
+  line-height: 1.7;  /* Balanced spacing */
+  color: #3A2A1A;  /* dark-walnut */
 }
 
 @media (min-width: 640px) {
   p {
-    font-size: 20px;  /* Even larger on desktop */
+    font-size: 19px;
   }
 }
 
 @media (min-width: 1024px) {
   p {
-    font-size: 21px;  /* Optimal on large screens */
+    font-size: 20px;  /* Desktop optimal */
   }
 }
 
@@ -100,11 +116,13 @@ p {
   line-height: 1rem !important;
 }
 
-/* Handwritten class for personality - use sparingly */
+/* Heritage headings - Playfair Display */
 .font-handwritten,
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-handwritten) !important;
-  line-height: 2.0;  /* More spacing for script fonts */
+  font-family: var(--font-family-heading) !important;  /* Playfair Display */
+  line-height: 1.3;  /* Elegant serif spacing */
+  font-weight: 700;  /* Bold for impact */
+  color: #3A2A1A;  /* dark-walnut */
 }
 
 /* ============================================
@@ -156,56 +174,9 @@ html {
                 repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(200, 180, 160, 0.1) 10px, rgba(200, 180, 160, 0.1) 20px);
   }
 
-  /* Bulgarian Traditional Patterns */
-  .bg-shevitsa-zigzag {
-    background: linear-gradient(135deg, transparent 25%, var(--color-bulgarian-red) 25%, var(--color-bulgarian-red) 50%, transparent 50%, transparent 75%, var(--color-bulgarian-red) 75%, var(--color-bulgarian-red));
-    background-size: 20px 20px;
-    opacity: 0.1;
-  }
-
-  .bg-shevitsa-diamond {
-    background: repeating-conic-gradient(from 45deg at 50% 50%, transparent 0deg, var(--color-sunflower) 90deg, transparent 180deg, var(--color-bulgarian-red) 270deg);
-    background-size: 40px 40px;
-    opacity: 0.08;
-  }
-
-  .bg-cross-stitch {
-    background-image: repeating-linear-gradient(0deg, var(--color-terracotta) 0px, transparent 1px, transparent 8px),
-                      repeating-linear-gradient(90deg, var(--color-terracotta) 0px, transparent 1px, transparent 8px);
-    opacity: 0.15;
-  }
-
-  .bg-tablecloth {
-    background-image: repeating-linear-gradient(0deg, var(--color-cream-white) 0px, transparent 2px, transparent 30px, var(--color-cream-white) 32px),
-                      repeating-linear-gradient(90deg, var(--color-cream-white) 0px, transparent 2px, transparent 30px, var(--color-cream-white) 32px);
-    background-color: var(--color-wheat);
-  }
-
-  /* Wood Textures */
-  .bg-light-wood {
-    background: linear-gradient(90deg, #D2B48C 0%, #C9A87C 10%, #D2B48C 20%, #BFA77A 30%, #D2B48C 40%, #C9A87C 50%, #D2B48C 60%, #BFA77A 70%, #D2B48C 80%, #C9A87C 90%, #D2B48C 100%);
-    background-size: 400px 100%;
-  }
-
-  .bg-dark-wood {
-    background: linear-gradient(90deg, #5D4E37 0%, #6B5C42 10%, #5D4E37 20%, #534433 30%, #5D4E37 40%, #6B5C42 50%, #5D4E37 60%, #534433 70%, #5D4E37 80%, #6B5C42 90%, #5D4E37 100%);
-    background-size: 400px 100%;
-  }
-
-  .bg-barn-wood {
-    background: repeating-linear-gradient(0deg, var(--color-bulgarian-red) 0px, var(--color-bulgarian-red) 120px, #A01F1F 120px, #A01F1F 121px);
-  }
-
-  /* Textile Borders (for headers/dividers) */
-  .border-shevitsa-top {
-    border-top: 8px solid var(--color-bulgarian-red);
-    border-image: repeating-linear-gradient(90deg, var(--color-bulgarian-red) 0px, var(--color-bulgarian-red) 10px, var(--color-sunflower) 10px, var(--color-sunflower) 20px, var(--color-bulgarian-red) 20px) 8;
-  }
-
-  .border-rushnik {
-    border-top: 12px solid var(--color-cream-white);
-    border-image: repeating-linear-gradient(90deg, var(--color-bulgarian-red) 0px, var(--color-bulgarian-red) 8px, var(--color-sunflower) 8px, var(--color-sunflower) 16px, var(--color-olive-green) 16px, var(--color-olive-green) 24px) 12;
-  }
+  /* HERITAGE STYLE - Removed Bulgarian patterns for cleaner aesthetic */
+  /* All patterns removed: shevitsa-zigzag, shevitsa-diamond, cross-stitch,
+     tablecloth, wood textures, textile borders */
 
   .shadow-vintage {
     box-shadow: var(--shadow-vintage);
@@ -390,16 +361,38 @@ html {
     @apply rounded-xl p-6 border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 shadow-md hover:shadow-xl transition-all;
   }
 
-  /* Button System */
+  /* Button System - Heritage Style */
+  .btn-heritage {
+    background: #3A2A1A;  /* dark-walnut */
+    color: #F5E6D3;  /* cream */
+    padding: 1.5rem 3rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 2px solid #3A2A1A;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-heritage:hover {
+    background: transparent;
+    color: #3A2A1A;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(58, 42, 26, 0.2);
+  }
+
+  /* Legacy button styles - mapped to heritage */
   .btn-primary {
-    @apply px-8 py-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-lg hover:shadow-lg transition-all hover:scale-105;
+    @apply px-8 py-4 bg-heritage-red text-cream font-bold text-lg hover:shadow-lg transition-all hover:scale-105;
   }
 
   .btn-secondary {
-    @apply px-8 py-4 rounded-full border-2 border-amber-500 text-amber-700 font-bold text-lg hover:bg-amber-50 transition-all;
+    @apply px-8 py-4 border-2 border-dark-walnut text-dark-walnut font-bold text-lg hover:bg-cream transition-all;
   }
 
   .btn-traditional {
-    @apply px-8 py-4 rounded-lg bg-bulgarian-red text-white font-bold text-lg hover:bg-red-700 transition-all hover:scale-105 shadow-lg;
+    @apply px-8 py-4 bg-heritage-red text-cream font-bold text-lg hover:bg-dark-walnut transition-all hover:scale-105 shadow-lg;
   }
 }

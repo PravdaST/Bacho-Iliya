@@ -52,23 +52,125 @@ export default function Header() {
 
   return (
     <motion.header
-      className={`backdrop-blur-sm border-b-4 border-walnut/30 z-50 transition-all duration-500 fixed top-0 left-0 right-0 ${
+      className={`backdrop-blur-sm border-b z-50 transition-all duration-500 fixed top-0 left-0 right-0 ${
         scrolled
-          ? "shadow-2xl"
-          : "shadow-xl"
+          ? "shadow-lg border-dark-walnut/20"
+          : "shadow-md border-dark-walnut/10"
       }`}
       style={{
-        backgroundColor: scrolled ? '#DC143C' : 'rgba(220, 20, 60, 0.95)',
+        backgroundColor: scrolled ? '#F5E6D3' : 'rgba(245, 230, 211, 0.98)',
       }}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {/* Vintage texture overlay */}
-      <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex justify-between items-center py-4">
+        {/* Desktop Navigation - Stonyfield Style: Split with Logo in Center */}
+        <div className="hidden lg:flex justify-between items-center pt-4 pb-12">
+          {/* Left Navigation */}
+          <nav className="flex space-x-6 items-center">
+            {navItems.slice(0, 3).map((item, index) => (
+              item.type === "link" ? (
+                <Link key={item.href} href={item.href!}>
+                  <motion.div
+                    className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 cursor-pointer uppercase tracking-wider"
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                    whileHover={{ y: -4 }}
+                  >
+                    {item.label}
+                    <motion.div
+                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-heritage-red group-hover:w-full transition-all duration-300"
+                    />
+                  </motion.div>
+                </Link>
+              ) : (
+                <motion.button
+                  key={item.label}
+                  onClick={() => scrollToSection((item as any).id)}
+                  className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 uppercase tracking-wider"
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  whileHover={{ y: -4 }}
+                >
+                  {item.label}
+                  <motion.div
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-heritage-red group-hover:w-full transition-all duration-300"
+                  />
+                </motion.button>
+              )
+            ))}
+          </nav>
+
+          {/* Centered Logo */}
+          <motion.div
+            className="absolute left-1/2 transform -translate-x-1/2"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Link href="/">
+              <motion.div
+                className="relative h-12 w-auto cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Image
+                  src="/logo.png"
+                  alt="Бачо Илия"
+                  width={140}
+                  height={48}
+                  className="h-full w-auto object-contain"
+                  priority
+                  unoptimized
+                  quality={100}
+                />
+              </motion.div>
+            </Link>
+          </motion.div>
+
+          {/* Right Navigation */}
+          <nav className="flex space-x-6 items-center">
+            {navItems.slice(3).map((item, index) => (
+              item.type === "link" ? (
+                <Link key={item.href} href={item.href!}>
+                  <motion.div
+                    className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 cursor-pointer uppercase tracking-wider"
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                    whileHover={{ y: -4 }}
+                  >
+                    {item.label}
+                    <motion.div
+                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-heritage-red group-hover:w-full transition-all duration-300"
+                    />
+                  </motion.div>
+                </Link>
+              ) : (
+                <motion.button
+                  key={item.label}
+                  onClick={() => scrollToSection((item as any).id)}
+                  className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 uppercase tracking-wider"
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                  whileHover={{ y: -4 }}
+                >
+                  {item.label}
+                  <motion.div
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-heritage-red group-hover:w-full transition-all duration-300"
+                  />
+                </motion.button>
+              )
+            ))}
+          </nav>
+        </div>
+
+        {/* Mobile Header */}
+        <div className="flex lg:hidden justify-between items-center py-4">
           {/* Logo */}
           <motion.div
             className="flex-shrink-0"
@@ -78,7 +180,7 @@ export default function Header() {
           >
             <Link href="/">
               <motion.div
-                className="relative h-8 sm:h-10 md:h-12 w-auto cursor-pointer"
+                className="relative h-8 sm:h-10 w-auto cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -86,58 +188,17 @@ export default function Header() {
                   src="/logo.png"
                   alt="Бачо Илия"
                   width={120}
-                  height={48}
+                  height={40}
                   className="h-full w-auto object-contain"
-                  style={{ imageRendering: 'crisp-edges' }}
                   priority
                   unoptimized
                   quality={100}
-                  sizes="(max-width: 640px) 32px, (max-width: 768px) 40px, 48px"
                 />
               </motion.div>
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-6 xl:space-x-8 items-center">
-            {navItems.map((item, index) => (
-              item.type === "link" ? (
-                <Link key={item.href} href={item.href!}>
-                  <motion.div
-                    className="relative text-white hover:text-old-paper font-handwritten text-base lg:text-lg font-bold group px-2 py-1 cursor-pointer tracking-wide"
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    whileHover={{ y: -2 }}
-                  >
-                    {item.label}
-                    <motion.div
-                      className="absolute -bottom-1 left-0 w-0 h-1 bg-old-paper group-hover:w-full transition-all duration-300"
-                      whileHover={{ width: "100%" }}
-                    />
-                  </motion.div>
-                </Link>
-              ) : (
-                <motion.button
-                  key={item.label}
-                  onClick={() => scrollToSection((item as any).id)}
-                  className="relative text-white hover:text-old-paper font-handwritten text-base lg:text-lg font-bold group px-2 py-1 tracking-wide"
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  whileHover={{ y: -2 }}
-                >
-                  {item.label}
-                  <motion.div
-                    className="absolute -bottom-1 left-0 w-0 h-1 bg-old-paper group-hover:w-full transition-all duration-300"
-                    whileHover={{ width: "100%" }}
-                  />
-                </motion.button>
-              )
-            ))}
-          </nav>
-
-          {/* Mobile menu button */}
+          {/* Mobile menu button - Heritage Style */}
           <motion.div
             className="lg:hidden"
             initial={{ x: 50, opacity: 0 }}
@@ -146,7 +207,7 @@ export default function Header() {
           >
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white p-3 relative touch-manipulation"
+              className="text-dark-walnut p-3 relative touch-manipulation"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -177,7 +238,7 @@ export default function Header() {
           </motion.div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Heritage Style */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -188,22 +249,19 @@ export default function Header() {
               transition={{ duration: 0.3 }}
             >
               <motion.div
-                className="px-4 pt-4 pb-6 space-y-2 border-t-4 border-walnut/30 relative"
+                className="px-4 pt-4 pb-6 space-y-2 border-t border-dark-walnut/20 relative"
                 style={{
-                  backgroundColor: 'rgba(220, 20, 60, 0.95)',
+                  backgroundColor: 'rgba(245, 230, 211, 0.98)',
                 }}
                 initial={{ y: -20 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
               >
-                {/* Vintage texture overlay for mobile menu */}
-                <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />
-
                 {navItems.map((item, index) => (
                   item.type === "link" ? (
                     <Link key={item.href} href={item.href!}>
                       <motion.div
-                        className="block w-full text-left px-4 py-4 text-white hover:text-old-paper font-handwritten text-lg font-bold tracking-wide border-2 border-transparent hover:border-old-paper/30 transition-all duration-200 touch-manipulation relative z-10"
+                        className="block w-full text-left px-4 py-4 text-dark-walnut hover:text-heritage-red font-heading text-base font-bold uppercase tracking-wider border-2 border-transparent hover:border-heritage-red/20 transition-all duration-200 touch-manipulation relative z-10"
                         initial={{ x: -20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
@@ -218,7 +276,7 @@ export default function Header() {
                     <motion.button
                       key={item.label}
                       onClick={() => scrollToSection((item as any).id)}
-                      className="block w-full text-left px-4 py-4 text-white hover:text-old-paper font-handwritten text-lg font-bold tracking-wide border-2 border-transparent hover:border-old-paper/30 transition-all duration-200 touch-manipulation relative z-10"
+                      className="block w-full text-left px-4 py-4 text-dark-walnut hover:text-heritage-red font-heading text-base font-bold uppercase tracking-wider border-2 border-transparent hover:border-heritage-red/20 transition-all duration-200 touch-manipulation relative z-10"
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
@@ -234,6 +292,18 @@ export default function Header() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* SVG Bump Effect - Stonyfield Style */}
+      <svg
+        className="hidden lg:block absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full pointer-events-none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 400 20"
+        width="400"
+        height="20"
+        fill={scrolled ? '#F5E6D3' : 'rgba(245, 230, 211, 0.98)'}
+      >
+        <path d="M100 0 C160 0 160 18 200 18 C240 18 240 0 300 0 Z" transform="scale(2,1) translate(-100,0)" />
+      </svg>
     </motion.header>
   );
 }
