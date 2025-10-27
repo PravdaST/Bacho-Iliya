@@ -46,22 +46,23 @@ export default function Footer() {
               </div>
             </motion.div>
             <motion.p
-              className="font-handwritten text-white mb-4 sm:mb-6 text-lg sm:text-xl"
+              className="font-handwritten mb-4 sm:mb-6 text-lg sm:text-xl"
               variants={fadeInVariants}
+              style={{ color: '#ffffff' }}
             >
               Движението за истински вкус. Без компромиси, без лъжи.
             </motion.p>
             <motion.div
-              className="text-white"
               variants={fadeInVariants}
             >
-              <span className="font-handwritten text-lg">Направено с любов в България</span>
+              <span className="font-handwritten text-lg" style={{ color: '#ffffff' }}>Направено с любов в България</span>
             </motion.div>
           </motion.div>
 
           <motion.div variants={fadeInVariants}>
             <motion.h4
-              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white"
+              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl"
+              style={{ color: '#ffffff' }}
             >
               Навигация
             </motion.h4>
@@ -80,7 +81,8 @@ export default function Footer() {
                 >
                   <a
                     href={link.href}
-                    className="font-handwritten text-lg text-white hover:text-white transition-colors inline-block"
+                    className="font-handwritten text-lg transition-colors inline-block"
+                    style={{ color: '#ffffff' }}
                   >
                     {link.label}
                   </a>
@@ -91,7 +93,8 @@ export default function Footer() {
 
           <motion.div variants={fadeInVariants}>
             <motion.h4
-              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white"
+              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl"
+              style={{ color: '#ffffff' }}
             >
               Правна информация
             </motion.h4>
@@ -109,7 +112,8 @@ export default function Footer() {
                 >
                   <a
                     href={link.href}
-                    className="font-handwritten text-base text-white hover:text-white transition-colors inline-block"
+                    className="font-handwritten text-base transition-colors inline-block"
+                    style={{ color: '#ffffff' }}
                   >
                     {link.label}
                   </a>
@@ -120,7 +124,8 @@ export default function Footer() {
 
           <motion.div variants={fadeInVariants}>
             <motion.h4
-              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white"
+              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl"
+              style={{ color: '#ffffff' }}
             >
               Последвай ни
             </motion.h4>
@@ -172,10 +177,8 @@ export default function Footer() {
                 </svg>
               </motion.a>
             </motion.div>
-            <motion.div
-              className="text-white"
-            >
-              <p className="font-handwritten text-lg">contact@bacho-iliya.eu</p>
+            <motion.div>
+              <p className="font-handwritten text-lg" style={{ color: '#ffffff' }}>contact@bacho-iliya.eu</p>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -187,18 +190,17 @@ export default function Footer() {
         />
 
         <motion.div
-          className="text-center text-white"
+          className="text-center"
           variants={fadeInVariants}
         >
           <motion.p
-            className="font-handwritten text-white mb-3 sm:mb-4 text-sm sm:text-base"
+            className="font-handwritten mb-3 sm:mb-4 text-sm sm:text-base"
+            style={{ color: '#ffffff' }}
           >
             © 2025 Бачо Илия. Всички права запазени. Движението тепърва започва.
           </motion.p>
-          <motion.div
-            className="text-white"
-          >
-            <span className="font-handwritten text-base">Създадено с вярата в истинското</span>
+          <motion.div>
+            <span className="font-handwritten text-base" style={{ color: '#ffffff' }}>Създадено с вярата в истинското</span>
           </motion.div>
         </motion.div>
       </div>
