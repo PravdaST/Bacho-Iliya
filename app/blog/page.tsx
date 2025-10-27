@@ -17,7 +17,7 @@ const blogPosts = [
   },
 ];
 
-const categories = ["Всички", "Традиции", "Рецепти", "За нас", "Продукти"];
+const categories = ["Всички", "Бабини рецепти"];
 
 export default function BlogPage() {
   return (

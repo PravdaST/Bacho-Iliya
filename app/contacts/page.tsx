@@ -1,0 +1,389 @@
+'use client';
+
+import { Metadata } from 'next';
+import { motion } from 'framer-motion';
+import { useScrollAnimation, fadeInVariants, staggerContainer } from '@/hooks/use-scroll-animation';
+import { MapPinIcon, PhoneIcon, MailIcon, ClockIcon, BuildingIcon, FacebookIcon } from 'lucide-react';
+
+export default function ContactsPage() {
+  const { ref: heroRef, isInView: heroInView } = useScrollAnimation(0.1);
+  const { ref: infoRef, isInView: infoInView } = useScrollAnimation(0.1);
+  const { ref: formRef, isInView: formInView } = useScrollAnimation(0.1);
+
+  return (
+    <div className="min-h-screen bg-old-paper relative overflow-hidden">
+      {/* Paper texture */}
+      <div className="absolute inset-0 bg-vintage-paper opacity-40 pointer-events-none" />
+
+      {/* Coffee stains */}
+      <div className="absolute top-32 right-20 w-40 h-40 bg-walnut/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-40 left-10 w-32 h-32 bg-walnut/5 rounded-full blur-2xl pointer-events-none" />
+
+      <div className="relative pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <motion.div
+          ref={heroRef}
+          className="max-w-5xl mx-auto mb-20 text-center"
+          initial="hidden"
+          animate={heroInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          <motion.div variants={fadeInVariants} className="mb-6">
+            <span className="inline-block bg-bulgarian-red text-white px-6 py-2 font-handwritten text-sm tracking-wider">
+              СВЪРЖИ СЕ С НАС
+            </span>
+          </motion.div>
+
+          <motion.h1
+            className="font-handwritten text-5xl md:text-7xl text-bulgarian-red mb-6 leading-tight"
+            variants={fadeInVariants}
+          >
+            Ние сме тук за теб
+          </motion.h1>
+
+          <motion.p
+            className="font-handwritten text-xl md:text-2xl text-walnut/80 mb-8 max-w-3xl mx-auto leading-relaxed"
+            variants={fadeInVariants}
+          >
+            Имаш въпрос? Искаш да научиш повече за продуктите ни? Или просто искаш да споделиш спомен за бабините рецепти? Пиши ни!
+          </motion.p>
+        </motion.div>
+
+        {/* Company Information Cards */}
+        <motion.div
+          ref={infoRef}
+          className="max-w-6xl mx-auto mb-16"
+          initial="hidden"
+          animate={infoInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Address */}
+            <motion.div
+              variants={fadeInVariants}
+              className="bg-white p-8 shadow-xl border-2 border-walnut/20 relative hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div className="absolute -top-2 left-6 w-16 h-4 bg-bulgarian-red/40 border-l border-r border-bulgarian-red/60" />
+
+              <div className="mb-4">
+                <MapPinIcon className="w-10 h-10 text-bulgarian-red" />
+              </div>
+
+              <h3 className="font-handwritten text-2xl text-walnut mb-4">
+                Адрес
+              </h3>
+
+              <div className="space-y-2 font-handwritten text-walnut/80 leading-relaxed">
+                <p className="font-bold">Производствен цех:</p>
+                <p>гр. Бяла Черква</p>
+                <p>обл. Търговище</p>
+                <p className="mt-4 text-xs text-walnut/60">
+                  *Производството се осъществява от Милкилукс ООД
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Contact */}
+            <motion.div
+              variants={fadeInVariants}
+              className="bg-white p-8 shadow-xl border-2 border-walnut/20 relative hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div className="absolute -top-2 left-6 w-16 h-4 bg-sunflower/40 border-l border-r border-sunflower/60" />
+
+              <div className="mb-4">
+                <MailIcon className="w-10 h-10 text-bulgarian-red" />
+              </div>
+
+              <h3 className="font-handwritten text-2xl text-walnut mb-4">
+                Контакти
+              </h3>
+
+              <div className="space-y-3">
+                <div>
+                  <p className="font-handwritten text-xs text-walnut/60 mb-1 tracking-wider">ИМЕЙЛ</p>
+                  <a
+                    href="mailto:contact@bacho-iliya.eu"
+                    className="font-handwritten text-walnut hover:text-bulgarian-red transition-colors duration-300 text-lg"
+                  >
+                    contact@bacho-iliya.eu
+                  </a>
+                </div>
+
+                <div>
+                  <p className="font-handwritten text-xs text-walnut/60 mb-1 tracking-wider">ТЕЛЕФОН</p>
+                  <a
+                    href="tel:+359123456789"
+                    className="font-handwritten text-walnut hover:text-bulgarian-red transition-colors duration-300 text-lg"
+                  >
+                    +359 XX XXX XXXX
+                  </a>
+                  <p className="font-handwritten text-xs text-walnut/60 mt-1">
+                    (работно време)
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Working Hours */}
+            <motion.div
+              variants={fadeInVariants}
+              className="bg-white p-8 shadow-xl border-2 border-walnut/20 relative hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div className="absolute -top-2 left-6 w-16 h-4 bg-faded-denim/40 border-l border-r border-faded-denim/60" />
+
+              <div className="mb-4">
+                <ClockIcon className="w-10 h-10 text-bulgarian-red" />
+              </div>
+
+              <h3 className="font-handwritten text-2xl text-walnut mb-4">
+                Работно време
+              </h3>
+
+              <div className="space-y-2 font-handwritten text-walnut/80">
+                <div className="flex justify-between">
+                  <span>Понеделник - Петък:</span>
+                  <span className="font-bold">9:00 - 18:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Събота:</span>
+                  <span className="font-bold">9:00 - 14:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Неделя:</span>
+                  <span className="text-bulgarian-red">Почивен ден</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Company Info Section */}
+        <motion.div
+          className="max-w-5xl mx-auto mb-16"
+          initial="hidden"
+          animate={infoInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          <motion.div
+            variants={fadeInVariants}
+            className="bg-gradient-to-br from-bulgarian-red to-bulgarian-red text-white p-10 shadow-2xl relative overflow-hidden"
+          >
+            {/* Paper texture */}
+            <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-6">
+                <BuildingIcon className="w-12 h-12" />
+                <h2 className="font-handwritten text-4xl">
+                  За компанията
+                </h2>
+              </div>
+
+              <div className="space-y-4 font-handwritten text-lg leading-relaxed">
+                <p>
+                  <span className="font-bold">Бачо Илия</span> е марка на <span className="font-bold">Милкилукс ООД</span> -
+                  водещ производител на традиционни български млечни продукти от 1996 година.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/30">
+                  <div>
+                    <p className="text-xs tracking-wider opacity-80 mb-1">ОФИЦИАЛНО ИМЕ</p>
+                    <p className="font-bold">Милкилукс ООД</p>
+                  </div>
+                  <div>
+                    <p className="text-xs tracking-wider opacity-80 mb-1">ЕИК</p>
+                    <p className="font-bold">XXXXXXXXX</p>
+                  </div>
+                  <div>
+                    <p className="text-xs tracking-wider opacity-80 mb-1">ДДС НОМЕР</p>
+                    <p className="font-bold">BGXXXXXXXXX</p>
+                  </div>
+                  <div>
+                    <p className="text-xs tracking-wider opacity-80 mb-1">СЕДАЛИЩЕ</p>
+                    <p className="font-bold">гр. Бяла Черква</p>
+                  </div>
+                </div>
+
+                <p className="mt-6 pt-6 border-t border-white/30">
+                  С производствена площ от <span className="font-bold">25,000 кв.м</span> и капацитет
+                  за преработка на <span className="font-bold">130,000 литра мляко дневно</span>,
+                  работим с първокатегорийни ферми от 6 региона в България.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Contact Form Section */}
+        <motion.div
+          ref={formRef}
+          className="max-w-4xl mx-auto mb-16"
+          initial="hidden"
+          animate={formInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          <motion.div
+            variants={fadeInVariants}
+            className="bg-white p-10 md:p-12 shadow-2xl border-4 border-walnut/20 relative"
+          >
+            {/* Washi tape */}
+            <div className="absolute -top-3 left-1/4 w-32 h-8 bg-sunflower/40 border-l-2 border-r-2 border-sunflower/60" />
+
+            {/* Paper texture */}
+            <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />
+
+            <div className="relative z-10">
+              <h2 className="font-handwritten text-4xl text-walnut mb-8 text-center">
+                Напиши ни съобщение
+              </h2>
+
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block font-handwritten text-lg text-walnut mb-2">
+                      Име *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 border-2 border-walnut/30 bg-old-paper/30 font-handwritten text-lg text-walnut focus:outline-none focus:border-bulgarian-red transition-colors duration-300"
+                      placeholder="Иван"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-handwritten text-lg text-walnut mb-2">
+                      Имейл *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      className="w-full px-4 py-3 border-2 border-walnut/30 bg-old-paper/30 font-handwritten text-lg text-walnut focus:outline-none focus:border-bulgarian-red transition-colors duration-300"
+                      placeholder="ivan@example.com"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block font-handwritten text-lg text-walnut mb-2">
+                    Телефон
+                  </label>
+                  <input
+                    type="tel"
+                    className="w-full px-4 py-3 border-2 border-walnut/30 bg-old-paper/30 font-handwritten text-lg text-walnut focus:outline-none focus:border-bulgarian-red transition-colors duration-300"
+                    placeholder="+359 XXX XXX XXX"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-handwritten text-lg text-walnut mb-2">
+                    Тема
+                  </label>
+                  <select
+                    className="w-full px-4 py-3 border-2 border-walnut/30 bg-old-paper/30 font-handwritten text-lg text-walnut focus:outline-none focus:border-bulgarian-red transition-colors duration-300"
+                  >
+                    <option>Общ въпрос</option>
+                    <option>Информация за продукти</option>
+                    <option>Търговско сътрудничество</option>
+                    <option>Жалба или предложение</option>
+                    <option>Друго</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-handwritten text-lg text-walnut mb-2">
+                    Съобщение *
+                  </label>
+                  <textarea
+                    required
+                    rows={6}
+                    className="w-full px-4 py-3 border-2 border-walnut/30 bg-old-paper/30 font-handwritten text-lg text-walnut focus:outline-none focus:border-bulgarian-red transition-colors duration-300 resize-none"
+                    placeholder="Напиши съобщението си тук..."
+                  />
+                </div>
+
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="bg-bulgarian-red text-white px-10 py-4 font-handwritten text-xl tracking-wider hover:bg-walnut transition-colors duration-300 shadow-xl border-4 border-walnut/20 relative overflow-hidden group"
+                  >
+                    <span className="relative z-10">ИЗПРАТИ СЪОБЩЕНИЕТО →</span>
+                    <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />
+                  </button>
+                </div>
+
+                <p className="text-center font-handwritten text-sm text-walnut/60 italic">
+                  * Задължителни полета. Отговаряме в рамките на 24-48 часа.
+                </p>
+              </form>
+            </div>
+
+            {/* Coffee stain */}
+            <div className="absolute bottom-8 right-8 w-16 h-16 rounded-full bg-walnut/10 blur-md opacity-30 pointer-events-none" />
+          </motion.div>
+        </motion.div>
+
+        {/* Social Media Section */}
+        <motion.div
+          className="max-w-4xl mx-auto text-center"
+          initial="hidden"
+          animate={formInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          <motion.div variants={fadeInVariants}>
+            <h2 className="font-handwritten text-3xl md:text-4xl text-walnut mb-6">
+              Последвай ни в социалните мрежи
+            </h2>
+            <p className="font-handwritten text-lg text-walnut/80 mb-8">
+              Споделяме рецепти, спомени и истории от селския живот
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            className="flex justify-center gap-6 mb-8"
+          >
+            <motion.a
+              href="https://www.facebook.com/Bacho.Iliya/"
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeInVariants}
+              className="w-16 h-16 bg-white border-4 border-bulgarian-red/30 flex items-center justify-center hover:bg-bulgarian-red hover:border-bulgarian-red transition-all duration-300 shadow-xl group"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+            >
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" className="text-bulgarian-red group-hover:text-white transition-colors">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </motion.a>
+
+            <motion.a
+              href="https://www.youtube.com/@bachoiliyabg"
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeInVariants}
+              className="w-16 h-16 bg-white border-4 border-bulgarian-red/30 flex items-center justify-center hover:bg-bulgarian-red hover:border-bulgarian-red transition-all duration-300 shadow-xl group"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+            >
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" className="text-bulgarian-red group-hover:text-white transition-colors">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </motion.a>
+
+            <motion.a
+              href="https://www.tiktok.com/@bachoiliyabg"
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeInVariants}
+              className="w-16 h-16 bg-white border-4 border-bulgarian-red/30 flex items-center justify-center hover:bg-bulgarian-red hover:border-bulgarian-red transition-all duration-300 shadow-xl group"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+            >
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" className="text-bulgarian-red group-hover:text-white transition-colors">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+              </svg>
+            </motion.a>
+          </motion.div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
