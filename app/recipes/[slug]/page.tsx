@@ -217,7 +217,7 @@ export default function RecipePage({ params }: Props) {
                       key={idx}
                       className="flex gap-4 pb-6 border-b border-dashed border-walnut/30 last:border-0 last:pb-0"
                     >
-                      <div className="flex-shrink-0 w-10 h-10 bg-bulgarian-red text-white flex items-center justify-center font-handwritten font-bold border-2 border-walnut/20">
+                      <div className="flex-shrink-0 w-10 h-10 bg-bulgarian-red flex items-center justify-center font-handwritten font-bold border-2 border-walnut/20" style={{ color: '#ffffff' }}>
                         {idx + 1}
                       </div>
                       <div className="flex-1">
