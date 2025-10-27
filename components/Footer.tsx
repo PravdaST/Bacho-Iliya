@@ -46,13 +46,13 @@ export default function Footer() {
               </div>
             </motion.div>
             <motion.p
-              className="font-handwritten text-white/90 mb-4 sm:mb-6 text-lg sm:text-xl"
+              className="font-handwritten text-white mb-4 sm:mb-6 text-lg sm:text-xl"
               variants={fadeInVariants}
             >
               Движението за истински вкус. Без компромиси, без лъжи.
             </motion.p>
             <motion.div
-              className="text-white/80"
+              className="text-white"
               variants={fadeInVariants}
             >
               <span className="font-handwritten text-lg">Направено с любов в България</span>
@@ -61,7 +61,7 @@ export default function Footer() {
 
           <motion.div variants={fadeInVariants}>
             <motion.h4
-              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white/90"
+              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white"
             >
               Навигация
             </motion.h4>
@@ -80,7 +80,7 @@ export default function Footer() {
                 >
                   <a
                     href={link.href}
-                    className="font-handwritten text-lg text-white/80 hover:text-white transition-colors inline-block"
+                    className="font-handwritten text-lg text-white hover:text-white transition-colors inline-block"
                   >
                     {link.label}
                   </a>
@@ -91,7 +91,7 @@ export default function Footer() {
 
           <motion.div variants={fadeInVariants}>
             <motion.h4
-              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white/90"
+              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white"
             >
               Правна информация
             </motion.h4>
@@ -109,7 +109,7 @@ export default function Footer() {
                 >
                   <a
                     href={link.href}
-                    className="font-handwritten text-base text-white/80 hover:text-white transition-colors inline-block"
+                    className="font-handwritten text-base text-white hover:text-white transition-colors inline-block"
                   >
                     {link.label}
                   </a>
@@ -120,7 +120,7 @@ export default function Footer() {
 
           <motion.div variants={fadeInVariants}>
             <motion.h4
-              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white/90"
+              className="font-handwritten mb-4 sm:mb-6 text-xl sm:text-2xl text-white"
             >
               Последвай ни
             </motion.h4>
@@ -173,7 +173,7 @@ export default function Footer() {
               </motion.a>
             </motion.div>
             <motion.div
-              className="text-white/80"
+              className="text-white"
             >
               <p className="font-handwritten text-lg">contact@bacho-iliya.eu</p>
             </motion.div>
@@ -187,16 +187,16 @@ export default function Footer() {
         />
 
         <motion.div
-          className="text-center text-white/60"
+          className="text-center text-white"
           variants={fadeInVariants}
         >
           <motion.p
-            className="font-handwritten text-white/60 mb-3 sm:mb-4 text-sm sm:text-base"
+            className="font-handwritten text-white mb-3 sm:mb-4 text-sm sm:text-base"
           >
             © 2025 Бачо Илия. Всички права запазени. Движението тепърва започва.
           </motion.p>
           <motion.div
-            className="text-white/80"
+            className="text-white"
           >
             <span className="font-handwritten text-base">Създадено с вярата в истинското</span>
           </motion.div>

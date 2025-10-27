@@ -100,9 +100,9 @@ export default function NotFound() {
             >
               <Link
                 href="/"
-                className="px-8 py-4 bg-bulgarian-red border-4 border-walnut/40 text-white font-handwritten text-xl font-bold hover:scale-105 transition-all shadow-xl relative overflow-hidden group"
+                className="px-8 py-4 bg-bulgarian-red border-4 border-walnut/40 font-handwritten text-xl font-bold hover:scale-105 transition-all shadow-xl relative overflow-hidden group"
               >
-                <span className="relative z-10">Към Началото</span>
+                <span className="relative z-10" style={{ color: '#ffffff' }}>Към Началото</span>
                 <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />
               </Link>
               <Link

@@ -167,8 +167,8 @@ export default function BachoStory() {
               style={{
                 clipPath: 'polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%)'
               }}>
-              <div className="font-handwritten text-4xl font-bold text-white mb-1">30+</div>
-              <div className="font-handwritten text-xs text-white/90 text-center leading-tight uppercase px-3">
+              <div className="font-handwritten text-4xl font-bold mb-1" style={{ color: '#ffffff' }}>30+</div>
+              <div className="font-handwritten text-xs text-center leading-tight uppercase px-3" style={{ color: '#ffffff' }}>
                 ГОДИНИ<br/>ТРАДИЦИЯ
               </div>
               <div className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none bg-vintage-paper" />
@@ -181,8 +181,8 @@ export default function BachoStory() {
               style={{
                 clipPath: 'polygon(8% 2%, 92% 0%, 98% 12%, 100% 88%, 92% 98%, 8% 100%, 2% 88%, 0% 12%)'
               }}>
-              <div className="font-handwritten text-4xl font-bold text-white mb-1">0%</div>
-              <div className="font-handwritten text-xs text-white/90 text-center leading-tight uppercase px-3">
+              <div className="font-handwritten text-4xl font-bold mb-1" style={{ color: '#ffffff' }}>0%</div>
+              <div className="font-handwritten text-xs text-center leading-tight uppercase px-3" style={{ color: '#ffffff' }}>
                 ХИМИЯ И<br/>КОНСЕРВАНТИ
               </div>
               <div className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none bg-vintage-paper" />
@@ -195,8 +195,8 @@ export default function BachoStory() {
               style={{
                 clipPath: 'polygon(12% 0%, 88% 2%, 100% 8%, 98% 92%, 88% 100%, 12% 98%, 0% 92%, 2% 8%)'
               }}>
-              <div className="font-handwritten text-4xl font-bold text-white mb-1">100%</div>
-              <div className="font-handwritten text-xs text-white/90 text-center leading-tight uppercase px-3">
+              <div className="font-handwritten text-4xl font-bold mb-1" style={{ color: '#ffffff' }}>100%</div>
+              <div className="font-handwritten text-xs text-center leading-tight uppercase px-3" style={{ color: '#ffffff' }}>
                 БАБИНИ<br/>РЕЦЕПТИ
               </div>
               <div className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none bg-vintage-paper" />

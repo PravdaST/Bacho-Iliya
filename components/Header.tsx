@@ -66,14 +66,14 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Desktop Navigation - Stonyfield Style: Split with Logo in Center */}
-        <div className="hidden lg:flex justify-between items-center pt-4 pb-12">
+        <div className="hidden lg:flex justify-between items-center pt-8 pb-8">
           {/* Left Navigation */}
           <nav className="flex space-x-6 items-center">
             {navItems.slice(0, 3).map((item, index) => (
               item.type === "link" ? (
                 <Link key={item.href} href={item.href!}>
                   <motion.div
-                    className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 cursor-pointer uppercase tracking-wider"
+                    className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 cursor-pointer uppercase tracking-wider inline-flex items-center justify-center"
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -89,7 +89,7 @@ export default function Header() {
                 <motion.button
                   key={item.label}
                   onClick={() => scrollToSection((item as any).id)}
-                  className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 uppercase tracking-wider"
+                  className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 uppercase tracking-wider inline-flex items-center justify-center"
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -106,7 +106,7 @@ export default function Header() {
 
           {/* Centered Logo */}
           <motion.div
-            className="absolute left-1/2 transform -translate-x-1/2"
+            className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -137,7 +137,7 @@ export default function Header() {
               item.type === "link" ? (
                 <Link key={item.href} href={item.href!}>
                   <motion.div
-                    className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 cursor-pointer uppercase tracking-wider"
+                    className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 cursor-pointer uppercase tracking-wider inline-flex items-center justify-center"
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
@@ -153,7 +153,7 @@ export default function Header() {
                 <motion.button
                   key={item.label}
                   onClick={() => scrollToSection((item as any).id)}
-                  className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 uppercase tracking-wider"
+                  className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 uppercase tracking-wider inline-flex items-center justify-center"
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}

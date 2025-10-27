@@ -137,125 +137,132 @@ export default function Home() {
         }}
       />
 
-      {/* Hero - Heritage & Craft Style with Big Photography */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden" style={{ position: 'relative', zIndex: 10 }}>
-        {/* Hero Image Background */}
-        <div className="absolute inset-0">
-          <Image
-            src="/hero-bacho-workshop.webp"
-            alt="Бачо Илия в работилницата"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+      {/* Hero - Asymmetric Video + Image Layout: Warm & Nostalgic */}
+      <section className="relative min-h-[85vh] bg-cream overflow-hidden" style={{ position: 'relative', zIndex: 10 }}>
+        <div className="grid lg:grid-cols-[55fr_45fr] min-h-[85vh]">
 
-        {/* Dark Overlay for Text Readability - Increased for better contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-walnut/70 via-dark-walnut/60 to-dark-walnut/70" />
-
-        {/* Main Content - Centered & Clean - HERITAGE STYLE */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
-          {/* Additional text background for extra contrast */}
-          <div className="absolute inset-0 bg-dark-walnut/30 blur-3xl" />
-
-          {/* Main Headline - Heritage Typography - CREAM COLOR for elegance */}
-          <motion.h1
-            className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-cream mb-6 md:mb-8 leading-tight drop-shadow-2xl relative z-10"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            Вкусът от детството<br />
-            <span className="text-accent-gold">напълно безплатно</span>
-          </motion.h1>
-
-          {/* Subtitle - Clean & Elegant - CREAM COLOR for elegance */}
-          <motion.p
-            className="font-body text-xl sm:text-2xl md:text-3xl text-cream mb-10 md:mb-12 leading-relaxed max-w-2xl mx-auto drop-shadow-lg relative z-10"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            Истински млечни продукти,<br className="hidden sm:block" /> направени точно както баба ги правеше
-          </motion.p>
-
-          {/* CTA Button - Heritage Style with HIGH CONTRAST */}
+          {/* Left Column - Video Storytelling (55%) */}
           <motion.div
-            className="relative z-10"
-            initial={{ y: 30, opacity: 0, scale: 0.9 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
-          >
-            <a
-              href="#giveaway"
-              className="inline-block bg-white text-dark-walnut px-10 py-6 md:px-14 md:py-7 shadow-2xl hover:scale-105 hover:shadow-[0_30px_80px_rgba(0,0,0,0.8)] transition-all duration-300 min-h-[64px] focus:outline-none focus:ring-4 focus:ring-accent-gold focus:ring-offset-4 focus:ring-offset-transparent group relative overflow-hidden border-2 border-dark-walnut"
-              aria-label="Участвай в раздаването на продукти Бачо Илия"
-            >
-              <p className="font-heading text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-wider relative z-10">
-                УЧАСТВАЙ СЕГА →
-              </p>
-            </a>
-          </motion.div>
-
-          {/* Trust Badge - CREAM COLOR for elegance */}
-          <motion.div
-            className="mt-10 md:mt-12 flex items-center justify-center gap-2 text-cream relative z-10"
+            className="relative h-[40vh] lg:h-auto overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="flex items-center gap-1">
-              <span className="text-accent-gold text-lg">★★★★★</span>
-            </div>
-            <span className="font-body text-base md:text-lg">
-              Над 2,500 семейства вече участват
-            </span>
-          </motion.div>
-
-          {/* Heritage Badge - CREAM COLOR for elegance */}
-          <motion.div
-            className="mt-6 inline-block relative z-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <div className="bg-cream/20 backdrop-blur-sm border-2 border-cream/50 px-8 py-3">
-              <p className="font-heading text-sm md:text-base text-cream uppercase tracking-widest">
-                Традиция от 1970
-              </p>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator - CREAM COLOR for elegance */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2"
-          >
-            <span className="font-body text-cream text-sm drop-shadow-lg">Виж повече</span>
-            <svg
-              className="w-6 h-6 text-cream drop-shadow-lg"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+            {/* Video Background */}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="/bacho-video-poster.webp"
+              className="absolute inset-0 w-full h-full object-cover"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
+              <source src="/bacho-video.mp4" type="video/mp4" />
+            </video>
+
+            {/* Subtle overlay for depth - REDUCED for better video visibility */}
+            <div className="absolute inset-0 bg-dark-walnut/10" />
           </motion.div>
-        </motion.div>
+
+          {/* Right Column - Clean & Focused Content (45%) */}
+          <div className="relative bg-cream px-6 sm:px-8 lg:px-12 py-12 lg:py-16 flex flex-col justify-center">
+            <div className="max-w-xl mx-auto lg:mx-0 space-y-8 lg:space-y-12">
+
+              {/* Main Headline - BIGGER & More Impact */}
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl text-dark-walnut leading-tight mb-4">
+                  Вкусът от<br />детството
+                </h1>
+                <p className="font-heading text-3xl sm:text-4xl text-accent-gold italic">
+                  напълно безплатно
+                </p>
+              </motion.div>
+
+              {/* Subtitle - Connected to headline */}
+              <motion.p
+                className="font-body text-xl sm:text-2xl text-dark-walnut leading-relaxed"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                Истински млечни продукти, направени точно както баба ги правеше
+              </motion.p>
+
+              {/* CTA Button - BIGGER & More Prominent */}
+              <motion.div
+                initial={{ y: 20, opacity: 0, scale: 0.95 }}
+                animate={{ y: 0, opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8, type: "spring" }}
+              >
+                <a
+                  href="#giveaway"
+                  className="inline-block w-full sm:w-auto bg-heritage-red px-12 py-6 sm:px-16 sm:py-8 shadow-2xl hover:scale-105 hover:bg-dark-walnut transition-all duration-300 text-center"
+                  aria-label="Участвай в раздаването на продукти Бачо Илия"
+                >
+                  <p className="font-heading text-2xl sm:text-3xl font-bold uppercase tracking-wider" style={{ color: '#ffffff' }}>
+                    УЧАСТВАЙ СЕГА →
+                  </p>
+                </a>
+              </motion.div>
+
+              {/* Trust Badge - Subtle, below button */}
+              <motion.div
+                className="flex items-center justify-center sm:justify-start gap-3 text-dark-walnut"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1 }}
+              >
+                <div className="flex items-center gap-1">
+                  <span className="text-accent-gold text-lg">★★★★★</span>
+                </div>
+                <span className="font-body text-base sm:text-lg">
+                  Над 2,500 семейства вече участват
+                </span>
+              </motion.div>
+
+              {/* Heritage Badge - Minimal */}
+              <motion.div
+                className="text-center sm:text-left"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+              >
+                <p className="font-heading text-sm text-dark-walnut/70 uppercase tracking-widest">
+                  Традиция от 1970
+                </p>
+              </motion.div>
+
+            </div>
+          </div>
+
+        </div>
       </section>
 
       {/* Bacho Story Section - BUILD EMOTIONAL CONNECTION FIRST */}
       <div id="story">
         <BachoStory />
       </div>
+
+      {/* Video Section */}
+      <section className="relative w-full bg-cream overflow-hidden">
+        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            poster="/bacho-video-poster.webp"
+          >
+            <source src="/bacho.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-dark-walnut/10" />
+        </div>
+      </section>
 
       {/* How It Works - Step-by-Step Journey (MOVED UP FOR BETTER CONVERSION) */}
       <section className="py-20 px-4 bg-walnut/5 relative overflow-hidden">
@@ -290,20 +297,37 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <div className="order-1">
-              <div className="bg-white p-8 shadow-2xl border-4 border-sunflower/30 relative" style={{ transform: 'rotate(-1deg)' }}>
-                {/* Step Number Badge */}
-                <div className="absolute -top-8 -left-8 w-20 h-20 rounded-full bg-bulgarian-red border-4 border-white flex items-center justify-center shadow-xl">
-                  <span className="font-handwritten text-white text-3xl font-bold">01</span>
+              <div className="relative bg-old-paper border-4 border-walnut p-8 shadow-xl" style={{ transform: 'rotate(-1deg)' }}>
+                {/* Left vintage dots */}
+                <div className="absolute left-0 top-0 bottom-0 w-4 flex flex-col justify-around py-4">
+                  {[...Array(12)].map((_, i) => (
+                    <div key={`left-${i}`} className="w-2 h-2 bg-walnut rounded-full ml-1" />
+                  ))}
                 </div>
 
-                <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
-                  Избери продуктите
-                </h3>
-                <p className="font-handwritten text-walnut text-lg leading-relaxed mb-4">
-                  Маркирай кои млечни продукти искаш да спечелиш за твоето семейство. Можеш да избереш всички - без ограничения!
-                </p>
-                <div className="flex items-center gap-2 text-sunflower">
-                  <span className="font-handwritten text-xl text-walnut">Бяло сирене, кашкавал, кисело мляко...</span>
+                {/* Right vintage dots */}
+                <div className="absolute right-0 top-0 bottom-0 w-4 flex flex-col justify-around py-4">
+                  {[...Array(12)].map((_, i) => (
+                    <div key={`right-${i}`} className="w-2 h-2 bg-walnut rounded-full mr-1" />
+                  ))}
+                </div>
+
+                {/* Vintage texture overlay */}
+                <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+
+                {/* Step Number Badge */}
+                <div className="absolute -top-8 -left-8 w-20 h-20 rounded-full bg-bulgarian-red border-4 border-white flex items-center justify-center shadow-xl">
+                  <span className="font-handwritten text-3xl font-bold" style={{ color: '#ffffff' }}>01</span>
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
+                    Избери продуктите
+                  </h3>
+                  <p className="font-handwritten text-walnut text-lg leading-relaxed">
+                    Маркирай продуктите които искаш да спечелиш
+                  </p>
                 </div>
               </div>
             </div>
@@ -324,21 +348,37 @@ export default function Home() {
               <div className="text-9xl opacity-10 font-handwritten text-walnut text-right">02</div>
             </div>
             <div className="order-1 md:order-2">
-              <div className="bg-white p-8 shadow-2xl border-4 border-faded-denim/30 relative ml-auto" style={{ transform: 'rotate(1deg)' }}>
-                {/* Step Number Badge */}
-                <div className="absolute -top-8 -right-8 w-20 h-20 rounded-full bg-bulgarian-red border-4 border-white flex items-center justify-center shadow-xl">
-                  <span className="font-handwritten text-white text-3xl font-bold">02</span>
+              <div className="relative bg-old-paper border-4 border-walnut p-8 shadow-xl ml-auto" style={{ transform: 'rotate(1deg)' }}>
+                {/* Left vintage dots */}
+                <div className="absolute left-0 top-0 bottom-0 w-4 flex flex-col justify-around py-4">
+                  {[...Array(12)].map((_, i) => (
+                    <div key={`left-02-${i}`} className="w-2 h-2 bg-walnut rounded-full ml-1" />
+                  ))}
                 </div>
 
-                <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
-                  Регистрирай се
-                </h3>
-                <p className="font-handwritten text-walnut text-lg leading-relaxed mb-4">
-                  Попълни бързо данните си - име, email, телефон. Отнема само 2 минути. Безплатно е, без скрити условия!
-                </p>
-                <div className="flex items-center gap-2 text-faded-denim">
-                  <ClockIcon size={32} className="text-faded-denim" />
-                  <span className="font-handwritten text-xl text-walnut">Простичко като боб!</span>
+                {/* Right vintage dots */}
+                <div className="absolute right-0 top-0 bottom-0 w-4 flex flex-col justify-around py-4">
+                  {[...Array(12)].map((_, i) => (
+                    <div key={`right-02-${i}`} className="w-2 h-2 bg-walnut rounded-full mr-1" />
+                  ))}
+                </div>
+
+                {/* Vintage texture overlay */}
+                <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+
+                {/* Step Number Badge */}
+                <div className="absolute -top-8 -right-8 w-20 h-20 rounded-full bg-bulgarian-red border-4 border-white flex items-center justify-center shadow-xl">
+                  <span className="font-handwritten text-3xl font-bold" style={{ color: '#ffffff' }}>02</span>
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
+                    Регистрирай се
+                  </h3>
+                  <p className="font-handwritten text-walnut text-lg leading-relaxed">
+                    Попълни данните си за 2 минути
+                  </p>
                 </div>
               </div>
             </div>
@@ -353,21 +393,38 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <div className="order-1">
-              <div className="bg-white p-8 shadow-2xl border-4 border-bulgarian-red/30 relative" style={{ transform: 'rotate(-0.5deg)' }}>
-                {/* Step Number Badge */}
-                <div className="absolute -top-8 -left-8 w-20 h-20 rounded-full bg-bulgarian-red border-4 border-white flex items-center justify-center shadow-xl">
-                  <span className="font-handwritten text-white text-3xl font-bold">03</span>
+              <div className="relative bg-old-paper border-4 border-walnut p-8 shadow-xl" style={{ transform: 'rotate(-0.5deg)' }}>
+                {/* Left vintage dots */}
+                <div className="absolute left-0 top-0 bottom-0 w-4 flex flex-col justify-around py-4">
+                  {[...Array(12)].map((_, i) => (
+                    <div key={`left-03-${i}`} className="w-2 h-2 bg-walnut rounded-full ml-1" />
+                  ))}
                 </div>
 
-                <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
-                  Сподели и участвай
-                </h3>
-                <p className="font-handwritten text-walnut text-lg leading-relaxed mb-4">
-                  Харесай, коментирай и сподели във Facebook. Всяко споделяне ти дава допълнително участие в раздаването!
-                </p>
-                <div className="flex items-center gap-2 text-bulgarian-red">
-                  <span className="font-handwritten text-xl text-walnut">Повече споделяния = повече шансове!</span>
-</div>
+                {/* Right vintage dots */}
+                <div className="absolute right-0 top-0 bottom-0 w-4 flex flex-col justify-around py-4">
+                  {[...Array(12)].map((_, i) => (
+                    <div key={`right-03-${i}`} className="w-2 h-2 bg-walnut rounded-full mr-1" />
+                  ))}
+                </div>
+
+                {/* Vintage texture overlay */}
+                <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+
+                {/* Step Number Badge */}
+                <div className="absolute -top-8 -left-8 w-20 h-20 rounded-full bg-bulgarian-red border-4 border-white flex items-center justify-center shadow-xl">
+                  <span className="font-handwritten text-3xl font-bold" style={{ color: '#ffffff' }}>03</span>
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
+                    Сподели и участвай
+                  </h3>
+                  <p className="font-handwritten text-walnut text-lg leading-relaxed">
+                    Сподели във Facebook за повече шансове
+                  </p>
+                </div>
               </div>
             </div>
             <div className="order-2 hidden md:block">
@@ -375,33 +432,6 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Big CTA */}
-          <motion.div
-            className="text-center mt-16"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-          >
-            <a
-              href="#giveaway"
-              className="inline-block relative group"
-            >
-              <div className="bg-bulgarian-red px-12 py-6 shadow-2xl relative overflow-hidden">
-                <div className="relative z-10">
-                  <p className="font-handwritten text-white text-2xl md:text-3xl font-bold uppercase tracking-wide mb-2">
-                    Започни сега
-                  </p>
-                  <p className="font-handwritten text-white/90 text-lg">
-                    Безплатно • 2 минути • Без номера
-                  </p>
-                </div>
-
-                {/* Animated Background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-bulgarian-red via-sunflower/20 to-bulgarian-red opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </a>
-          </motion.div>
         </div>
       </section>
 
@@ -410,15 +440,31 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           {/* Urgency Banner - Vintage Stamp Style */}
           <motion.div
-            initial={{ opacity: 0, y: -20, rotate: 0 }}
-            whileInView={{ opacity: 1, y: 0, rotate: -1 }}
+            initial={{ opacity: 0, y: -20, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-6 max-w-2xl mx-auto"
+            animate={{
+              scale: [1, 1.02, 1],
+              rotate: [-1, -0.5, -1]
+            }}
+            transition={{
+              opacity: { duration: 0.5 },
+              y: { duration: 0.5 },
+              scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+            }}
+            whileHover={{
+              scale: 1.05,
+              rotate: 0,
+              transition: { duration: 0.3 }
+            }}
+            className="mb-6 max-w-2xl mx-auto cursor-pointer"
             style={{ transform: 'rotate(-1deg)' }}
           >
-            <div className="bg-bulgarian-red text-white px-8 py-5 text-center shadow-2xl border-4 border-walnut/30 relative">
-              <p className="font-handwritten text-xl font-bold uppercase tracking-wide">Участвай в раздаването сега</p>
+            <div className="bg-bulgarian-red px-8 py-5 text-center shadow-2xl border-4 border-walnut/30 relative hover:shadow-[0_0_30px_rgba(164,46,46,0.5)] transition-shadow duration-300">
+              <p className="font-handwritten text-xl font-bold uppercase tracking-wide" style={{ color: '#ffffff' }}>
+                Участвай в раздаването сега
+              </p>
 
               {/* Vintage texture overlay */}
               <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />
@@ -451,23 +497,51 @@ export default function Home() {
               "Хиляди семейства вече се радват на истинския вкус. Дойде ред и на твоето!"
             </p>
           </div>
-
-          {/* Progress Bar */}
-          <div className="mb-8">
-            <ProgressBar currentStep={1} totalSteps={4} />
-          </div>
-
           {/* Products - Scattered Vintage Photos */}
-          <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 overflow-x-auto md:overflow-x-visible px-4 snap-x snap-mandatory md:snap-none scroll-smooth pb-4">
-            {products.map((product) => (
-              <div key={product.id} className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-auto snap-center">
-                <ProductCard
-                  product={product}
-                  isSelected={selectedProducts.includes(product.id)}
-                  onToggle={() => toggleProduct(product.id)}
+          <div className="relative">
+            {/* Mobile Navigation Arrows */}
+            <button
+              onClick={() => {
+                const container = document.getElementById('products-container');
+                if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
+              }}
+              className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-bulgarian-red text-white rounded-full flex items-center justify-center shadow-xl hover:bg-dark-walnut transition-colors"
+              aria-label="Предишен продукт"
+            >
+              ←
+            </button>
+            <button
+              onClick={() => {
+                const container = document.getElementById('products-container');
+                if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
+              }}
+              className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-bulgarian-red text-white rounded-full flex items-center justify-center shadow-xl hover:bg-dark-walnut transition-colors"
+              aria-label="Следващ продукт"
+            >
+              →
+            </button>
+
+            <div id="products-container" className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 overflow-x-auto md:overflow-x-visible px-4 snap-x snap-mandatory md:snap-none scroll-smooth pb-4">
+              {products.map((product) => (
+                <div key={product.id} className="flex-shrink-0 w-[75vw] sm:w-[70vw] md:w-auto snap-center">
+                  <ProductCard
+                    product={product}
+                    isSelected={selectedProducts.includes(product.id)}
+                    onToggle={() => toggleProduct(product.id)}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile scroll indicator dots */}
+            <div className="md:hidden flex justify-center gap-2 mb-6">
+              {products.map((_, index) => (
+                <div
+                  key={index}
+                  className="w-2 h-2 rounded-full bg-walnut/30"
                 />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Selected count - Vintage Paper Card */}
@@ -668,56 +742,26 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right Column - Small Feature Cards Staggered */}
-            <div className="space-y-8">
-              <motion.div
-                className="bg-sunflower/20 p-6 md:p-8 shadow-xl border-2 border-sunflower/40"
-                initial={{ opacity: 0, x: 50, rotate: 2 }}
-                whileInView={{ opacity: 1, x: 0, rotate: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                style={{ transform: 'rotate(1deg)' }}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <h4 className="font-handwritten text-xl font-bold text-walnut uppercase tracking-wide">Безплатно</h4>
-                </div>
-                <p className="font-handwritten text-walnut text-2xl leading-relaxed">
-                  Напълно безплатно участие - без номера, без скрити условия!
-                </p>
-              </motion.div>
+            {/* Right Column - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex justify-center lg:justify-end"
+            >
+              <div className="relative w-full max-w-2xl">
+                <Image
+                  src="/bachoiliya-zashto.png"
+                  alt="Защо Бачо Илия - Истински млечни продукти"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto rounded-lg shadow-2xl"
+                  priority={false}
+                />
+              </div>
+            </motion.div>
 
-              <motion.div
-                className="bg-faded-denim/20 p-6 md:p-8 shadow-xl border-2 border-faded-denim/40 lg:ml-12"
-                initial={{ opacity: 0, x: 50, rotate: -2 }}
-                whileInView={{ opacity: 1, x: 0, rotate: -1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                style={{ transform: 'rotate(-1deg)' }}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <h4 className="font-handwritten text-xl font-bold text-walnut uppercase tracking-wide">2 Минути</h4>
-                </div>
-                <p className="font-handwritten text-walnut text-2xl leading-relaxed">
-                  Само 2 минути за регистрация - простичко като боб!
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="bg-bulgarian-red/10 p-6 md:p-8 shadow-xl border-2 border-bulgarian-red/30 lg:ml-6"
-                initial={{ opacity: 0, x: 50, rotate: 1 }}
-                whileInView={{ opacity: 1, x: 0, rotate: 0.5 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                style={{ transform: 'rotate(0.5deg)' }}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <h4 className="font-handwritten text-xl font-bold text-walnut uppercase tracking-wide">Бабини Рецепти</h4>
-                </div>
-                <p className="font-handwritten text-walnut text-2xl leading-relaxed">
-                  Традиционни рецепти от преди 50 години - нищо не съм променил
-                </p>
-              </motion.div>
-            </div>
           </div>
         </div>
       </section>
@@ -757,8 +801,8 @@ export default function Home() {
                 {/* Polaroid Photo */}
                 <div className="relative h-64 bg-gray-100 mb-4">
                   <Image
-                    src="/recipes/banitsa.webp"
-                    alt="Баница със сирене Бачо Илия"
+                    src="/мария-софия.webp"
+                    alt="Мария от София - Бачо Илия"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover"
@@ -795,8 +839,8 @@ export default function Home() {
                 {/* Polaroid Photo */}
                 <div className="relative h-64 bg-gray-100 mb-4">
                   <Image
-                    src="/recipes/shopska.webp"
-                    alt="Шопска салата с продукти Бачо Илия"
+                    src="/иван пловдивс.webp"
+                    alt="Иван от Пловдив - Бачо Илия"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover"
@@ -833,8 +877,8 @@ export default function Home() {
                 {/* Polaroid Photo */}
                 <div className="relative h-64 bg-gray-100 mb-4">
                   <Image
-                    src="/recipes/snezhanka.webp"
-                    alt="Снежанка салата с продукти Бачо Илия"
+                    src="/Qdemqlkoto.webp"
+                    alt="Елена от Варна - Бачо Илия"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover"
@@ -957,13 +1001,36 @@ export default function Home() {
           </motion.div>
 
           {/* Staggered Recipe Cards - Asymmetric Layout */}
-          <div className="flex md:grid md:grid-cols-2 gap-6 md:gap-12 mb-16 overflow-x-auto md:overflow-x-visible px-4 md:px-0 snap-x snap-mandatory md:snap-none scroll-smooth pb-4">
-            {recipes.map((recipe, index) => {
-              const rotations = ['-2deg', '1.5deg', '-1deg', '2deg'];
-              const rotation = rotations[index % rotations.length];
+          <div className="relative">
+            {/* Mobile Navigation Arrows */}
+            <button
+              onClick={() => {
+                const container = document.getElementById('recipes-container');
+                if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
+              }}
+              className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-bulgarian-red text-white rounded-full flex items-center justify-center shadow-xl hover:bg-dark-walnut transition-colors"
+              aria-label="Предишна рецепта"
+            >
+              ←
+            </button>
+            <button
+              onClick={() => {
+                const container = document.getElementById('recipes-container');
+                if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
+              }}
+              className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-bulgarian-red text-white rounded-full flex items-center justify-center shadow-xl hover:bg-dark-walnut transition-colors"
+              aria-label="Следваща рецепта"
+            >
+              →
+            </button>
 
-              return (
-                <div key={index} className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-auto snap-center">
+            <div id="recipes-container" className="flex md:grid md:grid-cols-2 gap-6 md:gap-12 mb-16 overflow-x-auto md:overflow-x-visible px-4 md:px-0 snap-x snap-mandatory md:snap-none scroll-smooth pb-4">
+              {recipes.map((recipe, index) => {
+                const rotations = ['-2deg', '1.5deg', '-1deg', '2deg'];
+                const rotation = rotations[index % rotations.length];
+
+                return (
+                  <div key={index} className="flex-shrink-0 w-[75vw] sm:w-[70vw] md:w-auto snap-center">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -1004,7 +1071,7 @@ export default function Home() {
                         <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-walnut/60" />
 
                         {/* Time Badge - Vintage Stamp Style */}
-                        <div className="absolute top-3 right-3 bg-bulgarian-red/90 px-3 py-1 text-xs font-handwritten text-white font-bold tracking-wide border-2 border-white shadow-lg z-10 flex items-center gap-1">
+                        <div className="absolute top-3 right-3 bg-bulgarian-red/90 px-3 py-1 text-xs font-handwritten font-bold tracking-wide border-2 border-white shadow-lg z-10 flex items-center gap-1" style={{ color: '#ffffff' }}>
                           <ClockIcon size={14} className="text-white" />
                           {recipe.time}
                         </div>
@@ -1059,6 +1126,17 @@ export default function Home() {
                 </div>
               );
             })}
+            </div>
+
+            {/* Mobile scroll indicator dots */}
+            <div className="md:hidden flex justify-center gap-2 mb-6">
+              {recipes.map((_, index) => (
+                <div
+                  key={index}
+                  className="w-2 h-2 rounded-full bg-walnut/30"
+                />
+              ))}
+            </div>
           </div>
 
           {/* CTA Section - Recipe Book Style */}
@@ -1069,39 +1147,13 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            {/* Bacho's Quote Card */}
-            <div className="inline-block bg-old-paper px-8 py-6 shadow-xl border-4 border-walnut/30 relative max-w-2xl" style={{ transform: 'rotate(-1deg)' }}>
-              <div className="flex items-start gap-4 mb-4">
-                <div className="relative w-12 h-12 flex-shrink-0">
-                  <Image
-                    src="/Bachi ilia head logo_.webp"
-                    alt="Бачо Илия"
-                    width={48}
-                    height={48}
-                    className="object-contain rounded-full"
-                  />
-                </div>
-                <div>
-                  <p className="font-handwritten text-sm text-walnut uppercase tracking-wide mb-2">Бачо Илия казва:</p>
-                  <p className="font-handwritten text-walnut text-2xl md:text-3xl leading-relaxed">
-                    "Всяка рецепта е спомен. Всеки залък е връщане у дома."
-                  </p>
-                </div>
-              </div>
-
-              {/* Stamp in corner */}
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full border-4 border-sunflower bg-old-paper flex items-center justify-center shadow-xl">
-                <span className="text-bulgarian-red text-2xl"></span>
-              </div>
-            </div>
-
             {/* View All Recipes Button - Vintage Stamp Style */}
             <Link
               href="/recipes"
               className="inline-block relative group"
             >
               <div className="bg-bulgarian-red px-10 py-5 border-4 border-dashed border-white shadow-2xl relative overflow-hidden">
-                <p className="font-handwritten text-white text-xl md:text-2xl font-bold uppercase tracking-wide relative z-10">
+                <p className="font-handwritten text-xl md:text-2xl font-bold uppercase tracking-wide relative z-10" style={{ color: '#ffffff' }}>
                   Виж Всички Рецепти →
                 </p>
 
