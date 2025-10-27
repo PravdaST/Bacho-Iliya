@@ -128,27 +128,6 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 </motion.p>
               </div>
 
-              {/* Price Display */}
-              {selectedSize.price && (
-                <motion.div variants={fadeInVariants} className="bg-sunflower/20 p-6 border-2 border-sunflower/40">
-                  <div className="flex items-baseline justify-between">
-                    <div>
-                      <p className="font-handwritten text-xs tracking-wider text-walnut/60 mb-1">
-                        ЦЕНА ЗА {selectedSize.size.toUpperCase()} ОПАКОВКА
-                      </p>
-                      <p className="font-handwritten text-4xl md:text-5xl text-bulgarian-red font-bold">
-                        {selectedSize.price}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-handwritten text-sm text-walnut/70">
-                        {selectedSize.weight}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
               {/* Size Selection */}
               <motion.div variants={fadeInVariants}>
                 <h3 className="font-handwritten text-2xl text-walnut mb-4">
@@ -159,7 +138,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     <motion.button
                       key={size.size}
                       onClick={() => setSelectedSize(size)}
-                      className={`px-4 py-3 font-handwritten text-sm tracking-wider border-2 transition-all duration-300 flex flex-col items-center ${
+                      className={`px-6 py-3 font-handwritten text-sm tracking-wider border-2 transition-all duration-300 ${
                         selectedSize.size === size.size
                           ? 'bg-bulgarian-red text-white border-walnut/50'
                           : 'bg-white text-walnut border-walnut/30 hover:border-bulgarian-red'
@@ -167,13 +146,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <span className="font-bold">{size.size}</span>
-                      <span className="text-xs opacity-80">{size.weight}</span>
-                      {size.price && (
-                        <span className={`text-xs font-bold mt-1 ${selectedSize.size === size.size ? 'text-white' : 'text-bulgarian-red'}`}>
-                          {size.price}
-                        </span>
-                      )}
+                      {size.size} - {size.weight}
                     </motion.button>
                   ))}
                 </div>

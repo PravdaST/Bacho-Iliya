@@ -54,44 +54,32 @@ export const products: Product[] = [
     image: '/products/sirene/BI-sirene-400-metal-480x480.png',
     sizes: [
       {
-        size: 'Мини',
-        weight: '200г',
-        price: '3.50 лв',
-        image: '/products/sirene/BI-sirene-200-vac-480x480.png',
-        description: 'Компактна вакуумна опаковка 200г - идеална за проба или малки домакинства'
-      },
-      {
         size: 'Стандартна',
         weight: '300г',
-        price: '4.80 лв',
         image: '/products/sirene/BI-sirene-300-vac-480x480.png',
         description: 'Популярна вакуумна опаковка 300г - удобна за редовна употреба'
       },
       {
         size: 'Средна',
         weight: '400г',
-        price: '6.00 лв',
         image: '/products/sirene/BI-sirene-400-metal-480x480.png',
         description: 'Най-популярният размер в метална кутия - запазва свежестта и вкуса'
       },
       {
         size: 'Голяма',
         weight: '800г',
-        price: '11.50 лв',
         image: '/products/sirene/BI-sirene-800-metal-480x480.png',
         description: 'Голяма метална опаковка - идеална за по-често ползване'
       },
       {
         size: 'Семейна',
         weight: '4кг',
-        price: '56.00 лв',
         image: '/products/sirene/BI-sirene-4KG-480x480.png',
         description: 'Голяма семейна опаковка - перфектна за баници и семейни празници'
       },
       {
         size: 'Ресторантска',
         weight: '8кг',
-        price: '108.00 лв',
         image: '/products/sirene/BI-sirene-8KG-480x480.jpg',
         description: 'Професионална опаковка за ресторанти и кетъринг'
       }
@@ -157,21 +145,18 @@ export const products: Product[] = [
       {
         size: 'Мини',
         weight: '300г',
-        price: '7.50 лв',
         image: '/products/kashkaval/BI-kashkaval-300-vac-480x480.png',
         description: 'Компактна вакуумна опаковка - идеална за проба или малко домакинство'
       },
       {
         size: 'Семейна опаковка',
         weight: '1.5кг',
-        price: '33.00 лв',
         image: '/products/kashkaval/BI-kashkaval-1500-480x480.png',
         description: 'Популярният семеен размер - достатъчен за цяла седмица'
       },
       {
         size: 'Ресторантска',
         weight: '7кг',
-        price: '147.00 лв',
         image: '/products/kashkaval/BI-kashkaval-7000-480x480.jpg',
         description: 'Професионална опаковка за ресторанти, кетъринг и пицарии'
       }
@@ -228,7 +213,7 @@ export const products: Product[] = [
     fullDescription: 'Кисело мляко 2% мазнини - перфектният баланс между здравословно хранене и традиционен вкус. Правим го всеки ден от прясно краве мляко и жива култура. Гъсто, с корица отгоре, с истински вкус на село. Идеално за хора които пазят линията, но не искат да жертват вкуса.',
     image: '/products/kiselo-mlqko/BI-kiselo-mlyqko-2-480x480.jpg',
     sizes: [
-      { size: 'Стандартна', weight: '400г', price: '3.20 лв' }
+      { size: 'Стандартна', weight: '400г' }
     ],
     ingredients: [
       'Пастьоризирано краве мляко',
@@ -280,7 +265,7 @@ export const products: Product[] = [
     fullDescription: 'Кисело мляко 3.6% мазнини - това е класиката! Най-популярният вариант в България. Не е много мазно, не е много лайт - точно както трябва да бъде истинското българско кисело мляко. Гъсто, с корица, с бабиния вкус на село. Перфектно за таратор, снежанка или просто така с мед.',
     image: '/products/kiselo-mlqko/BI-kiselo-mlyqko-3.6-480x480.jpg',
     sizes: [
-      { size: 'Стандартна', weight: '400г', price: '3.50 лв' }
+      { size: 'Стандартна', weight: '400г' }
     ],
     ingredients: [
       'Пастьоризирано краве мляко',
@@ -332,7 +317,7 @@ export const products: Product[] = [
     fullDescription: 'Кисело мляко 4.5% мазнини - това е "Rolls-Royce"-ът на киселите млека! Най-пълномасленото, най-кремавото, с най-наситен вкус. Ако искаш истинско село кисело мляко като на бабата, това е то. Топи се на езика, гъсто като крем, с богат млечен вкус. За истинските гурмани.',
     image: '/products/kiselo-mlqko/BI-kiselo-mlyqko-4.5-480x480.jpg',
     sizes: [
-      { size: 'Стандартна', weight: '400г', price: '3.80 лв' }
+      { size: 'Стандартна', weight: '400г' }
     ],
     ingredients: [
       'Пастьоризирано краве мляко',
@@ -387,21 +372,18 @@ export const products: Product[] = [
       {
         size: 'Мини',
         weight: '250мл',
-        price: '1.80 лв',
         image: '/products/airan/Ayran-250-480x480.jpg',
         description: 'Компактна бутилка 250мл - идеална за закуска или път'
       },
       {
         size: 'Стандартна',
         weight: '500мл',
-        price: '3.20 лв',
         image: '/products/airan/Ayran-500-480x480.jpg',
         description: 'Най-популярният размер - перфектен за хранене или освежаване'
       },
       {
         size: 'Семейна',
         weight: '1л',
-        price: '5.80 лв',
         image: '/products/airan/Ayran-1000-480x480.jpg',
         description: 'Семейна бутилка 1 литър - за цялото семейство или по-голяма жажда'
       }
@@ -460,7 +442,6 @@ export const products: Product[] = [
       {
         size: 'Стандартна',
         weight: '400г',
-        price: '5.20 лв',
         image: '/products/protein/BachoIliya-Protein-480x480.png',
         description: 'Високо-протеинова опаковка 400г - 40г протеин на опаковка!'
       }
