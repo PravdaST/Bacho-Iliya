@@ -22,6 +22,15 @@ export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
 });
 
 // TypeScript types for database tables
+
+// Ticket history entry type
+export type TicketHistoryEntry = {
+  type: 'registration' | 'referral';
+  tickets: number;
+  date: string;
+  description: string;
+};
+
 export type GiveawayEntry = {
   id?: number;
   entry_id: string;
@@ -37,7 +46,7 @@ export type GiveawayEntry = {
   referral_count: number; // Number of people this user referred
   referral_entries: number; // Bonus entries from referrals (+3 per referral)
   tickets_count?: number | null; // Total lottery tickets (1 base + 3 per referral)
-  tickets_history?: string | null; // JSON array of ticket earning history
+  tickets_history?: TicketHistoryEntry[] | null; // Array of ticket earning history (JSONB)
   user_agent?: string | null;
   ip_address?: string | null;
   submitted_at?: string;

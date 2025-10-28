@@ -128,14 +128,12 @@ export async function POST(request: NextRequest) {
         } else {
           // Update referrer's stats (+3 bonus tickets per referral)
           const newTicketsCount = (referrer.tickets_count || 1) + 3;
-          const existingHistory = referrer.tickets_history
-            ? (typeof referrer.tickets_history === 'string' ? JSON.parse(referrer.tickets_history) : referrer.tickets_history)
-            : [];
+          const existingHistory = referrer.tickets_history || [];
 
           const newHistory = [
             ...existingHistory,
             {
-              type: 'referral',
+              type: 'referral' as const,
               tickets: 3,
               date: new Date().toISOString(),
               description: 'Препоръка на приятел',
@@ -148,7 +146,7 @@ export async function POST(request: NextRequest) {
               referral_count: referrer.referral_count + 1,
               referral_entries: referrer.referral_entries + 3, // +3 bonus entries
               tickets_count: newTicketsCount, // Update total tickets
-              tickets_history: JSON.stringify(newHistory), // Update history
+              tickets_history: newHistory, // Update history (JSONB - no stringify needed)
             })
             .eq('id', referrer.id);
 
@@ -233,14 +231,14 @@ export async function POST(request: NextRequest) {
         referral_count: 0, // Initialize at 0
         referral_entries: 0, // Initialize at 0
         tickets_count: 1, // Initialize with 1 ticket (base entry)
-        tickets_history: JSON.stringify([
+        tickets_history: [
           {
-            type: 'registration',
+            type: 'registration' as const,
             tickets: 1,
             date: new Date().toISOString(),
             description: 'Първоначална регистрация',
           },
-        ]),
+        ], // JSONB - no stringify needed
         user_agent: validatedData.userAgent || null,
         ip_address: validatedData.ipAddress || null,
       };
