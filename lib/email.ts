@@ -506,6 +506,92 @@ export async function sendFinalReminder(data: {
 }
 
 // ============================================
+// MAGIC LINK LOGIN EMAIL
+// ============================================
+export async function sendMagicLinkEmail(data: {
+  email: string;
+  name: string;
+  loginUrl: string;
+}) {
+  const resendInstance = getResendInstance();
+
+  if (!resendInstance) {
+    console.warn('⚠️ Resend API key not configured. Skipping email.');
+    return { success: false, error: 'Email service not configured' };
+  }
+
+  try {
+    const result = await resendInstance.emails.send({
+      from: 'Бачо Илия <noreply@bacho-iliya.eu>',
+      to: [data.email],
+      subject: '🎟️ Влез в профила си - Моите билети',
+      html: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; background: #fff; }
+            .header { background: linear-gradient(135deg, #f59e0b, #ea580c); color: white; padding: 40px 20px; text-align: center; border-radius: 10px 10px 0 0; }
+            .content { background: #fffbeb; padding: 30px; }
+            .login-box { background: white; border: 3px solid #f59e0b; border-radius: 8px; padding: 25px; margin: 20px 0; text-align: center; }
+            .cta-button { display: inline-block; background: linear-gradient(135deg, #f59e0b, #ea580c); color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; font-size: 18px; }
+            .footer { background: #f9fafb; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; color: #6b7280; font-size: 14px; }
+            .warning { background: #fef2f2; border-left: 4px solid #dc2626; padding: 15px; margin: 20px 0; color: #991b1b; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1 style="margin: 0; font-size: 28px;">🎟️ Влез в профила си</h1>
+              <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">Виж билетите си и статистика</p>
+            </div>
+
+            <div class="content">
+              <p style="font-size: 18px; color: #78350f;"><strong>Здравей, ${data.name}!</strong></p>
+
+              <p>Получи този имейл, защото поиска достъп до профила си в раздаването на Бачо Илия.</p>
+
+              <div class="login-box">
+                <h2 style="color: #ea580c; margin-top: 0;">🔐 Влез с един клик</h2>
+                <p style="color: #78350f; margin: 15px 0;">
+                  Кликни на бутона долу за да видиш билетите си, статистика и класация:
+                </p>
+                <a href="${data.loginUrl}" class="cta-button">Влез в профила си →</a>
+                <p style="color: #6b7280; font-size: 14px; margin-top: 20px;">
+                  Този линк работи само веднъж и изтича след 15 минути.
+                </p>
+              </div>
+
+              <div class="warning">
+                <strong>⚠️ Важно:</strong> Ако не си поискал/а този имейл, моля игнорирай го. Никой не може да влезе в профила ти без този линк.
+              </div>
+
+              <p style="margin-top: 30px; color: #6b7280;">
+                <strong>Успех в раздаването!</strong><br>
+                Екип Бачо Илия
+              </p>
+            </div>
+
+            <div class="footer">
+              <p style="margin: 5px 0;"><strong>Бачо Илия</strong> - Истински млечни продукти по традиционни рецепти</p>
+            </div>
+          </div>
+        </body>
+        </html>
+      `
+    });
+
+    console.log('✅ Magic link email sent successfully:', result);
+    return { success: true, data: result };
+  } catch (error) {
+    console.error('❌ Failed to send magic link email:', error);
+    return { success: false, error };
+  }
+}
+
+// ============================================
 // WINNER ANNOUNCEMENT EMAIL
 // ============================================
 export async function sendWinnerAnnouncement(data: {

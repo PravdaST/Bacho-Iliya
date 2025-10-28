@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useGiveawayStore, products } from '@/lib/store';
 import ProgressBar from '@/components/ProgressBar';
 import CountdownTimer from '@/components/CountdownTimer';
+import TicketCard from '@/components/TicketCard';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export default function SuccessPage() {
@@ -38,23 +40,12 @@ export default function SuccessPage() {
   };
 
   const currentEntryId = entryId || 'N/A';
-  const [copied, setCopied] = useState(false);
   const [copiedRef, setCopiedRef] = useState(false);
 
   // Generate referral link
   const referralLink = typeof window !== 'undefined'
     ? `${window.location.origin}/?ref=${currentEntryId}`
     : '';
-
-  const handleCopyCode = async () => {
-    try {
-      await navigator.clipboard.writeText(currentEntryId);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
-      console.error('Failed to copy:', error);
-    }
-  };
 
   const handleCopyReferralLink = async () => {
     try {
@@ -135,52 +126,53 @@ export default function SuccessPage() {
             </p>
           </div>
 
-          {/* 2-Column Layout: Personal Info + Entry ID */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            {/* Personal Info */}
-            <div className="relative bg-bulgarian-red/5 border-2 border-bulgarian-red/30 p-6">
-              <h2 className="font-handwritten text-2xl text-bulgarian-red mb-4 font-bold">Твоите данни:</h2>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-handwritten text-lg text-walnut/70 mb-1">Име</p>
-                  <p className="font-handwritten text-xl font-bold text-walnut">{userData.name}</p>
-                </div>
-                <div>
-                  <p className="font-handwritten text-lg text-walnut/70 mb-1">Email</p>
-                  <p className="font-handwritten text-xl font-bold text-walnut">{userData.email}</p>
-                </div>
-                <div>
-                  <p className="font-handwritten text-lg text-walnut/70 mb-1">Телефон</p>
-                  <p className="font-handwritten text-xl font-bold text-walnut">{userData.phone}</p>
-                </div>
-                <div>
-                  <p className="font-handwritten text-lg text-walnut/70 mb-1">Дата на участие</p>
-                  <p className="font-handwritten text-xl font-bold text-walnut">
-                    {new Date().toLocaleDateString('bg-BG')}
-                  </p>
-                </div>
+          {/* Personal Info - Full Width */}
+          <div className="relative bg-bulgarian-red/5 border-2 border-bulgarian-red/30 p-8 mb-8">
+            <h2 className="font-handwritten text-3xl text-bulgarian-red mb-6 font-bold text-center">Твоите данни:</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <p className="font-handwritten text-lg text-walnut/70 mb-2">Име</p>
+                <p className="font-handwritten text-2xl font-bold text-walnut">{userData.name}</p>
+              </div>
+              <div className="text-center">
+                <p className="font-handwritten text-lg text-walnut/70 mb-2">Email</p>
+                <p className="font-handwritten text-xl font-bold text-walnut break-all">{userData.email}</p>
+              </div>
+              <div className="text-center">
+                <p className="font-handwritten text-lg text-walnut/70 mb-2">Телефон</p>
+                <p className="font-handwritten text-2xl font-bold text-walnut">{userData.phone}</p>
+              </div>
+              <div className="text-center">
+                <p className="font-handwritten text-lg text-walnut/70 mb-2">Дата на участие</p>
+                <p className="font-handwritten text-2xl font-bold text-walnut">
+                  {new Date().toLocaleDateString('bg-BG')}
+                </p>
               </div>
             </div>
+          </div>
 
-            {/* Entry ID - Certificate Style */}
-            <div className="relative text-center bg-bulgarian-red/5 border-4 border-bulgarian-red p-6">
-              <p className="font-handwritten text-lg text-walnut/80 uppercase tracking-wider mb-3 font-bold">Твоят уникален номер на участие:</p>
-              <motion.p
-                className="font-handwritten text-5xl md:text-6xl font-bold text-bulgarian-red mb-6 tracking-wider"
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.5, type: "spring", stiffness: 150 }}
+          {/* Tickets Section - NEW */}
+          <div className="mb-8">
+            <TicketCard ticketCount={1} entryId={currentEntryId} size="large" />
+
+            {/* Link to My Tickets Dashboard */}
+            <motion.div
+              className="text-center mt-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <Link
+                href="/my-tickets"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-bulgarian-red text-white font-handwritten text-xl md:text-2xl font-bold hover:bg-dark-walnut transition-all shadow-xl"
               >
-                {currentEntryId}
-              </motion.p>
-              <button
-                onClick={handleCopyCode}
-                className="px-8 py-4 bg-bulgarian-red border-2 border-walnut/30 text-white font-handwritten font-bold text-xl hover:scale-105 transition-all inline-flex items-center gap-2 shadow-xl"
-              >
-                {copied ? 'КОПИРАН!' : 'КОПИРАЙ КОДА'}
-              </button>
-              <p className="font-handwritten text-lg text-walnut/70 mt-4">Запази този код - ще ти трябва при теглене на наградата</p>
-            </div>
+                <span>🎟️</span>
+                <span>Виж моите билети →</span>
+              </Link>
+              <p className="font-handwritten text-lg text-walnut/70 mt-4">
+                Следи билетите си и увеличавай шансовете за печалба!
+              </p>
+            </motion.div>
           </div>
 
           {/* 2-Column Layout: Selected Products + Completed Tasks */}
@@ -266,13 +258,13 @@ export default function SuccessPage() {
           <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
             <div>
               <h3 className="font-handwritten text-3xl md:text-4xl font-bold text-bulgarian-red mb-2">
-                Покани приятели за бонус участия!
+                Покани приятели за бонус билети! 🎟️
               </h3>
               <p className="font-handwritten text-xl text-walnut">Увеличи шансовете си многократно</p>
             </div>
             <div className="bg-bulgarian-red text-white px-8 py-5 border-4 border-walnut/30 shadow-lg flex flex-col items-center justify-center min-w-[120px]">
-              <span className="font-handwritten text-5xl font-bold leading-none">3</span>
-              <span className="font-handwritten text-xl uppercase tracking-wide mt-1">участия</span>
+              <span className="font-handwritten text-5xl font-bold leading-none">+3</span>
+              <span className="font-handwritten text-xl uppercase tracking-wide mt-1">билета</span>
             </div>
           </div>
 
@@ -351,7 +343,7 @@ export default function SuccessPage() {
           {/* Info */}
           <div className="mt-6 p-5 bg-sunflower/20 border-2 border-sunflower/50">
             <p className="font-handwritten text-xl text-walnut">
-              <span className="font-bold">Как работи:</span> Всеки приятел, който се регистрира през твоя линк, ти носи <span className="font-bold">3 допълнителни участия</span> в томболата!
+              <span className="font-bold">Как работи:</span> Всеки приятел, който се регистрира през твоя линк, ти носи <span className="font-bold text-bulgarian-red">+3 нови билета 🎟️</span> в томболата!
             </p>
           </div>
         </div>

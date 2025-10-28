@@ -100,34 +100,14 @@ export default function Home() {
             <div className="max-w-xl mx-auto lg:mx-0 space-y-8 lg:space-y-12">
 
               {/* Main Headline - BIGGER & More Impact */}
-              <motion.div
+              <motion.h1
+                className="font-heading text-5xl sm:text-6xl lg:text-7xl text-dark-walnut leading-tight"
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl text-dark-walnut leading-tight mb-4">
-                  Вкусът от<br />детството
-                </h1>
-                <div className="inline-block relative">
-                  <p className="font-heading text-3xl sm:text-4xl text-accent-gold italic mb-2">
-                    играй безплатно
-                  </p>
-                  {/* Анимирана подчертана линия - shimmer ефект */}
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-heritage-red to-transparent"
-                    animate={{
-                      x: ['-100%', '100%'],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                  />
-                  {/* Статична златна основа */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent-gold/50" />
-                </div>
-              </motion.div>
+                Спечели вкуса от детството
+              </motion.h1>
 
               {/* Subtitle - Connected to headline */}
               <motion.p
@@ -145,15 +125,27 @@ export default function Home() {
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8, type: "spring" }}
               >
-                <a
+                <motion.a
                   href="#giveaway"
-                  className="inline-block w-full sm:w-auto bg-heritage-red px-12 py-6 sm:px-16 sm:py-8 shadow-2xl hover:scale-105 hover:bg-dark-walnut transition-all duration-300 text-center"
-                  aria-label="Участвай в раздаването на продукти Бачо Илия"
+                  className="inline-block w-full sm:w-auto bg-heritage-red px-12 py-6 sm:px-16 sm:py-8 hover:scale-105 hover:bg-dark-walnut transition-all duration-300 text-center"
+                  aria-label="Играй безплатно за продукти Бачо Илия"
+                  animate={{
+                    boxShadow: [
+                      '0 20px 25px -5px rgba(164, 46, 46, 0.3), 0 10px 10px -5px rgba(164, 46, 46, 0.2)',
+                      '0 25px 35px -5px rgba(164, 46, 46, 0.5), 0 15px 15px -5px rgba(164, 46, 46, 0.4)',
+                      '0 20px 25px -5px rgba(164, 46, 46, 0.3), 0 10px 10px -5px rgba(164, 46, 46, 0.2)',
+                    ],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
                 >
                   <p className="font-heading text-2xl sm:text-3xl font-bold uppercase tracking-wider" style={{ color: '#ffffff' }}>
-                    УЧАСТВАЙ СЕГА →
+                    ИГРАЙ БЕЗПЛАТНО →
                   </p>
-                </a>
+                </motion.a>
               </motion.div>
 
               {/* Trust Badge - Subtle, below button */}
@@ -179,7 +171,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
                 <p className="font-heading text-sm text-dark-walnut/70 uppercase tracking-widest">
-                  Традиция от 1970
+                  Традиция от 1999
                 </p>
               </motion.div>
 
@@ -366,10 +358,10 @@ export default function Home() {
                 {/* Content */}
                 <div className="relative z-10">
                   <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-walnut mb-4 mt-4">
-                    Сподели и участвай
+                    Сподели и тагни
                   </h3>
                   <p className="font-handwritten text-walnut text-lg leading-relaxed">
-                    Сподели във Facebook за повече шансове
+                    Сподели във Facebook и тагни приятел
                   </p>
                 </div>
               </div>
@@ -425,7 +417,11 @@ export default function Home() {
             </h2>
             <p className="font-handwritten text-walnut text-xl leading-relaxed mb-4">
               Знаем колко е трудно да намериш храна, на която да се довериш.
-              Затова искаме да ти дадем шанс да опиташ нашите продукти - <strong>напълно безплатно</strong>.
+              Затова искаме да ти дадем шанс да опиташ нашите <span className="relative inline-block font-bold text-bulgarian-red"> продукти - напълно безплатно
+                <svg className="absolute left-0 -bottom-2 w-full" viewBox="0 0 200 10" preserveAspectRatio="none">
+                  <path d="M0,7 Q50,3 100,7 T200,7" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                </svg>
+              </span>.
             </p>
             <div className="flex items-center justify-center gap-2 mb-3">
               <div className="relative w-8 h-8 flex-shrink-0">
@@ -613,7 +609,7 @@ export default function Home() {
                 <div className="relative">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="text-bulgarian-red text-5xl">♥</div>
-                    <h3 className="font-handwritten text-3xl font-bold text-walnut">Какво получаваш</h3>
+                    <h3 className="font-handwritten text-3xl font-bold text-walnut">Какво получаваш:</h3>
                   </div>
 
                   <div className="space-y-5">
@@ -622,7 +618,12 @@ export default function Home() {
                         <span className="text-white font-bold">✓</span>
                       </div>
                       <p className="font-handwritten text-walnut text-lg md:text-xl leading-relaxed">
-                        <strong>Истински продукти</strong> от щастливи крави на свободен избор
+                        <span className="relative inline-block">
+                          <strong className="text-bulgarian-red">Истински продукти</strong>
+                          <svg className="absolute left-0 -bottom-1.5 w-full" viewBox="0 0 200 10" preserveAspectRatio="none">
+                            <path d="M0,7 Q50,3 100,7 T200,7" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" className="text-bulgarian-red" />
+                          </svg>
+                        </span> от щастливи крави.
                       </p>
                     </div>
 
@@ -631,7 +632,12 @@ export default function Home() {
                         <span className="text-white font-bold">✓</span>
                       </div>
                       <p className="font-handwritten text-walnut text-lg md:text-xl leading-relaxed">
-                        <strong>Без консерванти и химия</strong> - както бабините, направено с време и любов
+                        <span className="relative inline-block">
+                          <strong className="text-bulgarian-red">Без консерванти и химия</strong>
+                          <svg className="absolute left-0 -bottom-1.5 w-full" viewBox="0 0 200 10" preserveAspectRatio="none">
+                            <path d="M0,7 Q50,3 100,7 T200,7" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" className="text-bulgarian-red" />
+                          </svg>
+                        </span> - както бабините, направено с време и любов.
                       </p>
                     </div>
 
@@ -640,7 +646,12 @@ export default function Home() {
                         <span className="text-white font-bold">✓</span>
                       </div>
                       <p className="font-handwritten text-walnut text-lg md:text-xl leading-relaxed">
-                        <strong>Храна на която да се довериш</strong> - ако не бих дал на внуците си, няма да го продам на теб
+                        <span className="relative inline-block">
+                          <strong className="text-bulgarian-red">Храна на която да се довериш</strong>
+                          <svg className="absolute left-0 -bottom-1.5 w-full" viewBox="0 0 200 10" preserveAspectRatio="none">
+                            <path d="M0,7 Q50,3 100,7 T200,7" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" className="text-bulgarian-red" />
+                          </svg>
+                        </span> - ако не бих дал на внуците си, няма да го продам на теб.
                       </p>
                     </div>
 
@@ -649,7 +660,12 @@ export default function Home() {
                         <span className="text-white font-bold">✓</span>
                       </div>
                       <p className="font-handwritten text-walnut text-lg md:text-xl leading-relaxed">
-                        <strong>Здрави деца и спокойствие</strong> за теб като родител
+                      <span className="relative inline-block">
+                        <strong className="text-bulgarian-red">Здрави деца и спокойствие</strong>
+                        <svg className="absolute left-0 -bottom-1.5 w-full" viewBox="0 0 200 10" preserveAspectRatio="none">
+                          <path d="M0,7 Q50,3 100,7 T200,7" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" className="text-bulgarian-red" />
+                        </svg>
+                      </span> за теб като родител.
                       </p>
                     </div>
                   </div>
@@ -773,8 +789,8 @@ export default function Home() {
 
                 {/* Handwritten Quote */}
                 <p className="font-handwritten text-bulgarian-red text-lg leading-relaxed">
-                  "От години търсех вкуса на бабините сирена...
-                  Пробвах Бачо Илия и плаках като малко дете."
+                  "От години търсех истинския вкус...
+                  случайно попаднах на сиренето на Бачо Илия и му станах фен"
                 </p>
 
                 {/* Washi Tape at top-right corner */}
@@ -812,8 +828,7 @@ export default function Home() {
                 {/* Handwritten Quote */}
                 <p className="font-handwritten text-bulgarian-red text-lg leading-relaxed">
                   "Четях етикети като луда...
-                  Бачо Илия: само мляко, сол и култура.
-                  Точно това искам!"
+                  Доверявам се само на Бачо Илия, Истинско мляко като едно време"
                 </p>
 
                 {/* Washi Tape diagonal */}

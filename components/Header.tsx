@@ -48,6 +48,7 @@ export default function Header() {
     { type: "link", href: "/where-to-buy", label: "МАГАЗИНИ" },
     { type: "link", href: "/blog", label: "БЛОГ" },
     { type: "link", href: "/#giveaway", label: "РАЗДАВАНЕ" },
+    { type: "link", href: "/my-tickets", label: "🎟️ МОИТЕ БИЛЕТИ", highlight: true },
   ];
 
   return (
