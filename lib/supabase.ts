@@ -36,6 +36,8 @@ export type GiveawayEntry = {
   referred_by?: string | null; // Entry ID of the referrer
   referral_count: number; // Number of people this user referred
   referral_entries: number; // Bonus entries from referrals (+3 per referral)
+  tickets_count?: number | null; // Total lottery tickets (1 base + 3 per referral)
+  tickets_history?: string | null; // JSON array of ticket earning history
   user_agent?: string | null;
   ip_address?: string | null;
   submitted_at?: string;
