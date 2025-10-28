@@ -72,22 +72,22 @@ export default function AboutPage() {
 
         {/* Milkylux Section */}
         <section className="mb-16">
-          <div className="bg-gradient-to-br from-bulgarian-red to-bulgarian-red text-vintage-cream rounded-lg p-8 shadow-vintage">
+          <div className="bg-gradient-to-br from-bulgarian-red to-bulgarian-red text-white rounded-lg p-8 shadow-vintage">
             <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
               <div className="flex-1">
-                <h2 className="font-handwritten text-4xl mb-4">
+                <h2 className="font-heading text-4xl text-white mb-4">
                   Част от Семейството Milkylux
                 </h2>
-                <p className="font-handwritten text-lg leading-relaxed mb-4">
+                <p className="font-body text-lg text-white leading-relaxed mb-4">
                   От 2015 година Бачо Илия е част от Milkylux - компания създадена през 1996 година,
                   която произвежда традиционни български млечни продукти за пазарите в България и чужбина.
                 </p>
-                <p className="font-handwritten text-lg leading-relaxed mb-4">
+                <p className="font-body text-lg text-white leading-relaxed mb-4">
                   С над 27 години опит, производственият цех в град Бяла Черква разполага с площ от
                   25,000 кв.м и преработва 130,000 литра мляко дневно. Милкилукс работи с първокатегорийни
                   ферми от 6 региона - В. Търново, Русе, Плевен, Ловеч, Търговище и Враца.
                 </p>
-                <p className="font-handwritten text-lg leading-relaxed mb-6">
+                <p className="font-body text-lg text-white leading-relaxed mb-6">
                   Какво се промени? Цехът стана по-голям, опаковките по-хубави,
                   контролът на качеството по-строг. Какво НЕ се промени? Рецептите.
                   Тези остават същите като в началото.
@@ -96,7 +96,7 @@ export default function AboutPage() {
                   href="https://milkylux.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-vintage-cream text-bulgarian-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-parchment transition-all hover:scale-105 shadow-lg"
+                  className="inline-block bg-white text-bulgarian-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-cream transition-all hover:scale-105 shadow-lg"
                 >
                   Разгледай Milkylux →
                 </a>
