@@ -108,9 +108,25 @@ export default function Home() {
                 <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl text-dark-walnut leading-tight mb-4">
                   Вкусът от<br />детството
                 </h1>
-                <p className="font-heading text-3xl sm:text-4xl text-accent-gold italic">
-                  напълно безплатно
-                </p>
+                <div className="inline-block relative">
+                  <p className="font-heading text-3xl sm:text-4xl text-accent-gold italic mb-2">
+                    играй безплатно
+                  </p>
+                  {/* Анимирана подчертана линия - shimmer ефект */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-heritage-red to-transparent"
+                    animate={{
+                      x: ['-100%', '100%'],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  />
+                  {/* Статична златна основа */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent-gold/50" />
+                </div>
               </motion.div>
 
               {/* Subtitle - Connected to headline */}
