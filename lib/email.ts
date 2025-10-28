@@ -321,7 +321,8 @@ export async function sendDay7ReferralReminder(data: {
   }
 
   try {
-    const referralLink = `https://bacho-iliya.eu/?ref=${data.entryId}`; // TODO: Update with actual domain
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.bacho-iliya.eu';
+    const referralLink = `${baseUrl}/?ref=${data.entryId}`;
 
     const result = await resendInstance.emails.send({
       from: 'Бачо Илия <noreply@bacho-iliya.eu>',
@@ -424,7 +425,8 @@ export async function sendFinalReminder(data: {
   }
 
   try {
-    const referralLink = `https://bacho-iliya.eu/?ref=${data.entryId}`; // TODO: Update with actual domain
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.bacho-iliya.eu';
+    const referralLink = `${baseUrl}/?ref=${data.entryId}`;
 
     const result = await resendInstance.emails.send({
       from: 'Бачо Илия <noreply@bacho-iliya.eu>',

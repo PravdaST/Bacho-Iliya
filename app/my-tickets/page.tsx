@@ -31,30 +31,54 @@ export default function MyTicketsPage() {
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState<UserData | null>(null);
   const [copied, setCopied] = useState(false);
+  const [leaderboardData, setLeaderboardData] = useState<{
+    entries: Array<{ rank: number; name: string; tickets: number; isCurrentUser: boolean }>;
+    currentUserRank: number | null;
+    currentUserTickets: number | null;
+  }>({
+    entries: [],
+    currentUserRank: null,
+    currentUserTickets: null,
+  });
 
-  // Fetch user data from API
+  // Fetch user data and leaderboard from API
   useEffect(() => {
-    async function fetchUserData() {
+    async function fetchData() {
       try {
-        const response = await fetch('/api/user/me');
-        const data = await response.json();
+        // Fetch user data
+        const userResponse = await fetch('/api/user/me');
+        const userData = await userResponse.json();
 
-        if (!data.success) {
+        if (!userData.success) {
           // No session - redirect to login
           router.push('/my-tickets/login');
           return;
         }
 
-        setUserData(data.data);
+        setUserData(userData.data);
+
+        // Fetch leaderboard data with current user's entry ID
+        const leaderboardResponse = await fetch(
+          `/api/leaderboard?entryId=${userData.data.entryId}&limit=10`
+        );
+        const leaderboardData = await leaderboardResponse.json();
+
+        if (leaderboardData.success) {
+          setLeaderboardData({
+            entries: leaderboardData.data.entries || [],
+            currentUserRank: leaderboardData.data.currentUserRank || null,
+            currentUserTickets: leaderboardData.data.currentUserTickets || null,
+          });
+        }
       } catch (error) {
-        console.error('Failed to fetch user data:', error);
+        console.error('Failed to fetch data:', error);
         router.push('/my-tickets/login');
       } finally {
         setLoading(false);
       }
     }
 
-    fetchUserData();
+    fetchData();
   }, [router]);
 
   // Set giveaway date
@@ -79,20 +103,6 @@ export default function MyTicketsPage() {
       console.error('Failed to copy:', error);
     }
   };
-
-  // Mock leaderboard data (in real app, fetch from API)
-  const leaderboardEntries = [
-    { rank: 1, name: 'Иван П.', tickets: 45, isCurrentUser: false },
-    { rank: 2, name: 'Мария С.', tickets: 33, isCurrentUser: false },
-    { rank: 3, name: 'Петър Г.', tickets: 28, isCurrentUser: false },
-    { rank: 4, name: 'Елена Д.', tickets: 22, isCurrentUser: false },
-    { rank: 5, name: 'Георги М.', tickets: 19, isCurrentUser: false },
-    { rank: 6, name: 'Николай К.', tickets: 16, isCurrentUser: false },
-    { rank: 7, name: 'Ана В.', tickets: 13, isCurrentUser: false },
-    { rank: 8, name: 'Димитър Т.', tickets: 10, isCurrentUser: false },
-    { rank: 9, name: 'София И.', tickets: 7, isCurrentUser: false },
-    { rank: 10, name: 'Стоян Р.', tickets: 4, isCurrentUser: false },
-  ];
 
   if (loading) {
     return (
@@ -129,10 +139,14 @@ export default function MyTicketsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="font-handwritten text-5xl md:text-7xl text-bulgarian-red mb-4">
-            🎟️ Моите билети
-          </h1>
-          <p className="font-handwritten text-2xl text-walnut">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="hidden sm:block w-20 h-1 bg-bulgarian-red"></div>
+            <h1 className="text-village text-5xl md:text-7xl text-bulgarian-red">
+              МОИТЕ БИЛЕТИ
+            </h1>
+            <div className="hidden sm:block w-20 h-1 bg-bulgarian-red"></div>
+          </div>
+          <p className="text-handwritten text-xl md:text-2xl text-walnut">
             Следи билетите си и увеличавай шансовете за печалба!
           </p>
         </motion.div>
@@ -202,10 +216,10 @@ export default function MyTicketsPage() {
           <div className="relative z-10">
             <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
               <div>
-                <h3 className="font-handwritten text-3xl md:text-4xl font-bold text-bulgarian-red mb-2">
-                  Покани приятели за +3 билета! 🎟️
+                <h3 className="text-village text-3xl md:text-4xl font-bold text-bulgarian-red mb-2">
+                  ПОКАНИ ПРИЯТЕЛИ ЗА +3 БИЛЕТА
                 </h3>
-                <p className="font-handwritten text-xl text-walnut">
+                <p className="text-handwritten text-xl text-walnut">
                   Всеки регистриран приятел = 3 нови билета
                 </p>
               </div>
@@ -274,8 +288,8 @@ export default function MyTicketsPage() {
         >
           <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
           <div className="relative z-10">
-            <h2 className="font-handwritten text-3xl md:text-4xl text-bulgarian-red mb-6 font-bold text-center">
-              📜 История на билети
+            <h2 className="text-village text-3xl md:text-4xl text-bulgarian-red mb-6 font-bold text-center">
+              ИСТОРИЯ НА БИЛЕТИ
             </h2>
             <div className="space-y-3">
               {userData.ticketsHistory.map((entry, index) => (
@@ -314,9 +328,9 @@ export default function MyTicketsPage() {
           className="mb-8"
         >
           <LeaderboardTickets
-            entries={leaderboardEntries}
-            currentUserRank={undefined}
-            currentUserTickets={userData.ticketsCount}
+            entries={leaderboardData.entries}
+            currentUserRank={leaderboardData.currentUserRank || undefined}
+            currentUserTickets={leaderboardData.currentUserTickets || userData.ticketsCount}
           />
         </motion.div>
 
