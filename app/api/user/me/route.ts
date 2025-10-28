@@ -45,6 +45,7 @@ export async function GET(request: NextRequest) {
         ticketsCount: user.tickets_count || 1,
         ticketsHistory: user.tickets_history || [],
         referralCount: user.referral_count || 0,
+        facebookPostShares: user.facebook_post_shares || 0,
         submittedAt: user.submitted_at,
       },
     });

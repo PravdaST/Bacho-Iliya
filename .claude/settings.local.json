@@ -24,7 +24,12 @@
       "mcp__vercel__list_teams",
       "mcp__supabase__list_projects",
       "mcp__vercel__list_projects",
-      "mcp__supabase__list_tables"
+      "mcp__supabase__list_tables",
+      "mcp__vercel__list_deployments",
+      "mcp__supabase__execute_sql",
+      "Bash(find:*)",
+      "mcp__supabase__apply_migration",
+      "Bash(git log:*)"
     ],
     "deny": [],
     "ask": []

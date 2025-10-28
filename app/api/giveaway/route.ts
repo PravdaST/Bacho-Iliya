@@ -21,6 +21,15 @@ export async function POST(request: NextRequest) {
   try {
     console.log('📝 Giveaway API called');
 
+    // Extract UTM parameters from URL for tracking
+    const { searchParams } = new URL(request.url);
+    const utmSource = searchParams.get('utm_source'); // e.g., "facebook", "direct"
+    const utmMedium = searchParams.get('utm_medium'); // e.g., "post_share", "referral"
+
+    if (utmSource || utmMedium) {
+      console.log('📊 UTM tracking:', { source: utmSource, medium: utmMedium });
+    }
+
     // Parse request body
     let body;
     try {
@@ -118,7 +127,7 @@ export async function POST(request: NextRequest) {
         // Verify referrer exists
         const { data: referrer, error: referrerError } = await supabaseAdmin
           .from('giveaway_entries')
-          .select('id, entry_id, referral_count, referral_entries, tickets_count, tickets_history')
+          .select('id, entry_id, referral_count, referral_entries, tickets_count, tickets_history, facebook_post_shares')
           .eq('entry_id', referrerEntryId)
           .single();
 
@@ -126,34 +135,50 @@ export async function POST(request: NextRequest) {
           console.warn(`⚠️ Invalid referrer ID: ${referrerEntryId}`);
           referrerEntryId = null; // Invalid referrer, proceed without it
         } else {
-          // Update referrer's stats (+3 bonus tickets per referral)
-          const newTicketsCount = (referrer.tickets_count || 1) + 3;
+          // Calculate tickets based on referral source
+          // Facebook post share: +5 for first referral, +3 for subsequent
+          // Direct referral: +3 for all
+          const isPostShare = utmMedium === 'post_share';
+          const isFirstPostShare = isPostShare && (referrer.facebook_post_shares || 0) === 0;
+          const ticketsToAdd = isFirstPostShare ? 5 : 3;
+
+          const newTicketsCount = (referrer.tickets_count || 1) + ticketsToAdd;
           const existingHistory = referrer.tickets_history || [];
 
           const newHistory = [
             ...existingHistory,
             {
               type: 'referral' as const,
-              tickets: 3,
+              tickets: ticketsToAdd,
               date: new Date().toISOString(),
-              description: 'Препоръка на приятел',
+              description: isPostShare
+                ? (isFirstPostShare ? 'Споделяне на Facebook пост (първи път)' : 'Споделяне на Facebook пост')
+                : 'Препоръка на приятел',
             },
           ];
 
+          const updateData: any = {
+            referral_count: referrer.referral_count + 1,
+            referral_entries: referrer.referral_entries + ticketsToAdd,
+            tickets_count: newTicketsCount,
+            tickets_history: newHistory,
+          };
+
+          // Increment facebook_post_shares if this is a post share referral
+          if (isPostShare) {
+            updateData.facebook_post_shares = (referrer.facebook_post_shares || 0) + 1;
+          }
+
           const { error: updateError } = await supabaseAdmin
             .from('giveaway_entries')
-            .update({
-              referral_count: referrer.referral_count + 1,
-              referral_entries: referrer.referral_entries + 3, // +3 bonus entries
-              tickets_count: newTicketsCount, // Update total tickets
-              tickets_history: newHistory, // Update history (JSONB - no stringify needed)
-            })
+            .update(updateData)
             .eq('id', referrer.id);
 
           if (updateError) {
             console.error('❌ Failed to update referrer stats:', updateError);
           } else {
-            console.log(`✅ Updated referrer stats: +1 referral, +3 tickets (total: ${newTicketsCount})`);
+            const shareType = isPostShare ? '(Facebook post share)' : '(direct referral)';
+            console.log(`✅ Updated referrer stats: +1 referral ${shareType}, +${ticketsToAdd} tickets (total: ${newTicketsCount})`);
           }
         }
       } catch (referralError) {
@@ -239,6 +264,9 @@ export async function POST(request: NextRequest) {
             description: 'Първоначална регистрация',
           },
         ], // JSONB - no stringify needed
+        traffic_source: utmSource || null, // UTM tracking: facebook, direct, email, etc
+        traffic_medium: utmMedium || null, // UTM tracking: post_share, referral, organic, etc
+        facebook_post_shares: 0, // Initialize at 0 (will increment when others use this user's link)
         user_agent: validatedData.userAgent || null,
         ip_address: validatedData.ipAddress || null,
       };

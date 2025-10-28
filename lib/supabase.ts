@@ -47,6 +47,9 @@ export type GiveawayEntry = {
   referral_entries: number; // Bonus entries from referrals (+3 per referral)
   tickets_count?: number | null; // Total lottery tickets (1 base + 3 per referral)
   tickets_history?: TicketHistoryEntry[] | null; // Array of ticket earning history (JSONB)
+  traffic_source?: string | null; // UTM source (facebook, direct, email, etc)
+  traffic_medium?: string | null; // UTM medium (post_share, referral, organic, etc)
+  facebook_post_shares?: number; // Count of registrations from user's Facebook post share
   user_agent?: string | null;
   ip_address?: string | null;
   submitted_at?: string;

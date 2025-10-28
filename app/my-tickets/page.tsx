@@ -6,6 +6,7 @@ import { products } from '@/lib/store';
 import TicketCard from '@/components/TicketCard';
 import CountdownTimer from '@/components/CountdownTimer';
 import LeaderboardTickets from '@/components/LeaderboardTickets';
+import FacebookPostShareCard from '@/components/FacebookPostShareCard';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -23,6 +24,7 @@ interface UserData {
     description: string;
   }>;
   referralCount: number;
+  facebookPostShares?: number; // Count of Facebook post share referrals
   submittedAt: string;
 }
 
@@ -30,7 +32,6 @@ export default function MyTicketsPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState<UserData | null>(null);
-  const [copied, setCopied] = useState(false);
   const [leaderboardData, setLeaderboardData] = useState<{
     entries: Array<{ rank: number; name: string; tickets: number; isCurrentUser: boolean }>;
     currentUserRank: number | null;
@@ -90,19 +91,6 @@ export default function MyTicketsPage() {
         userData.selectedProducts.split(',').map((id) => id.trim()).includes(p.id)
       )
     : [];
-
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.bacho-iliya.eu';
-  const referralLink = userData ? `${baseUrl}/?ref=${userData.entryId}` : '';
-
-  const handleCopyReferralLink = async () => {
-    try {
-      await navigator.clipboard.writeText(referralLink);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
-      console.error('Failed to copy:', error);
-    }
-  };
 
   if (loading) {
     return (
@@ -205,78 +193,18 @@ export default function MyTicketsPage() {
           </div>
         </motion.div>
 
-        {/* Referral Section */}
+        {/* Facebook POST Share & Referral Section */}
         <motion.div
-          className="bg-gradient-to-br from-amber-50 via-cream-50 to-orange-50 border-4 border-bulgarian-red/40 p-8 mb-8 shadow-xl relative"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
+          className="mb-8"
         >
-          <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
-          <div className="relative z-10">
-            <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
-              <div>
-                <h3 className="text-village text-3xl md:text-4xl font-bold text-bulgarian-red mb-2">
-                  ПОКАНИ ПРИЯТЕЛИ ЗА +3 БИЛЕТА
-                </h3>
-                <p className="text-handwritten text-xl text-walnut">
-                  Всеки регистриран приятел = 3 нови билета
-                </p>
-              </div>
-              <div className="bg-bulgarian-red text-white px-8 py-5 border-4 border-walnut/30 shadow-lg flex flex-col items-center justify-center min-w-[120px]">
-                <span className="font-handwritten text-5xl font-bold leading-none">
-                  {userData.referralCount}
-                </span>
-                <span className="font-handwritten text-xl uppercase tracking-wide mt-1">
-                  приятели
-                </span>
-              </div>
-            </div>
-
-            {/* Referral Link */}
-            <div className="bg-white p-6 mb-6 border-2 border-bulgarian-red/30">
-              <p className="font-handwritten text-xl text-walnut mb-3 font-bold">
-                Твоят уникален линк:
-              </p>
-              <div className="flex flex-col gap-3">
-                <input
-                  type="text"
-                  value={referralLink}
-                  readOnly
-                  className="w-full px-4 py-3 bg-old-paper border-2 border-walnut/30 text-lg font-handwritten text-walnut focus:outline-none focus:ring-2 focus:ring-bulgarian-red"
-                />
-                <button
-                  onClick={handleCopyReferralLink}
-                  className="w-full px-6 py-3 bg-bulgarian-red text-white font-handwritten text-xl font-bold hover:shadow-md hover:scale-105 transition-all"
-                >
-                  {copied ? '✓ Копиран' : 'Копирай'}
-                </button>
-              </div>
-            </div>
-
-            {/* Referral Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-white p-5 border-l-4 border-bulgarian-red">
-                <p className="font-handwritten text-lg text-walnut/70 mb-1">Споделен линк</p>
-                <p className="font-handwritten text-3xl font-bold text-bulgarian-red">∞</p>
-                <p className="font-handwritten text-sm text-walnut/60">пъти</p>
-              </div>
-              <div className="bg-white p-5 border-l-4 border-sunflower">
-                <p className="font-handwritten text-lg text-walnut/70 mb-1">Регистрирани</p>
-                <p className="font-handwritten text-3xl font-bold text-sunflower">
-                  {userData.referralCount}
-                </p>
-                <p className="font-handwritten text-sm text-walnut/60">приятели</p>
-              </div>
-              <div className="bg-white p-5 border-l-4 border-dark-walnut">
-                <p className="font-handwritten text-lg text-walnut/70 mb-1">Получени билети</p>
-                <p className="font-handwritten text-3xl font-bold text-dark-walnut">
-                  {userData.referralCount * 3}
-                </p>
-                <p className="font-handwritten text-sm text-walnut/60">от referrals</p>
-              </div>
-            </div>
-          </div>
+          <FacebookPostShareCard
+            entryId={userData.entryId}
+            facebookPostShares={userData.facebookPostShares || 0}
+            referralCount={userData.referralCount}
+          />
         </motion.div>
 
         {/* Tickets History */}
