@@ -238,16 +238,16 @@ export default function MyTicketsPage() {
               <p className="font-handwritten text-xl text-walnut mb-3 font-bold">
                 Твоят уникален линк:
               </p>
-              <div className="flex gap-3">
+              <div className="flex flex-col gap-3">
                 <input
                   type="text"
                   value={referralLink}
                   readOnly
-                  className="flex-1 px-4 py-3 bg-old-paper border-2 border-walnut/30 text-lg font-handwritten text-walnut focus:outline-none focus:ring-2 focus:ring-bulgarian-red"
+                  className="w-full px-4 py-3 bg-old-paper border-2 border-walnut/30 text-lg font-handwritten text-walnut focus:outline-none focus:ring-2 focus:ring-bulgarian-red"
                 />
                 <button
                   onClick={handleCopyReferralLink}
-                  className="px-6 py-3 bg-bulgarian-red text-white font-handwritten text-xl font-bold hover:shadow-md hover:scale-105 transition-all"
+                  className="w-full px-6 py-3 bg-bulgarian-red text-white font-handwritten text-xl font-bold hover:shadow-md hover:scale-105 transition-all"
                 >
                   {copied ? '✓ Копиран' : 'Копирай'}
                 </button>
