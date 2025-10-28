@@ -67,10 +67,8 @@ export default function MyTicketsPage() {
       )
     : [];
 
-  const referralLink =
-    typeof window !== 'undefined' && userData
-      ? `${window.location.origin}/?ref=${userData.entryId}`
-      : '';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.bacho-iliya.eu';
+  const referralLink = userData ? `${baseUrl}/?ref=${userData.entryId}` : '';
 
   const handleCopyReferralLink = async () => {
     try {
