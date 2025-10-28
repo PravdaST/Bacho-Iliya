@@ -45,77 +45,77 @@ export default function FacebookPostShareCard({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Header */}
       <div className="text-center">
-        <h2 className="text-village text-4xl md:text-5xl text-bulgarian-red mb-3">
+        <h2 className="text-village text-2xl md:text-3xl text-bulgarian-red mb-2">
           СПЕЧЕЛИ ПОВЕЧЕ БИЛЕТИ
         </h2>
-        <p className="text-handwritten text-xl md:text-2xl text-walnut">
+        <p className="text-handwritten text-base md:text-lg text-walnut">
           Сподели с приятели и увеличи шансовете си!
         </p>
       </div>
 
       {/* Option 1: Facebook POST Share */}
       <motion.div
-        className="bg-gradient-to-br from-blue-50 via-cream-50 to-blue-100 border-4 border-blue-500/50 p-6 md:p-8 shadow-xl relative"
+        className="bg-gradient-to-br from-blue-50 via-cream-50 to-blue-100 border-2 border-blue-500/50 p-4 md:p-6 shadow-xl relative"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
         <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-              <span className="text-white text-2xl">📘</span>
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+              <span className="text-white text-xl">📘</span>
             </div>
             <div>
-              <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-blue-700">
+              <h3 className="font-handwritten text-lg md:text-xl font-bold text-blue-700">
                 ВАРИАНТ 1: Сподели Facebook Пост
               </h3>
-              <p className="font-handwritten text-base md:text-lg text-walnut/80">
+              <p className="font-handwritten text-sm md:text-base text-walnut/80">
                 Най-добър за максимални билети!
               </p>
             </div>
           </div>
 
-          <p className="font-handwritten text-lg md:text-xl text-walnut mb-4">
+          <p className="font-handwritten text-sm md:text-base text-walnut mb-3">
             Сподели линка към нашия Facebook пост и получи билети за всеки регистриран!
           </p>
 
           {/* Rewards */}
-          <div className="bg-white p-4 mb-4 border-2 border-blue-500/30 rounded">
-            <div className="flex items-center justify-between mb-2">
-              <span className="font-handwritten text-lg text-walnut">🎟️ Първа регистрация:</span>
-              <span className="font-handwritten text-3xl font-bold text-sunflower">+5 билета</span>
+          <div className="bg-white p-3 mb-3 border-2 border-blue-500/30 rounded">
+            <div className="flex items-center justify-between mb-1">
+              <span className="font-handwritten text-sm md:text-base text-walnut">🎟️ Първа регистрация:</span>
+              <span className="font-handwritten text-2xl md:text-3xl font-bold text-sunflower">+5 билета</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="font-handwritten text-lg text-walnut">🎟️ Всяка следваща:</span>
-              <span className="font-handwritten text-2xl font-bold text-bulgarian-red">+3 билета</span>
+              <span className="font-handwritten text-sm md:text-base text-walnut">🎟️ Всяка следваща:</span>
+              <span className="font-handwritten text-xl md:text-2xl font-bold text-bulgarian-red">+3 билета</span>
             </div>
           </div>
 
           {/* Link Input */}
-          <div className="space-y-3">
-            <label className="font-handwritten text-lg text-walnut font-bold block">
+          <div className="space-y-2">
+            <label className="font-handwritten text-sm md:text-base text-walnut font-bold block">
               Твоят Facebook POST линк:
             </label>
             <input
               type="text"
               value={postShareLink}
               readOnly
-              className="w-full px-4 py-3 bg-old-paper border-2 border-walnut/30 text-base font-handwritten text-walnut focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-old-paper border-2 border-walnut/30 text-sm font-handwritten text-walnut focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-2">
               <button
                 onClick={() => handleCopy(postShareLink, 'post')}
-                className="flex-1 px-6 py-3 bg-blue-600 text-white font-handwritten text-xl font-bold hover:bg-blue-700 transition-all"
+                className="flex-1 px-4 py-2 bg-blue-600 text-white font-handwritten text-base md:text-lg font-bold hover:bg-blue-700 transition-all"
               >
                 {copiedPost ? '✓ Копиран' : 'Копирай линка'}
               </button>
               <button
                 onClick={handleOpenFacebook}
-                className="flex-1 px-6 py-3 bg-bulgarian-red text-white font-handwritten text-xl font-bold hover:bg-walnut transition-all"
+                className="flex-1 px-4 py-2 bg-bulgarian-red text-white font-handwritten text-base md:text-lg font-bold hover:bg-walnut transition-all"
               >
                 Отвори Facebook
               </button>
@@ -123,11 +123,11 @@ export default function FacebookPostShareCard({
           </div>
 
           {/* Stats */}
-          <div className="mt-4 bg-blue-100 p-4 border-l-4 border-blue-600">
-            <p className="font-handwritten text-base text-walnut/70 mb-1">
+          <div className="mt-3 bg-blue-100 p-3 border-l-2 border-blue-600">
+            <p className="font-handwritten text-xs md:text-sm text-walnut/70 mb-0.5">
               От Facebook POST споделяния:
             </p>
-            <p className="font-handwritten text-3xl font-bold text-blue-700">
+            <p className="font-handwritten text-xl md:text-2xl font-bold text-blue-700">
               {facebookPostShares} {facebookPostShares === 1 ? 'регистрация' : 'регистрации'}
             </p>
           </div>
@@ -136,64 +136,64 @@ export default function FacebookPostShareCard({
 
       {/* Option 2: Direct Referral */}
       <motion.div
-        className="bg-gradient-to-br from-amber-50 via-cream-50 to-orange-50 border-4 border-walnut/40 p-6 md:p-8 shadow-xl relative"
+        className="bg-gradient-to-br from-amber-50 via-cream-50 to-orange-50 border-2 border-walnut/40 p-4 md:p-6 shadow-xl relative"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
         <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-bulgarian-red rounded-full flex items-center justify-center">
-              <span className="text-white text-2xl">🔗</span>
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-10 h-10 bg-bulgarian-red rounded-full flex items-center justify-center">
+              <span className="text-white text-xl">🔗</span>
             </div>
             <div>
-              <h3 className="font-handwritten text-2xl md:text-3xl font-bold text-bulgarian-red">
+              <h3 className="font-handwritten text-lg md:text-xl font-bold text-bulgarian-red">
                 ВАРИАНТ 2: Директен Референс
               </h3>
-              <p className="font-handwritten text-base md:text-lg text-walnut/80">
+              <p className="font-handwritten text-sm md:text-base text-walnut/80">
                 Изпрати директно на приятели
               </p>
             </div>
           </div>
 
-          <p className="font-handwritten text-lg md:text-xl text-walnut mb-4">
+          <p className="font-handwritten text-sm md:text-base text-walnut mb-3">
             Изпрати референс линк в WhatsApp, Viber, SMS или email на приятели.
           </p>
 
           {/* Rewards */}
-          <div className="bg-white p-4 mb-4 border-2 border-walnut/30 rounded">
+          <div className="bg-white p-3 mb-3 border-2 border-walnut/30 rounded">
             <div className="flex items-center justify-between">
-              <span className="font-handwritten text-lg text-walnut">🎟️ За всяка регистрация:</span>
-              <span className="font-handwritten text-3xl font-bold text-bulgarian-red">+3 билета</span>
+              <span className="font-handwritten text-sm md:text-base text-walnut">🎟️ За всяка регистрация:</span>
+              <span className="font-handwritten text-2xl md:text-3xl font-bold text-bulgarian-red">+3 билета</span>
             </div>
           </div>
 
           {/* Link Input */}
-          <div className="space-y-3">
-            <label className="font-handwritten text-lg text-walnut font-bold block">
+          <div className="space-y-2">
+            <label className="font-handwritten text-sm md:text-base text-walnut font-bold block">
               Твоят директен линк:
             </label>
             <input
               type="text"
               value={directReferralLink}
               readOnly
-              className="w-full px-4 py-3 bg-old-paper border-2 border-walnut/30 text-base font-handwritten text-walnut focus:outline-none focus:ring-2 focus:ring-bulgarian-red"
+              className="w-full px-3 py-2 bg-old-paper border-2 border-walnut/30 text-sm font-handwritten text-walnut focus:outline-none focus:ring-2 focus:ring-bulgarian-red"
             />
             <button
               onClick={() => handleCopy(directReferralLink, 'direct')}
-              className="w-full px-6 py-3 bg-bulgarian-red text-white font-handwritten text-xl font-bold hover:bg-walnut transition-all"
+              className="w-full px-4 py-2 bg-bulgarian-red text-white font-handwritten text-base md:text-lg font-bold hover:bg-walnut transition-all"
             >
               {copiedDirect ? '✓ Копиран' : 'Копирай линка'}
             </button>
           </div>
 
           {/* Stats */}
-          <div className="mt-4 bg-sunflower/20 p-4 border-l-4 border-sunflower">
-            <p className="font-handwritten text-base text-walnut/70 mb-1">
+          <div className="mt-3 bg-sunflower/20 p-3 border-l-2 border-sunflower">
+            <p className="font-handwritten text-xs md:text-sm text-walnut/70 mb-0.5">
               Директни референси:
             </p>
-            <p className="font-handwritten text-3xl font-bold text-dark-walnut">
+            <p className="font-handwritten text-xl md:text-2xl font-bold text-dark-walnut">
               {referralCount} {referralCount === 1 ? 'приятел' : 'приятели'}
             </p>
           </div>
@@ -201,11 +201,11 @@ export default function FacebookPostShareCard({
       </motion.div>
 
       {/* Help Text */}
-      <div className="bg-old-paper border-2 border-walnut/20 p-4 md:p-6">
-        <h4 className="font-handwritten text-xl md:text-2xl font-bold text-bulgarian-red mb-3">
+      <div className="bg-old-paper border-2 border-walnut/20 p-3 md:p-4">
+        <h4 className="font-handwritten text-base md:text-lg font-bold text-bulgarian-red mb-2">
           💡 Как работи?
         </h4>
-        <ul className="space-y-2 font-handwritten text-base md:text-lg text-walnut">
+        <ul className="space-y-1.5 font-handwritten text-sm md:text-base text-walnut">
           <li className="flex items-start gap-2">
             <span className="text-sunflower font-bold">1.</span>
             <span>Избери ВАРИАНТ 1 за Facebook или ВАРИАНТ 2 за WhatsApp/Viber</span>

@@ -13,29 +13,29 @@ export default function TicketCard({ ticketCount, entryId, size = 'large' }: Tic
 
   return (
     <motion.div
-      className={`relative bg-old-paper border-4 border-dashed border-bulgarian-red ${
-        isLarge ? 'p-8 md:p-12' : 'p-6'
-      } overflow-hidden shadow-2xl`}
+      className={`relative bg-old-paper border-2 border-dashed border-bulgarian-red ${
+        isLarge ? 'p-4 md:p-6' : 'p-3 md:p-4'
+      } overflow-hidden shadow-xl`}
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5, type: 'spring' }}
     >
       {/* Perforation Holes - Left Side */}
-      <div className="absolute left-0 top-0 bottom-0 w-8 flex flex-col justify-around py-4">
-        {[...Array(isLarge ? 15 : 8)].map((_, i) => (
+      <div className="absolute left-0 top-0 bottom-0 w-6 flex flex-col justify-around py-3">
+        {[...Array(isLarge ? 10 : 6)].map((_, i) => (
           <div
             key={i}
-            className="w-3 h-3 bg-walnut/30 rounded-full ml-2 border-2 border-walnut/20"
+            className="w-2 h-2 bg-walnut/30 rounded-full ml-2 border border-walnut/20"
           />
         ))}
       </div>
 
       {/* Perforation Holes - Right Side */}
-      <div className="absolute right-0 top-0 bottom-0 w-8 flex flex-col justify-around py-4">
-        {[...Array(isLarge ? 15 : 8)].map((_, i) => (
+      <div className="absolute right-0 top-0 bottom-0 w-6 flex flex-col justify-around py-3">
+        {[...Array(isLarge ? 10 : 6)].map((_, i) => (
           <div
             key={i}
-            className="w-3 h-3 bg-walnut/30 rounded-full mr-2 border-2 border-walnut/20"
+            className="w-2 h-2 bg-walnut/30 rounded-full mr-2 border border-walnut/20"
           />
         ))}
       </div>
@@ -44,19 +44,19 @@ export default function TicketCard({ ticketCount, entryId, size = 'large' }: Tic
       <div className="absolute inset-0 bg-vintage-paper opacity-40 pointer-events-none" />
 
       {/* Ticket Content */}
-      <div className="relative z-10 text-center ml-6 mr-6">
+      <div className="relative z-10 text-center ml-4 mr-4">
         {/* Ticket Header */}
-        <div className="mb-4 pb-4 border-b-2 border-dashed border-bulgarian-red/50">
-          <p className="font-handwritten text-lg text-walnut/70 uppercase tracking-widest">
+        <div className="mb-3 pb-3 border-b border-dashed border-bulgarian-red/50">
+          <p className="font-handwritten text-base md:text-lg text-walnut/70 uppercase tracking-wide">
             Томболен билет
           </p>
-          <p className="font-handwritten text-base text-walnut/60">№ {entryId}</p>
+          <p className="font-handwritten text-sm md:text-base text-walnut/60">№ {entryId}</p>
         </div>
 
         {/* Ticket Count - Main Feature */}
-        <div className="my-8">
+        <div className="my-4 md:my-6">
           <motion.div
-            className="inline-flex items-center justify-center gap-4"
+            className="inline-flex items-center justify-center gap-3"
             animate={{
               scale: [1, 1.05, 1],
             }}
@@ -66,11 +66,11 @@ export default function TicketCard({ ticketCount, entryId, size = 'large' }: Tic
               ease: 'easeInOut',
             }}
           >
-            <span className="text-6xl md:text-8xl">🎟️</span>
+            <span className="text-4xl md:text-6xl">🎟️</span>
             <div className="text-left">
               <motion.p
                 className={`font-handwritten font-bold text-bulgarian-red ${
-                  isLarge ? 'text-6xl md:text-8xl' : 'text-5xl'
+                  isLarge ? 'text-4xl md:text-6xl' : 'text-3xl md:text-5xl'
                 }`}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -78,7 +78,7 @@ export default function TicketCard({ ticketCount, entryId, size = 'large' }: Tic
               >
                 {ticketCount}
               </motion.p>
-              <p className="font-handwritten text-2xl md:text-3xl text-walnut">
+              <p className="font-handwritten text-xl md:text-2xl text-walnut">
                 {ticketCount === 1 ? 'билет' : 'билета'}
               </p>
             </div>
@@ -86,8 +86,8 @@ export default function TicketCard({ ticketCount, entryId, size = 'large' }: Tic
         </div>
 
         {/* Explanation */}
-        <div className="mt-6 pt-4 border-t-2 border-dashed border-bulgarian-red/50">
-          <p className="font-handwritten text-lg md:text-xl text-walnut leading-relaxed">
+        <div className="mt-4 pt-3 border-t border-dashed border-bulgarian-red/50">
+          <p className="font-handwritten text-base md:text-lg text-walnut leading-relaxed">
             {ticketCount === 1 ? (
               <>
                 Имаш <strong className="text-bulgarian-red">1 билет</strong> от
@@ -100,7 +100,7 @@ export default function TicketCard({ ticketCount, entryId, size = 'large' }: Tic
               </>
             )}
           </p>
-          <p className="font-handwritten text-base md:text-lg text-walnut/70 mt-3">
+          <p className="font-handwritten text-sm md:text-base text-walnut/70 mt-2">
             Покани приятели и получи <strong>+3 билета</strong> за всеки регистриран!
           </p>
         </div>
