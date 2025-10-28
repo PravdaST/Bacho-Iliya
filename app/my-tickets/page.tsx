@@ -85,11 +85,17 @@ export default function MyTicketsPage() {
   // Set giveaway date
   const giveawayDate = new Date('2025-11-30T23:59:59');
 
-  // Parse selected products
+  // Parse selected products (stored as JSON string in database)
   const selectedProductsList = userData
-    ? products.filter((p) =>
-        userData.selectedProducts.split(',').map((id) => id.trim()).includes(p.id)
-      )
+    ? products.filter((p) => {
+        try {
+          const selectedIds = JSON.parse(userData.selectedProducts);
+          return Array.isArray(selectedIds) && selectedIds.includes(p.id);
+        } catch {
+          // Fallback to CSV parsing if JSON.parse fails
+          return userData.selectedProducts.split(',').map((id) => id.trim()).includes(p.id);
+        }
+      })
     : [];
 
   if (loading) {
@@ -122,25 +128,25 @@ export default function MyTicketsPage() {
       <div className="max-w-7xl mx-auto relative">
         {/* Page Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="hidden sm:block w-20 h-1 bg-bulgarian-red"></div>
-            <h1 className="text-village text-5xl md:text-7xl text-bulgarian-red">
+          <div className="flex items-center justify-center gap-4 mb-3">
+            <div className="hidden sm:block w-16 h-1 bg-bulgarian-red"></div>
+            <h1 className="text-village text-3xl md:text-5xl text-bulgarian-red">
               МОИТЕ БИЛЕТИ
             </h1>
-            <div className="hidden sm:block w-20 h-1 bg-bulgarian-red"></div>
+            <div className="hidden sm:block w-16 h-1 bg-bulgarian-red"></div>
           </div>
-          <p className="text-handwritten text-xl md:text-2xl text-walnut">
+          <p className="text-handwritten text-lg md:text-xl text-walnut">
             Следи билетите си и увеличавай шансовете за печалба!
           </p>
         </motion.div>
 
         {/* 2-Column Grid: Tickets + Countdown */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
           {/* Tickets Card */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -162,29 +168,29 @@ export default function MyTicketsPage() {
 
         {/* Selected Products */}
         <motion.div
-          className="bg-sunflower/10 border-4 border-sunflower/50 p-8 mb-8 shadow-xl relative"
+          className="bg-sunflower/10 border-2 border-sunflower/50 p-4 md:p-6 mb-4 md:mb-6 shadow-xl relative"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
           <div className="relative z-10">
-            <h2 className="font-handwritten text-3xl md:text-4xl text-bulgarian-red mb-6 font-bold text-center">
+            <h2 className="font-handwritten text-2xl md:text-3xl text-bulgarian-red mb-4 font-bold text-center">
               За какви продукти играеш
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {selectedProductsList.map((product) => (
                 <motion.div
                   key={product.id}
-                  className="bg-white border-2 border-bulgarian-red/20 p-4 flex flex-col items-center hover:shadow-lg transition-shadow"
+                  className="bg-white border-2 border-bulgarian-red/20 p-3 flex flex-col items-center hover:shadow-lg transition-shadow"
                   whileHover={{ scale: 1.05 }}
                 >
                   <img
                     src={product.image}
                     alt={product.nameBg}
-                    className="w-20 h-20 object-contain mb-3"
+                    className="w-16 h-16 object-contain mb-2"
                   />
-                  <span className="font-handwritten text-lg font-bold text-walnut text-center">
+                  <span className="font-handwritten text-base md:text-lg font-bold text-walnut text-center">
                     {product.nameBg}
                   </span>
                 </motion.div>
@@ -198,7 +204,7 @@ export default function MyTicketsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mb-8"
+          className="mb-4 md:mb-6"
         >
           <FacebookPostShareCard
             entryId={userData.entryId}
@@ -209,39 +215,39 @@ export default function MyTicketsPage() {
 
         {/* Tickets History */}
         <motion.div
-          className="bg-white border-4 border-dark-walnut/40 p-8 mb-8 shadow-xl relative"
+          className="bg-white border-2 border-dark-walnut/40 p-4 md:p-6 mb-4 md:mb-6 shadow-xl relative"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
           <div className="relative z-10">
-            <h2 className="text-village text-3xl md:text-4xl text-bulgarian-red mb-6 font-bold text-center">
+            <h2 className="text-village text-2xl md:text-3xl text-bulgarian-red mb-4 font-bold text-center">
               ИСТОРИЯ НА БИЛЕТИ
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-2">
               {userData.ticketsHistory.map((entry, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-center justify-between p-5 bg-old-paper border-2 border-walnut/20 hover:border-walnut/40 transition-all"
+                  className="flex items-center justify-between p-3 md:p-4 bg-old-paper border-2 border-walnut/20 hover:border-walnut/40 transition-all"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-bulgarian-red flex items-center justify-center">
-                      <span className="text-white font-bold text-xl">✓</span>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-bulgarian-red flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">✓</span>
                     </div>
                     <div>
-                      <p className="font-handwritten text-xl font-bold text-walnut">
+                      <p className="font-handwritten text-lg md:text-xl font-bold text-walnut">
                         {entry.tickets === 1 ? '1 билет' : `${entry.tickets} билета`}
                       </p>
-                      <p className="font-handwritten text-base text-walnut/70">
+                      <p className="font-handwritten text-sm md:text-base text-walnut/70">
                         {entry.description}
                       </p>
                     </div>
                   </div>
-                  <p className="font-handwritten text-sm text-walnut/60">{entry.date}</p>
+                  <p className="font-handwritten text-xs md:text-sm text-walnut/60">{entry.date}</p>
                 </motion.div>
               ))}
             </div>
@@ -253,7 +259,7 @@ export default function MyTicketsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="mb-8"
+          className="mb-4 md:mb-6"
         >
           <LeaderboardTickets
             entries={leaderboardData.entries}
@@ -271,7 +277,7 @@ export default function MyTicketsPage() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-dark-walnut text-white font-handwritten text-xl md:text-2xl font-bold hover:bg-walnut transition-all shadow-xl"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-dark-walnut text-white font-handwritten text-lg md:text-xl font-bold hover:bg-walnut transition-all shadow-xl"
           >
             ← Обратно към началото
           </Link>
