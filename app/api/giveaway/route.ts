@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
         // Verify referrer exists
         const { data: referrer, error: referrerError } = await supabaseAdmin
           .from('giveaway_entries')
-          .select('id, entry_id, referral_count, referral_entries')
+          .select('id, entry_id, referral_count, referral_entries, tickets_count, tickets_history')
           .eq('entry_id', referrerEntryId)
           .single();
 
@@ -126,19 +126,36 @@ export async function POST(request: NextRequest) {
           console.warn(`⚠️ Invalid referrer ID: ${referrerEntryId}`);
           referrerEntryId = null; // Invalid referrer, proceed without it
         } else {
-          // Update referrer's stats (+3 bonus entries per referral)
+          // Update referrer's stats (+3 bonus tickets per referral)
+          const newTicketsCount = (referrer.tickets_count || 1) + 3;
+          const existingHistory = referrer.tickets_history
+            ? (typeof referrer.tickets_history === 'string' ? JSON.parse(referrer.tickets_history) : referrer.tickets_history)
+            : [];
+
+          const newHistory = [
+            ...existingHistory,
+            {
+              type: 'referral',
+              tickets: 3,
+              date: new Date().toISOString(),
+              description: 'Препоръка на приятел',
+            },
+          ];
+
           const { error: updateError } = await supabaseAdmin
             .from('giveaway_entries')
             .update({
               referral_count: referrer.referral_count + 1,
               referral_entries: referrer.referral_entries + 3, // +3 bonus entries
+              tickets_count: newTicketsCount, // Update total tickets
+              tickets_history: JSON.stringify(newHistory), // Update history
             })
             .eq('id', referrer.id);
 
           if (updateError) {
             console.error('❌ Failed to update referrer stats:', updateError);
           } else {
-            console.log(`✅ Updated referrer stats: +1 referral, +3 entries`);
+            console.log(`✅ Updated referrer stats: +1 referral, +3 tickets (total: ${newTicketsCount})`);
           }
         }
       } catch (referralError) {
@@ -215,6 +232,15 @@ export async function POST(request: NextRequest) {
         referred_by: referrerEntryId,
         referral_count: 0, // Initialize at 0
         referral_entries: 0, // Initialize at 0
+        tickets_count: 1, // Initialize with 1 ticket (base entry)
+        tickets_history: JSON.stringify([
+          {
+            type: 'registration',
+            tickets: 1,
+            date: new Date().toISOString(),
+            description: 'Първоначална регистрация',
+          },
+        ]),
         user_agent: validatedData.userAgent || null,
         ip_address: validatedData.ipAddress || null,
       };
