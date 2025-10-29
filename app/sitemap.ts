@@ -26,23 +26,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: BASE_URL,
       lastModified: new Date('2025-01-27'),
       // Home page has logo + product images
-      images: [
-        `${BASE_URL}/logo.png`,
-        `${BASE_URL}/Bachi ilia head logo_.webp`,
-      ],
+      images: [`${BASE_URL}/logo.png`, `${BASE_URL}/Bachi ilia head logo_.webp`],
     },
     {
       url: `${BASE_URL}/products`,
       lastModified: new Date('2025-01-20'),
-      images: products.map(p => `${BASE_URL}${p.image}`),
+      images: products.map((p) => `${BASE_URL}${p.image}`),
     },
     {
       url: `${BASE_URL}/about`,
       lastModified: new Date('2025-01-27'),
-      images: [
-        `${BASE_URL}/logo.png`,
-        `${BASE_URL}/Bachi ilia head logo_.webp`,
-      ],
+      images: [`${BASE_URL}/logo.png`, `${BASE_URL}/Bachi ilia head logo_.webp`],
     },
     {
       url: `${BASE_URL}/where-to-buy`,

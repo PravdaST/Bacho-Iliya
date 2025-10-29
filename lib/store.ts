@@ -153,7 +153,8 @@ export const products: Product[] = [
     nameBg: 'Бяло сирене 800г',
     image: '/products/sirene/BI-sirene-800-metal-480x480.png',
     description: 'Класическо бяло краве сирене в метална кутия',
-    bachoRecommendation: 'За големи семейства. Точно като на село - в метална кутия да си държи вкуса.',
+    bachoRecommendation:
+      'За големи семейства. Точно като на село - в метална кутия да си държи вкуса.',
   },
   {
     id: 'kashkaval-1500',
@@ -177,7 +178,8 @@ export const products: Product[] = [
     nameBg: 'Айран',
     description: 'Освежаващ традиционен айран',
     image: '/products/airan/Ayran-1000-480x480.jpg',
-    bachoRecommendation: 'В жегата - животоспасяващ! Работиш ли на градина, това ти е спасението. Баща ми така преживя лятото.',
+    bachoRecommendation:
+      'В жегата - животоспасяващ! Работиш ли на градина, това ти е спасението. Баща ми така преживя лятото.',
   },
   {
     id: 'protein',
@@ -185,6 +187,7 @@ export const products: Product[] = [
     nameBg: 'Протеин',
     description: 'Протеинова напитка с натурално мляко',
     image: '/products/protein/BachoIliya-Protein-480x480.png',
-    bachoRecommendation: 'За младите спортисти. Внукът ми тренира - иска чисто, без химия. Ето го - сила от природата!',
+    bachoRecommendation:
+      'За младите спортисти. Внукът ми тренира - иска чисто, без химия. Ето го - сила от природата!',
   },
 ];

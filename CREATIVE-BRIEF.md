@@ -1,4 +1,5 @@
 # 🎨 BACHO ILIYA GIVEAWAY - CREATIVE ASSET BRIEF
+
 **Generated:** October 9, 2025
 **Website:** Bacho Iliya Giveaway Campaign
 **Brand Style:** Traditional Bulgarian Vintage (Red/Cream/Sepia aesthetic)
@@ -6,6 +7,7 @@
 ---
 
 ## 📋 TABLE OF CONTENTS
+
 1. [Hero Section Assets](#1-hero-section-assets)
 2. [Bacho Character Assets](#2-bacho-character-assets)
 3. [Product Photography](#3-product-photography)
@@ -20,6 +22,7 @@
 ## 🎯 BRAND STYLE GUIDELINES
 
 ### Color Palette:
+
 - **Vintage Red:** #E22526 (Traditional Bulgarian red)
 - **Vintage Brown:** #5C4033 (Warm earth tones)
 - **Vintage Yellow:** #F5DEB3 (Wheat/cream)
@@ -27,6 +30,7 @@
 - **Vintage Cream:** #FDF5E6 (Background)
 
 ### Visual Style:
+
 - Warm, nostalgic, vintage aesthetic
 - Sepia-toned photography with film grain
 - Traditional Bulgarian folk patterns
@@ -39,11 +43,13 @@
 ## 1. HERO SECTION ASSETS
 
 ### 1.1 HERO BACKGROUND IMAGE/VIDEO
+
 **Priority:** 🔴 HIGH
 **Current State:** Using generic Unsplash countryside image
 **Recommendation:** Custom Bulgarian countryside footage or image
 
 #### 📸 IMAGE PROMPT (For AI Generation):
+
 ```
 Cinematic wide shot of a traditional Bulgarian countryside landscape at golden hour.
 Rolling green hills with grazing dairy cows in the foreground. Traditional Bulgarian
@@ -55,6 +61,7 @@ High resolution 1920x1080px, horizontal orientation.
 ```
 
 #### 🎥 VIDEO PROMPT (Alternative - Recommended):
+
 ```
 30-second B-roll video: Slow drone shot starting from close-up of wildflowers, pulling
 back to reveal traditional Bulgarian countryside. Brown and white dairy cows grazing
@@ -65,6 +72,7 @@ Resolution: 1920x1080 minimum. Mood: Peaceful, nostalgic, trustworthy, natural.
 ```
 
 **Technical Specs:**
+
 - Format: JPG/PNG (image) or MP4 (video)
 - Resolution: 1920x1080px minimum (2560x1440 ideal)
 - Aspect Ratio: 16:9
@@ -78,11 +86,13 @@ Resolution: 1920x1080 minimum. Mood: Peaceful, nostalgic, trustworthy, natural.
 ## 2. BACHO CHARACTER ASSETS
 
 ### 2.1 MAIN CHARACTER PORTRAIT - "BACHO ILIYA"
+
 **Priority:** 🔴 CRITICAL
 **Current State:** Placeholder emoji 👴🏻
 **Recommendation:** Professional character portrait
 
 #### 📸 IMAGE PROMPT (For AI Image Generation):
+
 ```
 Professional portrait photograph of a warm, trustworthy Bulgarian grandfather figure
 (aged 65-75 years). Kind eyes, genuine smile, weathered hands showing years of artisan
@@ -96,6 +106,7 @@ resolution, professional quality. Mood: Nostalgic, warm, authentic, family-orien
 ```
 
 #### 🎨 ALTERNATIVE: Illustrated Character
+
 ```
 Illustrated portrait of a friendly Bulgarian grandfather character named "Bacho Iliya".
 Art style: Warm, hand-painted watercolor illustration with vintage storybook aesthetic.
@@ -108,6 +119,7 @@ grandfatherly character. Square format 800x800px.
 ```
 
 **Technical Specs:**
+
 - Format: PNG with transparency OR JPG with cream background
 - Resolution: 800x800px (square)
 - File Size: <500KB
@@ -117,11 +129,13 @@ grandfatherly character. Square format 800x800px.
 ---
 
 ### 2.2 VINTAGE PHOTO - "BACHO WITH GRANDMOTHER" (1975)
+
 **Priority:** 🟡 MEDIUM
 **Current State:** Placeholder emoji 👵🏻👴🏻
 **Recommendation:** Vintage-style couple photograph
 
 #### 📸 IMAGE PROMPT:
+
 ```
 Vintage photograph from 1975 Bulgaria. Black and white photo with slight sepia tone.
 Elderly Bulgarian couple (grandfather and grandmother) standing together in traditional
@@ -135,6 +149,7 @@ Mood: Nostalgic, authentic, historical, warm memories.
 ```
 
 **Technical Specs:**
+
 - Format: JPG (aged look)
 - Resolution: 400x400px
 - File Size: <200KB
@@ -147,10 +162,12 @@ Mood: Nostalgic, authentic, historical, warm memories.
 ## 3. PRODUCT PHOTOGRAPHY
 
 ### 3.1 PRODUCT IMAGES STATUS
+
 **Current State:** ✅ Already implemented
 **Location:** `/public/products/` directory
 
 **Existing Products:**
+
 - ✅ Бяло сирене 800г (BI-sirene-800-metal-480x480.png)
 - ✅ Бяло сирене 300г (BI-sirene-300-vac-480x480.png)
 - ✅ Кашкавал 1.5кг (BI-kashkaval-1500-480x480.png)
@@ -161,10 +178,12 @@ Mood: Nostalgic, authentic, historical, warm memories.
 **Recommendation:** No immediate action needed. Current images are good quality.
 
 ### 3.2 ADDITIONAL PRODUCT LIFESTYLE SHOTS (Optional Enhancement)
+
 **Priority:** 🟢 LOW
 **Recommendation:** Lifestyle product photography
 
 #### 📸 IMAGE PROMPT (Example for White Cheese):
+
 ```
 Product lifestyle photography: Traditional Bulgarian white cheese (sirene) displayed on
 rustic wooden cutting board. Cheese in traditional metal container, lid partially open.
@@ -181,13 +200,16 @@ Mood: Authentic, appetizing, traditional, home-cooked.
 ## 4. RECIPE PHOTOGRAPHY
 
 ### 4.1 TRADITIONAL BULGARIAN RECIPES
+
 **Priority:** 🟡 MEDIUM
 **Current State:** Placeholder images needed
 
 #### Recipe 1: БАНИЦА (Banitsa)
+
 **Current Image:** `/public/banica.webp` (needs verification)
 
 **📸 IMAGE PROMPT:**
+
 ```
 Food photography of traditional Bulgarian banitsa (banica). Golden-brown phyllo pastry
 spiral, freshly baked, steam rising. Visible layers of flaky pastry and white cheese
@@ -200,9 +222,11 @@ Square format 600x600px. Mood: Warm, homemade, appetizing, traditional.
 ```
 
 #### Recipe 2: ШОПСКА САЛАТА (Shopska Salad)
+
 **Current Image:** `/public/shopska.webp` (needs verification)
 
 **📸 IMAGE PROMPT:**
+
 ```
 Food photography of traditional Bulgarian Shopska salad. Fresh diced tomatoes, cucumbers,
 green peppers, red onion in traditional ceramic bowl with blue and white folk pattern.
@@ -214,9 +238,11 @@ Mood: Fresh, vibrant, healthy, traditional Bulgarian cuisine.
 ```
 
 #### Recipe 3: ТАРАТОР (Tarator)
+
 **Current Image:** `/public/tarator.webp` (needs verification)
 
 **📸 IMAGE PROMPT:**
+
 ```
 Food photography of traditional Bulgarian tarator (cold yogurt soup). Creamy white yogurt
 soup with visible diced cucumbers and fresh dill floating on top. Served in traditional
@@ -229,9 +255,11 @@ summer, traditional, homemade.
 ```
 
 #### Recipe 4: КАЧАМАК (Kachamak)
+
 **Current Image:** `/public/kachamak.webp` (needs verification)
 
 **📸 IMAGE PROMPT:**
+
 ```
 Food photography of traditional Bulgarian kachamak (polenta with cheese). Golden-yellow
 cornmeal porridge with melted kashkaval cheese on top, slightly stringy and appetizing.
@@ -244,6 +272,7 @@ comfort food.
 ```
 
 **Technical Specs for All Recipes:**
+
 - Format: WebP (for web optimization) or JPG
 - Resolution: 600x600px (square)
 - File Size: <300KB per image
@@ -256,12 +285,15 @@ comfort food.
 ## 5. SOCIAL PROOF ASSETS
 
 ### 5.1 CUSTOMER TESTIMONIAL PHOTOS
+
 **Priority:** 🟡 MEDIUM
 **Current State:** Placeholder emojis (👩‍👧, 👨, 👩‍👧‍👦)
 **Recommendation:** Authentic-looking customer photos
 
 #### Testimonial 1: МАРИЯ (Maria - Mother with Children)
+
 **📸 IMAGE PROMPT:**
+
 ```
 Portrait photo of a Bulgarian mother in her 30s with warm, genuine smile. Modern casual
 clothing, natural makeup. Shot in bright, airy kitchen with natural window light. Soft
@@ -272,7 +304,9 @@ mom. No stock photo look - authentic, real person aesthetic.
 ```
 
 #### Testimonial 2: ИВАН (Ivan - Man from Village)
+
 **📸 IMAGE PROMPT:**
+
 ```
 Portrait photo of Bulgarian man in his 40s-50s with kind face and genuine smile. Casual
 clothing (button-up shirt or simple polo). Natural outdoor lighting, blurred countryside
@@ -282,7 +316,9 @@ someone from traditional Bulgarian village. Trustworthy and relatable.
 ```
 
 #### Testimonial 3: ЕЛЕНА (Elena - Mother of 3)
+
 **📸 IMAGE PROMPT:**
+
 ```
 Portrait photo of Bulgarian mother in her 30s-40s with caring expression and warm smile.
 Natural, minimal makeup, casual home clothing. Shot in bright kitchen or dining area
@@ -292,6 +328,7 @@ protective mother. Trustworthy and genuine.
 ```
 
 **Technical Specs:**
+
 - Format: PNG or JPG
 - Resolution: 200x200px (circular crop)
 - File Size: <100KB per image
@@ -303,11 +340,13 @@ protective mother. Trustworthy and genuine.
 ## 6. BACKGROUND & TEXTURE ASSETS
 
 ### 6.1 FARM PATTERN BACKGROUND
+
 **Priority:** 🟢 LOW
 **Current State:** CSS pattern (farm-pattern class)
 **Recommendation:** Optional SVG texture overlay
 
 #### 🎨 PATTERN PROMPT:
+
 ```
 Seamless repeating pattern in vintage Bulgarian folk style. Very subtle, low opacity
 pattern featuring: Traditional farm elements (wheat stalks, small flowers, simple cow
@@ -318,6 +357,7 @@ woodcut aesthetic, traditional Bulgarian folk art. Colors: Cream (#FFF8DC), ligh
 ```
 
 **Technical Specs:**
+
 - Format: SVG (preferred) or PNG with transparency
 - Tile Size: 400x400px
 - File Size: <100KB
@@ -328,10 +368,12 @@ woodcut aesthetic, traditional Bulgarian folk art. Colors: Cream (#FFF8DC), ligh
 ## 7. VIDEO CONTENT
 
 ### 7.1 HERO VIDEO (Optional Enhancement)
+
 **Priority:** 🟡 MEDIUM
 **Recommendation:** 30-second hero video
 
 #### 🎥 VIDEO CONCEPT 1: "BACHO'S STORY"
+
 ```
 Video Duration: 30 seconds
 
@@ -364,6 +406,7 @@ at very low volume). Text in Playfair Display font, vintage red color.
 ```
 
 #### 🎥 VIDEO CONCEPT 2: "FARM TO TABLE"
+
 ```
 Video Duration: 20 seconds
 
@@ -381,6 +424,7 @@ gentle countryside ambiance). Final 3 seconds: Product display with CTA.
 ```
 
 **Technical Specs:**
+
 - Format: MP4 (H.264 codec)
 - Resolution: 1920x1080 (Full HD minimum)
 - Frame Rate: 24fps (cinematic) or 30fps
@@ -394,12 +438,14 @@ gentle countryside ambiance). Final 3 seconds: Product display with CTA.
 ## 8. SUPPORTING GRAPHICS
 
 ### 8.1 TRUST BADGES & STAMPS
+
 **Priority:** 🟢 LOW
 **Current State:** Using CSS vintage-stamp class
 
 #### 🎨 GRAPHIC PROMPTS:
 
 **Vintage Stamp Badge 1:**
+
 ```
 Circular vintage stamp design, red ink style (#E22526). Text: "50+ ГОДИНИ ТРАДИЦИЯ"
 around circle border. Center: Simple illustration of traditional dairy container.
@@ -408,6 +454,7 @@ rough edges, authentic worn look. Transparent PNG, 300x300px.
 ```
 
 **Vintage Stamp Badge 2:**
+
 ```
 Rectangular vintage stamp design. Text: "БЕЗ КОНСЕРВАНТИ" in bold vintage font.
 Small checkmark icon. Red ink style with cream accents. Distressed edges. Style:
@@ -415,6 +462,7 @@ Traditional certification stamp aesthetic. Transparent PNG, 400x200px.
 ```
 
 **Trust Badge:**
+
 ```
 Round seal design in vintage style. Text: "ОДОБРЕНО ОТ БАБИТЕ" (Approved by Grandmothers)
 arranged in circle. Center: Simple heart icon or thumbs up. Gold and cream colors with
@@ -426,15 +474,18 @@ red accents. Authentic seal/certificate aesthetic. Transparent PNG, 250x250px.
 ## 📊 PRIORITY SUMMARY
 
 ### 🔴 CRITICAL (Do First):
+
 1. **Bacho Character Portrait** - Main hero of the brand story
 2. **Hero Background Image/Video** - First impression, sets entire mood
 
 ### 🟡 MEDIUM (Do Second):
+
 3. **Recipe Photography** (4 images) - Shows product in use, increases appetite appeal
 4. **Customer Testimonial Photos** (3 portraits) - Builds trust and social proof
 5. **Vintage Grandmother Photo** - Adds authenticity to brand story
 
 ### 🟢 LOW (Nice to Have):
+
 6. **Product Lifestyle Shots** - Current product images are sufficient
 7. **Background Patterns** - CSS patterns working fine
 8. **Trust Badges** - Current text-based badges are functional
@@ -445,17 +496,20 @@ red accents. Authentic seal/certificate aesthetic. Transparent PNG, 250x250px.
 ## 💡 CREATION TIPS
 
 ### For AI Image Generation (Midjourney, DALL-E, Stable Diffusion):
+
 - Use the exact prompts provided above
 - Add these style modifiers: `--style raw --v 6` (for Midjourney)
 - For vintage look: Add `vintage film photography, Kodak Portra 400, slight grain`
 - For food: Add `professional food photography, f/2.8, appetizing, editorial quality`
 
 ### For Stock Photography:
+
 - **Search Terms:** "Bulgarian countryside", "traditional dairy farm", "Bulgarian grandmother", "traditional cheese making", "Bulgarian folk costume"
 - **Recommended Sites:** Adobe Stock, Shutterstock, iStock (filter for Eastern Europe)
 - **License:** Ensure commercial use rights
 
 ### For Custom Photography:
+
 - **Photographer Brief:** Share this document + emphasize warm, nostalgic, trustworthy aesthetic
 - **Color Grading:** Request vintage warm tones (oranges, creams, browns) with slight sepia
 - **Styling:** Traditional Bulgarian elements, rustic props, natural lighting
@@ -464,22 +518,23 @@ red accents. Authentic seal/certificate aesthetic. Transparent PNG, 250x250px.
 
 ## 📐 TECHNICAL SPECIFICATIONS SUMMARY
 
-| Asset Type | Format | Size | Max File Size |
-|------------|--------|------|---------------|
-| Hero Background | JPG | 1920x1080px | 5MB |
-| Hero Video | MP4 | 1920x1080px | 20MB |
-| Bacho Portrait | PNG/JPG | 800x800px | 500KB |
-| Vintage Photo | JPG | 400x400px | 200KB |
-| Recipe Photos | WebP/JPG | 600x600px | 300KB |
-| Testimonials | PNG/JPG | 200x200px | 100KB |
-| Patterns | SVG/PNG | 400x400px | 100KB |
-| Badges | PNG | 250-400px | 150KB |
+| Asset Type      | Format   | Size        | Max File Size |
+| --------------- | -------- | ----------- | ------------- |
+| Hero Background | JPG      | 1920x1080px | 5MB           |
+| Hero Video      | MP4      | 1920x1080px | 20MB          |
+| Bacho Portrait  | PNG/JPG  | 800x800px   | 500KB         |
+| Vintage Photo   | JPG      | 400x400px   | 200KB         |
+| Recipe Photos   | WebP/JPG | 600x600px   | 300KB         |
+| Testimonials    | PNG/JPG  | 200x200px   | 100KB         |
+| Patterns        | SVG/PNG  | 400x400px   | 100KB         |
+| Badges          | PNG      | 250-400px   | 150KB         |
 
 ---
 
 ## 🎯 BRAND VOICE & MESSAGING
 
 When creating content, remember the brand voice:
+
 - **Warm & Nostalgic:** "Like grandma used to make"
 - **Authentic & Honest:** "No chemicals, no rushing"
 - **Family-Oriented:** "For your family's table"
@@ -491,6 +546,7 @@ When creating content, remember the brand voice:
 ## 📞 QUESTIONS OR CLARIFICATIONS?
 
 If you need any prompts adjusted or have questions about:
+
 - Image dimensions or formats
 - Style direction
 - Alternative creative concepts

@@ -27,7 +27,11 @@ export default function SuccessPage() {
   }, [generateEntryId]);
 
   const handleStartOver = () => {
-    if (confirm('Сигурни ли сте, че искате да започнете отначало? Това ще изтрие текущото ви участие.')) {
+    if (
+      confirm(
+        'Сигурни ли сте, че искате да започнете отначало? Това ще изтрие текущото ви участие.'
+      )
+    ) {
       // Reset store to initial state
       useGiveawayStore.setState({
         currentStep: 1,
@@ -43,11 +47,11 @@ export default function SuccessPage() {
   const currentEntryId = entryId || 'N/A';
 
   return (
-    <div className="min-h-screen py-24 px-4 bg-old-paper relative overflow-hidden">
+    <div className="bg-old-paper relative min-h-screen overflow-hidden px-4 py-24">
       {/* Vintage Paper Texture */}
-      <div className="absolute inset-0 bg-vintage-paper opacity-30" />
+      <div className="bg-vintage-paper absolute inset-0 opacity-30" />
 
-      <div className="max-w-5xl mx-auto relative">
+      <div className="relative mx-auto max-w-5xl">
         {/* Progress Bar */}
         <div className="mb-8">
           <ProgressBar currentStep={4} totalSteps={4} />
@@ -59,63 +63,68 @@ export default function SuccessPage() {
         </div>
 
         {/* Certificate Card */}
-        <div className="bg-white shadow-2xl border-4 border-walnut/40 relative overflow-hidden p-8 md:p-12 mb-8">
+        <div className="border-walnut/40 relative mb-8 overflow-hidden border-4 bg-white p-8 shadow-2xl md:p-12">
           {/* Notebook Lines */}
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="pointer-events-none absolute inset-0">
             {[...Array(25)].map((_, i) => (
               <div
                 key={i}
-                className="absolute left-0 right-0 border-b border-faded-denim/15"
+                className="border-faded-denim/15 absolute right-0 left-0 border-b"
                 style={{ top: `${(i + 1) * 4}%` }}
               />
             ))}
           </div>
 
           {/* Left Margin Line */}
-          <div className="absolute left-16 top-0 bottom-0 w-px bg-bulgarian-red/30" />
+          <div className="bg-bulgarian-red/30 absolute top-0 bottom-0 left-16 w-px" />
 
           {/* Perforation Holes */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 hidden md:flex flex-col justify-around py-8">
+          <div className="absolute top-0 bottom-0 left-0 hidden w-12 flex-col justify-around py-8 md:flex">
             {[...Array(20)].map((_, i) => (
-              <div key={i} className="w-3 h-3 bg-walnut/20 rounded-full ml-4 border-2 border-walnut/10" />
+              <div
+                key={i}
+                className="bg-walnut/20 border-walnut/10 ml-4 h-3 w-3 rounded-full border-2"
+              />
             ))}
           </div>
 
           {/* Paper Texture */}
-          <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+          <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
 
           {/* Header - Success */}
-          <div className="relative text-center mb-8 pb-6 border-b-2 border-dashed border-walnut/30">
-            <h1 className="font-handwritten text-6xl md:text-7xl text-bulgarian-red mb-4">
+          <div className="border-walnut/30 relative mb-8 border-b-2 border-dashed pb-6 text-center">
+            <h1 className="font-handwritten text-bulgarian-red mb-4 text-6xl md:text-7xl">
               Успешно участие!
             </h1>
-            <p className="font-handwritten text-3xl text-walnut mb-3">
+            <p className="font-handwritten text-walnut mb-3 text-3xl">
               Благодарим ти, {userData.name}!
             </p>
-            <p className="font-handwritten text-2xl text-walnut">
-              Вече участваш в раздаването
-            </p>
+            <p className="font-handwritten text-walnut text-2xl">Вече участваш в раздаването</p>
           </div>
 
           {/* Personal Info - Full Width */}
-          <div className="relative bg-bulgarian-red/5 border-2 border-bulgarian-red/30 p-8 mb-8">
-            <h2 className="font-handwritten text-3xl text-bulgarian-red mb-6 font-bold text-center">Твоите данни:</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-bulgarian-red/5 border-bulgarian-red/30 relative mb-8 border-2 p-8">
+            <h2 className="font-handwritten text-bulgarian-red mb-6 text-center text-3xl font-bold">
+              Твоите данни:
+            </h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               <div className="text-center">
-                <p className="font-handwritten text-lg text-walnut/70 mb-2">Име</p>
-                <p className="font-handwritten text-2xl font-bold text-walnut">{userData.name}</p>
+                <p className="font-handwritten text-walnut/70 mb-2 text-lg">Име</p>
+                <p className="font-handwritten text-walnut text-2xl font-bold">{userData.name}</p>
               </div>
               <div className="text-center">
-                <p className="font-handwritten text-lg text-walnut/70 mb-2">Email</p>
-                <p className="font-handwritten text-xl font-bold text-walnut break-all">{userData.email}</p>
+                <p className="font-handwritten text-walnut/70 mb-2 text-lg">Email</p>
+                <p className="font-handwritten text-walnut text-xl font-bold break-all">
+                  {userData.email}
+                </p>
               </div>
               <div className="text-center">
-                <p className="font-handwritten text-lg text-walnut/70 mb-2">Телефон</p>
-                <p className="font-handwritten text-2xl font-bold text-walnut">{userData.phone}</p>
+                <p className="font-handwritten text-walnut/70 mb-2 text-lg">Телефон</p>
+                <p className="font-handwritten text-walnut text-2xl font-bold">{userData.phone}</p>
               </div>
               <div className="text-center">
-                <p className="font-handwritten text-lg text-walnut/70 mb-2">Дата на участие</p>
-                <p className="font-handwritten text-2xl font-bold text-walnut">
+                <p className="font-handwritten text-walnut/70 mb-2 text-lg">Дата на участие</p>
+                <p className="font-handwritten text-walnut text-2xl font-bold">
                   {new Date().toLocaleDateString('bg-BG')}
                 </p>
               </div>
@@ -128,43 +137,43 @@ export default function SuccessPage() {
 
             {/* Link to My Tickets Dashboard */}
             <motion.div
-              className="text-center mt-6"
+              className="mt-6 text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
               <Link
                 href="/my-tickets"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-bulgarian-red text-white font-handwritten text-xl md:text-2xl font-bold hover:bg-dark-walnut transition-all shadow-xl"
+                className="bg-bulgarian-red font-handwritten hover:bg-dark-walnut inline-flex items-center gap-3 px-10 py-5 text-xl font-bold text-white shadow-xl transition-all md:text-2xl"
               >
                 <span>🎟️</span>
                 <span>Виж моите билети →</span>
               </Link>
-              <p className="font-handwritten text-lg text-walnut/70 mt-4">
+              <p className="font-handwritten text-walnut/70 mt-4 text-lg">
                 Следи билетите си и увеличавай шансовете за печалба!
               </p>
             </motion.div>
           </div>
 
           {/* 2-Column Layout: Selected Products + Completed Tasks */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* Selected Products */}
-            <div className="relative bg-sunflower/10 border-2 border-sunflower/50 p-6">
-              <h2 className="font-handwritten text-2xl text-bulgarian-red mb-4 font-bold">
+            <div className="bg-sunflower/10 border-sunflower/50 relative border-2 p-6">
+              <h2 className="font-handwritten text-bulgarian-red mb-4 text-2xl font-bold">
                 Избрани продукти ({selectedProductsList.length})
               </h2>
               <div className="grid grid-cols-2 gap-3">
                 {selectedProductsList.map((product) => (
                   <div
                     key={product.id}
-                    className="bg-white border-2 border-bulgarian-red/20 p-3 flex flex-col items-center"
+                    className="border-bulgarian-red/20 flex flex-col items-center border-2 bg-white p-3"
                   >
                     <img
                       src={product.image}
                       alt={product.nameBg}
-                      className="w-16 h-16 object-contain mb-2"
+                      className="mb-2 h-16 w-16 object-contain"
                     />
-                    <span className="font-handwritten text-lg font-bold text-walnut text-center">
+                    <span className="font-handwritten text-walnut text-center text-lg font-bold">
                       {product.nameBg}
                     </span>
                   </div>
@@ -173,8 +182,10 @@ export default function SuccessPage() {
             </div>
 
             {/* Completed Tasks */}
-            <div className="relative bg-bulgarian-blue/5 border-2 border-bulgarian-blue/30 p-6">
-              <h2 className="font-handwritten text-2xl text-bulgarian-red mb-4 font-bold">Завършени задачи</h2>
+            <div className="bg-bulgarian-blue/5 border-bulgarian-blue/30 relative border-2 p-6">
+              <h2 className="font-handwritten text-bulgarian-red mb-4 text-2xl font-bold">
+                Завършени задачи
+              </h2>
               <div className="space-y-3">
                 <motion.div
                   className="flex items-center gap-3"
@@ -182,12 +193,23 @@ export default function SuccessPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <div className="w-8 h-8 bg-bulgarian-red rounded-full flex items-center justify-center shadow-sm">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  <div className="bg-bulgarian-red flex h-8 w-8 items-center justify-center rounded-full shadow-sm">
+                    <svg
+                      className="h-5 w-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   </div>
-                  <span className="font-handwritten text-xl text-walnut">Facebook харесване</span>
+                  <span className="font-handwritten text-walnut text-xl">Facebook харесване</span>
                 </motion.div>
                 <motion.div
                   className="flex items-center gap-3"
@@ -195,12 +217,25 @@ export default function SuccessPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.7 }}
                 >
-                  <div className="w-8 h-8 bg-bulgarian-red rounded-full flex items-center justify-center shadow-sm">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  <div className="bg-bulgarian-red flex h-8 w-8 items-center justify-center rounded-full shadow-sm">
+                    <svg
+                      className="h-5 w-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   </div>
-                  <span className="font-handwritten text-xl text-walnut">Коментар с "Искам Бачо Илия"</span>
+                  <span className="font-handwritten text-walnut text-xl">
+                    Коментар с "Искам Бачо Илия"
+                  </span>
                 </motion.div>
                 <motion.div
                   className="flex items-center gap-3"
@@ -208,12 +243,25 @@ export default function SuccessPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 }}
                 >
-                  <div className="w-8 h-8 bg-bulgarian-red rounded-full flex items-center justify-center shadow-sm">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  <div className="bg-bulgarian-red flex h-8 w-8 items-center justify-center rounded-full shadow-sm">
+                    <svg
+                      className="h-5 w-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   </div>
-                  <span className="font-handwritten text-xl text-walnut">Споделяне в социални мрежи</span>
+                  <span className="font-handwritten text-walnut text-xl">
+                    Споделяне в социални мрежи
+                  </span>
                 </motion.div>
               </div>
             </div>
@@ -230,30 +278,53 @@ export default function SuccessPage() {
         </div>
 
         {/* Next Steps - Full Width */}
-        <div className="bg-bulgarian-blue/10 border-4 border-bulgarian-blue/40 p-8 mb-8 shadow-xl">
-          <h3 className="font-handwritten text-3xl md:text-4xl font-bold text-bulgarian-red mb-6">
+        <div className="bg-bulgarian-blue/10 border-bulgarian-blue/40 mb-8 border-4 p-8 shadow-xl">
+          <h3 className="font-handwritten text-bulgarian-red mb-6 text-3xl font-bold md:text-4xl">
             Какво следва?
           </h3>
           <ul className="space-y-4">
             <li className="flex items-start gap-4">
-              <span className="font-handwritten text-3xl font-bold text-bulgarian-red min-w-[40px]">1.</span>
-              <span className="font-handwritten text-xl text-walnut">Ще получиш потвърдителен email на <span className="font-bold">{userData.email}</span></span>
+              <span className="font-handwritten text-bulgarian-red min-w-[40px] text-3xl font-bold">
+                1.
+              </span>
+              <span className="font-handwritten text-walnut text-xl">
+                Ще получиш потвърдителен email на{' '}
+                <span className="font-bold">{userData.email}</span>
+              </span>
             </li>
             <li className="flex items-start gap-4">
-              <span className="font-handwritten text-3xl font-bold text-bulgarian-red min-w-[40px]">2.</span>
-              <span className="font-handwritten text-xl text-walnut"><span className="font-bold">ВАЖНО:</span> Коментирай "Искам Бачо Илия" под поста във Facebook за да завършиш участието си!</span>
+              <span className="font-handwritten text-bulgarian-red min-w-[40px] text-3xl font-bold">
+                2.
+              </span>
+              <span className="font-handwritten text-walnut text-xl">
+                <span className="font-bold">ВАЖНО:</span> Коментирай "Искам Бачо Илия" под поста във
+                Facebook за да завършиш участието си!
+              </span>
             </li>
             <li className="flex items-start gap-4">
-              <span className="font-handwritten text-3xl font-bold text-bulgarian-red min-w-[40px]">3.</span>
-              <span className="font-handwritten text-xl text-walnut">Сподели още веднъж за допълнителни шансове за печалба!</span>
+              <span className="font-handwritten text-bulgarian-red min-w-[40px] text-3xl font-bold">
+                3.
+              </span>
+              <span className="font-handwritten text-walnut text-xl">
+                Сподели още веднъж за допълнителни шансове за печалба!
+              </span>
             </li>
             <li className="flex items-start gap-4">
-              <span className="font-handwritten text-3xl font-bold text-bulgarian-red min-w-[40px]">4.</span>
-              <span className="font-handwritten text-xl text-walnut">Печелившите ще бъдат обявени на <span className="font-bold">{giveawayDate.toLocaleDateString('bg-BG')}</span></span>
+              <span className="font-handwritten text-bulgarian-red min-w-[40px] text-3xl font-bold">
+                4.
+              </span>
+              <span className="font-handwritten text-walnut text-xl">
+                Печелившите ще бъдат обявени на{' '}
+                <span className="font-bold">{giveawayDate.toLocaleDateString('bg-BG')}</span>
+              </span>
             </li>
             <li className="flex items-start gap-4">
-              <span className="font-handwritten text-3xl font-bold text-bulgarian-red min-w-[40px]">5.</span>
-              <span className="font-handwritten text-xl text-walnut">Ако спечелиш, ще те уведомим по email и телефон</span>
+              <span className="font-handwritten text-bulgarian-red min-w-[40px] text-3xl font-bold">
+                5.
+              </span>
+              <span className="font-handwritten text-walnut text-xl">
+                Ако спечелиш, ще те уведомим по email и телефон
+              </span>
             </li>
           </ul>
         </div>
@@ -262,15 +333,15 @@ export default function SuccessPage() {
         <div className="text-center">
           <button
             onClick={handleStartOver}
-            className="px-10 py-4 border-4 border-walnut/40 text-walnut font-handwritten font-bold text-xl hover:bg-walnut/5 transition-all"
+            className="border-walnut/40 text-walnut font-handwritten hover:bg-walnut/5 border-4 px-10 py-4 text-xl font-bold transition-all"
           >
             ЗАПОЧНИ ОТНАЧАЛО
           </button>
         </div>
 
         {/* Footer Message */}
-        <div className="text-center mt-8">
-          <p className="font-handwritten text-2xl text-walnut">
+        <div className="mt-8 text-center">
+          <p className="font-handwritten text-walnut text-2xl">
             Успех! Пожелаваме ти късмет в раздаването!
           </p>
         </div>

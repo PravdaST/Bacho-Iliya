@@ -15,10 +15,7 @@ export async function POST(request: NextRequest) {
     const { email } = await request.json();
 
     if (!email) {
-      return NextResponse.json(
-        { success: false, error: 'Email е задължителен' },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, error: 'Email е задължителен' }, { status: 400 });
     }
 
     // Check if user exists in database

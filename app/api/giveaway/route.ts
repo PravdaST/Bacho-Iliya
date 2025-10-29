@@ -36,14 +36,17 @@ export async function POST(request: NextRequest) {
       body = await request.json();
       console.log('📦 Request body:', {
         ...body,
-        selectedProducts: body.selectedProducts?.length || 0
+        selectedProducts: body.selectedProducts?.length || 0,
       });
     } catch (parseError) {
       console.error('❌ Failed to parse request body:', parseError);
-      return jsonResponse({
-        success: false,
-        error: 'Невалидни данни в заявката'
-      }, 400);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Невалидни данни в заявката',
+        },
+        400
+      );
     }
 
     // 🔒 SECURITY: Sanitize input data first
@@ -58,11 +61,14 @@ export async function POST(request: NextRequest) {
     // Check for sanitization errors
     if (sanitized.errors.length > 0) {
       console.warn('⚠️ Sanitization errors:', sanitized.errors);
-      return jsonResponse({
-        success: false,
-        error: sanitized.errors[0], // Return first error
-        details: sanitized.errors,
-      }, 400);
+      return jsonResponse(
+        {
+          success: false,
+          error: sanitized.errors[0], // Return first error
+          details: sanitized.errors,
+        },
+        400
+      );
     }
 
     // Check for XSS/malicious patterns
@@ -70,10 +76,13 @@ export async function POST(request: NextRequest) {
     for (const field of fieldsToCheck) {
       if (typeof field === 'string' && detectMaliciousPatterns(field)) {
         console.error('🚨 Malicious pattern detected in input');
-        return jsonResponse({
-          success: false,
-          error: 'Невалиден вход - подозрителен код открит',
-        }, 400);
+        return jsonResponse(
+          {
+            success: false,
+            error: 'Невалиден вход - подозрителен код открит',
+          },
+          400
+        );
       }
     }
 
@@ -93,17 +102,21 @@ export async function POST(request: NextRequest) {
         taskShare: body.tasks?.share || false,
         referredBy: body.referredBy || undefined,
         userAgent: request.headers.get('user-agent') || undefined,
-        ipAddress: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || undefined,
+        ipAddress:
+          request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || undefined,
       });
       console.log('✅ Data validated successfully');
     } catch (validationError) {
       if (validationError instanceof z.ZodError) {
         console.error('❌ Validation error:', validationError.issues);
-        return jsonResponse({
-          success: false,
-          error: 'Невалидни данни',
-          details: validationError.issues
-        }, 400);
+        return jsonResponse(
+          {
+            success: false,
+            error: 'Невалидни данни',
+            details: validationError.issues,
+          },
+          400
+        );
       }
       throw validationError;
     }
@@ -111,11 +124,15 @@ export async function POST(request: NextRequest) {
     // Check Supabase configuration
     if (!isSupabaseConfigured()) {
       console.error('❌ Supabase not configured');
-      return jsonResponse({
-        success: false,
-        error: 'Базата данни не е конфигурирана',
-        details: process.env.NODE_ENV === 'development' ? 'Missing Supabase credentials' : undefined
-      }, 503);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Базата данни не е конфигурирана',
+          details:
+            process.env.NODE_ENV === 'development' ? 'Missing Supabase credentials' : undefined,
+        },
+        503
+      );
     }
 
     // Process referral if present
@@ -127,7 +144,9 @@ export async function POST(request: NextRequest) {
         // Verify referrer exists
         const { data: referrer, error: referrerError } = await supabaseAdmin
           .from('giveaway_entries')
-          .select('id, entry_id, referral_count, referral_entries, tickets_count, tickets_history, facebook_post_shares')
+          .select(
+            'id, entry_id, referral_count, referral_entries, tickets_count, tickets_history, facebook_post_shares'
+          )
           .eq('entry_id', referrerEntryId)
           .single();
 
@@ -152,7 +171,9 @@ export async function POST(request: NextRequest) {
               tickets: ticketsToAdd,
               date: new Date().toISOString(),
               description: isPostShare
-                ? (isFirstPostShare ? 'Споделяне на Facebook пост (първи път)' : 'Споделяне на Facebook пост')
+                ? isFirstPostShare
+                  ? 'Споделяне на Facebook пост (първи път)'
+                  : 'Споделяне на Facebook пост'
                 : 'Препоръка на приятел',
             },
           ];
@@ -178,7 +199,9 @@ export async function POST(request: NextRequest) {
             console.error('❌ Failed to update referrer stats:', updateError);
           } else {
             const shareType = isPostShare ? '(Facebook post share)' : '(direct referral)';
-            console.log(`✅ Updated referrer stats: +1 referral ${shareType}, +${ticketsToAdd} tickets (total: ${newTicketsCount})`);
+            console.log(
+              `✅ Updated referrer stats: +1 referral ${shareType}, +${ticketsToAdd} tickets (total: ${newTicketsCount})`
+            );
           }
         }
       } catch (referralError) {
@@ -203,10 +226,13 @@ export async function POST(request: NextRequest) {
         // Continue execution despite check error
       } else if (existingEmail) {
         console.warn(`⚠️ Duplicate email detected: ${validatedData.email}`);
-        return jsonResponse({
-          success: false,
-          error: 'Този email адрес вече е регистриран в раздаването.',
-        }, 409); // 409 Conflict
+        return jsonResponse(
+          {
+            success: false,
+            error: 'Този email адрес вече е регистриран в раздаването.',
+          },
+          409
+        ); // 409 Conflict
       }
 
       // Check for existing phone
@@ -221,10 +247,13 @@ export async function POST(request: NextRequest) {
         // Continue execution despite check error
       } else if (existingPhone) {
         console.warn(`⚠️ Duplicate phone detected: ${validatedData.phone}`);
-        return jsonResponse({
-          success: false,
-          error: 'Този телефонен номер вече е регистриран в раздаването.',
-        }, 409); // 409 Conflict
+        return jsonResponse(
+          {
+            success: false,
+            error: 'Този телефонен номер вече е регистриран в раздаването.',
+          },
+          409
+        ); // 409 Conflict
       }
 
       console.log('✅ Anti-fraud checks passed');
@@ -279,11 +308,14 @@ export async function POST(request: NextRequest) {
 
       if (error) {
         console.error('❌ Supabase insert error:', error);
-        return jsonResponse({
-          success: false,
-          error: 'Грешка при записване в базата данни',
-          details: process.env.NODE_ENV === 'development' ? error.message : undefined
-        }, 500);
+        return jsonResponse(
+          {
+            success: false,
+            error: 'Грешка при записване в базата данни',
+            details: process.env.NODE_ENV === 'development' ? error.message : undefined,
+          },
+          500
+        );
       }
 
       savedEntry = data;
@@ -291,11 +323,14 @@ export async function POST(request: NextRequest) {
     } catch (dbError) {
       console.error('❌ Failed to save to Supabase:', dbError);
       const errorMessage = dbError instanceof Error ? dbError.message : 'Unknown error';
-      return jsonResponse({
-        success: false,
-        error: 'Грешка при записване в базата данни',
-        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
-      }, 500);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Грешка при записване в базата данни',
+          details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
+        },
+        500
+      );
     }
 
     // Send welcome email (if Resend is configured)
@@ -321,29 +356,34 @@ export async function POST(request: NextRequest) {
 
     // Return success response with gamification data
     console.log('✅ Registration completed successfully');
-    return jsonResponse({
-      success: true,
-      message: 'Успешна регистрация! Провери имейла си.',
-      data: {
-        entryId: validatedData.entryId,
-        name: validatedData.name,
-        email: validatedData.email,
-        referralCode: referralCode, // 🎮 Include referral code for gamification
-        referralCount: savedEntry?.referral_count || 0,
-        bonusEntries: savedEntry?.referral_entries || 0,
-      }
-    }, 200);
-
+    return jsonResponse(
+      {
+        success: true,
+        message: 'Успешна регистрация! Провери имейла си.',
+        data: {
+          entryId: validatedData.entryId,
+          name: validatedData.name,
+          email: validatedData.email,
+          referralCode: referralCode, // 🎮 Include referral code for gamification
+          referralCount: savedEntry?.referral_count || 0,
+          bonusEntries: savedEntry?.referral_entries || 0,
+        },
+      },
+      200
+    );
   } catch (error) {
     // Final catch-all to ensure we ALWAYS return JSON
     console.error('❌ Unexpected error in Giveaway API:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
-    return jsonResponse({
-      success: false,
-      error: 'Вътрешна грешка на сървъра',
-      details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
-    }, 500);
+    return jsonResponse(
+      {
+        success: false,
+        error: 'Вътрешна грешка на сървъра',
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
+      },
+      500
+    );
   }
 }
 
@@ -351,13 +391,16 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   const supabaseConfigured = isSupabaseConfigured();
 
-  return jsonResponse({
-    status: supabaseConfigured ? 'OK' : 'Warning',
-    message: 'Giveaway API is running',
-    database: {
-      configured: supabaseConfigured,
-      type: 'Supabase',
+  return jsonResponse(
+    {
+      status: supabaseConfigured ? 'OK' : 'Warning',
+      message: 'Giveaway API is running',
+      database: {
+        configured: supabaseConfigured,
+        type: 'Supabase',
+      },
+      timestamp: new Date().toISOString(),
     },
-    timestamp: new Date().toISOString(),
-  }, supabaseConfigured ? 200 : 503);
+    supabaseConfigured ? 200 : 503
+  );
 }

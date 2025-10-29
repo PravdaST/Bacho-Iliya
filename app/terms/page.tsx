@@ -12,8 +12,8 @@ export default function TermsPage() {
         '',
         'Раздаването се организира от Бачо Илия с цел популяризиране на автентичните български млечни продукти и запазване на традиционните рецепти.',
         '',
-        'Участието е напълно безплатно и доброволно.'
-      ]
+        'Участието е напълно безплатно и доброволно.',
+      ],
     },
     {
       title: '2. Правила за участие',
@@ -26,8 +26,8 @@ export default function TermsPage() {
         '• Изпълните всички задачи за участие (харесване, споделяне, коментар)',
         '',
         'Всеки участник може да се регистрира само ВЕДНЪЖ.',
-        'Множественото регистриране води до дисквалификация.'
-      ]
+        'Множественото регистриране води до дисквалификация.',
+      ],
     },
     {
       title: '3. Награди',
@@ -40,8 +40,8 @@ export default function TermsPage() {
         '• Протеинова напитка',
         '',
         'Конкретните награди и техният брой се определят от организатора.',
-        'Наградите НЕ могат да се заменят с парична равностойност.'
-      ]
+        'Наградите НЕ могат да се заменят с парична равностойност.',
+      ],
     },
     {
       title: '4. Теглене и обявяване на печеливши',
@@ -54,8 +54,8 @@ export default function TermsPage() {
         '• Публикуване на страницата на Бачо Илия',
         '',
         'Печелившите имат 7 дни от уведомлението да потвърдят участието си и предоставят адрес за доставка.',
-        'При липса на отговор в 7-дневен срок, наградата отива към резервен печеливш.'
-      ]
+        'При липса на отговор в 7-дневен срок, наградата отива към резервен печеливш.',
+      ],
     },
     {
       title: '5. Доставка на награди',
@@ -67,8 +67,8 @@ export default function TermsPage() {
         '• По-малки населени места: 3-7 работни дни',
         '',
         'Доставката се извършва от куриерска фирма, партньор на Бачо Илия.',
-        'Организаторът не носи отговорност за забавяния, причинени от куриера или форсмажорни обстоятелства.'
-      ]
+        'Организаторът не носи отговорност за забавяния, причинени от куриера или форсмажорни обстоятелства.',
+      ],
     },
     {
       title: '6. Дисквалификация',
@@ -80,8 +80,8 @@ export default function TermsPage() {
         '• Неизпълнение на задачите за участие',
         '• Нарушаване на добрите нрави',
         '',
-        'Организаторът си запазва правото да дисквалифицира участник без предупреждение.'
-      ]
+        'Организаторът си запазва правото да дисквалифицира участник без предупреждение.',
+      ],
     },
     {
       title: '7. Лични данни и поверителност',
@@ -94,8 +94,8 @@ export default function TermsPage() {
         '• Доставка на наградите',
         '',
         'НЕ продаваме и НЕ споделяме вашите данни с трети страни.',
-        'За повече информация вижте: Политика за поверителност'
-      ]
+        'За повече информация вижте: Политика за поверителност',
+      ],
     },
     {
       title: '8. Отговорности и гаранции',
@@ -108,8 +108,8 @@ export default function TermsPage() {
         'Организаторът НЕ носи отговорност за:',
         '• Технически проблеми със сайта или социални мрежи',
         '• Грешки при въвеждане на данни от страна на участниците',
-        '• Форсмажорни обстоятелства'
-      ]
+        '• Форсмажорни обстоятелства',
+      ],
     },
     {
       title: '9. Промени в условията',
@@ -121,8 +121,8 @@ export default function TermsPage() {
         '• Имейл до регистрираните участници',
         '• Публикация в социалните мрежи',
         '',
-        'Промените влизат в сила от момента на публикуването им.'
-      ]
+        'Промените влизат в сила от момента на публикуването им.',
+      ],
     },
     {
       title: '10. Прекратяване на раздаването',
@@ -133,8 +133,8 @@ export default function TermsPage() {
         '• Масово нарушаване на правилата',
         '',
         'При прекратяване участниците ще бъдат уведомени своевременно.',
-        'Ако вече има избрани печеливши, те ще получат своите награди.'
-      ]
+        'Ако вече има избрани печеливши, те ще получат своите награди.',
+      ],
     },
     {
       title: '11. Контакти и жалби',
@@ -145,8 +145,8 @@ export default function TermsPage() {
         '🌐 Уебсайт: bacho-iliya.eu',
         '📱 Facebook: facebook.com/Bacho.Iliya',
         '',
-        'Ще разгледаме вашето запитване в рамките на 7 работни дни.'
-      ]
+        'Ще разгледаме вашето запитване в рамките на 7 работни дни.',
+      ],
     },
     {
       title: '12. Приложимо право',
@@ -155,22 +155,22 @@ export default function TermsPage() {
         '',
         'Всички спорове се решават по реда на българското законодателство.',
         '',
-        'Компетентни са българските съдилища.'
-      ]
-    }
+        'Компетентни са българските съдилища.',
+      ],
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-old-paper relative overflow-hidden py-24 px-4">
+    <div className="bg-old-paper relative min-h-screen overflow-hidden px-4 py-24">
       {/* Vintage Paper Texture */}
-      <div className="absolute inset-0 bg-vintage-paper opacity-30" />
+      <div className="bg-vintage-paper absolute inset-0 opacity-30" />
 
-      <div className="max-w-4xl mx-auto relative">
+      <div className="relative mx-auto max-w-4xl">
         {/* Back Button */}
         <div className="mb-6">
           <Link
             href="/"
-            className="font-handwritten text-walnut hover:text-bulgarian-red transition-colors inline-flex items-center gap-2"
+            className="font-handwritten text-walnut hover:text-bulgarian-red inline-flex items-center gap-2 transition-colors"
           >
             ← Начало
           </Link>
@@ -178,52 +178,55 @@ export default function TermsPage() {
 
         {/* Main Content - Notebook Style */}
         <motion.div
-          className="bg-white border-4 border-walnut/40 p-8 md:p-12 shadow-2xl relative overflow-hidden"
+          className="border-walnut/40 relative overflow-hidden border-4 bg-white p-8 shadow-2xl md:p-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           {/* Notebook Lines */}
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="pointer-events-none absolute inset-0">
             {[...Array(50)].map((_, i) => (
               <div
                 key={i}
-                className="absolute left-0 right-0 border-b border-faded-denim/10"
+                className="border-faded-denim/10 absolute right-0 left-0 border-b"
                 style={{ top: `${(i + 1) * 2}%` }}
               />
             ))}
           </div>
 
           {/* Left Margin Line */}
-          <div className="absolute left-16 top-0 bottom-0 w-px bg-bulgarian-red/30 hidden md:block" />
+          <div className="bg-bulgarian-red/30 absolute top-0 bottom-0 left-16 hidden w-px md:block" />
 
           {/* Perforation Holes */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 hidden md:flex flex-col justify-around py-8">
+          <div className="absolute top-0 bottom-0 left-0 hidden w-12 flex-col justify-around py-8 md:flex">
             {[...Array(40)].map((_, i) => (
-              <div key={i} className="w-3 h-3 bg-walnut/20 rounded-full ml-4 border-2 border-walnut/10" />
+              <div
+                key={i}
+                className="bg-walnut/20 border-walnut/10 ml-4 h-3 w-3 rounded-full border-2"
+              />
             ))}
           </div>
 
           {/* Paper Texture */}
-          <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+          <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
 
           {/* Content */}
           <div className="relative">
             {/* Header */}
-            <div className="mb-12 pb-8 border-b-2 border-dashed border-walnut/30">
-              <h1 className="font-handwritten text-bulgarian-red text-5xl md:text-6xl mb-4">
+            <div className="border-walnut/30 mb-12 border-b-2 border-dashed pb-8">
+              <h1 className="font-handwritten text-bulgarian-red mb-4 text-5xl md:text-6xl">
                 Общи Условия
               </h1>
               <p className="font-handwritten text-walnut/70 text-lg md:text-xl">
                 Правила за участие в раздаването на Бачо Илия
               </p>
-              <p className="font-handwritten text-walnut/60 text-base mt-2">
+              <p className="font-handwritten text-walnut/60 mt-2 text-base">
                 Последна актуализация: Януари 2025
               </p>
             </div>
 
             {/* Important Notice */}
-            <div className="mb-8 p-6 bg-sunflower/20 border-l-4 border-sunflower">
+            <div className="bg-sunflower/20 border-sunflower mb-8 border-l-4 p-6">
               <p className="font-handwritten text-walnut text-xl leading-relaxed">
                 Моля, прочетете внимателно настоящите Общи условия преди да участвате в раздаването.
                 Участието в раздаването означава, че приемате тези условия в пълния им обем.
@@ -235,12 +238,12 @@ export default function TermsPage() {
               {sections.map((section, index) => (
                 <motion.div
                   key={index}
-                  className="pb-8 border-b border-dashed border-walnut/20 last:border-0"
+                  className="border-walnut/20 border-b border-dashed pb-8 last:border-0"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.08, duration: 0.5 }}
                 >
-                  <h2 className="font-handwritten text-bulgarian-red text-3xl mb-4">
+                  <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl">
                     {section.title}
                   </h2>
                   <div className="space-y-2">
@@ -260,29 +263,35 @@ export default function TermsPage() {
             </div>
 
             {/* Acceptance Box */}
-            <div className="mt-10 p-6 bg-bulgarian-red/10 border-4 border-bulgarian-red/40">
-              <h3 className="font-handwritten text-bulgarian-red text-2xl mb-3">
+            <div className="bg-bulgarian-red/10 border-bulgarian-red/40 mt-10 border-4 p-6">
+              <h3 className="font-handwritten text-bulgarian-red mb-3 text-2xl">
                 Приемане на условията
               </h3>
-              <p className="font-handwritten text-walnut text-lg leading-relaxed mb-4">
+              <p className="font-handwritten text-walnut mb-4 text-lg leading-relaxed">
                 С регистрацията си в раздаването вие потвърждавате, че:
               </p>
-              <ul className="space-y-2 ml-6">
-                <li className="font-handwritten text-walnut text-lg">• Сте прочели и разбрали настоящите Общи условия</li>
-                <li className="font-handwritten text-walnut text-lg">• Приемате ги изцяло и без възражения</li>
-                <li className="font-handwritten text-walnut text-lg">• Сте съгласни с обработката на вашите лични данни</li>
-                <li className="font-handwritten text-walnut text-lg">• Отговаряте на изискванията за участие</li>
+              <ul className="ml-6 space-y-2">
+                <li className="font-handwritten text-walnut text-lg">
+                  • Сте прочели и разбрали настоящите Общи условия
+                </li>
+                <li className="font-handwritten text-walnut text-lg">
+                  • Приемате ги изцяло и без възражения
+                </li>
+                <li className="font-handwritten text-walnut text-lg">
+                  • Сте съгласни с обработката на вашите лични данни
+                </li>
+                <li className="font-handwritten text-walnut text-lg">
+                  • Отговаряте на изискванията за участие
+                </li>
               </ul>
             </div>
 
             {/* CTA */}
-            <div className="mt-10 text-center pt-8 border-t-2 border-dashed border-walnut/30">
-              <p className="font-handwritten text-walnut text-xl mb-6">
-                Готови за участие?
-              </p>
+            <div className="border-walnut/30 mt-10 border-t-2 border-dashed pt-8 text-center">
+              <p className="font-handwritten text-walnut mb-6 text-xl">Готови за участие?</p>
               <Link
                 href="/"
-                className="inline-block px-8 py-4 bg-bulgarian-red border-4 border-walnut/40 text-white font-handwritten text-xl font-bold hover:scale-105 transition-all shadow-xl"
+                className="bg-bulgarian-red border-walnut/40 font-handwritten inline-block border-4 px-8 py-4 text-xl font-bold text-white shadow-xl transition-all hover:scale-105"
               >
                 Участвай в раздаването
               </Link>
@@ -290,8 +299,8 @@ export default function TermsPage() {
           </div>
 
           {/* Coffee Stains */}
-          <div className="absolute bottom-8 right-8 w-24 h-24 rounded-full bg-walnut/10 blur-lg opacity-30 pointer-events-none" />
-          <div className="absolute top-16 left-24 w-16 h-16 rounded-full bg-walnut/10 blur-md opacity-30 pointer-events-none" />
+          <div className="bg-walnut/10 pointer-events-none absolute right-8 bottom-8 h-24 w-24 rounded-full opacity-30 blur-lg" />
+          <div className="bg-walnut/10 pointer-events-none absolute top-16 left-24 h-16 w-16 rounded-full opacity-30 blur-md" />
         </motion.div>
       </div>
     </div>

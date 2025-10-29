@@ -15,10 +15,7 @@
  * @param allowedTags - Optional array of allowed HTML tags (NOT IMPLEMENTED - strips all HTML)
  * @returns Sanitized HTML string
  */
-export function sanitizeHTML(
-  dirty: string,
-  allowedTags?: string[]
-): string {
+export function sanitizeHTML(dirty: string, allowedTags?: string[]): string {
   // Simple regex-based HTML stripping for Vercel Edge compatibility
   return dirty
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
@@ -204,13 +201,7 @@ export function sanitizeGiveawayEntry(data: {
   }
 
   // Sanitize products (validate against known product IDs)
-  const validProductIds = [
-    'sirene-800',
-    'kashkaval-1500',
-    'yogurt-45',
-    'airan',
-    'protein',
-  ];
+  const validProductIds = ['sirene-800', 'kashkaval-1500', 'yogurt-45', 'airan', 'protein'];
 
   const selectedProducts = data.selectedProducts.filter((id) =>
     validProductIds.includes(sanitizeText(id))
@@ -394,11 +385,7 @@ export function sanitizeAndValidate(
 
   // Check length if specified
   if (sanitized && options.minLength !== undefined) {
-    const lengthCheck = validateLength(
-      sanitized,
-      options.minLength,
-      options.maxLength || Infinity
-    );
+    const lengthCheck = validateLength(sanitized, options.minLength, options.maxLength || Infinity);
     if (!lengthCheck.valid && lengthCheck.error) {
       errors.push(lengthCheck.error);
     }

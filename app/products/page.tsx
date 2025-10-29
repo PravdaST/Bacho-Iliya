@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { useScrollAnimation, fadeInVariants, staggerContainer } from "@/hooks/use-scroll-animation";
-import { getAllProducts, Product } from "@/lib/products-data";
-import Link from "next/link";
-import Image from "next/image";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useScrollAnimation, fadeInVariants, staggerContainer } from '@/hooks/use-scroll-animation';
+import { getAllProducts, Product } from '@/lib/products-data';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProductsPage() {
   const { ref: heroRef, isInView: heroInView } = useScrollAnimation(0.1);
@@ -15,41 +15,41 @@ export default function ProductsPage() {
 
   const allProducts = getAllProducts();
   const products = selectedCategory
-    ? allProducts.filter(p => p.category === selectedCategory)
+    ? allProducts.filter((p) => p.category === selectedCategory)
     : allProducts;
 
   const categories = [
-    { key: null, label: "Всички" },
-    { key: "cheese", label: "Сирена" },
-    { key: "yogurt", label: "Кисели млека" },
-    { key: "drinks", label: "Напитки" },
-    { key: "other", label: "Други" }
+    { key: null, label: 'Всички' },
+    { key: 'cheese', label: 'Сирена' },
+    { key: 'yogurt', label: 'Кисели млека' },
+    { key: 'drinks', label: 'Напитки' },
+    { key: 'other', label: 'Други' },
   ];
 
   const getCategoryLabel = (category: string) => {
     const labels: Record<string, string> = {
-      cheese: "Сирена",
-      yogurt: "Кисели млека",
-      drinks: "Напитки",
-      other: "Други млечни продукти"
+      cheese: 'Сирена',
+      yogurt: 'Кисели млека',
+      drinks: 'Напитки',
+      other: 'Други млечни продукти',
     };
     return labels[category] || category;
   };
 
   return (
-    <div className="min-h-screen bg-old-paper relative overflow-hidden">
+    <div className="bg-old-paper relative min-h-screen overflow-hidden">
       {/* Paper texture */}
-      <div className="absolute inset-0 bg-vintage-paper opacity-40 pointer-events-none" />
+      <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-40" />
 
       {/* Coffee stains */}
-      <div className="absolute top-20 right-10 w-32 h-32 bg-walnut/5 rounded-full blur-2xl pointer-events-none" />
-      <div className="absolute bottom-40 left-20 w-40 h-40 bg-walnut/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-walnut/5 pointer-events-none absolute top-20 right-10 h-32 w-32 rounded-full blur-2xl" />
+      <div className="bg-walnut/5 pointer-events-none absolute bottom-40 left-20 h-40 w-40 rounded-full blur-3xl" />
 
-      <div className="relative pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="relative px-4 pt-32 pb-16 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <motion.div
           ref={heroRef}
-          className="max-w-5xl mx-auto mb-20 text-center"
+          className="mx-auto mb-20 max-w-5xl text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -60,13 +60,13 @@ export default function ProductsPage() {
             transition={{ duration: 0.5 }}
             className="mb-6"
           >
-            <span className="inline-block bg-bulgarian-red text-white px-6 py-2 font-handwritten text-sm tracking-wider">
+            <span className="bg-bulgarian-red font-handwritten inline-block px-6 py-2 text-sm tracking-wider text-white">
               НАШИТЕ ПРОДУКТИ
             </span>
           </motion.div>
 
           <motion.h1
-            className="font-handwritten text-5xl md:text-7xl text-bulgarian-red mb-6 leading-tight"
+            className="font-handwritten text-bulgarian-red mb-6 text-5xl leading-tight md:text-7xl"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -75,35 +75,33 @@ export default function ProductsPage() {
           </motion.h1>
 
           <motion.p
-            className="font-handwritten text-xl md:text-2xl text-walnut/80 max-w-3xl mx-auto leading-relaxed"
+            className="font-handwritten text-walnut/80 mx-auto max-w-3xl text-xl leading-relaxed md:text-2xl"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Направени по традиционни български рецепти от крави на свободен избор.
-            Без консерванти, без компромиси.
+            Направени по традиционни български рецепти от крави на свободен избор. Без консерванти,
+            без компромиси.
           </motion.p>
         </motion.div>
 
         {/* Category Filter */}
         <motion.div
-          className="max-w-5xl mx-auto mb-16"
+          className="mx-auto mb-16 max-w-5xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <div className="flex flex-wrap gap-3 justify-center mb-6">
+          <div className="mb-6 flex flex-wrap justify-center gap-3">
             {categories.map((category) => (
               <button
                 key={category.key || 'all'}
                 onClick={() => setSelectedCategory(category.key)}
-                className={`
-                  px-6 py-3 font-handwritten text-sm tracking-wider border-2 transition-all duration-300
-                  ${selectedCategory === category.key
-                    ? 'bg-bulgarian-red text-white border-bulgarian-red'
-                    : 'bg-white text-walnut border-walnut/30 hover:border-bulgarian-red'
-                  }
-                `}
+                className={`font-handwritten border-2 px-6 py-3 text-sm tracking-wider transition-all duration-300 ${
+                  selectedCategory === category.key
+                    ? 'bg-bulgarian-red border-bulgarian-red text-white'
+                    : 'text-walnut border-walnut/30 hover:border-bulgarian-red bg-white'
+                } `}
               >
                 {category.label}
               </button>
@@ -113,7 +111,8 @@ export default function ProductsPage() {
           {/* Product count */}
           <div className="text-center">
             <span className="font-handwritten text-walnut/60 text-sm tracking-wider">
-              НАМЕРЕНИ ПРОДУКТИ: <span className="font-bold text-bulgarian-red">{products.length}</span>
+              НАМЕРЕНИ ПРОДУКТИ:{' '}
+              <span className="text-bulgarian-red font-bold">{products.length}</span>
             </span>
           </div>
         </motion.div>
@@ -121,12 +120,12 @@ export default function ProductsPage() {
         {/* Products Grid */}
         <motion.div
           ref={productsRef}
-          className="max-w-6xl mx-auto"
+          className="mx-auto max-w-6xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {products.map((product: Product, index: number) => (
               <motion.div
                 key={product.id}
@@ -135,9 +134,9 @@ export default function ProductsPage() {
                 transition={{ delay: index * 0.05 }}
               >
                 <Link href={`/products/${product.slug}`}>
-                  <div className="group cursor-pointer bg-white border-2 border-walnut/20 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                  <div className="group border-walnut/20 cursor-pointer overflow-hidden border-2 bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                     {/* Image container */}
-                    <div className="relative aspect-square overflow-hidden bg-old-paper/30">
+                    <div className="bg-old-paper/30 relative aspect-square overflow-hidden">
                       <Image
                         src={product.image}
                         alt={product.name}
@@ -146,24 +145,24 @@ export default function ProductsPage() {
                       />
 
                       {/* Category badge */}
-                      <div className="absolute top-3 right-3 bg-bulgarian-red text-white px-3 py-1 text-xs font-handwritten tracking-wider">
+                      <div className="bg-bulgarian-red font-handwritten absolute top-3 right-3 px-3 py-1 text-xs tracking-wider text-white">
                         {getCategoryLabel(product.category)}
                       </div>
                     </div>
 
                     {/* Product info */}
                     <div className="p-6">
-                      <h3 className="font-handwritten text-3xl text-walnut mb-3 text-center leading-tight">
+                      <h3 className="font-handwritten text-walnut mb-3 text-center text-3xl leading-tight">
                         {product.name}
                       </h3>
 
-                      <p className="font-handwritten text-walnut/70 text-base text-center leading-relaxed line-clamp-3 mb-4">
+                      <p className="font-handwritten text-walnut/70 mb-4 line-clamp-3 text-center text-base leading-relaxed">
                         {product.shortDescription}
                       </p>
 
                       {/* View details */}
                       <div className="text-center">
-                        <span className="inline-block font-handwritten text-xs text-bulgarian-red tracking-wider group-hover:underline">
+                        <span className="font-handwritten text-bulgarian-red inline-block text-xs tracking-wider group-hover:underline">
                           ВИЖ ПОВЕЧЕ →
                         </span>
                       </div>
@@ -173,24 +172,23 @@ export default function ProductsPage() {
               </motion.div>
             ))}
           </div>
-
         </motion.div>
 
         {/* Bottom CTA */}
         <motion.div
-          className="max-w-4xl mx-auto mt-20 text-center bg-gradient-to-br from-sunflower/20 to-sunflower/10 p-12 border-2 border-sunflower/30"
+          className="from-sunflower/20 to-sunflower/10 border-sunflower/30 mx-auto mt-20 max-w-4xl border-2 bg-gradient-to-br p-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <p className="font-handwritten text-3xl md:text-4xl text-walnut mb-4 leading-relaxed">
+          <p className="font-handwritten text-walnut mb-4 text-3xl leading-relaxed md:text-4xl">
             Всички продукти са направени в България от местно мляко.
           </p>
-          <p className="font-handwritten text-xl text-walnut/80 mb-6 leading-relaxed">
+          <p className="font-handwritten text-walnut/80 mb-6 text-xl leading-relaxed">
             Търсете ни в магазините из цялата страна!
           </p>
           <Link href="/where-to-buy">
-            <button className="bg-bulgarian-red text-white px-8 py-4 font-handwritten text-sm tracking-wider hover:bg-walnut transition-colors duration-300">
+            <button className="bg-bulgarian-red font-handwritten hover:bg-walnut px-8 py-4 text-sm tracking-wider text-white transition-colors duration-300">
               НАМЕРИ МАГАЗИН →
             </button>
           </Link>

@@ -6,51 +6,58 @@ export default function WhyDifferent() {
   const features = [
     {
       title: 'По бабините рецепти',
-      description: 'Всяка рецепта е от моята баба. Нищо не съм променил - защото тя знаеше най-добре. Същата традиция, предавана през поколенията.',
+      description:
+        'Всяка рецепта е от моята баба. Нищо не съм променил - защото тя знаеше най-добре. Същата традиция, предавана през поколенията.',
       borderColor: 'border-bulgarian-red/30',
       stampColor: 'border-bulgarian-red',
-      rotation: '-2deg'
+      rotation: '-2deg',
     },
     {
       title: 'От щастливи крави',
-      description: 'Кравите са на свободен избор, ядат трева, не антибиотици. Виждам ги всеки ден. Щастлива крава = качествено мляко.',
+      description:
+        'Кравите са на свободен избор, ядат трева, не антибиотици. Виждам ги всеки ден. Щастлива крава = качествено мляко.',
       borderColor: 'border-faded-denim/30',
       stampColor: 'border-faded-denim',
-      rotation: '1.5deg'
+      rotation: '1.5deg',
     },
     {
       title: 'Без химия и консерванти',
-      description: 'Ако не бих дал на моите внуци, няма да го продам на теб. Проста работа. Само мляко, сол и култура.',
+      description:
+        'Ако не бих дал на моите внуци, няма да го продам на теб. Проста работа. Само мляко, сол и култура.',
       borderColor: 'border-sunflower/40',
       stampColor: 'border-sunflower',
-      rotation: '-1deg'
-    }
+      rotation: '-1deg',
+    },
   ];
 
   return (
-    <section className="py-20 px-4 bg-walnut/5 relative overflow-hidden">
+    <section className="bg-walnut/5 relative overflow-hidden px-4 py-20">
       {/* Vintage Texture */}
-      <div className="absolute inset-0 bg-vintage-paper opacity-20" />
+      <div className="bg-vintage-paper absolute inset-0 opacity-20" />
 
-      <div className="max-w-6xl mx-auto relative">
+      <div className="relative mx-auto max-w-6xl">
         {/* Header - Handwritten Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="font-handwritten text-bulgarian-red mb-4" style={{ fontSize: '52px', lineHeight: 1.2 }}>
-            Защо хиляди семейства<br className="hidden md:block" /> избират Бачо Илия?
+          <h2
+            className="font-handwritten text-bulgarian-red mb-4"
+            style={{ fontSize: '52px', lineHeight: 1.2 }}
+          >
+            Защо хиляди семейства
+            <br className="hidden md:block" /> избират Бачо Илия?
           </h2>
-          <p className="font-handwritten text-walnut text-xl max-w-2xl mx-auto">
+          <p className="font-handwritten text-walnut mx-auto max-w-2xl text-xl">
             Три неща които правят продуктите ни различни
           </p>
         </motion.div>
 
         {/* Features - Notebook Paper Cards */}
-        <div className="grid md:grid-cols-3 gap-8 md:gap-10 mb-16">
+        <div className="mb-16 grid gap-8 md:grid-cols-3 md:gap-10">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -60,46 +67,51 @@ export default function WhyDifferent() {
               transition={{ duration: 0.5, delay: index * 0.15 }}
               style={{ transform: `rotate(${feature.rotation})` }}
             >
-              <div className={`bg-white border-4 ${feature.borderColor} shadow-2xl p-6 md:p-8 relative hover:shadow-vintage-lg transition-all hover:scale-105 group overflow-hidden`}>
+              <div
+                className={`border-4 bg-white ${feature.borderColor} hover:shadow-vintage-lg group relative overflow-hidden p-6 shadow-2xl transition-all hover:scale-105 md:p-8`}
+              >
                 {/* Notebook Lines */}
-                <div className="absolute inset-0 pointer-events-none">
+                <div className="pointer-events-none absolute inset-0">
                   {[...Array(12)].map((_, i) => (
                     <div
                       key={i}
-                      className="absolute left-0 right-0 border-b border-faded-denim/15"
+                      className="border-faded-denim/15 absolute right-0 left-0 border-b"
                       style={{ top: `${(i + 1) * 8.33}%` }}
                     />
                   ))}
                 </div>
 
                 {/* Left Margin Line */}
-                <div className="absolute left-10 top-0 bottom-0 w-px bg-bulgarian-red/30" />
+                <div className="bg-bulgarian-red/30 absolute top-0 bottom-0 left-10 w-px" />
 
                 {/* Perforation Holes - Left Side */}
-                <div className="absolute left-0 top-0 bottom-0 w-8 flex flex-col justify-around py-4">
+                <div className="absolute top-0 bottom-0 left-0 flex w-8 flex-col justify-around py-4">
                   {[...Array(8)].map((_, i) => (
-                    <div key={i} className="w-2 h-2 bg-walnut/20 rounded-full ml-3 border border-walnut/10" />
+                    <div
+                      key={i}
+                      className="bg-walnut/20 border-walnut/10 ml-3 h-2 w-2 rounded-full border"
+                    />
                   ))}
                 </div>
 
                 {/* Paper Texture */}
-                <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+                <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
 
                 {/* Content */}
                 <div className="relative">
                   {/* Title - Handwritten */}
-                  <h3 className="font-handwritten text-walnut text-2xl md:text-3xl mb-4 group-hover:text-bulgarian-red transition-colors">
+                  <h3 className="font-handwritten text-walnut group-hover:text-bulgarian-red mb-4 text-2xl transition-colors md:text-3xl">
                     {feature.title}
                   </h3>
 
                   {/* Description - Handwritten Style */}
-                  <p className="font-handwritten text-walnut text-lg md:text-xl leading-relaxed">
+                  <p className="font-handwritten text-walnut text-lg leading-relaxed md:text-xl">
                     {feature.description}
                   </p>
                 </div>
 
                 {/* Coffee Stain */}
-                <div className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-walnut/10 blur-md opacity-30" />
+                <div className="bg-walnut/10 absolute right-4 bottom-4 h-12 w-12 rounded-full opacity-30 blur-md" />
               </div>
             </motion.div>
           ))}
@@ -111,47 +123,52 @@ export default function WhyDifferent() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="max-w-3xl mx-auto"
+          className="mx-auto max-w-3xl"
         >
-          <div className="bg-white px-8 md:px-12 py-10 shadow-2xl border-4 border-walnut/40 relative overflow-hidden" style={{ transform: 'rotate(-0.5deg)' }}>
+          <div
+            className="border-walnut/40 relative overflow-hidden border-4 bg-white px-8 py-10 shadow-2xl md:px-12"
+            style={{ transform: 'rotate(-0.5deg)' }}
+          >
             {/* Notebook Lines */}
-            <div className="absolute inset-0 pointer-events-none">
+            <div className="pointer-events-none absolute inset-0">
               {[...Array(10)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute left-0 right-0 border-b border-faded-denim/15"
+                  className="border-faded-denim/15 absolute right-0 left-0 border-b"
                   style={{ top: `${(i + 1) * 10}%` }}
                 />
               ))}
             </div>
 
             {/* Left Margin Line */}
-            <div className="absolute left-12 top-0 bottom-0 w-px bg-bulgarian-red/30" />
+            <div className="bg-bulgarian-red/30 absolute top-0 bottom-0 left-12 w-px" />
 
             {/* Perforation Holes - Left Side */}
-            <div className="absolute left-0 top-0 bottom-0 w-10 flex flex-col justify-around py-6">
+            <div className="absolute top-0 bottom-0 left-0 flex w-10 flex-col justify-around py-6">
               {[...Array(8)].map((_, i) => (
-                <div key={i} className="w-2.5 h-2.5 bg-walnut/20 rounded-full ml-3.5 border border-walnut/10" />
+                <div
+                  key={i}
+                  className="bg-walnut/20 border-walnut/10 ml-3.5 h-2.5 w-2.5 rounded-full border"
+                />
               ))}
             </div>
 
             {/* Paper Texture */}
-            <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+            <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
 
             {/* Content */}
             <blockquote className="relative">
-              <p className="font-handwritten text-walnut text-2xl md:text-3xl leading-relaxed mb-6 text-center">
-                Правя всичко точно както бабата ме научи.
-                Защото нейният начин беше правилният.
+              <p className="font-handwritten text-walnut mb-6 text-center text-2xl leading-relaxed md:text-3xl">
+                Правя всичко точно както бабата ме научи. Защото нейният начин беше правилният.
               </p>
 
-              <cite className="block text-center font-handwritten text-bulgarian-red text-2xl font-bold not-italic">
+              <cite className="font-handwritten text-bulgarian-red block text-center text-2xl font-bold not-italic">
                 — Бачо Илия
               </cite>
             </blockquote>
 
             {/* Coffee Stain */}
-            <div className="absolute bottom-6 right-8 w-20 h-20 rounded-full bg-walnut/10 blur-lg opacity-30" />
+            <div className="bg-walnut/10 absolute right-8 bottom-6 h-20 w-20 rounded-full opacity-30 blur-lg" />
           </div>
         </motion.div>
       </div>

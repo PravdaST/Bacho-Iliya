@@ -7,7 +7,15 @@ import ProgressBar from '@/components/ProgressBar';
 
 export default function RegisterPage() {
   const router = useRouter();
-  const { selectedProducts, userData, setUserData, setCurrentStep, entryId, generateEntryId, referredBy } = useGiveawayStore();
+  const {
+    selectedProducts,
+    userData,
+    setUserData,
+    setCurrentStep,
+    entryId,
+    generateEntryId,
+    referredBy,
+  } = useGiveawayStore();
 
   const [formData, setFormData] = useState({
     name: userData.name || '',
@@ -75,7 +83,9 @@ export default function RegisterPage() {
       }
 
       // Get current entry ID
-      const currentEntryId = entryId || `BI-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
+      const currentEntryId =
+        entryId ||
+        `BI-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
 
       // Save to Zustand store
       setUserData({
@@ -119,7 +129,9 @@ export default function RegisterPage() {
       router.push('/tasks');
     } catch (error) {
       console.error('❌ Registration error:', error);
-      setSubmitError(error instanceof Error ? error.message : 'Възникна грешка. Моля опитайте отново.');
+      setSubmitError(
+        error instanceof Error ? error.message : 'Възникна грешка. Моля опитайте отново.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -130,45 +142,51 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen py-24 px-4 bg-old-paper relative overflow-hidden">
+    <div className="bg-old-paper relative min-h-screen overflow-hidden px-4 py-24">
       {/* Vintage Paper Texture */}
-      <div className="absolute inset-0 bg-vintage-paper opacity-30" />
+      <div className="bg-vintage-paper absolute inset-0 opacity-30" />
 
-      <div className="max-w-4xl mx-auto relative">
+      <div className="relative mx-auto max-w-4xl">
         {/* Progress Bar */}
         <div className="mb-8">
           <ProgressBar currentStep={2} totalSteps={4} />
         </div>
 
         {/* Notebook Form Card */}
-        <form onSubmit={handleSubmit} className="bg-white shadow-2xl border-4 border-walnut/40 relative overflow-hidden p-8 md:p-12">
+        <form
+          onSubmit={handleSubmit}
+          className="border-walnut/40 relative overflow-hidden border-4 bg-white p-8 shadow-2xl md:p-12"
+        >
           {/* Notebook Lines */}
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="pointer-events-none absolute inset-0">
             {[...Array(25)].map((_, i) => (
               <div
                 key={i}
-                className="absolute left-0 right-0 border-b border-faded-denim/15"
+                className="border-faded-denim/15 absolute right-0 left-0 border-b"
                 style={{ top: `${(i + 1) * 4}%` }}
               />
             ))}
           </div>
 
           {/* Left Margin Line */}
-          <div className="absolute left-16 top-0 bottom-0 w-px bg-bulgarian-red/30" />
+          <div className="bg-bulgarian-red/30 absolute top-0 bottom-0 left-16 w-px" />
 
           {/* Perforation Holes */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 hidden md:flex flex-col justify-around py-8">
+          <div className="absolute top-0 bottom-0 left-0 hidden w-12 flex-col justify-around py-8 md:flex">
             {[...Array(20)].map((_, i) => (
-              <div key={i} className="w-3 h-3 bg-walnut/20 rounded-full ml-4 border-2 border-walnut/10" />
+              <div
+                key={i}
+                className="bg-walnut/20 border-walnut/10 ml-4 h-3 w-3 rounded-full border-2"
+              />
             ))}
           </div>
 
           {/* Paper Texture */}
-          <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+          <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
 
           {/* Form Header */}
-          <div className="relative mb-8 pb-6 border-b-2 border-dashed border-walnut/30">
-            <h1 className="font-handwritten text-4xl md:text-5xl text-bulgarian-red mb-2">
+          <div className="border-walnut/30 relative mb-8 border-b-2 border-dashed pb-6">
+            <h1 className="font-handwritten text-bulgarian-red mb-2 text-4xl md:text-5xl">
               Формуляр за регистрация
             </h1>
             <p className="font-handwritten text-walnut text-lg">
@@ -178,13 +196,15 @@ export default function RegisterPage() {
 
           {/* Selected Products */}
           {selectedProductsList.length > 0 && (
-            <div className="relative mb-8 bg-bulgarian-red/5 border-l-4 border-bulgarian-red p-4">
-              <p className="font-handwritten text-xs text-walnut/60 uppercase mb-2">Избрани продукти:</p>
+            <div className="bg-bulgarian-red/5 border-bulgarian-red relative mb-8 border-l-4 p-4">
+              <p className="font-handwritten text-walnut/60 mb-2 text-xs uppercase">
+                Избрани продукти:
+              </p>
               <div className="flex flex-wrap gap-2">
                 {selectedProductsList.map((product) => (
                   <span
                     key={product.id}
-                    className="font-handwritten text-sm text-walnut bg-white px-3 py-1 border border-walnut/20"
+                    className="font-handwritten text-walnut border-walnut/20 border bg-white px-3 py-1 text-sm"
                   >
                     {product.nameBg}
                   </span>
@@ -195,7 +215,7 @@ export default function RegisterPage() {
           <div className="relative space-y-8">
             {/* Name */}
             <div>
-              <label htmlFor="name" className="block font-handwritten text-xl text-walnut mb-3">
+              <label htmlFor="name" className="font-handwritten text-walnut mb-3 block text-xl">
                 Име и фамилия:
               </label>
               <input
@@ -203,19 +223,17 @@ export default function RegisterPage() {
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className={`
-                  w-full px-2 py-2 bg-transparent border-0 border-b-2 transition-all font-handwritten text-xl text-walnut
-                  ${errors.name ? 'border-bulgarian-red' : 'border-walnut/30 focus:border-bulgarian-red'}
-                  focus:outline-none placeholder:text-walnut/40
-                `}
+                className={`font-handwritten text-walnut w-full border-0 border-b-2 bg-transparent px-2 py-2 text-xl transition-all ${errors.name ? 'border-bulgarian-red' : 'border-walnut/30 focus:border-bulgarian-red'} placeholder:text-walnut/40 focus:outline-none`}
                 placeholder="__________________________"
               />
-              {errors.name && <p className="mt-2 font-handwritten text-sm text-bulgarian-red">{errors.name}</p>}
+              {errors.name && (
+                <p className="font-handwritten text-bulgarian-red mt-2 text-sm">{errors.name}</p>
+              )}
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block font-handwritten text-xl text-walnut mb-3">
+              <label htmlFor="email" className="font-handwritten text-walnut mb-3 block text-xl">
                 Email адрес:
               </label>
               <input
@@ -223,19 +241,17 @@ export default function RegisterPage() {
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className={`
-                  w-full px-2 py-2 bg-transparent border-0 border-b-2 transition-all font-handwritten text-xl text-walnut
-                  ${errors.email ? 'border-bulgarian-red' : 'border-walnut/30 focus:border-bulgarian-red'}
-                  focus:outline-none placeholder:text-walnut/40
-                `}
+                className={`font-handwritten text-walnut w-full border-0 border-b-2 bg-transparent px-2 py-2 text-xl transition-all ${errors.email ? 'border-bulgarian-red' : 'border-walnut/30 focus:border-bulgarian-red'} placeholder:text-walnut/40 focus:outline-none`}
                 placeholder="__________________________"
               />
-              {errors.email && <p className="mt-2 font-handwritten text-sm text-bulgarian-red">{errors.email}</p>}
+              {errors.email && (
+                <p className="font-handwritten text-bulgarian-red mt-2 text-sm">{errors.email}</p>
+              )}
             </div>
 
             {/* Phone */}
             <div>
-              <label htmlFor="phone" className="block font-handwritten text-xl text-walnut mb-3">
+              <label htmlFor="phone" className="font-handwritten text-walnut mb-3 block text-xl">
                 Телефон:
               </label>
               <input
@@ -243,48 +259,48 @@ export default function RegisterPage() {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className={`
-                  w-full px-2 py-2 bg-transparent border-0 border-b-2 transition-all font-handwritten text-xl text-walnut
-                  ${errors.phone ? 'border-bulgarian-red' : 'border-walnut/30 focus:border-bulgarian-red'}
-                  focus:outline-none placeholder:text-walnut/40
-                `}
+                className={`font-handwritten text-walnut w-full border-0 border-b-2 bg-transparent px-2 py-2 text-xl transition-all ${errors.phone ? 'border-bulgarian-red' : 'border-walnut/30 focus:border-bulgarian-red'} placeholder:text-walnut/40 focus:outline-none`}
                 placeholder="__________________________"
               />
-              {errors.phone && <p className="mt-2 font-handwritten text-sm text-bulgarian-red">{errors.phone}</p>}
-              <p className="mt-2 font-handwritten text-xs text-walnut/60">Формат: 10 цифри (напр. 0888123456)</p>
+              {errors.phone && (
+                <p className="font-handwritten text-bulgarian-red mt-2 text-sm">{errors.phone}</p>
+              )}
+              <p className="font-handwritten text-walnut/60 mt-2 text-xs">
+                Формат: 10 цифри (напр. 0888123456)
+              </p>
             </div>
           </div>
 
           {/* Error Message */}
           {submitError && (
-            <div className="relative mt-8 p-6 bg-bulgarian-red/10 border-l-4 border-bulgarian-red">
-              <p className="font-handwritten text-lg text-bulgarian-red">{submitError}</p>
+            <div className="bg-bulgarian-red/10 border-bulgarian-red relative mt-8 border-l-4 p-6">
+              <p className="font-handwritten text-bulgarian-red text-lg">{submitError}</p>
             </div>
           )}
 
           {/* Buttons */}
-          <div className="relative flex flex-col sm:flex-row gap-4 mt-12 pt-8 border-t-2 border-dashed border-walnut/30">
+          <div className="border-walnut/30 relative mt-12 flex flex-col gap-4 border-t-2 border-dashed pt-8 sm:flex-row">
             <button
               type="button"
               onClick={handleBack}
               disabled={isSubmitting}
-              className="flex-1 px-8 py-4 border-4 border-walnut/40 text-walnut font-handwritten font-bold text-lg hover:bg-walnut/5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="border-walnut/40 text-walnut font-handwritten hover:bg-walnut/5 flex-1 border-4 px-8 py-4 text-lg font-bold transition-all disabled:cursor-not-allowed disabled:opacity-50"
             >
               ← НАЗАД
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 px-8 py-4 bg-bulgarian-red border-4 border-walnut/40 text-white font-handwritten font-bold text-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-xl relative overflow-hidden"
+              className="bg-bulgarian-red border-walnut/40 font-handwritten relative flex-1 overflow-hidden border-4 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
             >
               {/* Vintage texture */}
-              <div className="absolute inset-0 bg-vintage-paper opacity-10 pointer-events-none" />
+              <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-10" />
               <span className="relative">{isSubmitting ? 'ЗАПИСВАНЕ...' : 'ПРОДЪЛЖИ →'}</span>
             </button>
           </div>
 
           {/* Coffee Stain */}
-          <div className="absolute bottom-8 right-8 w-24 h-24 rounded-full bg-walnut/10 blur-lg opacity-30 pointer-events-none" />
+          <div className="bg-walnut/10 pointer-events-none absolute right-8 bottom-8 h-24 w-24 rounded-full opacity-30 blur-lg" />
         </form>
       </div>
     </div>

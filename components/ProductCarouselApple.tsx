@@ -50,38 +50,38 @@ export default function ProductCarouselApple({ products, selectedProducts, onTog
   };
 
   return (
-    <div className="relative py-12 bg-white">
+    <div className="relative bg-white py-12">
       {/* Counter - Apple minimal style */}
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-3 bg-gray-100 px-5 py-2 rounded-full">
+      <div className="mb-8 text-center">
+        <div className="inline-flex items-center gap-3 rounded-full bg-gray-100 px-5 py-2">
           <span className="text-sm font-medium text-gray-700">
             {activeIndex + 1} of {products.length}
           </span>
         </div>
-        <p className="text-xs text-gray-400 mt-2">Apple Minimal Style</p>
+        <p className="mt-2 text-xs text-gray-400">Apple Minimal Style</p>
       </div>
 
       {/* Container */}
-      <div className="relative h-[530px] overflow-hidden flex items-center justify-center">
+      <div className="relative flex h-[530px] items-center justify-center overflow-hidden">
         {/* Navigation - Apple style minimal arrows */}
         <button
           onClick={goPrev}
-          className="absolute left-8 z-20 w-10 h-10 bg-black/5 hover:bg-black/10 backdrop-blur-sm rounded-full flex items-center justify-center transition-all"
+          className="absolute left-8 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/5 backdrop-blur-sm transition-all hover:bg-black/10"
           aria-label="Previous"
         >
-          <ChevronLeft className="w-5 h-5 text-gray-700" />
+          <ChevronLeft className="h-5 w-5 text-gray-700" />
         </button>
 
         <button
           onClick={goNext}
-          className="absolute right-8 z-20 w-10 h-10 bg-black/5 hover:bg-black/10 backdrop-blur-sm rounded-full flex items-center justify-center transition-all"
+          className="absolute right-8 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/5 backdrop-blur-sm transition-all hover:bg-black/10"
           aria-label="Next"
         >
-          <ChevronRight className="w-5 h-5 text-gray-700" />
+          <ChevronRight className="h-5 w-5 text-gray-700" />
         </button>
 
         {/* Cards */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative flex h-full w-full items-center justify-center">
           <AnimatePresence mode="sync">
             {visibleItems.map(({ product, position, index }) => {
               const style = getStyle(position);
@@ -108,9 +108,11 @@ export default function ProductCarouselApple({ products, selectedProducts, onTog
                   }}
                   onClick={() => !isCentered && setActiveIndex(index)}
                 >
-                  <div className={`transition-shadow duration-300 ${
-                    isCentered ? 'shadow-xl' : 'shadow-md'
-                  }`}>
+                  <div
+                    className={`transition-shadow duration-300 ${
+                      isCentered ? 'shadow-xl' : 'shadow-md'
+                    }`}
+                  >
                     <ProductCard
                       product={product}
                       isSelected={selectedProducts.includes(product.id)}
@@ -125,15 +127,13 @@ export default function ProductCarouselApple({ products, selectedProducts, onTog
       </div>
 
       {/* Dots - Apple style */}
-      <div className="flex justify-center gap-1.5 mt-8">
+      <div className="mt-8 flex justify-center gap-1.5">
         {products.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setActiveIndex(idx)}
             className={`h-1.5 rounded-full transition-all duration-300 ${
-              idx === activeIndex
-                ? 'w-6 bg-gray-800'
-                : 'w-1.5 bg-gray-300 hover:bg-gray-400'
+              idx === activeIndex ? 'w-6 bg-gray-800' : 'w-1.5 bg-gray-300 hover:bg-gray-400'
             }`}
             aria-label={`Go to product ${idx + 1}`}
           />
@@ -141,7 +141,7 @@ export default function ProductCarouselApple({ products, selectedProducts, onTog
       </div>
 
       {/* Hint */}
-      <p className="text-center text-xs text-gray-400 mt-6 font-light tracking-wide">
+      <p className="mt-6 text-center text-xs font-light tracking-wide text-gray-400">
         Click side cards to navigate
       </p>
     </div>

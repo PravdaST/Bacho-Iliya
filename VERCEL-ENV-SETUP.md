@@ -3,6 +3,7 @@
 ## ⚠️ ВАЖНО: Всички грешки се дължат на липсващи environment variables!
 
 Грешки които виждаш:
+
 - ❌ 401 Unauthorized на `/api/admin/auth`
 - ❌ 400 Bad Request на images
 - ❌ 405 Method Not Allowed на `/api/giveaway`
@@ -10,17 +11,21 @@
 ## 📋 Стъпки за решаване:
 
 ### 1. Отвори Vercel Dashboard
+
 Отиди на: https://vercel.com/dashboard
 
 ### 2. Избери проекта
+
 Намери: **bacho-iliya** или **Bacho-Iliya**
 
 ### 3. Settings → Environment Variables
+
 Кликни: **Settings** → **Environment Variables**
 
 ### 4. Добави следните променливи:
 
 #### 🔐 Supabase (КРИТИЧНО!)
+
 ```
 NEXT_PUBLIC_SUPABASE_URL
 https://lrtbkvbmciqalpfvxxrh.supabase.co
@@ -34,6 +39,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxydGJrdmJ
 ```
 
 #### 🔒 Admin Authentication (КРИТИЧНО!)
+
 ```
 ADMIN_PASSWORD
 $2b$12$wOxQtEnKe50NEToveodHruIbmH.QdaqZg2h5r61UOyyo71V.zUP8i
@@ -43,23 +49,27 @@ SESSION_SECRET
 ```
 
 ⚠️ **ВАЖНО за ADMIN_PASSWORD:**
+
 - Копирай **ТОЧНО** както е написано
 - НЕ добавяй кавички
 - НЕ променяй $ символите
 
 #### 📧 Email Service
+
 ```
 RESEND_API_KEY
 re_F2aj8cnD_KCEeuBqnfrt99RnYpdQJGgcK
 ```
 
 #### 🌐 Site URL
+
 ```
 NEXT_PUBLIC_SITE_URL
 https://www.bacho-iliya.eu
 ```
 
 ### 5. За всяка променлива:
+
 1. Кликни **"Add New"**
 2. Name: `NEXT_PUBLIC_SUPABASE_URL` (примерно)
 3. Value: копирай стойността
@@ -67,7 +77,9 @@ https://www.bacho-iliya.eu
 5. Кликни **Save**
 
 ### 6. Redeploy проекта
+
 След като добавиш ВСИЧКИ променливи:
+
 1. Deployments → Latest deployment
 2. Кликни **"..."** (три точки)
 3. Избери **"Redeploy"**
@@ -76,6 +88,7 @@ https://www.bacho-iliya.eu
 ## ✅ Проверка след redeploy:
 
 Отвори сайта и провери:
+
 - ✅ `/admin` - трябва да можеш да влезеш
 - ✅ `/register` - регистрацията трябва да работи
 - ✅ Images трябва да се зареждат

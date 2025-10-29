@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@400;700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ============================================
    TAILWIND V4 THEME CONFIGURATION
@@ -10,33 +10,33 @@
      ============================================ */
 
   /* PRIMARY PALETTE */
-  --color-dark-walnut: #3A2A1A;        /* Main text & headers */
-  --color-cream: #F5E6D3;              /* Backgrounds & light text */
-  --color-heritage-red: #A42E2E;       /* CTA & accents */
-  --color-accent-gold: #B8860B;        /* Highlights & special elements */
+  --color-dark-walnut: #3a2a1a; /* Main text & headers */
+  --color-cream: #f5e6d3; /* Backgrounds & light text */
+  --color-heritage-red: #a42e2e; /* CTA & accents */
+  --color-accent-gold: #b8860b; /* Highlights & special elements */
 
   /* BACKWARD COMPATIBILITY - Map old colors to new palette */
-  --color-bulgarian-red: #A42E2E;      /* → heritage-red */
-  --color-walnut: #3A2A1A;             /* → dark-walnut */
-  --color-old-paper: #F5E6D3;          /* → cream */
-  --color-sunflower: #B8860B;          /* → accent-gold */
-  --color-white: #FFFFFF;              /* Pure white */
+  --color-bulgarian-red: #a42e2e; /* → heritage-red */
+  --color-walnut: #3a2a1a; /* → dark-walnut */
+  --color-old-paper: #f5e6d3; /* → cream */
+  --color-sunflower: #b8860b; /* → accent-gold */
+  --color-white: #ffffff; /* Pure white */
 
   /* DEPRECATED - Remove after testing */
-  --color-cream-white: #F5E6D3;
-  --color-terracotta: #CC6633;
-  --color-bulgarian-blue: #0066CC;
-  --color-faded-denim: #4682B4;
-  --color-clay: #8B6F47;
-  --color-ochre: #CC7722;
-  --color-olive-green: #6B8E23;
-  --color-wheat: #F5DEB3;
-  --color-dark-wood: #5D4E37;
-  --color-light-wood: #D2B48C;
-  --color-warm-brown: #8B4513;
-  --color-vintage-cream: #FFF8E7;
-  --color-vintage-yellow: #F4E4C1;
-  --color-vintage-brown: #8B7355;
+  --color-cream-white: #f5e6d3;
+  --color-terracotta: #cc6633;
+  --color-bulgarian-blue: #0066cc;
+  --color-faded-denim: #4682b4;
+  --color-clay: #8b6f47;
+  --color-ochre: #cc7722;
+  --color-olive-green: #6b8e23;
+  --color-wheat: #f5deb3;
+  --color-dark-wood: #5d4e37;
+  --color-light-wood: #d2b48c;
+  --color-warm-brown: #8b4513;
+  --color-vintage-cream: #fff8e7;
+  --color-vintage-yellow: #f4e4c1;
+  --color-vintage-brown: #8b7355;
 
   /* Primary color scale */
   --color-primary-50: #fff9e6;
@@ -55,15 +55,15 @@
      ============================================ */
 
   /* PRIMARY FONTS */
-  --font-family-heading: 'Playfair Display', Georgia, serif;  /* Elegant serif for headings */
-  --font-family-body: 'Lato', system-ui, -apple-system, sans-serif;  /* Clean sans-serif for body */
+  --font-family-heading: 'Playfair Display', Georgia, serif; /* Elegant serif for headings */
+  --font-family-body: 'Lato', system-ui, -apple-system, sans-serif; /* Clean sans-serif for body */
 
   /* BACKWARD COMPATIBILITY - Map old fonts to new system */
-  --font-family-handwritten: 'Playfair Display', Georgia, serif;  /* → heading */
-  --font-family-village: 'Playfair Display', Georgia, serif;      /* → heading */
-  --font-family-serif: 'Lato', system-ui, sans-serif;             /* → body */
-  --font-family-sans: 'Lato', system-ui, sans-serif;              /* → body */
-  --font-family-playfair: 'Playfair Display', Georgia, serif;    /* Native support */
+  --font-family-handwritten: 'Playfair Display', Georgia, serif; /* → heading */
+  --font-family-village: 'Playfair Display', Georgia, serif; /* → heading */
+  --font-family-serif: 'Lato', system-ui, sans-serif; /* → body */
+  --font-family-sans: 'Lato', system-ui, sans-serif; /* → body */
+  --font-family-playfair: 'Playfair Display', Georgia, serif; /* Native support */
 
   /* DEPRECATED */
   --font-family-mono: 'Courier New', monospace;
@@ -84,18 +84,18 @@
 }
 
 body {
-  color: #3A2A1A;  /* dark-walnut */
-  background: #F5E6D3;  /* cream */
-  font-family: var(--font-family-body);  /* Lato */
+  color: #3a2a1a; /* dark-walnut */
+  background: #f5e6d3; /* cream */
+  font-family: var(--font-family-body); /* Lato */
 }
 
 /* Readable paragraph text - Heritage style */
 p {
   font-family: var(--font-family-body);
-  font-size: 18px;  /* Mobile-first readability */
+  font-size: 18px; /* Mobile-first readability */
   font-weight: 400;
-  line-height: 1.7;  /* Balanced spacing */
-  color: #3A2A1A;  /* dark-walnut */
+  line-height: 1.7; /* Balanced spacing */
+  color: #3a2a1a; /* dark-walnut */
 }
 
 @media (min-width: 640px) {
@@ -106,23 +106,28 @@ p {
 
 @media (min-width: 1024px) {
   p {
-    font-size: 20px;  /* Desktop optimal */
+    font-size: 20px; /* Desktop optimal */
   }
 }
 
 /* Restore Tailwind text-xs to default */
 .text-xs {
-  font-size: 0.75rem !important;  /* 12px - Tailwind default */
+  font-size: 0.75rem !important; /* 12px - Tailwind default */
   line-height: 1rem !important;
 }
 
 /* Heritage headings - Playfair Display */
 .font-handwritten,
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-heading) !important;  /* Playfair Display */
-  line-height: 1.3;  /* Elegant serif spacing */
-  font-weight: 700;  /* Bold for impact */
-  color: #3A2A1A;  /* dark-walnut */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading) !important; /* Playfair Display */
+  line-height: 1.3; /* Elegant serif spacing */
+  font-weight: 700; /* Bold for impact */
+  color: #3a2a1a; /* dark-walnut */
 }
 
 /* CRITICAL FIX: Force white text on red backgrounds */
@@ -132,13 +137,13 @@ h1, h2, h3, h4, h5, h6 {
 .bg-walnut .font-handwritten,
 .bg-walnut.font-handwritten,
 .bg-walnut * {
-  color: #FFFFFF !important;
+  color: #ffffff !important;
 }
 
 /* Ensure text-white always works regardless of other classes */
 .text-white,
 .text-white * {
-  color: #FFFFFF !important;
+  color: #ffffff !important;
 }
 
 /* ============================================
@@ -153,12 +158,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8B4513;
+  background: #8b4513;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #A0522D;
+  background: #a0522d;
 }
 
 /* ============================================
@@ -186,8 +191,21 @@ html {
   }
 
   .bg-gingham {
-    background: repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(200, 180, 160, 0.1) 10px, rgba(200, 180, 160, 0.1) 20px),
-                repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(200, 180, 160, 0.1) 10px, rgba(200, 180, 160, 0.1) 20px);
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 10px,
+        rgba(200, 180, 160, 0.1) 10px,
+        rgba(200, 180, 160, 0.1) 20px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 10px,
+        rgba(200, 180, 160, 0.1) 10px,
+        rgba(200, 180, 160, 0.1) 20px
+      );
   }
 
   /* HERITAGE STYLE - Removed Bulgarian patterns for cleaner aesthetic */
@@ -211,50 +229,50 @@ html {
 
   .heading-large {
     font-family: var(--font-family-village);
-    font-size: 48px;  /* Увеличено от 40px (+20%) */
+    font-size: 48px; /* Увеличено от 40px (+20%) */
     font-weight: 700;
     line-height: 1.2;
   }
 
   .heading-medium {
     font-family: var(--font-family-serif);
-    font-size: 24px;  /* Увеличено от 20px (+20%) */
+    font-size: 24px; /* Увеличено от 20px (+20%) */
     font-weight: 700;
     line-height: 1.3;
   }
 
   .body-text {
     font-family: var(--font-family-serif);
-    font-size: 18px;  /* Увеличено от 16px (+12.5%) */
-    font-weight: 600;  /* SemiBold за Caveat */
+    font-size: 18px; /* Увеличено от 16px (+12.5%) */
+    font-weight: 600; /* SemiBold за Caveat */
     line-height: 1.6;
   }
 
   /* Backward compatibility */
   .heading-display {
     font-family: var(--font-family-village);
-    font-size: 48px;  /* Увеличено от 40px (+20%) */
+    font-size: 48px; /* Увеличено от 40px (+20%) */
     font-weight: 700;
     line-height: 1.2;
   }
 
   .heading-h1 {
     font-family: var(--font-family-village);
-    font-size: 48px;  /* Увеличено от 40px (+20%) */
+    font-size: 48px; /* Увеличено от 40px (+20%) */
     font-weight: 700;
     line-height: 1.2;
   }
 
   .heading-h2 {
     font-family: var(--font-family-serif);
-    font-size: 24px;  /* Увеличено от 20px (+20%) */
+    font-size: 24px; /* Увеличено от 20px (+20%) */
     font-weight: 700;
     line-height: 1.3;
   }
 
   .heading-h3 {
     font-family: var(--font-family-serif);
-    font-size: 24px;  /* Увеличено от 20px (+20%) */
+    font-size: 24px; /* Увеличено от 20px (+20%) */
     font-weight: 700;
     line-height: 1.3;
   }
@@ -262,57 +280,57 @@ html {
   /* Body Text - Enhanced for better readability */
   .body-large {
     font-family: var(--font-family-serif);
-    font-size: 24px;  /* Увеличено от 20px (+20%) */
-    font-weight: 600;  /* SemiBold за Caveat */
+    font-size: 24px; /* Увеличено от 20px (+20%) */
+    font-weight: 600; /* SemiBold за Caveat */
     line-height: 1.7;
   }
 
   @media (min-width: 768px) {
     .body-large {
-      font-size: 26px;  /* Увеличено от 22px (+18%) */
+      font-size: 26px; /* Увеличено от 22px (+18%) */
       line-height: 1.8;
     }
   }
 
   .body-base {
     font-family: var(--font-family-serif);
-    font-size: 22px;  /* Увеличено от 18px (+22%) */
-    font-weight: 600;  /* SemiBold за Caveat */
+    font-size: 22px; /* Увеличено от 18px (+22%) */
+    font-weight: 600; /* SemiBold за Caveat */
     line-height: 1.7;
   }
 
   @media (min-width: 768px) {
     .body-base {
-      font-size: 24px;  /* Увеличено от 20px (+20%) */
+      font-size: 24px; /* Увеличено от 20px (+20%) */
       line-height: 1.8;
     }
   }
 
   .body-small {
     font-family: var(--font-family-sans);
-    font-size: 18px;  /* Увеличено от 16px (+12.5%) */
-    font-weight: 600;  /* SemiBold за Caveat */
+    font-size: 18px; /* Увеличено от 16px (+12.5%) */
+    font-weight: 600; /* SemiBold за Caveat */
     line-height: 1.6;
   }
 
   /* Special Typography */
   .text-handwritten {
     font-family: var(--font-family-handwritten);
-    font-size: 32px;  /* Увеличено от 28px (+14%) */
+    font-size: 32px; /* Увеличено от 28px (+14%) */
     font-weight: 600;
     line-height: 1.3;
   }
 
   .text-village {
     font-family: var(--font-family-village);
-    font-size: 38px;  /* Увеличено от 32px (+18%) */
+    font-size: 38px; /* Увеличено от 32px (+18%) */
     font-weight: 700;
     line-height: 1.2;
   }
 
   .text-mono {
     font-family: var(--font-family-mono);
-    font-size: 18px;  /* Увеличено от 16px (+12.5%) */
+    font-size: 18px; /* Увеличено от 16px (+12.5%) */
     font-weight: 400;
   }
 
@@ -335,19 +353,19 @@ html {
 
   /* Container Widths */
   .container-narrow {
-    @apply max-w-3xl mx-auto px-4;
+    @apply mx-auto max-w-3xl px-4;
   }
 
   .container-base {
-    @apply max-w-5xl mx-auto px-4;
+    @apply mx-auto max-w-5xl px-4;
   }
 
   .container-wide {
-    @apply max-w-6xl mx-auto px-4;
+    @apply mx-auto max-w-6xl px-4;
   }
 
   .container-full {
-    @apply max-w-7xl mx-auto px-4;
+    @apply mx-auto max-w-7xl px-4;
   }
 
   /* Interactive Elements */
@@ -365,50 +383,50 @@ html {
 
   /* Touch Targets - Minimum 44x44px for accessibility */
   .touch-target {
-    @apply min-h-[44px] min-w-[44px] inline-flex items-center justify-center;
+    @apply inline-flex min-h-[44px] min-w-[44px] items-center justify-center;
   }
 
   /* Card Styles */
   .card-base {
-    @apply rounded-xl p-6 shadow-md border-2 transition-all;
+    @apply rounded-xl border-2 p-6 shadow-md transition-all;
   }
 
   .card-vintage {
-    @apply rounded-xl p-6 border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 shadow-md hover:shadow-xl transition-all;
+    @apply rounded-xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-6 shadow-md transition-all hover:shadow-xl;
   }
 
   /* Button System - Heritage Style */
   .btn-heritage {
-    background: #3A2A1A;  /* dark-walnut */
-    color: #F5E6D3;  /* cream */
+    background: #3a2a1a; /* dark-walnut */
+    color: #f5e6d3; /* cream */
     padding: 1.5rem 3rem;
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 1.125rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    border: 2px solid #3A2A1A;
+    border: 2px solid #3a2a1a;
     transition: all 0.3s ease;
     display: inline-block;
   }
 
   .btn-heritage:hover {
     background: transparent;
-    color: #3A2A1A;
+    color: #3a2a1a;
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(58, 42, 26, 0.2);
   }
 
   /* Legacy button styles - mapped to heritage */
   .btn-primary {
-    @apply px-8 py-4 bg-heritage-red text-cream font-bold text-lg hover:shadow-lg transition-all hover:scale-105;
+    @apply bg-heritage-red text-cream px-8 py-4 text-lg font-bold transition-all hover:scale-105 hover:shadow-lg;
   }
 
   .btn-secondary {
-    @apply px-8 py-4 border-2 border-dark-walnut text-dark-walnut font-bold text-lg hover:bg-cream transition-all;
+    @apply border-dark-walnut text-dark-walnut hover:bg-cream border-2 px-8 py-4 text-lg font-bold transition-all;
   }
 
   .btn-traditional {
-    @apply px-8 py-4 bg-heritage-red text-cream font-bold text-lg hover:bg-dark-walnut transition-all hover:scale-105 shadow-lg;
+    @apply bg-heritage-red text-cream hover:bg-dark-walnut px-8 py-4 text-lg font-bold shadow-lg transition-all hover:scale-105;
   }
 }

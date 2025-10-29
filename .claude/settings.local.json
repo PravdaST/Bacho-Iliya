@@ -29,7 +29,10 @@
       "mcp__supabase__execute_sql",
       "Bash(find:*)",
       "mcp__supabase__apply_migration",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(dir:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run format:*)"
     ],
     "deny": [],
     "ask": []

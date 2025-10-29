@@ -21,7 +21,8 @@ import type { Product } from './products-data';
 
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bacho-iliya.eu';
 export const SITE_NAME = 'Bacho Ilia / Бачо Илия';
-export const SITE_DESCRIPTION = 'Автентични български млечни продукти с богата история и традиция. Сирена, кисели млека и млечни продукти от висококачествено мляко.';
+export const SITE_DESCRIPTION =
+  'Автентични български млечни продукти с богата история и традиция. Сирена, кисели млека и млечни продукти от висококачествено мляко.';
 export const DEFAULT_OG_IMAGE = `${BASE_URL}/og-images/default.jpg`;
 export const TWITTER_HANDLE = '@bachoilia';
 export const FACEBOOK_APP_ID = process.env.NEXT_PUBLIC_FACEBOOK_APP_ID;
@@ -35,7 +36,7 @@ interface PageMetadataProps {
   description: string;
   path: string;
   ogImage?: string;
-  ogType?: 'website' | 'article';
+  ogType?: 'website' | 'article' | 'product';
   keywords?: string[];
   noIndex?: boolean;
 }
@@ -68,6 +69,10 @@ export function generateMetadata({
   const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
   const url = `${BASE_URL}${path}`;
 
+  // Handle 'product' type by using 'website' for Next.js but override with custom meta tag
+  const nextjsCompatibleType = ogType === 'product' ? 'website' : ogType;
+  const needsProductOverride = ogType === 'product';
+
   return {
     title: fullTitle,
     description,
@@ -98,7 +103,7 @@ export function generateMetadata({
 
     // Open Graph
     openGraph: {
-      type: ogType,
+      type: nextjsCompatibleType,
       url,
       title: fullTitle,
       description,
@@ -124,12 +129,12 @@ export function generateMetadata({
       images: [ogImage],
     },
 
-    // Facebook
-    ...(FACEBOOK_APP_ID && {
-      other: {
-        'fb:app_id': FACEBOOK_APP_ID,
-      },
-    }),
+    // Facebook & Custom Open Graph
+    other: {
+      ...(FACEBOOK_APP_ID && { 'fb:app_id': FACEBOOK_APP_ID }),
+      // Override og:type for products (e-commerce Open Graph)
+      ...(needsProductOverride && { 'og:type': 'product' }),
+    },
   };
 }
 
@@ -139,8 +144,9 @@ export function generateMetadata({
 
 export function generateHomeMetadata(): Metadata {
   return generateMetadata({
-    title: 'Бачо Илия | Българско Бяло Сирене без Консерванти | Кашкавал & Кисело Мляко',
-    description: 'Автентични български млечни продукти Бачо Илия - бяло сирене, кашкавал, кисело мляко от щастливи крави. Без консерванти, по бабини рецепти. Открий вкуса!',
+    title: 'Бачо Илия | Бяло Сирене, Кашкавал, Кисело Мляко',
+    description:
+      'Автентични млечни продукти от щастливи крави. Без консерванти, по бабини рецепти. Открий вкуса от детството!',
     path: '/',
     ogImage: `${BASE_URL}/og-images/home.jpg`,
     keywords: [
@@ -164,8 +170,9 @@ export function generateHomeMetadata(): Metadata {
 
 export function generateProductsPageMetadata(): Metadata {
   return generateMetadata({
-    title: 'Бяло Сирене, Кашкавал, Кисело Мляко | Бачо Илия | Без Консерванти',
-    description: 'Продукти Бачо Илия: Българско бяло сирене, кашкавал, кисело мляко 2-4.5%, айран. Традиционни рецепти без консерванти. Истинският вкус от детството.',
+    title: 'Продукти Бачо Илия | Сирене, Кашкавал, Кисело Мляко',
+    description:
+      'Българско бяло сирене, кашкавал, кисело мляко. Традиционни рецепти без консерванти. Вкусът от детството!',
     path: '/products',
     ogImage: `${BASE_URL}/og-images/products.jpg`,
     ogType: 'website',
@@ -200,32 +207,34 @@ export function generateProductMetadata({
   // Generate product-specific OG image URL
   const ogImageUrl = `${baseUrl}/og-images/product-${product.slug}.jpg`;
 
-  const categoryName = {
-    cheese: 'Сирена',
-    yogurt: 'Кисели млека',
-    drinks: 'Напитки',
-    other: 'Млечни продукти',
-  }[product.category] || 'Млечни продукти';
+  const categoryName =
+    {
+      cheese: 'Сирена',
+      yogurt: 'Кисели млека',
+      drinks: 'Напитки',
+      other: 'Млечни продукти',
+    }[product.category] || 'Млечни продукти';
 
   // Extract price range (filter out sizes without prices)
   const pricesWithValues = product.sizes
     .filter((s) => s.price) // Only sizes with prices
     .map((s) => parseFloat(s.price!.replace(/[^\d.,]/g, '')));
 
-  const priceRange = pricesWithValues.length > 0
-    ? (() => {
-        const minPrice = Math.min(...pricesWithValues).toFixed(2);
-        const maxPrice = Math.max(...pricesWithValues).toFixed(2);
-        return minPrice === maxPrice ? `${minPrice} лв` : `${minPrice}-${maxPrice} лв`;
-      })()
-    : 'Цена при запитване'; // Fallback if no prices
+  const priceRange =
+    pricesWithValues.length > 0
+      ? (() => {
+          const minPrice = Math.min(...pricesWithValues).toFixed(2);
+          const maxPrice = Math.max(...pricesWithValues).toFixed(2);
+          return minPrice === maxPrice ? `${minPrice} лв` : `${minPrice}-${maxPrice} лв`;
+        })()
+      : 'Цена при запитване'; // Fallback if no prices
 
   return generateMetadata({
     title: `${product.name} - ${categoryName}`,
     description: `${product.shortDescription} Цена: ${priceRange}. ${product.fullDescription?.substring(0, 100) || ''}`,
     path: productUrl,
     ogImage: ogImageUrl,
-    ogType: 'website', // Changed from 'product' to 'website' (valid Next.js type)
+    ogType: 'product', // Product type for e-commerce Open Graph
     keywords: [
       product.name.toLowerCase(),
       categoryName.toLowerCase(),
@@ -268,8 +277,9 @@ export function generateGiveawayMetadata({
 
 export function generateRecipesPageMetadata(): Metadata {
   return generateMetadata({
-    title: 'Баница, Таратор, Шопска Салата | Традиционни Рецепти | Бачо Илия',
-    description: 'Традиционни български рецепти с продукти Бачо Илия: Баница, таратор, шопска салата, снежанка. Автентични бабини рецепти със сирене и кисело мляко.',
+    title: 'Традиционни Рецепти | Баница, Таратор, Шопска | Бачо Илия',
+    description:
+      'Бабини рецепти с продукти Бачо Илия: баница, таратор, шопска салата, снежанка със сирене и кисело мляко.',
     path: '/recipes',
     ogImage: `${BASE_URL}/og-images/recipes.jpg`,
     keywords: [
@@ -294,7 +304,8 @@ export function generateRecipesPageMetadata(): Metadata {
 export function generateWhereToBuyMetadata(): Metadata {
   return generateMetadata({
     title: 'Магазини Бачо Илия в София, Пловдив, Варна | Къде Да Купиш',
-    description: 'Къде да купиш Бачо Илия: Магазини в София, Пловдив, Варна и цяла България. Открий най-близкия магазин с автентични млечни продукти без консерванти.',
+    description:
+      'Къде да купиш Бачо Илия: Магазини в София, Пловдив, Варна и цяла България. Открий най-близкия магазин с автентични млечни продукти без консерванти.',
     path: '/where-to-buy',
     ogImage: `${BASE_URL}/og-images/stores.jpg`,
     keywords: [
@@ -315,8 +326,9 @@ export function generateWhereToBuyMetadata(): Metadata {
 
 export function generateAboutMetadata(): Metadata {
   return generateMetadata({
-    title: 'История Бачо Илия | 30+ Години Традиция | Автентични Млечни Продукти',
-    description: 'История на Бачо Илия: 30+ години традиция в производството на автентични български млечни продукти. Бабини рецепти без консерванти. Вкусът от 1950г.',
+    title: 'За Нас | Бачо Илия - 30+ Години Традиция',
+    description:
+      '30+ години традиция в производството на автентични млечни продукти. Бабини рецепти без консерванти от 1950г.',
     path: '/about',
     ogImage: `${BASE_URL}/og-images/about.jpg`,
     keywords: [
@@ -338,7 +350,8 @@ export function generateAboutMetadata(): Metadata {
 export function generateContactsMetadata(): Metadata {
   return generateMetadata({
     title: 'Контакти Бачо Илия | Бяла Черква | Телефон, Имейл, Адрес',
-    description: 'Свържи се с Бачо Илия: Производство в Бяла Черква. Телефон, имейл, работно време. Отговаряме на всички въпроси за продуктите и традиционните рецепти.',
+    description:
+      'Свържи се с Бачо Илия: Производство в Бяла Черква. Телефон, имейл, работно време. Отговаряме на всички въпроси за продуктите и традиционните рецепти.',
     path: '/contacts',
     ogImage: `${BASE_URL}/og-images/contacts.jpg`,
     keywords: [
@@ -360,7 +373,8 @@ export function generateContactsMetadata(): Metadata {
 export function generateBlogMetadata(): Metadata {
   return generateMetadata({
     title: 'Блог - Истории от Българското Село',
-    description: 'Традиции, рецепти и тайни от кухнята на Бачо Илия. Открий истории за българските млечни продукти, бабини рецепти и селския живот.',
+    description:
+      'Традиции, рецепти и тайни от кухнята на Бачо Илия. Открий истории за българските млечни продукти, бабини рецепти и селския живот.',
     path: '/blog',
     ogImage: `${BASE_URL}/og-images/blog.jpg`,
     keywords: [
@@ -380,7 +394,8 @@ export function generateBlogMetadata(): Metadata {
 export function generatePrivacyMetadata(): Metadata {
   return generateMetadata({
     title: 'Политика за Поверителност',
-    description: 'Политика за поверителност на Бачо Илия. Научи как защитаваме твоите лични данни и как ги използваме.',
+    description:
+      'Политика за поверителност на Бачо Илия. Научи как защитаваме твоите лични данни и как ги използваме.',
     path: '/privacy',
     noIndex: true, // Legal pages usually not indexed
   });
@@ -393,7 +408,8 @@ export function generatePrivacyMetadata(): Metadata {
 export function generateTermsMetadata(): Metadata {
   return generateMetadata({
     title: 'Общи Условия',
-    description: 'Общи условия за ползване на уебсайта на Бачо Илия и участие в промоции и раздавания.',
+    description:
+      'Общи условия за ползване на уебсайта на Бачо Илия и участие в промоции и раздавания.',
     path: '/terms',
     noIndex: true,
   });
@@ -406,7 +422,8 @@ export function generateTermsMetadata(): Metadata {
 export function generateCookiesMetadata(): Metadata {
   return generateMetadata({
     title: 'Политика за Бисквитки',
-    description: 'Информация за използваните бисквитки (cookies) на уебсайта на Бачо Илия и как да ги управляваш.',
+    description:
+      'Информация за използваните бисквитки (cookies) на уебсайта на Бачо Илия и как да ги управляваш.',
     path: '/cookies',
     noIndex: true,
   });

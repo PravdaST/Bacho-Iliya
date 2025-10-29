@@ -43,13 +43,16 @@ export function verifyAdminAuth(request: NextRequest): boolean {
  * Get unauthorized response for API endpoints
  */
 export function unauthorizedResponse() {
-  return new NextResponse(JSON.stringify({
-    success: false,
-    error: 'Неоторизиран достъп. Моля, влезте отново.',
-  }), {
-    status: 401,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  return new NextResponse(
+    JSON.stringify({
+      success: false,
+      error: 'Неоторизиран достъп. Моля, влезте отново.',
+    }),
+    {
+      status: 401,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 }

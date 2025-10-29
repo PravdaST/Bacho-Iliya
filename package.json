@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "send-emails": "tsx --env-file=.env.local scripts/send-welcome-emails.ts",
     "hash-password": "tsx scripts/hash-password.ts"
   },
@@ -54,6 +56,8 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.0",
     "postcss": "^8",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.19.2",
     "typescript": "^5"

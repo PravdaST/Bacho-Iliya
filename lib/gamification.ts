@@ -168,10 +168,7 @@ export function isValidReferralCode(code: string): boolean {
  * @param previousBadges - Previously earned badges (optional)
  * @returns Array of Badge objects with earned status
  */
-export function calculateEarnedBadges(
-  referralCount: number,
-  previousBadges?: Badge[]
-): Badge[] {
+export function calculateEarnedBadges(referralCount: number, previousBadges?: Badge[]): Badge[] {
   return BADGE_TIERS.map((tier) => {
     const earned = referralCount >= tier.requiredReferrals;
 
@@ -196,9 +193,7 @@ export function calculateEarnedBadges(
 export function getNextBadge(
   currentReferralCount: number
 ): (Badge & { progress: number; remaining: number }) | undefined {
-  const nextTier = BADGE_TIERS.find(
-    (tier) => tier.requiredReferrals > currentReferralCount
-  );
+  const nextTier = BADGE_TIERS.find((tier) => tier.requiredReferrals > currentReferralCount);
 
   if (!nextTier) return undefined;
 
@@ -252,9 +247,7 @@ export function formatLeaderboardEmail(email: string): string {
 
   // Mask local part (show first and last char)
   const maskedLocal =
-    localPart.length > 2
-      ? `${localPart[0]}***${localPart[localPart.length - 1]}`
-      : '***';
+    localPart.length > 2 ? `${localPart[0]}***${localPart[localPart.length - 1]}` : '***';
 
   // Mask domain (show first char and TLD)
   const domainParts = domain.split('.');
@@ -307,14 +300,11 @@ export function calculateBonusEntries(referralCount: number): number {
  * @param referralCount - New referral count
  * @returns Milestone message object, or undefined
  */
-export function getMilestoneMessage(
-  referralCount: number
-): MilestoneMessage | undefined {
+export function getMilestoneMessage(referralCount: number): MilestoneMessage | undefined {
   const milestones: Record<number, MilestoneMessage> = {
     1: {
       title: 'Първи Успех! 🎉',
-      message:
-        'Поздравления! Поканихте първия си приятел. Получихте +3 допълнителни участия!',
+      message: 'Поздравления! Поканихте първия си приятел. Получихте +3 допълнителни участия!',
       emoji: '🎊',
       celebrationType: 'confetti',
     },
@@ -326,29 +316,25 @@ export function getMilestoneMessage(
     },
     5: {
       title: 'Сребърен Влиятел! ✨',
-      message:
-        'Невероятно! 5 покани означават сребърна значка и 15 допълнителни участия!',
+      message: 'Невероятно! 5 покани означават сребърна значка и 15 допълнителни участия!',
       emoji: '🥈',
       celebrationType: 'fireworks',
     },
     10: {
       title: 'Шампион! 🏆',
-      message:
-        'Достигнахте 10 покани! Вие сте истински шампион с 30 допълнителни участия!',
+      message: 'Достигнахте 10 покани! Вие сте истински шампион с 30 допълнителни участия!',
       emoji: '🏆',
       celebrationType: 'fireworks',
     },
     20: {
       title: 'Златна Легенда! 👑',
-      message:
-        'Невероятни 20 покани! Вие сте легенда със златна значка и 60 допълнителни участия!',
+      message: 'Невероятни 20 покани! Вие сте легенда със златна значка и 60 допълнителни участия!',
       emoji: '🥇',
       celebrationType: 'fireworks',
     },
     50: {
       title: 'Платинен Майстор! 💎',
-      message:
-        'НЕВЕРОЯТНО! 50+ покани! Вие сте абсолютен майстор със 150+ допълнителни участия!',
+      message: 'НЕВЕРОЯТНО! 50+ покани! Вие сте абсолютен майстор със 150+ допълнителни участия!',
       emoji: '💎',
       celebrationType: 'fireworks',
     },
@@ -439,10 +425,7 @@ export function incrementShareCount(): number {
   if (typeof window === 'undefined') return 0;
 
   try {
-    const current = parseInt(
-      localStorage.getItem(STORAGE_KEYS.SHARED_COUNT) || '0',
-      10
-    );
+    const current = parseInt(localStorage.getItem(STORAGE_KEYS.SHARED_COUNT) || '0', 10);
     const newCount = current + 1;
     localStorage.setItem(STORAGE_KEYS.SHARED_COUNT, newCount.toString());
     return newCount;

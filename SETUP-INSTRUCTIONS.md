@@ -3,6 +3,7 @@
 ## ✅ WHAT'S NEW
 
 This version includes:
+
 - ✅ **Supabase Database** integration for storing entries
 - ✅ **Resend Email** service for automated notifications
 - ✅ **Quiz Section** for user engagement
@@ -32,14 +33,17 @@ npm install
 The `.env.local` file is already created with placeholders. You need to fill in:
 
 **✅ Supabase** (already configured):
+
 - `NEXT_PUBLIC_SUPABASE_URL` - ✅ Done
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` - ✅ Done
 - `SUPABASE_SERVICE_ROLE_KEY` - ✅ Done
 
 **⚠️ Database Password** (needs update):
+
 - `DATABASE_URL` - Replace `[YOUR-DATABASE-PASSWORD]` with your actual password
 
 **How to get database password:**
+
 1. Go to https://supabase.com/dashboard
 2. Select project: `lrtbkvbmciqalpfvxxrh`
 3. Click **Settings** > **Database**
@@ -47,6 +51,7 @@ The `.env.local` file is already created with placeholders. You need to fill in:
 5. Copy the password from there
 
 **✅ Resend API Key** (already configured):
+
 - `RESEND_API_KEY` - ✅ Done
 
 ---
@@ -64,6 +69,7 @@ The `.env.local` file is already created with placeholders. You need to fill in:
 9. You should see: "Database tables created successfully! ✅"
 
 **Tables created:**
+
 - `giveaway_entries` - Stores all giveaway registrations
 - `quiz_responses` - Stores quiz submissions
 
@@ -108,6 +114,7 @@ The site will be available at: **http://localhost:3001**
 ## 📊 DATABASE SCHEMA
 
 ### `giveaway_entries` table:
+
 - `id` - Serial primary key
 - `entry_id` - Unique entry ID (e.g., "BI-xxx-xxx")
 - `name` - User's name
@@ -122,6 +129,7 @@ The site will be available at: **http://localhost:3001**
 - `submitted_at` - Timestamp
 
 ### `quiz_responses` table:
+
 - `id` - Serial primary key
 - `city` - Selected city
 - `weapon` - Selected "weapon" (product)
@@ -163,6 +171,7 @@ Two email templates are configured:
 - [ ] No console errors
 
 ### Test User Flow:
+
 1. Go to homepage
 2. Select 2-3 products
 3. Click "Participate"
@@ -176,17 +185,20 @@ Two email templates are configured:
 ## 🐛 TROUBLESHOOTING
 
 ### Database not connecting?
+
 - Check `DATABASE_URL` in `.env.local`
 - Verify password is correct
 - Check Supabase project is active
 
 ### Emails not sending?
+
 - Check `RESEND_API_KEY` in `.env.local`
 - Verify Resend account is active
 - Check Resend dashboard for logs
 - Free tier: 100 emails/day limit
 
 ### Build errors?
+
 ```bash
 rm -rf .next node_modules
 npm install
@@ -236,6 +248,7 @@ backups/bacho-ilia-giveaway-backup-2025-10-07-21-13-02/
 4. Deploy!
 
 ### Environment Variables for Production:
+
 - Update `DATABASE_URL` with production database
 - Update `NEXT_PUBLIC_SITE_URL` to your domain
 - Keep same Supabase credentials
@@ -246,6 +259,7 @@ backups/bacho-ilia-giveaway-backup-2025-10-07-21-13-02/
 ## 📞 SUPPORT
 
 If you need help:
+
 1. Check Supabase logs: https://supabase.com/dashboard > Logs
 2. Check Resend logs: https://resend.com/emails
 3. Check browser console for errors

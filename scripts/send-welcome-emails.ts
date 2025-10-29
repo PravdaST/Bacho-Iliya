@@ -22,13 +22,13 @@ const DELAY_BETWEEN_EMAILS = 1000; // 1 second
 
 // Helper to get product name by ID
 function getProductNameById(productId: string): string {
-  const product = products.find(p => p.id === productId);
+  const product = products.find((p) => p.id === productId);
   return product ? product.nameBg : productId;
 }
 
 // Helper to delay execution
 function delay(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function sendWelcomeEmailsToAll() {
@@ -82,7 +82,7 @@ async function sendWelcomeEmailsToAll() {
         }
 
         // Convert product IDs to names
-        const productNames = selectedProductIds.map(id => getProductNameById(id));
+        const productNames = selectedProductIds.map((id) => getProductNameById(id));
 
         // Send email
         const result = await sendGiveawayWelcomeEmail({
@@ -104,7 +104,6 @@ async function sendWelcomeEmailsToAll() {
         if (i < entries.length - 1) {
           await delay(DELAY_BETWEEN_EMAILS);
         }
-
       } catch (error) {
         console.error(`  ❌ Error sending email to ${entry.email}:`, error);
         errorCount++;
@@ -119,7 +118,6 @@ async function sendWelcomeEmailsToAll() {
     console.log(`✅ Successfully sent: ${successCount}`);
     console.log(`❌ Failed: ${errorCount}`);
     console.log('='.repeat(50) + '\n');
-
   } catch (error) {
     console.error('❌ Unexpected error:', error);
     process.exit(1);

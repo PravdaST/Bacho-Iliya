@@ -51,29 +51,30 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   ];
 
   return (
-    <div className="bg-bulgarian-red rounded-2xl p-3 sm:p-4 md:p-6 text-white shadow-xl">
-      <h3 className="text-base sm:text-lg md:text-xl font-bold text-center mb-3 sm:mb-4">До раздаването остават:</h3>
+    <div className="bg-bulgarian-red p-3 text-white">
+      <h3 className="mb-2 text-center text-sm font-bold sm:text-base">До раздаването остават:</h3>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {timeUnits.map((unit, index) => (
           <div key={index} className="text-center">
-            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-2 sm:p-3 mb-1.5">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold tabular-nums">
+            <div className="mb-1 rounded bg-white/20 p-2 backdrop-blur-sm">
+              <div className="text-lg font-bold tabular-nums sm:text-xl">
                 {unit.value.toString().padStart(2, '0')}
               </div>
             </div>
-            <div className="text-[10px] sm:text-xs font-medium opacity-90">
+            <div className="text-[9px] font-medium opacity-90 sm:text-[10px]">
               {unit.value === 1 ? unit.labelSingle : unit.label}
             </div>
           </div>
         ))}
       </div>
 
-      <p className="text-center mt-3 sm:mt-4 text-xs sm:text-sm opacity-90">
-        Печелившите ще бъдат обявени на {targetDate.toLocaleDateString('bg-BG', {
+      <p className="mt-2 text-center text-[10px] opacity-90 sm:text-xs">
+        Печелившите ще бъдат обявени на{' '}
+        {targetDate.toLocaleDateString('bg-BG', {
           day: 'numeric',
           month: 'long',
-          year: 'numeric'
+          year: 'numeric',
         })}
       </p>
     </div>

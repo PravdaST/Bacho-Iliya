@@ -44,19 +44,17 @@ export default function ProductCarouselScroll({ products, selectedProducts, onTo
   };
 
   return (
-    <div className="relative py-12 bg-gradient-to-b from-gray-50 to-white">
+    <div className="relative bg-gradient-to-b from-gray-50 to-white py-12">
       {/* Header */}
-      <div className="text-center mb-8">
-        <p className="text-gray-600 font-medium">
-          Scroll или кликни точките
-        </p>
-        <p className="text-xs text-gray-400 mt-1">Native Scroll Snap Style</p>
+      <div className="mb-8 text-center">
+        <p className="font-medium text-gray-600">Scroll или кликни точките</p>
+        <p className="mt-1 text-xs text-gray-400">Native Scroll Snap Style</p>
       </div>
 
       {/* Scroll Container */}
       <div
         ref={scrollRef}
-        className="flex gap-6 px-8 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
+        className="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-8"
         style={{
           scrollbarWidth: 'none', // Firefox
           msOverflowStyle: 'none', // IE/Edge
@@ -66,15 +64,10 @@ export default function ProductCarouselScroll({ products, selectedProducts, onTo
           const isCentered = index === activeIndex;
 
           return (
-            <div
-              key={product.id}
-              className="flex-shrink-0 w-[85vw] md:w-96 snap-center"
-            >
+            <div key={product.id} className="w-[85vw] flex-shrink-0 snap-center md:w-96">
               <div
                 className={`transition-all duration-300 ${
-                  isCentered
-                    ? 'scale-100 opacity-100 shadow-2xl'
-                    : 'scale-95 opacity-70 shadow-lg'
+                  isCentered ? 'scale-100 opacity-100 shadow-2xl' : 'scale-95 opacity-70 shadow-lg'
                 }`}
               >
                 <ProductCard
@@ -86,7 +79,7 @@ export default function ProductCarouselScroll({ products, selectedProducts, onTo
                 {/* Centered indicator */}
                 {isCentered && (
                   <div className="mt-4 text-center">
-                    <span className="inline-block bg-bulgarian-red text-white px-4 py-1 rounded-full text-xs font-bold">
+                    <span className="bg-bulgarian-red inline-block rounded-full px-4 py-1 text-xs font-bold text-white">
                       ⭐ На фокус
                     </span>
                   </div>
@@ -98,15 +91,13 @@ export default function ProductCarouselScroll({ products, selectedProducts, onTo
       </div>
 
       {/* Dots navigation */}
-      <div className="flex justify-center gap-2 mt-8">
+      <div className="mt-8 flex justify-center gap-2">
         {products.map((_, idx) => (
           <button
             key={idx}
             onClick={() => scrollToIndex(idx)}
             className={`h-2.5 rounded-full transition-all duration-300 ${
-              idx === activeIndex
-                ? 'w-10 bg-bulgarian-red'
-                : 'w-2.5 bg-gray-300 hover:bg-gray-400'
+              idx === activeIndex ? 'bg-bulgarian-red w-10' : 'w-2.5 bg-gray-300 hover:bg-gray-400'
             }`}
             aria-label={`Scroll to product ${idx + 1}`}
           />
@@ -114,7 +105,7 @@ export default function ProductCarouselScroll({ products, selectedProducts, onTo
       </div>
 
       {/* Hint */}
-      <p className="text-center text-sm text-gray-500 mt-6 flex items-center justify-center gap-2">
+      <p className="mt-6 flex items-center justify-center gap-2 text-center text-sm text-gray-500">
         <span>←</span>
         <span>Scroll естествено</span>
         <span>→</span>

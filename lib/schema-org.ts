@@ -180,9 +180,7 @@ export function generateProductSchema(
   baseUrl: string = 'https://bacho-ilia.eu'
 ): ProductSchema {
   const productUrl = `${baseUrl}/products/${product.slug}`;
-  const imageUrl = product.image.startsWith('http')
-    ? product.image
-    : `${baseUrl}${product.image}`;
+  const imageUrl = product.image.startsWith('http') ? product.image : `${baseUrl}${product.image}`;
 
   return {
     '@context': 'https://schema.org',
@@ -202,13 +200,14 @@ export function generateProductSchema(
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition',
     })),
-    ...(product.testimonials && product.testimonials.length > 0 && {
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.8',
-        reviewCount: product.testimonials.length.toString(),
-      },
-    }),
+    ...(product.testimonials &&
+      product.testimonials.length > 0 && {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          reviewCount: product.testimonials.length.toString(),
+        },
+      }),
     ...(product.nutritionPer100g && {
       nutrition: {
         '@type': 'NutritionInformation',
@@ -244,9 +243,7 @@ export function generateRecipeSchema(
   },
   baseUrl: string = 'https://bacho-ilia.eu'
 ): RecipeSchema {
-  const imageUrl = recipe.image.startsWith('http')
-    ? recipe.image
-    : `${baseUrl}${recipe.image}`;
+  const imageUrl = recipe.image.startsWith('http') ? recipe.image : `${baseUrl}${recipe.image}`;
 
   return {
     '@context': 'https://schema.org',
@@ -289,7 +286,8 @@ export function generateOrganizationSchema(
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Bacho Ilia / Бачо Илия',
-    description: 'Автентични български млечни продукти с богата история и традиция. Сирена, кисели млека и млечни продукти от висококачествено мляко.',
+    description:
+      'Автентични български млечни продукти с богата история и традиция. Сирена, кисели млека и млечни продукти от висококачествено мляко.',
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
     image: `${baseUrl}/og-image.jpg`,
@@ -298,10 +296,7 @@ export function generateOrganizationSchema(
       addressCountry: 'BG',
       addressLocality: 'България',
     },
-    sameAs: [
-      'https://www.facebook.com/bachoilia',
-      'https://www.instagram.com/bachoilia',
-    ],
+    sameAs: ['https://www.facebook.com/bachoilia', 'https://www.instagram.com/bachoilia'],
     foundingDate: '1950',
     founder: {
       '@type': 'Person',
@@ -345,13 +340,14 @@ export function generateLocalBusinessSchema(
       postalCode: store.postalCode,
       addressCountry: 'BG',
     },
-    ...(store.latitude && store.longitude && {
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: store.latitude,
-        longitude: store.longitude,
-      },
-    }),
+    ...(store.latitude &&
+      store.longitude && {
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: store.latitude,
+          longitude: store.longitude,
+        },
+      }),
     ...(store.phone && { telephone: store.phone }),
     ...(store.hours && {
       openingHoursSpecification: store.hours.map((schedule) => ({

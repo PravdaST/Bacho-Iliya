@@ -2,7 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, Download, Trophy, Users, Gift, Share2, Search, ArrowUpDown, Eye } from 'lucide-react';
+import {
+  Lock,
+  Download,
+  Trophy,
+  Users,
+  Gift,
+  Share2,
+  Search,
+  ArrowUpDown,
+  Eye,
+} from 'lucide-react';
 
 interface Entry {
   id: number;
@@ -80,7 +90,7 @@ export default function AdminPage() {
     try {
       const response = await fetch('/api/admin/entries', {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -103,11 +113,12 @@ export default function AdminPage() {
     }
 
     const query = searchQuery.toLowerCase();
-    const filtered = entries.filter(entry =>
-      entry.name.toLowerCase().includes(query) ||
-      entry.email.toLowerCase().includes(query) ||
-      entry.phone.includes(query) ||
-      entry.entry_id.toLowerCase().includes(query)
+    const filtered = entries.filter(
+      (entry) =>
+        entry.name.toLowerCase().includes(query) ||
+        entry.email.toLowerCase().includes(query) ||
+        entry.phone.includes(query) ||
+        entry.entry_id.toLowerCase().includes(query)
     );
     setFilteredEntries(filtered);
   }, [searchQuery, entries]);
@@ -144,7 +155,7 @@ export default function AdminPage() {
       const response = await fetch('/api/admin/pick-winner', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${authToken}`,
+          Authorization: `Bearer ${authToken}`,
         },
       });
 
@@ -167,31 +178,37 @@ export default function AdminPage() {
     totalParticipants: entries.length,
     totalReferrals: entries.reduce((sum, e) => sum + e.referral_count, 0),
     totalEntries: entries.reduce((sum, e) => sum + e.total_entries, 0),
-    avgEntriesPerUser: entries.length > 0 ? (entries.reduce((sum, e) => sum + e.total_entries, 0) / entries.length).toFixed(1) : '0',
+    avgEntriesPerUser:
+      entries.length > 0
+        ? (entries.reduce((sum, e) => sum + e.total_entries, 0) / entries.length).toFixed(1)
+        : '0',
   };
 
   // Login screen
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center p-4">
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-amber-50 to-orange-50 p-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md border-2 border-amber-200"
+          className="w-full max-w-md rounded-2xl border-2 border-amber-200 bg-white p-8 shadow-xl"
         >
-          <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Lock className="w-8 h-8 text-white" />
+          <div className="mb-8 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-orange-500">
+              <Lock className="h-8 w-8 text-white" />
             </div>
-            <h1 className="text-2xl font-handwritten font-bold text-amber-900" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h1
+              className="font-handwritten text-2xl font-bold text-amber-900"
+              style={{ fontFamily: 'Playfair Display, serif' }}
+            >
               Админ Панел
             </h1>
-            <p className="text-amber-700 mt-2">Бачо Илия - Раздаване</p>
+            <p className="mt-2 text-amber-700">Бачо Илия - Раздаване</p>
           </div>
 
           <form onSubmit={handleLogin}>
             <div className="mb-6">
-              <label htmlFor="password" className="block text-sm font-semibold text-amber-900 mb-2">
+              <label htmlFor="password" className="mb-2 block text-sm font-semibold text-amber-900">
                 Парола
               </label>
               <input
@@ -199,14 +216,14 @@ export default function AdminPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border-2 border-amber-200 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200 transition-all"
+                className="w-full rounded-lg border-2 border-amber-200 px-4 py-3 transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
                 placeholder="Въведете парола"
                 required
               />
             </div>
 
             {authError && (
-              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">
+              <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600">
                 {authError}
               </div>
             )}
@@ -214,7 +231,7 @@ export default function AdminPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-3 font-semibold text-white transition-all hover:scale-105 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
             >
               {isLoading ? 'Влизане...' : 'Влизане'}
             </button>
@@ -227,19 +244,22 @@ export default function AdminPage() {
   // Admin dashboard
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 p-4 md:p-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border-2 border-amber-200">
+        <div className="mb-6 rounded-2xl border-2 border-amber-200 bg-white p-6 shadow-lg">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-handwritten font-bold text-amber-900" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <h1
+                className="font-handwritten text-3xl font-bold text-amber-900"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
                 Админ Панел
               </h1>
-              <p className="text-amber-700 mt-1">Управление на раздаването</p>
+              <p className="mt-1 text-amber-700">Управление на раздаването</p>
             </div>
             <button
               onClick={() => setIsAuthenticated(false)}
-              className="px-4 py-2 rounded-lg border-2 border-amber-300 text-amber-700 font-semibold hover:bg-amber-50 transition-all"
+              className="rounded-lg border-2 border-amber-300 px-4 py-2 font-semibold text-amber-700 transition-all hover:bg-amber-50"
             >
               Изход
             </button>
@@ -247,80 +267,80 @@ export default function AdminPage() {
         </div>
 
         {/* Statistics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-white rounded-xl shadow-md p-6 border-2 border-amber-200">
+        <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-4">
+          <div className="rounded-xl border-2 border-amber-200 bg-white p-6 shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-amber-700 font-medium">Участници</p>
+                <p className="text-sm font-medium text-amber-700">Участници</p>
                 <p className="text-3xl font-bold text-amber-900">{stats.totalParticipants}</p>
               </div>
-              <Users className="w-12 h-12 text-amber-500" />
+              <Users className="h-12 w-12 text-amber-500" />
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-6 border-2 border-orange-200">
+          <div className="rounded-xl border-2 border-orange-200 bg-white p-6 shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-orange-700 font-medium">Общо Участия</p>
+                <p className="text-sm font-medium text-orange-700">Общо Участия</p>
                 <p className="text-3xl font-bold text-orange-900">{stats.totalEntries}</p>
               </div>
-              <Gift className="w-12 h-12 text-orange-500" />
+              <Gift className="h-12 w-12 text-orange-500" />
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-6 border-2 border-green-200">
+          <div className="rounded-xl border-2 border-green-200 bg-white p-6 shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-green-700 font-medium">Препоръки</p>
+                <p className="text-sm font-medium text-green-700">Препоръки</p>
                 <p className="text-3xl font-bold text-green-900">{stats.totalReferrals}</p>
               </div>
-              <Share2 className="w-12 h-12 text-green-500" />
+              <Share2 className="h-12 w-12 text-green-500" />
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-6 border-2 border-blue-200">
+          <div className="rounded-xl border-2 border-blue-200 bg-white p-6 shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-blue-700 font-medium">Средно/човек</p>
+                <p className="text-sm font-medium text-blue-700">Средно/човек</p>
                 <p className="text-3xl font-bold text-blue-900">{stats.avgEntriesPerUser}</p>
               </div>
-              <Trophy className="w-12 h-12 text-blue-500" />
+              <Trophy className="h-12 w-12 text-blue-500" />
             </div>
           </div>
         </div>
 
         {/* Actions */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border-2 border-amber-200">
+        <div className="mb-6 rounded-2xl border-2 border-amber-200 bg-white p-6 shadow-lg">
           <div className="flex flex-wrap gap-4">
             <button
               onClick={handleExport}
-              className="flex-1 min-w-[200px] px-6 py-3 rounded-full border-2 border-amber-500 text-amber-700 font-semibold hover:bg-amber-50 transition-all inline-flex items-center justify-center gap-2"
+              className="inline-flex min-w-[200px] flex-1 items-center justify-center gap-2 rounded-full border-2 border-amber-500 px-6 py-3 font-semibold text-amber-700 transition-all hover:bg-amber-50"
             >
-              <Download className="w-5 h-5" />
+              <Download className="h-5 w-5" />
               Експорт CSV
             </button>
 
             <button
               onClick={handlePickWinner}
-              className="flex-1 min-w-[200px] px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:shadow-lg hover:scale-105 transition-all inline-flex items-center justify-center gap-2"
+              className="inline-flex min-w-[200px] flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-3 font-semibold text-white transition-all hover:scale-105 hover:shadow-lg"
             >
-              <Trophy className="w-5 h-5" />
+              <Trophy className="h-5 w-5" />
               Избери Победител
             </button>
           </div>
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border-2 border-amber-200">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-500" />
+        <div className="mb-6 rounded-2xl border-2 border-amber-200 bg-white p-6 shadow-lg">
+          <div className="flex flex-col gap-4 md:flex-row">
+            <div className="relative flex-1">
+              <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform text-amber-500" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Търси по име, email, телефон или Entry ID..."
-                className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-amber-200 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200 transition-all"
+                className="w-full rounded-lg border-2 border-amber-200 py-3 pr-4 pl-10 transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
               />
             </div>
 
@@ -328,7 +348,7 @@ export default function AdminPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="px-4 py-3 rounded-lg border-2 border-amber-200 focus:border-amber-500 focus:outline-none transition-all"
+                className="rounded-lg border-2 border-amber-200 px-4 py-3 transition-all focus:border-amber-500 focus:outline-none"
               >
                 <option value="submitted_at">Дата</option>
                 <option value="name">Име</option>
@@ -337,53 +357,73 @@ export default function AdminPage() {
 
               <button
                 onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-                className="px-4 py-3 rounded-lg border-2 border-amber-200 hover:bg-amber-50 transition-all"
+                className="rounded-lg border-2 border-amber-200 px-4 py-3 transition-all hover:bg-amber-50"
               >
-                <ArrowUpDown className="w-5 h-5 text-amber-700" />
+                <ArrowUpDown className="h-5 w-5 text-amber-700" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Entries Table */}
-        <div className="bg-white rounded-2xl shadow-lg border-2 border-amber-200 overflow-hidden">
+        <div className="overflow-hidden rounded-2xl border-2 border-amber-200 bg-white shadow-lg">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gradient-to-r from-amber-100 to-orange-100">
                 <tr>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-amber-900 whitespace-nowrap">Entry ID</th>
+                  <th className="px-4 py-3 text-left text-sm font-semibold whitespace-nowrap text-amber-900">
+                    Entry ID
+                  </th>
                   <th className="px-4 py-3 text-left text-sm font-semibold text-amber-900">Име</th>
-                  <th className="hidden md:table-cell px-4 py-3 text-left text-sm font-semibold text-amber-900">Email</th>
-                  <th className="hidden lg:table-cell px-4 py-3 text-left text-sm font-semibold text-amber-900">Телефон</th>
-                  <th className="hidden lg:table-cell px-4 py-3 text-center text-sm font-semibold text-amber-900">Продукти</th>
-                  <th className="hidden md:table-cell px-4 py-3 text-center text-sm font-semibold text-amber-900">Препоръки</th>
-                  <th className="px-4 py-3 text-center text-sm font-semibold text-amber-900">Участия</th>
-                  <th className="hidden lg:table-cell px-4 py-3 text-left text-sm font-semibold text-amber-900 whitespace-nowrap">Дата</th>
+                  <th className="hidden px-4 py-3 text-left text-sm font-semibold text-amber-900 md:table-cell">
+                    Email
+                  </th>
+                  <th className="hidden px-4 py-3 text-left text-sm font-semibold text-amber-900 lg:table-cell">
+                    Телефон
+                  </th>
+                  <th className="hidden px-4 py-3 text-center text-sm font-semibold text-amber-900 lg:table-cell">
+                    Продукти
+                  </th>
+                  <th className="hidden px-4 py-3 text-center text-sm font-semibold text-amber-900 md:table-cell">
+                    Препоръки
+                  </th>
+                  <th className="px-4 py-3 text-center text-sm font-semibold text-amber-900">
+                    Участия
+                  </th>
+                  <th className="hidden px-4 py-3 text-left text-sm font-semibold whitespace-nowrap text-amber-900 lg:table-cell">
+                    Дата
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {filteredEntries.map((entry, index) => (
                   <tr key={entry.id} className={index % 2 === 0 ? 'bg-amber-50' : 'bg-white'}>
-                    <td className="px-4 py-3 text-sm font-handwritten text-amber-700 whitespace-nowrap">{entry.entry_id}</td>
+                    <td className="font-handwritten px-4 py-3 text-sm whitespace-nowrap text-amber-700">
+                      {entry.entry_id}
+                    </td>
                     <td className="px-4 py-3 text-sm text-gray-900">{entry.name}</td>
-                    <td className="hidden md:table-cell px-4 py-3 text-sm text-gray-700">{entry.email}</td>
-                    <td className="hidden lg:table-cell px-4 py-3 text-sm text-gray-700">{entry.phone}</td>
-                    <td className="hidden lg:table-cell px-4 py-3 text-center">
-                      <span className="px-2 py-1 rounded-full bg-amber-200 text-amber-900 text-xs font-semibold">
+                    <td className="hidden px-4 py-3 text-sm text-gray-700 md:table-cell">
+                      {entry.email}
+                    </td>
+                    <td className="hidden px-4 py-3 text-sm text-gray-700 lg:table-cell">
+                      {entry.phone}
+                    </td>
+                    <td className="hidden px-4 py-3 text-center lg:table-cell">
+                      <span className="rounded-full bg-amber-200 px-2 py-1 text-xs font-semibold text-amber-900">
                         {entry.selected_products_parsed.length}
                       </span>
                     </td>
-                    <td className="hidden md:table-cell px-4 py-3 text-center">
-                      <span className="px-2 py-1 rounded-full bg-green-200 text-green-900 text-xs font-semibold">
+                    <td className="hidden px-4 py-3 text-center md:table-cell">
+                      <span className="rounded-full bg-green-200 px-2 py-1 text-xs font-semibold text-green-900">
                         {entry.referral_count}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <span className="px-2 py-1 rounded-full bg-blue-200 text-blue-900 text-xs font-semibold">
+                      <span className="rounded-full bg-blue-200 px-2 py-1 text-xs font-semibold text-blue-900">
                         {entry.total_entries}
                       </span>
                     </td>
-                    <td className="hidden lg:table-cell px-4 py-3 text-sm text-gray-700 whitespace-nowrap">
+                    <td className="hidden px-4 py-3 text-sm whitespace-nowrap text-gray-700 lg:table-cell">
                       {new Date(entry.submitted_at).toLocaleString('bg-BG')}
                     </td>
                   </tr>
@@ -393,9 +433,7 @@ export default function AdminPage() {
           </div>
 
           {filteredEntries.length === 0 && (
-            <div className="text-center py-12 text-amber-700">
-              Няма намерени участия
-            </div>
+            <div className="py-12 text-center text-amber-700">Няма намерени участия</div>
           )}
         </div>
       </div>
@@ -407,7 +445,7 @@ export default function AdminPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
             onClick={() => setShowWinnerModal(false)}
           >
             <motion.div
@@ -415,58 +453,66 @@ export default function AdminPage() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full border-4 border-amber-300"
+              className="w-full max-w-2xl rounded-2xl border-4 border-amber-300 bg-white p-8 shadow-2xl"
             >
-              <div className="text-center mb-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Trophy className="w-10 h-10 text-white" />
+              <div className="mb-6 text-center">
+                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-orange-500">
+                  <Trophy className="h-10 w-10 text-white" />
                 </div>
-                <h2 className="text-3xl font-handwritten font-bold text-amber-900 mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h2
+                  className="font-handwritten mb-2 text-3xl font-bold text-amber-900"
+                  style={{ fontFamily: 'Playfair Display, serif' }}
+                >
                   Победител!
                 </h2>
                 <p className="text-amber-700">Поздравления на спечелилия!</p>
               </div>
 
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 mb-6 border-2 border-amber-200">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="mb-6 rounded-xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-6">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    <p className="text-sm text-amber-700 font-medium mb-1">Име:</p>
+                    <p className="mb-1 text-sm font-medium text-amber-700">Име:</p>
                     <p className="text-lg font-bold text-amber-900">{winner.name}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-amber-700 font-medium mb-1">Entry ID:</p>
-                    <p className="text-lg font-bold text-amber-900 font-handwritten">{winner.entry_id}</p>
+                    <p className="mb-1 text-sm font-medium text-amber-700">Entry ID:</p>
+                    <p className="font-handwritten text-lg font-bold text-amber-900">
+                      {winner.entry_id}
+                    </p>
                   </div>
                   <div>
-                    <p className="text-sm text-amber-700 font-medium mb-1">Email:</p>
+                    <p className="mb-1 text-sm font-medium text-amber-700">Email:</p>
                     <p className="text-lg text-amber-900">{winner.email}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-amber-700 font-medium mb-1">Телефон:</p>
+                    <p className="mb-1 text-sm font-medium text-amber-700">Телефон:</p>
                     <p className="text-lg text-amber-900">{winner.phone}</p>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-4 border-t-2 border-amber-200">
-                  <p className="text-sm text-amber-700 font-medium mb-2">Избрани продукти:</p>
+                <div className="mt-4 border-t-2 border-amber-200 pt-4">
+                  <p className="mb-2 text-sm font-medium text-amber-700">Избрани продукти:</p>
                   <div className="flex flex-wrap gap-2">
                     {winner.selected_products.map((product, idx) => (
-                      <span key={idx} className="px-3 py-1 rounded-full bg-white border border-amber-300 text-sm text-amber-900">
+                      <span
+                        key={idx}
+                        className="rounded-full border border-amber-300 bg-white px-3 py-1 text-sm text-amber-900"
+                      >
                         {product}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-4 pt-4 border-t-2 border-amber-200 text-center">
-                  <p className="text-sm text-amber-700 font-medium mb-1">Общо участия:</p>
+                <div className="mt-4 border-t-2 border-amber-200 pt-4 text-center">
+                  <p className="mb-1 text-sm font-medium text-amber-700">Общо участия:</p>
                   <p className="text-3xl font-bold text-amber-900">{winner.total_entries}</p>
                 </div>
               </div>
 
               <button
                 onClick={() => setShowWinnerModal(false)}
-                className="w-full px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:shadow-lg hover:scale-105 transition-all"
+                className="w-full rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-3 font-semibold text-white transition-all hover:scale-105 hover:shadow-lg"
               >
                 Затвори
               </button>

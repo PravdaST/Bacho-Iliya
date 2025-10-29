@@ -57,30 +57,28 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-old-paper py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="bg-old-paper relative min-h-screen overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
       {/* Paper texture */}
-      <div className="absolute inset-0 bg-vintage-paper opacity-30 pointer-events-none" />
+      <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-30" />
 
-      <div className="max-w-md mx-auto relative">
+      <div className="relative mx-auto max-w-md">
         {/* Page Header */}
         <motion.div
-          className="text-center mb-12"
+          className="mb-12 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="font-handwritten text-5xl md:text-6xl text-bulgarian-red mb-4">
+          <h1 className="font-handwritten text-bulgarian-red mb-4 text-5xl md:text-6xl">
             🎟️ Влез в профила си
           </h1>
-          <p className="font-handwritten text-xl text-walnut">
-            Виж билетите си и статистика
-          </p>
+          <p className="font-handwritten text-walnut text-xl">Виж билетите си и статистика</p>
         </motion.div>
 
         {/* Error from redirect */}
         {redirectError && (
           <motion.div
-            className="bg-red-50 border-2 border-red-300 p-4 mb-6"
+            className="mb-6 border-2 border-red-300 bg-red-50 p-4"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -93,20 +91,20 @@ function LoginForm() {
         {/* Success Message */}
         {success && (
           <motion.div
-            className="bg-green-50 border-4 border-green-400 p-8 mb-6 shadow-xl relative"
+            className="relative mb-6 border-4 border-green-400 bg-green-50 p-8 shadow-xl"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
           >
-            <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+            <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
             <div className="relative z-10 text-center">
-              <span className="text-6xl block mb-4">✅</span>
-              <h3 className="font-handwritten text-2xl md:text-3xl text-green-700 font-bold mb-3">
+              <span className="mb-4 block text-6xl">✅</span>
+              <h3 className="font-handwritten mb-3 text-2xl font-bold text-green-700 md:text-3xl">
                 Magic link изпратен!
               </h3>
               <p className="font-handwritten text-lg text-green-600">
                 Провери имейла си и кликни на линка за да влезеш.
               </p>
-              <p className="font-handwritten text-base text-green-600/70 mt-3">
+              <p className="font-handwritten mt-3 text-base text-green-600/70">
                 Линкът е валиден 15 минути
               </p>
             </div>
@@ -115,25 +113,25 @@ function LoginForm() {
 
         {/* Login Form */}
         <motion.div
-          className="bg-white border-4 border-bulgarian-red/40 p-8 shadow-xl relative"
+          className="border-bulgarian-red/40 relative border-4 bg-white p-8 shadow-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+          <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
 
           <div className="relative z-10">
-            <h2 className="font-handwritten text-3xl text-bulgarian-red mb-6 font-bold text-center">
+            <h2 className="font-handwritten text-bulgarian-red mb-6 text-center text-3xl font-bold">
               Въведи имейла си
             </h2>
 
-            <p className="font-handwritten text-lg text-walnut mb-6 text-center">
+            <p className="font-handwritten text-walnut mb-6 text-center text-lg">
               Ще ти изпратим magic link на имейла с който си се регистрирал
             </p>
 
             {error && (
               <motion.div
-                className="bg-red-50 border-2 border-red-300 p-4 mb-6"
+                className="mb-6 border-2 border-red-300 bg-red-50 p-4"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -145,7 +143,7 @@ function LoginForm() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block font-handwritten text-xl text-walnut mb-2 font-bold"
+                  className="font-handwritten text-walnut mb-2 block text-xl font-bold"
                 >
                   Имейл адрес:
                 </label>
@@ -156,7 +154,7 @@ function LoginForm() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={loading || success}
-                  className="w-full px-4 py-3 bg-old-paper border-2 border-walnut/30 text-lg font-handwritten text-walnut focus:outline-none focus:ring-2 focus:ring-bulgarian-red disabled:opacity-50"
+                  className="bg-old-paper border-walnut/30 font-handwritten text-walnut focus:ring-bulgarian-red w-full border-2 px-4 py-3 text-lg focus:ring-2 focus:outline-none disabled:opacity-50"
                   placeholder="example@email.com"
                 />
               </div>
@@ -164,19 +162,19 @@ function LoginForm() {
               <button
                 type="submit"
                 disabled={loading || success}
-                className="w-full px-8 py-4 bg-bulgarian-red text-white font-handwritten text-2xl font-bold hover:bg-dark-walnut transition-all shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-bulgarian-red font-handwritten hover:bg-dark-walnut w-full px-8 py-4 text-2xl font-bold text-white shadow-xl transition-all disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {loading ? 'Изпраща се...' : 'Изпрати Magic Link 🔐'}
               </button>
             </form>
 
-            <div className="mt-8 pt-6 border-t-2 border-dashed border-walnut/30">
-              <p className="font-handwritten text-base text-walnut/70 text-center mb-4">
+            <div className="border-walnut/30 mt-8 border-t-2 border-dashed pt-6">
+              <p className="font-handwritten text-walnut/70 mb-4 text-center text-base">
                 Нямаш регистрация?
               </p>
               <Link
                 href="/"
-                className="block text-center px-6 py-3 bg-sunflower text-dark-walnut font-handwritten text-xl font-bold hover:shadow-md transition-all"
+                className="bg-sunflower text-dark-walnut font-handwritten block px-6 py-3 text-center text-xl font-bold transition-all hover:shadow-md"
               >
                 Регистрирай се за раздаването →
               </Link>
@@ -186,31 +184,31 @@ function LoginForm() {
 
         {/* Info Box */}
         <motion.div
-          className="mt-8 bg-sunflower/20 border-2 border-sunflower/50 p-6"
+          className="bg-sunflower/20 border-sunflower/50 mt-8 border-2 p-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="font-handwritten text-xl text-dark-walnut font-bold mb-3">
+          <h3 className="font-handwritten text-dark-walnut mb-3 text-xl font-bold">
             ℹ️ Какво е Magic Link?
           </h3>
-          <p className="font-handwritten text-base text-walnut leading-relaxed">
-            Magic Link е сигурен начин за вход без парола. След като въведеш имейла си, ще
-            получиш линк който работи само веднъж. Кликни на линка в имейла и веднага ще влезеш в
-            профила си.
+          <p className="font-handwritten text-walnut text-base leading-relaxed">
+            Magic Link е сигурен начин за вход без парола. След като въведеш имейла си, ще получиш
+            линк който работи само веднъж. Кликни на линка в имейла и веднага ще влезеш в профила
+            си.
           </p>
         </motion.div>
 
         {/* Back to Home */}
         <motion.div
-          className="text-center mt-8"
+          className="mt-8 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-dark-walnut text-dark-walnut font-handwritten text-lg font-bold hover:bg-old-paper transition-all"
+            className="border-dark-walnut text-dark-walnut font-handwritten hover:bg-old-paper inline-flex items-center gap-2 border-2 bg-white px-6 py-3 text-lg font-bold transition-all"
           >
             ← Обратно към началото
           </Link>
@@ -224,17 +222,15 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-old-paper py-24 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+        <div className="bg-old-paper flex min-h-screen items-center justify-center px-4 py-24 sm:px-6 lg:px-8">
           <motion.div
             className="text-center"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="font-handwritten text-4xl text-bulgarian-red mb-4">
-              Зареждане...
-            </div>
-            <div className="w-16 h-16 border-4 border-bulgarian-red border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <div className="font-handwritten text-bulgarian-red mb-4 text-4xl">Зареждане...</div>
+            <div className="border-bulgarian-red mx-auto h-16 w-16 animate-spin rounded-full border-4 border-t-transparent"></div>
           </motion.div>
         </div>
       }

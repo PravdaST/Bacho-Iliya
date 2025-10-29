@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Share2, 
-  Facebook, 
-  Twitter, 
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Share2,
+  Facebook,
+  Twitter,
   Linkedin,
   Mail,
   Copy,
   Check,
   MessageCircle,
-  Send
-} from "lucide-react";
+  Send,
+} from 'lucide-react';
 
 interface SocialShareProps {
   url: string;
@@ -28,7 +28,7 @@ export default function SocialShare({
   title,
   description,
   hashtags = [],
-  className = "",
+  className = '',
   onShare,
 }: SocialShareProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +38,7 @@ export default function SocialShare({
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
   const encodedDescription = encodeURIComponent(description);
-  const hashtagString = hashtags.map(tag => `#${tag}`).join(' ');
+  const hashtagString = hashtags.map((tag) => `#${tag}`).join(' ');
 
   // Pre-filled Bulgarian messages for each platform
   const messages = {
@@ -50,8 +50,8 @@ export default function SocialShare({
     linkedin: `${title}\n\n${description}`,
     email: {
       subject: title,
-      body: `${description}\n\nВиж повече тук: ${url}`
-    }
+      body: `${description}\n\nВиж повече тук: ${url}`,
+    },
   };
 
   // Share URLs for each platform
@@ -80,7 +80,7 @@ export default function SocialShare({
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
-      
+
       if (onShare) {
         onShare('copy-link');
       }
@@ -141,11 +141,11 @@ export default function SocialShare({
       {/* Main Share Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 bg-bulgarian-red text-white px-6 py-3 font-handwritten text-sm tracking-wider border-2 border-walnut/30 shadow-lg hover:bg-walnut transition-colors duration-300"
+        className="bg-bulgarian-red font-handwritten border-walnut/30 hover:bg-walnut flex items-center gap-2 border-2 px-6 py-3 text-sm tracking-wider text-white shadow-lg transition-colors duration-300"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <Share2 className="w-4 h-4" />
+        <Share2 className="h-4 w-4" />
         СПОДЕЛИ
       </motion.button>
 
@@ -155,7 +155,7 @@ export default function SocialShare({
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/20 z-40"
+              className="fixed inset-0 z-40 bg-black/20"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -164,39 +164,37 @@ export default function SocialShare({
 
             {/* Share Menu */}
             <motion.div
-              className="absolute top-full right-0 mt-2 bg-white border-2 border-walnut/30 shadow-2xl z-50 min-w-[280px]"
+              className="border-walnut/30 absolute top-full right-0 z-50 mt-2 min-w-[280px] border-2 bg-white shadow-2xl"
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
               {/* Vintage paper texture */}
-              <div className="absolute inset-0 bg-vintage-paper opacity-30 pointer-events-none" />
+              <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-30" />
 
               <div className="relative p-4">
                 {/* Header */}
-                <div className="mb-4 pb-3 border-b-2 border-walnut/20">
-                  <h3 className="font-handwritten text-2xl text-walnut">
-                    Сподели с приятели
-                  </h3>
-                  <p className="font-handwritten text-xs text-walnut/60 mt-1">
+                <div className="border-walnut/20 mb-4 border-b-2 pb-3">
+                  <h3 className="font-handwritten text-walnut text-2xl">Сподели с приятели</h3>
+                  <p className="font-handwritten text-walnut/60 mt-1 text-xs">
                     Разпространи добрата новина!
                   </p>
                 </div>
 
                 {/* Social Buttons Grid */}
-                <div className="grid grid-cols-2 gap-2 mb-3">
+                <div className="mb-3 grid grid-cols-2 gap-2">
                   {socialButtons.map((social) => {
                     const Icon = social.icon;
                     return (
                       <motion.button
                         key={social.name}
                         onClick={() => handleShare(social.name.toLowerCase(), social.url)}
-                        className={`${social.color} text-white px-4 py-3 flex items-center gap-2 font-handwritten text-xs tracking-wider transition-all duration-200`}
+                        className={`${social.color} font-handwritten flex items-center gap-2 px-4 py-3 text-xs tracking-wider text-white transition-all duration-200`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <Icon className="w-4 h-4" />
+                        <Icon className="h-4 w-4" />
                         {social.name}
                       </motion.button>
                     );
@@ -206,25 +204,25 @@ export default function SocialShare({
                 {/* Copy Link Button */}
                 <motion.button
                   onClick={handleCopyLink}
-                  className="w-full bg-old-paper border-2 border-walnut/30 text-walnut px-4 py-3 flex items-center justify-center gap-2 font-handwritten text-xs tracking-wider hover:bg-sunflower/20 transition-colors duration-200"
+                  className="bg-old-paper border-walnut/30 text-walnut font-handwritten hover:bg-sunflower/20 flex w-full items-center justify-center gap-2 border-2 px-4 py-3 text-xs tracking-wider transition-colors duration-200"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   {copied ? (
                     <>
-                      <Check className="w-4 h-4 text-bulgarian-red" />
+                      <Check className="text-bulgarian-red h-4 w-4" />
                       КОПИРАНО!
                     </>
                   ) : (
                     <>
-                      <Copy className="w-4 h-4" />
+                      <Copy className="h-4 w-4" />
                       КОПИРАЙ ЛИНК
                     </>
                   )}
                 </motion.button>
 
                 {/* Decorative element */}
-                <div className="absolute -top-1 left-6 w-16 h-3 bg-bulgarian-red/40 border-l border-r border-bulgarian-red/60" />
+                <div className="bg-bulgarian-red/40 border-bulgarian-red/60 absolute -top-1 left-6 h-3 w-16 border-r border-l" />
               </div>
             </motion.div>
           </>

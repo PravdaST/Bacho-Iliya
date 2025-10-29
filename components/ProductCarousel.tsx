@@ -12,7 +12,11 @@ interface ProductCarouselProps {
   onToggle: (productId: string) => void;
 }
 
-export default function ProductCarousel({ products, selectedProducts, onToggle }: ProductCarouselProps) {
+export default function ProductCarousel({
+  products,
+  selectedProducts,
+  onToggle,
+}: ProductCarouselProps) {
   const [centerIndex, setCenterIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -113,8 +117,8 @@ export default function ProductCarousel({ products, selectedProducts, onToggle }
       onTouchStart={handleInteraction}
     >
       {/* Progress indicator */}
-      <div className="text-center mb-8">
-        <p className="text-gray-600 text-sm mb-3">
+      <div className="mb-8 text-center">
+        <p className="mb-3 text-sm text-gray-600">
           Продукт {centerIndex + 1} от {products.length}
         </p>
         <div className="flex justify-center gap-2">
@@ -123,9 +127,7 @@ export default function ProductCarousel({ products, selectedProducts, onToggle }
               key={idx}
               onClick={() => goToIndex(idx)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                idx === centerIndex
-                  ? 'w-8 bg-bulgarian-red'
-                  : 'w-2 bg-gray-300 hover:bg-gray-400'
+                idx === centerIndex ? 'bg-bulgarian-red w-8' : 'w-2 bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Отиди на продукт ${idx + 1}`}
             />
@@ -134,22 +136,22 @@ export default function ProductCarousel({ products, selectedProducts, onToggle }
       </div>
 
       {/* Carousel container */}
-      <div className="relative h-[500px] md:h-[550px] overflow-visible">
+      <div className="relative h-[500px] overflow-visible md:h-[550px]">
         {/* Navigation arrows */}
         <button
           onClick={goPrev}
-          className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-white shadow-xl rounded-full p-3 md:p-4 transition-all hover:scale-110 active:scale-95"
+          className="absolute top-1/2 left-0 z-20 -translate-y-1/2 rounded-full bg-white/95 p-3 shadow-xl transition-all hover:scale-110 hover:bg-white active:scale-95 md:left-4 md:p-4"
           aria-label="Предишен продукт"
         >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-traditional-brown" />
+          <ChevronLeft className="text-traditional-brown h-5 w-5 md:h-6 md:w-6" />
         </button>
 
         <button
           onClick={goNext}
-          className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-white shadow-xl rounded-full p-3 md:p-4 transition-all hover:scale-110 active:scale-95"
+          className="absolute top-1/2 right-0 z-20 -translate-y-1/2 rounded-full bg-white/95 p-3 shadow-xl transition-all hover:scale-110 hover:bg-white active:scale-95 md:right-4 md:p-4"
           aria-label="Следващ продукт"
         >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-traditional-brown" />
+          <ChevronRight className="text-traditional-brown h-5 w-5 md:h-6 md:w-6" />
         </button>
 
         {/* Products */}
@@ -186,9 +188,11 @@ export default function ProductCarousel({ products, selectedProducts, onToggle }
                     pointerEvents: 'auto',
                   }}
                 >
-                  <div className={`transition-all duration-300 ${
-                    isCentered ? 'shadow-2xl' : 'shadow-lg'
-                  }`}>
+                  <div
+                    className={`transition-all duration-300 ${
+                      isCentered ? 'shadow-2xl' : 'shadow-lg'
+                    }`}
+                  >
                     <ProductCard
                       product={product}
                       isSelected={selectedProducts.includes(product.id)}
@@ -201,7 +205,7 @@ export default function ProductCarousel({ products, selectedProducts, onToggle }
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-bulgarian-red text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg whitespace-nowrap"
+                      className="bg-bulgarian-red absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold whitespace-nowrap text-white shadow-lg"
                     >
                       ⭐ На фокус
                     </motion.div>
@@ -214,27 +218,27 @@ export default function ProductCarousel({ products, selectedProducts, onToggle }
       </div>
 
       {/* Auto-play indicator */}
-      <div className="text-center mt-16">
-        <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full text-xs text-gray-600">
+      <div className="mt-16 text-center">
+        <div className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-xs text-gray-600">
           {isAutoPlaying ? (
             <>
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              <span className="h-2 w-2 animate-pulse rounded-full bg-green-500"></span>
               Автоматично превъртане (4 сек)
             </>
           ) : (
             <>
-              <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
+              <span className="h-2 w-2 rounded-full bg-gray-400"></span>
               На пауза
             </>
           )}
         </div>
-        <p className="text-xs text-gray-500 mt-2 italic">
+        <p className="mt-2 text-xs text-gray-500 italic">
           Кликни страничните продукти за да ги центрираш
         </p>
       </div>
 
       {/* Keyboard hint */}
-      <div className="hidden md:flex justify-center gap-4 mt-6 text-xs text-gray-500">
+      <div className="mt-6 hidden justify-center gap-4 text-xs text-gray-500 md:flex">
         <span>← Предишен</span>
         <span>|</span>
         <span>Следващ →</span>

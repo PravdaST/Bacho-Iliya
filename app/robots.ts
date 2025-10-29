@@ -18,53 +18,35 @@ export default function robots(): MetadataRoute.Robots {
       // Default rule for all bots
       {
         userAgent: '*',
-        allow: '/',
+        allow: [
+          '/',
+          '/_next/static/', // Allow Next.js static assets (JS, CSS, images) - CRITICAL for Google rendering
+        ],
         disallow: [
-          '/api/',           // Protect API routes
-          '/admin/',         // Protect admin routes
-          '/_next/',         // Next.js internals (already optimized by Next.js)
-          '/private/',       // Private content
-          '/*.json$',        // JSON files (prevent unnecessary crawling)
-          '/tasks',          // Internal tasks page
+          '/api/', // Protect API routes
+          '/admin/', // Protect admin routes
+          '/_next/data/', // Block Next.js data fetching (not needed for SEO)
+          '/private/', // Private content
+          '/*.json$', // JSON files (prevent unnecessary crawling)
+          '/tasks', // Internal tasks page
         ],
       },
       // Googlebot - Maximum access for SEO
       {
         userAgent: 'Googlebot',
-        allow: [
-          '/',
-          '/products/',
-          '/recipes/',
-          '/about',
-          '/where-to-buy',
-          '/blog/',
-          '/register',
-        ],
+        allow: ['/', '/products/', '/recipes/', '/about', '/where-to-buy', '/blog/', '/register'],
         disallow: ['/api/', '/admin/', '/private/', '/tasks'],
       },
       // Googlebot Image - Full access to images for Image Search
       {
         userAgent: 'Googlebot-Image',
-        allow: [
-          '/',
-          '/*.jpg',
-          '/*.jpeg',
-          '/*.png',
-          '/*.webp',
-          '/*.svg',
-        ],
+        allow: ['/', '/*.jpg', '/*.jpeg', '/*.png', '/*.webp', '/*.svg'],
         disallow: ['/api/', '/admin/'],
       },
       // Bingbot - Microsoft Search
       {
         userAgent: 'bingbot',
-        allow: [
-          '/',
-          '/products/',
-          '/recipes/',
-          '/about',
-          '/where-to-buy',
-        ],
+        allow: ['/', '/products/', '/recipes/', '/about', '/where-to-buy'],
         disallow: ['/api/', '/admin/', '/private/', '/tasks'],
       },
       // Baidu - Chinese market
@@ -76,24 +58,12 @@ export default function robots(): MetadataRoute.Robots {
       // Yandex - Russian/Eastern European market
       {
         userAgent: 'YandexBot',
-        allow: [
-          '/',
-          '/products/',
-          '/recipes/',
-          '/about',
-          '/where-to-buy',
-        ],
+        allow: ['/', '/products/', '/recipes/', '/about', '/where-to-buy'],
         disallow: ['/api/', '/admin/', '/private/', '/tasks'],
       },
       // Block bad bots that waste crawl budget
       {
-        userAgent: [
-          'AhrefsBot',
-          'SemrushBot',
-          'DotBot',
-          'MJ12bot',
-          'PetalBot',
-        ],
+        userAgent: ['AhrefsBot', 'SemrushBot', 'DotBot', 'MJ12bot', 'PetalBot'],
         disallow: ['/'],
       },
     ],

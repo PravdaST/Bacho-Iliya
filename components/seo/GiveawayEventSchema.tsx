@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useEffect } from 'react';
 import { generateGiveawayEventSchema, renderSchema } from '@/lib/schema-org';
@@ -20,7 +20,10 @@ interface GiveawayEventSchemaProps {
  * Injects Event JSON-LD structured data for giveaway campaigns.
  * Helps Google index your giveaway as an event for better visibility.
  */
-export function GiveawayEventSchema({ giveaway, baseUrl = 'https://bacho-ilia.eu' }: GiveawayEventSchemaProps) {
+export function GiveawayEventSchema({
+  giveaway,
+  baseUrl = 'https://bacho-ilia.eu',
+}: GiveawayEventSchemaProps) {
   useEffect(() => {
     // Generate schema
     const schema = generateGiveawayEventSchema(giveaway, baseUrl);

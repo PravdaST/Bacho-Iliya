@@ -8,7 +8,7 @@ interface IconProps {
   size?: number;
 }
 
-export const ClockIcon = ({ className = "", size = 24 }: IconProps) => (
+export const ClockIcon = ({ className = '', size = 24 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -26,7 +26,7 @@ export const ClockIcon = ({ className = "", size = 24 }: IconProps) => (
   </svg>
 );
 
-export const TruckIcon = ({ className = "", size = 24 }: IconProps) => (
+export const TruckIcon = ({ className = '', size = 24 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -46,7 +46,7 @@ export const TruckIcon = ({ className = "", size = 24 }: IconProps) => (
   </svg>
 );
 
-export const SnowflakeIcon = ({ className = "", size = 24 }: IconProps) => (
+export const SnowflakeIcon = ({ className = '', size = 24 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -66,7 +66,7 @@ export const SnowflakeIcon = ({ className = "", size = 24 }: IconProps) => (
   </svg>
 );
 
-export const PackageIcon = ({ className = "", size = 24 }: IconProps) => (
+export const PackageIcon = ({ className = '', size = 24 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

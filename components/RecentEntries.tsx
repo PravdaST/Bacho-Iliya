@@ -81,19 +81,19 @@ export default function RecentEntries({ className = '' }: RecentEntriesProps) {
 
   return (
     <div
-      className={`bg-gradient-to-br from-amber-50 to-cream-50 rounded-2xl shadow-md border-2 border-amber-200 p-4 hover:shadow-lg transition-shadow ${className}`}
+      className={`to-cream-50 rounded-2xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 p-4 shadow-md transition-shadow hover:shadow-lg ${className}`}
       aria-live="polite"
       aria-label="Последни регистрации в раздаването"
     >
       <div className="flex items-start gap-3">
         <div className="flex-shrink-0">
-          <div className="w-10 h-10 bg-gradient-to-br from-amber-100 to-orange-100 rounded-full flex items-center justify-center shadow-sm">
-            <Star className="w-5 h-5 text-amber-600 fill-amber-400" aria-hidden="true" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm">
+            <Star className="h-5 w-5 fill-amber-400 text-amber-600" aria-hidden="true" />
           </div>
         </div>
 
-        <div className="flex-1 min-w-0">
-          <p className="text-xs text-amber-700 font-medium mb-1">Последна регистрация</p>
+        <div className="min-w-0 flex-1">
+          <p className="mb-1 text-xs font-medium text-amber-700">Последна регистрация</p>
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -103,12 +103,13 @@ export default function RecentEntries({ className = '' }: RecentEntriesProps) {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
             >
-              <p className="font-handwritten font-semibold text-amber-900 truncate" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <p
+                className="font-handwritten truncate font-semibold text-amber-900"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
                 {displayName}
               </p>
-              <p className="text-sm text-amber-700">
-                {currentEntry.timeAgo}
-              </p>
+              <p className="text-sm text-amber-700">{currentEntry.timeAgo}</p>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -121,8 +122,8 @@ export default function RecentEntries({ className = '' }: RecentEntriesProps) {
               role="tab"
               aria-selected={idx === currentIndex}
               aria-label={`Регистрация ${idx + 1} от ${entries.length}`}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                idx === currentIndex ? 'bg-amber-500 scale-125' : 'bg-amber-300'
+              className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${
+                idx === currentIndex ? 'scale-125 bg-amber-500' : 'bg-amber-300'
               }`}
             />
           ))}

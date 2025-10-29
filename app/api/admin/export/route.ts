@@ -51,9 +51,7 @@ export async function GET(request: NextRequest) {
     const csvRows = entries?.map((entry) => {
       // Calculate total entries
       const taskEntries =
-        (entry.task_facebook ? 1 : 0) +
-        (entry.task_instagram ? 1 : 0) +
-        (entry.task_share ? 1 : 0);
+        (entry.task_facebook ? 1 : 0) + (entry.task_instagram ? 1 : 0) + (entry.task_share ? 1 : 0);
       const totalEntries = 1 + taskEntries + (entry.referral_entries || 0);
 
       // Parse selected products
@@ -103,7 +101,6 @@ export async function GET(request: NextRequest) {
         'Content-Disposition': `attachment; filename="bacho-iliya-giveaway-${Date.now()}.csv"`,
       },
     });
-
   } catch (error) {
     console.error('❌ CSV export error:', error);
     return new NextResponse('Грешка при експорт', { status: 500 });

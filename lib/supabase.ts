@@ -74,7 +74,9 @@ export const isSupabaseConfigured = (): boolean => {
 // Test Supabase connection
 export const testSupabaseConnection = async (): Promise<{ success: boolean; error?: string }> => {
   try {
-    const { error } = await supabaseAdmin.from('giveaway_entries').select('count', { count: 'exact', head: true });
+    const { error } = await supabaseAdmin
+      .from('giveaway_entries')
+      .select('count', { count: 'exact', head: true });
 
     if (error) {
       console.error('❌ Supabase connection test failed:', error.message);

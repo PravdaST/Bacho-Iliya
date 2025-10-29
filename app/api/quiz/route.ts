@@ -17,28 +17,35 @@ export async function POST(request: NextRequest) {
       motivation: body.motivation,
       email: body.email,
       userAgent: request.headers.get('user-agent') || undefined,
-      ipAddress: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || undefined,
+      ipAddress:
+        request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || undefined,
     });
 
     // Save to database (if available)
     if (isDatabaseAvailable() && db) {
       try {
-        const dbResult = await db.insert(quizResponses).values({
-          city: validatedData.city,
-          weapon: validatedData.weapon,
-          motivation: validatedData.motivation,
-          email: validatedData.email,
-          userAgent: validatedData.userAgent || null,
-          ipAddress: validatedData.ipAddress || null,
-        }).returning();
+        const dbResult = await db
+          .insert(quizResponses)
+          .values({
+            city: validatedData.city,
+            weapon: validatedData.weapon,
+            motivation: validatedData.motivation,
+            email: validatedData.email,
+            userAgent: validatedData.userAgent || null,
+            ipAddress: validatedData.ipAddress || null,
+          })
+          .returning();
 
         console.log('✅ Quiz data saved to database:', dbResult[0]);
       } catch (dbError) {
         console.error('❌ Failed to save quiz to database:', dbError);
-        return NextResponse.json({
-          success: false,
-          error: 'Грешка при записване в базата данни'
-        }, { status: 500 });
+        return NextResponse.json(
+          {
+            success: false,
+            error: 'Грешка при записване в базата данни',
+          },
+          { status: 500 }
+        );
       }
     } else {
       console.warn('⚠️ Database not available. Quiz response not persisted.');
@@ -70,24 +77,29 @@ export async function POST(request: NextRequest) {
       data: {
         city: validatedData.city,
         email: validatedData.email,
-      }
+      },
     });
-
   } catch (error) {
     console.error('❌ Quiz API error:', error);
 
     if (error instanceof z.ZodError) {
-      return NextResponse.json({
-        success: false,
-        error: 'Невалидни данни',
-        details: error.issues
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Невалидни данни',
+          details: error.issues,
+        },
+        { status: 400 }
+      );
     }
 
-    return NextResponse.json({
-      success: false,
-      error: 'Вътрешна грешка на сървъра'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Вътрешна грешка на сървъра',
+      },
+      { status: 500 }
+    );
   }
 }
 

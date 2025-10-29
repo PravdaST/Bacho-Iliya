@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,8 +14,8 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Lock body scroll when mobile menu is open
@@ -36,78 +36,72 @@ export default function Header() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
     }
   };
 
   const navItems = [
-    { type: "link", href: "/about", label: "ЗА НАС" },
-    { type: "link", href: "/products", label: "ПРОДУКТИ" },
-    { type: "link", href: "/recipes", label: "РЕЦЕПТИ" },
-    { type: "link", href: "/where-to-buy", label: "МАГАЗИНИ" },
-    { type: "link", href: "/blog", label: "БЛОГ" },
-    { type: "link", href: "/#giveaway", label: "РАЗДАВАНЕ" },
-    { type: "link", href: "/my-tickets", label: "🎟️ МОИТЕ БИЛЕТИ", highlight: true },
+    { type: 'link', href: '/about', label: 'ЗА НАС' },
+    { type: 'link', href: '/products', label: 'ПРОДУКТИ' },
+    { type: 'link', href: '/recipes', label: 'РЕЦЕПТИ' },
+    { type: 'link', href: '/where-to-buy', label: 'МАГАЗИНИ' },
+    { type: 'link', href: '/blog', label: 'БЛОГ' },
+    { type: 'link', href: '/#giveaway', label: 'РАЗДАВАНЕ' },
+    { type: 'link', href: '/my-tickets', label: '🎟️ МОИТЕ БИЛЕТИ', highlight: true },
   ];
 
   return (
     <motion.header
-      className={`backdrop-blur-sm border-b z-50 transition-all duration-500 fixed top-0 left-0 right-0 ${
-        scrolled
-          ? "shadow-lg border-dark-walnut/20"
-          : "shadow-md border-dark-walnut/10"
+      className={`fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-sm transition-all duration-500 ${
+        scrolled ? 'border-dark-walnut/20 shadow-lg' : 'border-dark-walnut/10 shadow-md'
       }`}
       style={{
         backgroundColor: scrolled ? '#F5E6D3' : 'rgba(245, 230, 211, 0.98)',
       }}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Desktop Navigation - Stonyfield Style: Split with Logo in Center */}
-        <div className="hidden lg:flex justify-between items-center pt-8 pb-8">
+        <div className="hidden items-center justify-between pt-8 pb-8 lg:flex">
           {/* Left Navigation */}
-          <nav className="flex space-x-6 items-center">
-            {navItems.slice(0, 3).map((item, index) => (
-              item.type === "link" ? (
+          <nav className="flex items-center space-x-6">
+            {navItems.slice(0, 3).map((item, index) =>
+              item.type === 'link' ? (
                 <Link key={item.href} href={item.href!}>
                   <motion.div
-                    className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 cursor-pointer uppercase tracking-wider inline-flex items-center justify-center"
+                    className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex cursor-pointer items-center justify-center px-2 py-1 text-sm font-bold tracking-wider uppercase"
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                     whileHover={{ y: -4 }}
                   >
                     {item.label}
-                    <motion.div
-                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-heritage-red group-hover:w-full transition-all duration-300"
-                    />
+                    <motion.div className="bg-heritage-red absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full" />
                   </motion.div>
                 </Link>
               ) : (
                 <motion.button
                   key={item.label}
                   onClick={() => scrollToSection((item as any).id)}
-                  className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 uppercase tracking-wider inline-flex items-center justify-center"
+                  className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex items-center justify-center px-2 py-1 text-sm font-bold tracking-wider uppercase"
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   whileHover={{ y: -4 }}
                 >
                   {item.label}
-                  <motion.div
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-heritage-red group-hover:w-full transition-all duration-300"
-                  />
+                  <motion.div className="bg-heritage-red absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full" />
                 </motion.button>
               )
-            ))}
+            )}
           </nav>
 
           {/* Centered Logo */}
           <motion.div
-            className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -133,45 +127,41 @@ export default function Header() {
           </motion.div>
 
           {/* Right Navigation */}
-          <nav className="flex space-x-6 items-center">
-            {navItems.slice(3).map((item, index) => (
-              item.type === "link" ? (
+          <nav className="flex items-center space-x-6">
+            {navItems.slice(3).map((item, index) =>
+              item.type === 'link' ? (
                 <Link key={item.href} href={item.href!}>
                   <motion.div
-                    className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 cursor-pointer uppercase tracking-wider inline-flex items-center justify-center"
+                    className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex cursor-pointer items-center justify-center px-2 py-1 text-sm font-bold tracking-wider uppercase"
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     whileHover={{ y: -4 }}
                   >
                     {item.label}
-                    <motion.div
-                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-heritage-red group-hover:w-full transition-all duration-300"
-                    />
+                    <motion.div className="bg-heritage-red absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full" />
                   </motion.div>
                 </Link>
               ) : (
                 <motion.button
                   key={item.label}
                   onClick={() => scrollToSection((item as any).id)}
-                  className="relative text-dark-walnut hover:text-heritage-red font-heading text-sm font-bold group px-2 py-1 uppercase tracking-wider inline-flex items-center justify-center"
+                  className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex items-center justify-center px-2 py-1 text-sm font-bold tracking-wider uppercase"
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                   whileHover={{ y: -4 }}
                 >
                   {item.label}
-                  <motion.div
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-heritage-red group-hover:w-full transition-all duration-300"
-                  />
+                  <motion.div className="bg-heritage-red absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full" />
                 </motion.button>
               )
-            ))}
+            )}
           </nav>
         </div>
 
         {/* Mobile Header */}
-        <div className="flex lg:hidden justify-between items-center py-4">
+        <div className="flex items-center justify-between py-4 lg:hidden">
           {/* Logo */}
           <motion.div
             className="flex-shrink-0"
@@ -181,7 +171,7 @@ export default function Header() {
           >
             <Link href="/">
               <motion.div
-                className="relative h-8 sm:h-10 w-auto cursor-pointer"
+                className="relative h-8 w-auto cursor-pointer sm:h-10"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -208,7 +198,7 @@ export default function Header() {
           >
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-dark-walnut p-3 relative touch-manipulation"
+              className="text-dark-walnut relative touch-manipulation p-3"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -245,12 +235,12 @@ export default function Header() {
             <motion.div
               className="lg:hidden"
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
+              animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
               <motion.div
-                className="px-4 pt-4 pb-6 space-y-2 border-t border-dark-walnut/20 relative"
+                className="border-dark-walnut/20 relative space-y-2 border-t px-4 pt-4 pb-6"
                 style={{
                   backgroundColor: 'rgba(245, 230, 211, 0.98)',
                 }}
@@ -258,11 +248,11 @@ export default function Header() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
               >
-                {navItems.map((item, index) => (
-                  item.type === "link" ? (
+                {navItems.map((item, index) =>
+                  item.type === 'link' ? (
                     <Link key={item.href} href={item.href!}>
                       <motion.div
-                        className="block w-full text-left px-4 py-4 text-dark-walnut hover:text-heritage-red font-heading text-base font-bold uppercase tracking-wider border-2 border-transparent hover:border-heritage-red/20 transition-all duration-200 touch-manipulation relative z-10"
+                        className="text-dark-walnut hover:text-heritage-red font-heading hover:border-heritage-red/20 relative z-10 block w-full touch-manipulation border-2 border-transparent px-4 py-4 text-left text-base font-bold tracking-wider uppercase transition-all duration-200"
                         initial={{ x: -20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
@@ -277,7 +267,7 @@ export default function Header() {
                     <motion.button
                       key={item.label}
                       onClick={() => scrollToSection((item as any).id)}
-                      className="block w-full text-left px-4 py-4 text-dark-walnut hover:text-heritage-red font-heading text-base font-bold uppercase tracking-wider border-2 border-transparent hover:border-heritage-red/20 transition-all duration-200 touch-manipulation relative z-10"
+                      className="text-dark-walnut hover:text-heritage-red font-heading hover:border-heritage-red/20 relative z-10 block w-full touch-manipulation border-2 border-transparent px-4 py-4 text-left text-base font-bold tracking-wider uppercase transition-all duration-200"
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
@@ -287,7 +277,7 @@ export default function Header() {
                       {item.label}
                     </motion.button>
                   )
-                ))}
+                )}
               </motion.div>
             </motion.div>
           )}
@@ -296,14 +286,17 @@ export default function Header() {
 
       {/* SVG Bump Effect - Stonyfield Style */}
       <svg
-        className="hidden lg:block absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full pointer-events-none"
+        className="pointer-events-none absolute bottom-0 left-1/2 hidden -translate-x-1/2 translate-y-full transform lg:block"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 400 20"
         width="400"
         height="20"
         fill={scrolled ? '#F5E6D3' : 'rgba(245, 230, 211, 0.98)'}
       >
-        <path d="M100 0 C160 0 160 18 200 18 C240 18 240 0 300 0 Z" transform="scale(2,1) translate(-100,0)" />
+        <path
+          d="M100 0 C160 0 160 18 200 18 C240 18 240 0 300 0 Z"
+          transform="scale(2,1) translate(-100,0)"
+        />
       </svg>
     </motion.header>
   );

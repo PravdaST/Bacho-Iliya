@@ -1,5 +1,5 @@
-import { pgTable, serial, integer, text, timestamp, varchar, boolean } from "drizzle-orm/pg-core";
-import { z } from "zod";
+import { pgTable, serial, integer, text, timestamp, varchar, boolean } from 'drizzle-orm/pg-core';
+import { z } from 'zod';
 
 // ============================================
 // GIVEAWAY ENTRIES TABLE
@@ -25,11 +25,11 @@ export const giveawayEntries = pgTable('giveaway_entries', {
 
 // Zod schema for validation
 export const insertGiveawayEntrySchema = z.object({
-  entryId: z.string().min(1, "Entry ID е задължителен"),
-  name: z.string().min(1, "Името е задължително"),
-  email: z.string().email("Невалиден имейл адрес"),
-  phone: z.string().regex(/^[0-9]{10}$/, "Телефонът трябва да е 10 цифри"),
-  selectedProducts: z.array(z.string()).min(1, "Трябва да изберете поне един продукт"),
+  entryId: z.string().min(1, 'Entry ID е задължителен'),
+  name: z.string().min(1, 'Името е задължително'),
+  email: z.string().email('Невалиден имейл адрес'),
+  phone: z.string().regex(/^[0-9]{10}$/, 'Телефонът трябва да е 10 цифри'),
+  selectedProducts: z.array(z.string()).min(1, 'Трябва да изберете поне един продукт'),
   taskFacebook: z.boolean().optional(),
   taskInstagram: z.boolean().optional(),
   taskShare: z.boolean().optional(),
@@ -56,10 +56,10 @@ export const quizResponses = pgTable('quiz_responses', {
 
 // Zod schema for validation
 export const insertQuizResponseSchema = z.object({
-  city: z.string().min(1, "Моля изберете град"),
-  weapon: z.string().min(1, "Моля изберете оръжие"),
-  motivation: z.string().min(1, "Моля изберете мотивация"),
-  email: z.string().email("Моля въведете валиден имейл адрес"),
+  city: z.string().min(1, 'Моля изберете град'),
+  weapon: z.string().min(1, 'Моля изберете оръжие'),
+  motivation: z.string().min(1, 'Моля изберете мотивация'),
+  email: z.string().email('Моля въведете валиден имейл адрес'),
   userAgent: z.string().optional(),
   ipAddress: z.string().optional(),
 });

@@ -28,10 +28,13 @@ export async function POST(request: NextRequest) {
       console.log('📦 Request body:', body);
     } catch (parseError) {
       console.error('❌ Failed to parse request body:', parseError);
-      return jsonResponse({
-        success: false,
-        error: 'Невалидни данни в заявката'
-      }, 400);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Невалидни данни в заявката',
+        },
+        400
+      );
     }
 
     // Validate input data
@@ -42,11 +45,14 @@ export async function POST(request: NextRequest) {
     } catch (validationError) {
       if (validationError instanceof z.ZodError) {
         console.error('❌ Validation error:', validationError.issues);
-        return jsonResponse({
-          success: false,
-          error: 'Невалидни данни',
-          details: validationError.issues
-        }, 400);
+        return jsonResponse(
+          {
+            success: false,
+            error: 'Невалидни данни',
+            details: validationError.issues,
+          },
+          400
+        );
       }
       throw validationError;
     }
@@ -54,10 +60,13 @@ export async function POST(request: NextRequest) {
     // Check Supabase configuration
     if (!isSupabaseConfigured()) {
       console.error('❌ Supabase not configured');
-      return jsonResponse({
-        success: false,
-        error: 'Базата данни не е конфигурирана'
-      }, 503);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Базата данни не е конфигурирана',
+        },
+        503
+      );
     }
 
     // Increment share count in database
@@ -73,10 +82,13 @@ export async function POST(request: NextRequest) {
 
       if (fetchError) {
         console.error('❌ Failed to fetch entry:', fetchError);
-        return jsonResponse({
-          success: false,
-          error: 'Участието не е намерено'
-        }, 404);
+        return jsonResponse(
+          {
+            success: false,
+            error: 'Участието не е намерено',
+          },
+          404
+        );
       }
 
       // Increment share count
@@ -91,44 +103,54 @@ export async function POST(request: NextRequest) {
 
       if (error) {
         console.error('❌ Supabase update error:', error);
-        return jsonResponse({
-          success: false,
-          error: 'Грешка при актуализиране на броя споделяния',
-          details: process.env.NODE_ENV === 'development' ? error.message : undefined
-        }, 500);
+        return jsonResponse(
+          {
+            success: false,
+            error: 'Грешка при актуализиране на броя споделяния',
+            details: process.env.NODE_ENV === 'development' ? error.message : undefined,
+          },
+          500
+        );
       }
 
       console.log('✅ Share count incremented successfully:', newShareCount);
 
-      return jsonResponse({
-        success: true,
-        message: 'Споделянето беше записано успешно!',
-        data: {
-          entryId: validatedData.entryId,
-          shareCount: newShareCount,
-        }
-      }, 200);
-
+      return jsonResponse(
+        {
+          success: true,
+          message: 'Споделянето беше записано успешно!',
+          data: {
+            entryId: validatedData.entryId,
+            shareCount: newShareCount,
+          },
+        },
+        200
+      );
     } catch (dbError) {
       console.error('❌ Failed to update share count:', dbError);
       const errorMessage = dbError instanceof Error ? dbError.message : 'Unknown error';
-      return jsonResponse({
-        success: false,
-        error: 'Грешка при актуализиране на базата данни',
-        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
-      }, 500);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Грешка при актуализиране на базата данни',
+          details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
+        },
+        500
+      );
     }
-
   } catch (error) {
     // Final catch-all to ensure we ALWAYS return JSON
     console.error('❌ Unexpected error in Share API:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
-    return jsonResponse({
-      success: false,
-      error: 'Вътрешна грешка на сървъра',
-      details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
-    }, 500);
+    return jsonResponse(
+      {
+        success: false,
+        error: 'Вътрешна грешка на сървъра',
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
+      },
+      500
+    );
   }
 }
 
@@ -138,17 +160,23 @@ export async function GET(request: NextRequest) {
     const entryId = request.nextUrl.searchParams.get('entryId');
 
     if (!entryId) {
-      return jsonResponse({
-        success: false,
-        error: 'Entry ID is required'
-      }, 400);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Entry ID is required',
+        },
+        400
+      );
     }
 
     if (!isSupabaseConfigured()) {
-      return jsonResponse({
-        success: false,
-        error: 'Базата данни не е конфигурирана'
-      }, 503);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Базата данни не е конфигурирана',
+        },
+        503
+      );
     }
 
     const { data, error } = await supabaseAdmin
@@ -158,26 +186,34 @@ export async function GET(request: NextRequest) {
       .single();
 
     if (error) {
-      return jsonResponse({
-        success: false,
-        error: 'Участието не е намерено'
-      }, 404);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Участието не е намерено',
+        },
+        404
+      );
     }
 
-    return jsonResponse({
-      success: true,
-      data: {
-        entryId,
-        shareCount: data.share_count || 0,
-      }
-    }, 200);
-
+    return jsonResponse(
+      {
+        success: true,
+        data: {
+          entryId,
+          shareCount: data.share_count || 0,
+        },
+      },
+      200
+    );
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return jsonResponse({
-      success: false,
-      error: 'Вътрешна грешка на сървъра',
-      details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
-    }, 500);
+    return jsonResponse(
+      {
+        success: false,
+        error: 'Вътрешна грешка на сървъра',
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
+      },
+      500
+    );
   }
 }

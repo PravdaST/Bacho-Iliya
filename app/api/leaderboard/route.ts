@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
     let currentUserTickets: number | null = null;
 
     if (currentUserEntryId) {
-      const userInTop = entries.find(e => e.isCurrentUser);
+      const userInTop = entries.find((e) => e.isCurrentUser);
 
       if (!userInTop) {
         // User not in top 10, find their actual rank
@@ -75,7 +75,7 @@ export async function GET(request: NextRequest) {
           .order('submitted_at', { ascending: true });
 
         if (!rankError && allEntries) {
-          const userIndex = allEntries.findIndex(e => e.entry_id === currentUserEntryId);
+          const userIndex = allEntries.findIndex((e) => e.entry_id === currentUserEntryId);
           if (userIndex !== -1) {
             currentUserRank = userIndex + 1;
             currentUserTickets = allEntries[userIndex].tickets_count || 1;
@@ -101,9 +101,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('Leaderboard API error:', error);
-    return NextResponse.json(
-      { success: false, error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
   }
 }

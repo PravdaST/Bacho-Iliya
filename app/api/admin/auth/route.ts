@@ -41,11 +41,14 @@ export async function POST(request: NextRequest) {
     const rateLimitCheck = checkRateLimit(clientIP);
     if (!rateLimitCheck.allowed) {
       console.warn(`⚠️ Rate limit exceeded for IP: ${clientIP}`);
-      return jsonResponse({
-        success: false,
-        error: rateLimitCheck.error || 'Too many login attempts. Please try again later.',
-        lockedUntil: rateLimitCheck.lockedUntil,
-      }, 429); // 429 Too Many Requests
+      return jsonResponse(
+        {
+          success: false,
+          error: rateLimitCheck.error || 'Too many login attempts. Please try again later.',
+          lockedUntil: rateLimitCheck.lockedUntil,
+        },
+        429
+      ); // 429 Too Many Requests
     }
 
     // Parse request body
@@ -55,10 +58,13 @@ export async function POST(request: NextRequest) {
     } catch (parseError) {
       console.error('❌ Failed to parse request body:', parseError);
       recordFailedAttempt(clientIP);
-      return jsonResponse({
-        success: false,
-        error: 'Невалидни данни в заявката',
-      }, 400);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Невалидни данни в заявката',
+        },
+        400
+      );
     }
 
     const { password } = body;
@@ -66,10 +72,13 @@ export async function POST(request: NextRequest) {
     // Validate input
     if (!password) {
       recordFailedAttempt(clientIP);
-      return jsonResponse({
-        success: false,
-        error: 'Паролата е задължителна',
-      }, 400);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Паролата е задължителна',
+        },
+        400
+      );
     }
 
     // Check password strength (optional, good for debugging)
@@ -85,10 +94,13 @@ export async function POST(request: NextRequest) {
 
     if (!adminPassword) {
       console.error('❌ ADMIN_PASSWORD not configured in .env.local');
-      return jsonResponse({
-        success: false,
-        error: 'Администраторската парола не е конфигурирана',
-      }, 503); // 503 Service Unavailable
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Администраторската парола не е конфигурирана',
+        },
+        503
+      ); // 503 Service Unavailable
     }
 
     // DEBUG: Log hash format (only in development)
@@ -106,12 +118,15 @@ export async function POST(request: NextRequest) {
 
       const remainingAttempts = checkRateLimit(clientIP).remainingAttempts;
 
-      return jsonResponse({
-        success: false,
-        error: 'Невалидна парола',
-        remainingAttempts,
-        hint: remainingAttempts <= 2 ? `Остават ${remainingAttempts} опита` : undefined,
-      }, 401); // 401 Unauthorized
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Невалидна парола',
+          remainingAttempts,
+          hint: remainingAttempts <= 2 ? `Остават ${remainingAttempts} опита` : undefined,
+        },
+        401
+      ); // 401 Unauthorized
     }
 
     // Success! Clear rate limit and generate JWT token
@@ -120,22 +135,27 @@ export async function POST(request: NextRequest) {
 
     console.log('✅ Admin login successful from IP:', clientIP);
 
-    return jsonResponse({
-      success: true,
-      message: 'Успешно влизане',
-      authToken,
-      expiresIn: '30m',
-    }, 200);
-
+    return jsonResponse(
+      {
+        success: true,
+        message: 'Успешно влизане',
+        authToken,
+        expiresIn: '30m',
+      },
+      200
+    );
   } catch (error) {
     console.error('❌ Admin auth error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
-    return jsonResponse({
-      success: false,
-      error: 'Грешка при автентикация',
-      details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
-    }, 500);
+    return jsonResponse(
+      {
+        success: false,
+        error: 'Грешка при автентикация',
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
+      },
+      500
+    );
   }
 }
 
@@ -150,20 +170,26 @@ export async function GET(request: NextRequest) {
     const authHeader = request.headers.get('authorization');
 
     if (!authHeader) {
-      return jsonResponse({
-        success: false,
-        error: 'Липсва authorization header',
-      }, 401);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Липсва authorization header',
+        },
+        401
+      );
     }
 
     // Extract token from header
     const token = extractTokenFromHeader(authHeader);
 
     if (!token) {
-      return jsonResponse({
-        success: false,
-        error: 'Невалиден authorization header формат',
-      }, 401);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Невалиден authorization header формат',
+        },
+        401
+      );
     }
 
     // Verify JWT token
@@ -171,10 +197,13 @@ export async function GET(request: NextRequest) {
 
     if (!decoded) {
       console.warn('❌ Invalid or expired token');
-      return jsonResponse({
-        success: false,
-        error: 'Невалиден или изтекъл токен',
-      }, 401);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Невалиден или изтекъл токен',
+        },
+        401
+      );
     }
 
     // Check if token is about to expire (< 5 minutes left)
@@ -184,23 +213,28 @@ export async function GET(request: NextRequest) {
 
     console.log('✅ Token verified successfully');
 
-    return jsonResponse({
-      success: true,
-      message: 'Токенът е валиден',
-      user: {
-        userId: decoded.userId,
-        role: decoded.role,
+    return jsonResponse(
+      {
+        success: true,
+        message: 'Токенът е валиден',
+        user: {
+          userId: decoded.userId,
+          role: decoded.role,
+        },
+        expiresAt: new Date(decoded.exp * 1000).toISOString(),
+        shouldRefresh,
       },
-      expiresAt: new Date(decoded.exp * 1000).toISOString(),
-      shouldRefresh,
-    }, 200);
-
+      200
+    );
   } catch (error) {
     console.error('❌ Token verification error:', error);
-    return jsonResponse({
-      success: false,
-      error: 'Грешка при проверка на токена',
-    }, 500);
+    return jsonResponse(
+      {
+        success: false,
+        error: 'Грешка при проверка на токена',
+      },
+      500
+    );
   }
 }
 
@@ -215,29 +249,38 @@ export async function PUT(request: NextRequest) {
     const authHeader = request.headers.get('authorization');
 
     if (!authHeader) {
-      return jsonResponse({
-        success: false,
-        error: 'Липсва authorization header',
-      }, 401);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Липсва authorization header',
+        },
+        401
+      );
     }
 
     const token = extractTokenFromHeader(authHeader);
 
     if (!token) {
-      return jsonResponse({
-        success: false,
-        error: 'Невалиден authorization header формат',
-      }, 401);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Невалиден authorization header формат',
+        },
+        401
+      );
     }
 
     // Verify current token
     const decoded = verifyAuthToken(token);
 
     if (!decoded) {
-      return jsonResponse({
-        success: false,
-        error: 'Невалиден или изтекъл токен',
-      }, 401);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Невалиден или изтекъл токен',
+        },
+        401
+      );
     }
 
     // Generate new token
@@ -245,18 +288,23 @@ export async function PUT(request: NextRequest) {
 
     console.log('✅ Token refreshed successfully');
 
-    return jsonResponse({
-      success: true,
-      message: 'Токенът е обновен',
-      authToken: newToken,
-      expiresIn: '30m',
-    }, 200);
-
+    return jsonResponse(
+      {
+        success: true,
+        message: 'Токенът е обновен',
+        authToken: newToken,
+        expiresIn: '30m',
+      },
+      200
+    );
   } catch (error) {
     console.error('❌ Token refresh error:', error);
-    return jsonResponse({
-      success: false,
-      error: 'Грешка при обновяване на токена',
-    }, 500);
+    return jsonResponse(
+      {
+        success: false,
+        error: 'Грешка при обновяване на токена',
+      },
+      500
+    );
   }
 }

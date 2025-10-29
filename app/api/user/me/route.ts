@@ -13,10 +13,7 @@ export async function GET(request: NextRequest) {
     const session = await validateSession();
 
     if (!session) {
-      return NextResponse.json(
-        { success: false, error: 'Не си logged in' },
-        { status: 401 }
-      );
+      return NextResponse.json({ success: false, error: 'Не си logged in' }, { status: 401 });
     }
 
     // Fetch user data from database

@@ -14,6 +14,7 @@ Your `.env.local` file contains sensitive credentials. Always:
 ### Password Requirements
 
 **Admin Password must have:**
+
 - Minimum 12 characters
 - Mix of uppercase and lowercase letters
 - Numbers
@@ -29,11 +30,13 @@ Your `.env.local` file contains sensitive credentials. Always:
 ### Before going live:
 
 1. **Change all default passwords**
+
    ```bash
    ADMIN_PASSWORD=your_strong_unique_password_here
    ```
 
 2. **Generate new SESSION_SECRET**
+
    ```bash
    # Use this command to generate a secure random string:
    openssl rand -hex 32
@@ -105,6 +108,7 @@ If you discover a security vulnerability:
 ### For Developers
 
 1. **Never log sensitive data**
+
    ```javascript
    // ❌ BAD
    console.log('User password:', password);
@@ -114,6 +118,7 @@ If you discover a security vulnerability:
    ```
 
 2. **Always sanitize user input**
+
    ```javascript
    import DOMPurify from 'isomorphic-dompurify';
 
@@ -121,6 +126,7 @@ If you discover a security vulnerability:
    ```
 
 3. **Use environment-specific configs**
+
    ```javascript
    // Development
    if (process.env.NODE_ENV === 'development') {
@@ -155,6 +161,7 @@ If you discover a security vulnerability:
 ## Contact
 
 For security concerns:
+
 - Email: info@bacho-iliya.bg
 - Emergency: [phone number]
 

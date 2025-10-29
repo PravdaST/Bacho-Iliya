@@ -75,7 +75,7 @@ export async function sendGiveawayWelcomeEmail(data: {
               <div class="products-box">
                 <h3 style="margin-top: 0; color: #78350f;">Твоите избрани продукти:</h3>
                 <ul style="margin: 10px 0;">
-                  ${data.selectedProducts.map(p => `<li><strong>${p}</strong></li>`).join('')}
+                  ${data.selectedProducts.map((p) => `<li><strong>${p}</strong></li>`).join('')}
                 </ul>
               </div>
 
@@ -131,7 +131,7 @@ export async function sendGiveawayWelcomeEmail(data: {
           </div>
         </body>
         </html>
-      `
+      `,
     });
 
     console.log('✅ Welcome email sent successfully:', result);
@@ -205,7 +205,7 @@ export async function sendQuizCompletionEmail(data: {
           </div>
         </body>
         </html>
-      `
+      `,
     });
 
     console.log('✅ Quiz email sent successfully:', result);
@@ -219,11 +219,7 @@ export async function sendQuizCompletionEmail(data: {
 // ============================================
 // GIVEAWAY REMINDER: DAY 3
 // ============================================
-export async function sendDay3Reminder(data: {
-  email: string;
-  name: string;
-  entryId: string;
-}) {
+export async function sendDay3Reminder(data: { email: string; name: string; entryId: string }) {
   const resendInstance = getResendInstance();
 
   if (!resendInstance) {
@@ -293,7 +289,7 @@ export async function sendDay3Reminder(data: {
           </div>
         </body>
         </html>
-      `
+      `,
     });
 
     console.log('✅ Day 3 reminder sent successfully:', result);
@@ -357,7 +353,9 @@ export async function sendDay7ReferralReminder(data: {
 
               <p>Благодарим ти за участието! Искаме да споделим страхотна новина:</p>
 
-              ${data.referralCount > 0 ? `
+              ${
+                data.referralCount > 0
+                  ? `
                 <div class="stats-box">
                   <h3 style="color: #22c55e; margin-top: 0;">🎉 Браво!</h3>
                   <p style="font-size: 20px; color: #78350f; font-weight: bold; margin: 10px 0;">
@@ -367,7 +365,9 @@ export async function sendDay7ReferralReminder(data: {
                     Това означава <strong>+${data.referralCount * 3} допълнителни участия</strong> в томболата! 🚀
                   </p>
                 </div>
-              ` : ''}
+              `
+                  : ''
+              }
 
               <div class="referral-box">
                 <h2 style="color: #ea580c; margin-top: 0; text-align: center;">💰 Как да спечелиш още участия?</h2>
@@ -397,7 +397,7 @@ export async function sendDay7ReferralReminder(data: {
           </div>
         </body>
         </html>
-      `
+      `,
     });
 
     console.log('✅ Day 7 referral reminder sent successfully:', result);
@@ -496,7 +496,7 @@ export async function sendFinalReminder(data: {
           </div>
         </body>
         </html>
-      `
+      `,
     });
 
     console.log('✅ Final reminder sent successfully:', result);
@@ -510,11 +510,7 @@ export async function sendFinalReminder(data: {
 // ============================================
 // MAGIC LINK LOGIN EMAIL
 // ============================================
-export async function sendMagicLinkEmail(data: {
-  email: string;
-  name: string;
-  loginUrl: string;
-}) {
+export async function sendMagicLinkEmail(data: { email: string; name: string; loginUrl: string }) {
   const resendInstance = getResendInstance();
 
   if (!resendInstance) {
@@ -582,7 +578,7 @@ export async function sendMagicLinkEmail(data: {
           </div>
         </body>
         </html>
-      `
+      `,
     });
 
     console.log('✅ Magic link email sent successfully:', result);
@@ -615,7 +611,8 @@ export async function sendWinnerAnnouncement(data: {
       from: 'Бачо Илия <noreply@bacho-iliya.eu>',
       to: [data.email],
       subject: data.isWinner ? '🎉 ПОЗДРАВЛЕНИЯ! Ти си победител!' : '🎁 Благодарим за участието!',
-      html: data.isWinner ? `
+      html: data.isWinner
+        ? `
         <!DOCTYPE html>
         <html>
         <head>
@@ -650,7 +647,7 @@ export async function sendWinnerAnnouncement(data: {
               <div class="products-box">
                 <h3 style="margin-top: 0; color: #78350f;">🎁 Твоите награди:</h3>
                 <ul style="margin: 10px 0; font-size: 16px;">
-                  ${data.selectedProducts.map(p => `<li><strong>${p}</strong></li>`).join('')}
+                  ${data.selectedProducts.map((p) => `<li><strong>${p}</strong></li>`).join('')}
                 </ul>
               </div>
 
@@ -676,7 +673,8 @@ export async function sendWinnerAnnouncement(data: {
           </div>
         </body>
         </html>
-      ` : `
+      `
+        : `
         <!DOCTYPE html>
         <html>
         <head>
@@ -723,7 +721,7 @@ export async function sendWinnerAnnouncement(data: {
           </div>
         </body>
         </html>
-      `
+      `,
     });
 
     console.log('✅ Winner announcement sent successfully:', result);

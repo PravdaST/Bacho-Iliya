@@ -7,11 +7,13 @@
 ### Предварителни изисквания:
 
 1. Убедете се, че имате конфигуриран **Resend API key** в `.env.local`:
+
    ```
    RESEND_API_KEY=re_xxxxx
    ```
 
 2. Убедете се, че **Supabase credentials** са правилно настроени в `.env.local`:
+
    ```
    NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
    SUPABASE_SERVICE_ROLE_KEY=xxxxx
@@ -27,11 +29,13 @@
 1. **Отворете терминал** в root директорията на проекта
 
 2. **Пуснете скрипта**:
+
    ```bash
    npm run send-emails
    ```
 
    Или директно:
+
    ```bash
    npx tsx scripts/send-welcome-emails.ts
    ```
@@ -92,6 +96,7 @@ Total entries: 25
 ### Modification:
 
 Ако искате да промените Facebook URL в имейлите:
+
 1. Отворете `lib/email.ts`
 2. Намерете line 35: `const facebookUrl = '...'`
 3. Сменете с директния линк към поста за раздаването

@@ -10,43 +10,35 @@ const categoryLabels: Record<ImagePlaceholderProps['category'], string> = {
   products: 'СНИМКА: Продукт',
   food: 'СНИМКА: Готово ястие',
   people: 'СНИМКА: Клиент / Хора',
-  process: 'СНИМКА: Производствен процес'
+  process: 'СНИМКА: Производствен процес',
 };
 
 const aspectRatioClasses = {
   square: 'aspect-square',
   video: 'aspect-video',
-  portrait: 'aspect-[3/4]'
+  portrait: 'aspect-[3/4]',
 };
 
 const sizeClasses = {
   small: 'max-w-sm',
   medium: 'max-w-2xl',
-  large: 'max-w-4xl'
+  large: 'max-w-4xl',
 };
 
 export default function ImagePlaceholder({
   category,
   description,
   aspectRatio = 'video',
-  size = 'medium'
+  size = 'medium',
 }: ImagePlaceholderProps) {
   return (
     <div className={`${sizeClasses[size]} mx-auto`}>
       <div
-        className={`
-          ${aspectRatioClasses[aspectRatio]}
-          border-4 border-dashed border-amber-300
-          bg-amber-50/50
-          rounded-lg
-          flex flex-col items-center justify-center
-          p-6 sm:p-8
-          transition-all hover:border-amber-400 hover:bg-amber-50
-        `}
+        className={` ${aspectRatioClasses[aspectRatio]} flex flex-col items-center justify-center rounded-lg border-4 border-dashed border-amber-300 bg-amber-50/50 p-6 transition-all hover:border-amber-400 hover:bg-amber-50 sm:p-8`}
       >
         {/* Camera Icon */}
         <svg
-          className="w-16 h-16 sm:w-20 sm:h-20 text-amber-400 mb-4"
+          className="mb-4 h-16 w-16 text-amber-400 sm:h-20 sm:w-20"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -66,15 +58,13 @@ export default function ImagePlaceholder({
         </svg>
 
         {/* Label */}
-        <div className="text-center space-y-2">
-          <p className="text-sm sm:text-base font-semibold text-amber-800 tracking-wide">
+        <div className="space-y-2 text-center">
+          <p className="text-sm font-semibold tracking-wide text-amber-800 sm:text-base">
             {categoryLabels[category]}
           </p>
 
           {description && (
-            <p className="text-xs sm:text-sm text-amber-700 max-w-md">
-              {description}
-            </p>
+            <p className="max-w-md text-xs text-amber-700 sm:text-sm">{description}</p>
           )}
         </div>
       </div>

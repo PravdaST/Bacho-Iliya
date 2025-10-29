@@ -54,14 +54,14 @@ app/
 
 ### Badge Tiers
 
-| Badge | Icon | Level | Referrals | Description |
-|-------|------|-------|-----------|-------------|
-| **Бронзов Новобранец** | 🥉 | Bronze | 1 | First friend invited |
-| **Бронзов Ентусиаст** | 🥉 | Bronze | 3 | 3 friends invited |
-| **Сребърен Влиятел** | 🥈 | Silver | 5 | 5 friends invited |
-| **Сребърен Шампион** | 🥈 | Silver | 10 | 10 friends invited |
-| **Златна Легенда** | 🥇 | Gold | 20 | 20 friends invited |
-| **Платинен Майстор** | 💎 | Platinum | 50+ | Ultimate achievement |
+| Badge                  | Icon | Level    | Referrals | Description          |
+| ---------------------- | ---- | -------- | --------- | -------------------- |
+| **Бронзов Новобранец** | 🥉   | Bronze   | 1         | First friend invited |
+| **Бронзов Ентусиаст**  | 🥉   | Bronze   | 3         | 3 friends invited    |
+| **Сребърен Влиятел**   | 🥈   | Silver   | 5         | 5 friends invited    |
+| **Сребърен Шампион**   | 🥈   | Silver   | 10        | 10 friends invited   |
+| **Златна Легенда**     | 🥇   | Gold     | 20        | 20 friends invited   |
+| **Платинен Майстор**   | 💎   | Platinum | 50+       | Ultimate achievement |
 
 ### Badge Calculation
 
@@ -83,7 +83,7 @@ const nextBadge = getNextBadge(referralCount);
 ### Features
 
 - **Real-time Rankings** - Live position updates
-- **Privacy Protection** - Email masking (j***e@g***.com)
+- **Privacy Protection** - Email masking (j**_e@g_**.com)
 - **Current User Highlight** - Visual distinction
 - **Pagination** - Show more/less functionality
 - **Rank Emojis** - 🥇 🥈 🥉 🏆 ⭐
@@ -130,6 +130,7 @@ const code = generateReferralCode('john.doe@example.com');
 ```
 
 **Algorithm:**
+
 1. Extract first 4 chars from email username
 2. Generate 6-char suffix from timestamp + random
 3. Format: `PREFIX-SUFFIX`
@@ -168,14 +169,14 @@ if (refCode) {
 
 ### Milestone Triggers
 
-| Referrals | Title | Emoji | Animation |
-|-----------|-------|-------|-----------|
-| 1 | Първи Успех! | 🎊 | Confetti |
-| 3 | На добър път! | 🥉 | Sparkles |
-| 5 | Сребърен Влиятел! | 🥈 | Fireworks |
-| 10 | Шампион! | 🏆 | Fireworks |
-| 20 | Златна Легенда! | 🥇 | Fireworks |
-| 50 | Платинен Майстор! | 💎 | Fireworks |
+| Referrals | Title             | Emoji | Animation |
+| --------- | ----------------- | ----- | --------- |
+| 1         | Първи Успех!      | 🎊    | Confetti  |
+| 3         | На добър път!     | 🥉    | Sparkles  |
+| 5         | Сребърен Влиятел! | 🥈    | Fireworks |
+| 10        | Шампион!          | 🏆    | Fireworks |
+| 20        | Златна Легенда!   | 🥇    | Fireworks |
+| 50        | Платинен Майстор! | 💎    | Fireworks |
 
 ### Usage
 
@@ -255,6 +256,7 @@ const total = getShareCount(); // Returns: current count
 ```
 
 **Features:**
+
 - User stats cards (referrals, bonus entries, rank, badges)
 - Referral URL with copy button
 - Social share integration
@@ -276,6 +278,7 @@ const total = getShareCount(); // Returns: current count
 ```
 
 **Variants:**
+
 - `full` - Complete badge grid + next badge progress
 - `compact` - Highest badge only
 - `progress-only` - Next badge progress bar only
@@ -294,6 +297,7 @@ const total = getShareCount(); // Returns: current count
 ```
 
 **Features:**
+
 - Rank medals (🥇 🥈 🥉)
 - Email privacy masking
 - Current user highlighting
@@ -315,6 +319,7 @@ const total = getShareCount(); // Returns: current count
 ```
 
 **Platforms:**
+
 - WhatsApp
 - Viber
 - Telegram
@@ -524,7 +529,7 @@ if (milestone) {
   analytics.track('Milestone Achieved', {
     referrals: newReferralCount,
     milestoneTitle: milestone.title,
-    badgesEarned: badges.filter(b => b.earned).length,
+    badgesEarned: badges.filter((b) => b.earned).length,
   });
 }
 ```
@@ -634,10 +639,10 @@ referral_entries: referrer.referral_entries + 5, // Change from +3 to +5
 Badges use Tailwind classes. Modify in `components/AchievementBadges.tsx`:
 
 ```typescript
-const getBadgeColor = (level: Badge["level"]) => {
+const getBadgeColor = (level: Badge['level']) => {
   switch (level) {
-    case "bronze":
-      return "from-orange-400 to-orange-600"; // Change colors
+    case 'bronze':
+      return 'from-orange-400 to-orange-600'; // Change colors
     // ...
   }
 };
@@ -650,6 +655,7 @@ const getBadgeColor = (level: Badge["level"]) => {
 ### Issue: Referral code not captured
 
 **Solution:**
+
 ```typescript
 // Check localStorage
 console.log(getReferralCodeFromStorage());
@@ -662,6 +668,7 @@ console.log('Ref param:', ref);
 ### Issue: Badges not updating
 
 **Solution:**
+
 ```typescript
 // Force badge recalculation
 const badges = calculateEarnedBadges(
@@ -673,16 +680,15 @@ const badges = calculateEarnedBadges(
 ### Issue: Leaderboard showing wrong rank
 
 **Solution:**
+
 ```typescript
 // Verify sorting
-const sorted = leaderboardData.sort((a, b) =>
-  b.referralCount - a.referralCount
-);
+const sorted = leaderboardData.sort((a, b) => b.referralCount - a.referralCount);
 
 // Check for ties
 const withRanks = sorted.map((entry, idx) => ({
   ...entry,
-  rank: idx + 1
+  rank: idx + 1,
 }));
 ```
 
@@ -693,36 +699,47 @@ const withRanks = sorted.map((entry, idx) => ({
 ### Functions
 
 #### `generateReferralCode(email: string): string`
+
 Generates unique referral code from email.
 
 #### `isValidReferralCode(code: string): boolean`
+
 Validates referral code format.
 
 #### `calculateEarnedBadges(referralCount: number, previousBadges?: Badge[]): Badge[]`
+
 Returns array of badges with earned status.
 
 #### `getNextBadge(referralCount: number): Badge & { progress: number; remaining: number } | undefined`
+
 Returns next badge to unlock with progress percentage.
 
 #### `getHighestBadge(badges: Badge[]): Badge | undefined`
+
 Returns highest earned badge.
 
 #### `formatLeaderboardEmail(email: string): string`
-Masks email for privacy (j***e@g***.com).
+
+Masks email for privacy (j**_e@g_**.com).
 
 #### `getRankEmoji(rank: number): string`
+
 Returns emoji for rank (🥇 🥈 🥉 🏆 ⭐).
 
 #### `calculateBonusEntries(referralCount: number): number`
-Calculates total bonus entries (count * 3).
+
+Calculates total bonus entries (count \* 3).
 
 #### `getMilestoneMessage(referralCount: number): MilestoneMessage | undefined`
+
 Returns celebration message for milestone.
 
 #### `generateReferralUrl(referralCode: string, baseUrl?: string): string`
+
 Generates complete referral URL.
 
 #### `extractReferralCodeFromUrl(url?: string): string | null`
+
 Extracts referral code from URL parameter.
 
 ---
@@ -757,6 +774,7 @@ Extracts referral code from URL parameter.
 Built for **Bacho Ilia / Бачо Илия** giveaway campaign.
 
 **Tech Stack:**
+
 - Next.js 15.5.6
 - React 19.2.0
 - TypeScript (strict mode)

@@ -55,35 +55,35 @@ export default function ProductCarouselSwiper({ products, selectedProducts, onTo
   return (
     <div className="relative py-12">
       {/* Counter */}
-      <div className="text-center mb-8">
-        <p className="text-gray-600 font-semibold">
+      <div className="mb-8 text-center">
+        <p className="font-semibold text-gray-600">
           {activeIndex + 1} / {products.length}
         </p>
-        <p className="text-sm text-gray-500 mt-1">3D Coverflow Style</p>
+        <p className="mt-1 text-sm text-gray-500">3D Coverflow Style</p>
       </div>
 
       {/* 3D Container */}
       <div
-        className="relative h-[550px] flex items-center justify-center"
+        className="relative flex h-[550px] items-center justify-center"
         style={{ perspective: '1200px' }}
       >
         {/* Navigation */}
         <button
           onClick={goPrev}
-          className="absolute left-4 z-30 bg-white shadow-xl rounded-full p-4 hover:scale-110 transition-transform"
+          className="absolute left-4 z-30 rounded-full bg-white p-4 shadow-xl transition-transform hover:scale-110"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="h-6 w-6" />
         </button>
 
         <button
           onClick={goNext}
-          className="absolute right-4 z-30 bg-white shadow-xl rounded-full p-4 hover:scale-110 transition-transform"
+          className="absolute right-4 z-30 rounded-full bg-white p-4 shadow-xl transition-transform hover:scale-110"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="h-6 w-6" />
         </button>
 
         {/* Cards */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative flex h-full w-full items-center justify-center">
           {visibleItems.map(({ product, position, index }) => {
             const transform = getTransform(position);
             const isCentered = position === 0;
@@ -111,9 +111,11 @@ export default function ProductCarouselSwiper({ products, selectedProducts, onTo
                 }}
                 onClick={() => !isCentered && setActiveIndex(index)}
               >
-                <div className={`transform transition-shadow ${
-                  isCentered ? 'shadow-2xl' : 'shadow-lg'
-                }`}>
+                <div
+                  className={`transform transition-shadow ${
+                    isCentered ? 'shadow-2xl' : 'shadow-lg'
+                  }`}
+                >
                   <ProductCard
                     product={product}
                     isSelected={selectedProducts.includes(product.id)}
@@ -127,13 +129,13 @@ export default function ProductCarouselSwiper({ products, selectedProducts, onTo
       </div>
 
       {/* Dots */}
-      <div className="flex justify-center gap-2 mt-8">
+      <div className="mt-8 flex justify-center gap-2">
         {products.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setActiveIndex(idx)}
             className={`h-2 rounded-full transition-all ${
-              idx === activeIndex ? 'w-8 bg-bulgarian-red' : 'w-2 bg-gray-300'
+              idx === activeIndex ? 'bg-bulgarian-red w-8' : 'w-2 bg-gray-300'
             }`}
           />
         ))}

@@ -59,19 +59,19 @@ export default function LiveCounter({ className = '' }: LiveCounterProps) {
       animate={{ opacity: 1, y: 0 }}
       aria-live="polite"
       aria-label={`${count} ${count === 1 ? 'човек участва' : 'души участват'} в раздаването`}
-      className={`inline-flex items-center gap-3 bg-gradient-to-br from-amber-50 via-cream-50 to-orange-50 px-6 py-3 rounded-2xl border-2 border-amber-200 shadow-md hover:shadow-lg transition-shadow ${className}`}
+      className={`via-cream-50 inline-flex items-center gap-3 rounded-2xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-3 shadow-md transition-shadow hover:shadow-lg ${className}`}
     >
       <div className="relative">
-        <Users className="w-6 h-6 text-amber-600" aria-hidden="true" />
+        <Users className="h-6 w-6 text-amber-600" aria-hidden="true" />
         {/* Elegant glow animation - vintage Bulgarian style */}
         <span className="absolute -top-1 -right-1 flex h-3 w-3">
           <span
             className="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-40"
             style={{
-              animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+              animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             }}
           ></span>
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500 shadow-sm"></span>
+          <span className="relative inline-flex h-3 w-3 rounded-full bg-amber-500 shadow-sm"></span>
         </span>
       </div>
 
@@ -84,13 +84,13 @@ export default function LiveCounter({ className = '' }: LiveCounterProps) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="text-2xl font-handwritten font-bold text-amber-900 tabular-nums"
+              className="font-handwritten text-2xl font-bold text-amber-900 tabular-nums"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
               {count.toLocaleString('bg-BG')}
             </motion.span>
           </AnimatePresence>
-          <span className="text-sm text-amber-700 font-medium">
+          <span className="text-sm font-medium text-amber-700">
             {count === 1 ? 'човек участва' : 'души участват'}
           </span>
         </div>

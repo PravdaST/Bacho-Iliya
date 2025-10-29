@@ -73,7 +73,7 @@ export default function OptimizedVideo({
   const videoSrc = isMobile && mobileSrc ? mobileSrc : desktopSrc;
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative h-full w-full">
       {/* Mobile: Static poster image only (save data & performance) */}
       {isMobile ? (
         <div className="absolute inset-0">
@@ -92,7 +92,7 @@ export default function OptimizedVideo({
           {/* Desktop: Full video with lazy loading */}
           {/* Loading skeleton */}
           {!isLoaded && (
-            <div className="absolute inset-0 bg-gradient-to-br from-vintage-cream to-parchment animate-pulse" />
+            <div className="from-vintage-cream to-parchment absolute inset-0 animate-pulse bg-gradient-to-br" />
           )}
 
           {/* Poster image fallback */}
@@ -122,9 +122,7 @@ export default function OptimizedVideo({
             className={`${className} object-cover ${!isLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
             style={style}
           >
-            {shouldLoad && (
-              <source src={videoSrc} type="video/mp4" />
-            )}
+            {shouldLoad && <source src={videoSrc} type="video/mp4" />}
             <p>Your browser doesn&apos;t support HTML5 video.</p>
           </video>
         </>

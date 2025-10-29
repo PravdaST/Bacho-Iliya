@@ -12,41 +12,58 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "Кой е Бачо Илия?",
-    answer: "Аз съм Бачо Илия - дядо, който прави сирене точно както бабата ме научи преди 50 години. Нищо не съм променил. Без химия, без бързане, без подмолки. Просто истински продукти за твоето семейство. Защото ако не бих дал на моите внуци, няма да го продам на теб."
+    question: 'Кой е Бачо Илия?',
+    answer:
+      'Аз съм Бачо Илия - дядо, който прави сирене точно както бабата ме научи преди 50 години. Нищо не съм променил. Без химия, без бързане, без подмолки. Просто истински продукти за твоето семейство. Защото ако не бих дал на моите внуци, няма да го продам на теб.',
   },
   {
-    question: "Как мога да участвам в раздаването?",
-    answer: "Много просто е! Маркирай продуктите, които искаш да опиташ. После ми кажи името ти, email-а и телефона. Това е - 2 минути работа. Ще те помоля да ме последваш във Facebook и да споделиш с приятелите си!"
+    question: 'Как мога да участвам в раздаването?',
+    answer:
+      'Много просто е! Маркирай продуктите, които искаш да опиташ. После ми кажи името ти, email-а и телефона. Това е - 2 минути работа. Ще те помоля да ме последваш във Facebook и да споделиш с приятелите си!',
   },
   {
-    question: "Къде мога да купя продуктите ти?",
+    question: 'Къде мога да купя продуктите ти?',
     answer: (
       <>
-        В магазините из цяла България - местните магазинчета и малките вериги. <strong className="text-bulgarian-red">В Kaufland и Lidl няма да ме намериш</strong> - те искат големи количества и промени в рецептата, а аз не мога да променя бабините рецепти. <Link href="/where-to-buy" className="text-bulgarian-red font-bold underline hover:text-walnut transition-colors">Виж тук пълния списък с магазини</Link> в твоя град. Ако не намериш - пиши ми във Facebook или Instagram и ще ти кажа къде най-близо до теб.
+        В магазините из цяла България - местните магазинчета и малките вериги.{' '}
+        <strong className="text-bulgarian-red">В Kaufland и Lidl няма да ме намериш</strong> - те
+        искат големи количества и промени в рецептата, а аз не мога да променя бабините рецепти.{' '}
+        <Link
+          href="/where-to-buy"
+          className="text-bulgarian-red hover:text-walnut font-bold underline transition-colors"
+        >
+          Виж тук пълния списък с магазини
+        </Link>{' '}
+        в твоя град. Ако не намериш - пиши ми във Facebook или Instagram и ще ти кажа къде най-близо
+        до теб.
       </>
-    )
+    ),
   },
   {
-    question: "Какво точно правиш?",
-    answer: "Правя бяло сирене - малко или голямо, както ти трябва. Правя кашкавал - жълтото сирене, което децата обичат топено. И правя кисело мляко - гъсто, с каймак, както бабата го правеше. Всичко по нейните рецепти. Няма нищо друго освен мляко, сол и щипка традиция. И време. Много време."
+    question: 'Какво точно правиш?',
+    answer:
+      'Правя бяло сирене - малко или голямо, както ти трябва. Правя кашкавал - жълтото сирене, което децата обичат топено. И правя кисело мляко - гъсто, с каймак, както бабата го правеше. Всичко по нейните рецепти. Няма нищо друго освен мляко, сол и щипка традиция. И време. Много време.',
   },
   {
-    question: "Защо твоите продукти са различни?",
-    answer: "Защото не бързам. Защото кравите са щастливи, ядат трева, не антибиотици. Защото не слагам химия и консерванти. Ако не бих дал на внуците си, няма да го продам на теб. Проста работа. Правя го както бабата ме научи и толкова."
+    question: 'Защо твоите продукти са различни?',
+    answer:
+      'Защото не бързам. Защото кравите са щастливи, ядат трева, не антибиотици. Защото не слагам химия и консерванти. Ако не бих дал на внуците си, няма да го продам на теб. Проста работа. Правя го както бабата ме научи и толкова.',
   },
   {
-    question: "Колко струва участието?",
-    answer: "Нищо не струва! Безплатно е. Просто искам повече хора да опитат какво е истинско сирене, мляко, кашкавал. Без номера, без скрити условия. Само се регистрираш и може би ще ти падне да опиташ. Толкова е простичко."
+    question: 'Колко струва участието?',
+    answer:
+      'Нищо не струва! Безплатно е. Просто искам повече хора да опитат какво е истинско сирене, мляко, кашкавал. Без номера, без скрити условия. Само се регистрираш и може би ще ти падне да опиташ. Толкова е простичко.',
   },
   {
-    question: "Кога ще разбера дали съм спечелил?",
-    answer: "Ще ти пиша на email-а и телефона. Ще видиш и във Facebook и Instagram. Ако спечелиш - ще се свържа лично да уредим къде и как да ти пратя продуктите!"
+    question: 'Кога ще разбера дали съм спечелил?',
+    answer:
+      'Ще ти пиша на email-а и телефона. Ще видиш и във Facebook и Instagram. Ако спечелиш - ще се свържа лично да уредим къде и как да ти пратя продуктите!',
   },
   {
-    question: "Може ли да давам на децата си?",
-    answer: "Е, на моите внуци им давам, не виждам защо на твоите не. Това е храна каквато трябва да се дава на деца - без химия. Чисто мляко, сол и традиция. Калций за костите, протеин за мускулите. Точно като на село. Много родители ми казват, че за първи път децата им ядат сирене без да им се карат."
-  }
+    question: 'Може ли да давам на децата си?',
+    answer:
+      'Е, на моите внуци им давам, не виждам защо на твоите не. Това е храна каквато трябва да се дава на деца - без химия. Чисто мляко, сол и традиция. Калций за костите, протеин за мускулите. Точно като на село. Много родители ми казват, че за първи път децата им ядат сирене без да им се карат.',
+  },
 ];
 
 export default function FAQ() {
@@ -57,21 +74,21 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-20 px-4 bg-walnut/10 relative overflow-hidden">
+    <section className="bg-walnut/10 relative overflow-hidden px-4 py-20">
       {/* Vintage Paper Texture */}
-      <div className="absolute inset-0 bg-vintage-paper opacity-30" />
+      <div className="bg-vintage-paper absolute inset-0 opacity-30" />
 
-      <div className="max-w-4xl mx-auto relative">
+      <div className="relative mx-auto max-w-4xl">
         {/* Notebook Header */}
-        <div className="text-center mb-12">
+        <div className="mb-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="relative w-16 h-16">
+            <div className="mb-6 flex items-center justify-center gap-4">
+              <div className="relative h-16 w-16">
                 <Image
                   src="/Bachi ilia head logo_.webp"
                   alt="Бачо Илия"
@@ -91,33 +108,36 @@ export default function FAQ() {
         </div>
 
         {/* Notebook Page */}
-        <div className="relative bg-old-paper border-4 border-walnut/40 shadow-2xl p-8 md:p-12">
+        <div className="bg-old-paper border-walnut/40 relative border-4 p-8 shadow-2xl md:p-12">
           {/* Perforation Holes - Left Side */}
-          <div className="absolute left-0 top-0 bottom-0 w-10 hidden md:flex flex-col justify-around py-8">
+          <div className="absolute top-0 bottom-0 left-0 hidden w-10 flex-col justify-around py-8 md:flex">
             {[...Array(20)].map((_, i) => (
-              <div key={i} className="w-2.5 h-2.5 bg-walnut/20 rounded-full ml-3.5 border border-walnut/10" />
+              <div
+                key={i}
+                className="bg-walnut/20 border-walnut/10 ml-3.5 h-2.5 w-2.5 rounded-full border"
+              />
             ))}
           </div>
 
           {/* Notebook Lines */}
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="pointer-events-none absolute inset-0">
             {[...Array(25)].map((_, i) => (
               <div
                 key={i}
-                className="absolute left-0 right-0 border-b border-faded-denim/15"
+                className="border-faded-denim/15 absolute right-0 left-0 border-b"
                 style={{ top: `${(i + 1) * 4}%` }}
               />
             ))}
           </div>
 
           {/* Left Margin Line */}
-          <div className="absolute left-16 top-0 bottom-0 w-px bg-bulgarian-red/30" />
+          <div className="bg-bulgarian-red/30 absolute top-0 bottom-0 left-16 w-px" />
 
           {/* Paper Texture */}
-          <div className="absolute inset-0 bg-vintage-paper opacity-20 pointer-events-none" />
+          <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
 
           {/* FAQ Items */}
-          <div className="space-y-8 ml-8 relative z-10">
+          <div className="relative z-10 ml-8 space-y-8">
             {faqData.map((faq, index) => (
               <motion.div
                 key={index}
@@ -129,14 +149,14 @@ export default function FAQ() {
                 {/* Question - Typewriter Font */}
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full text-left group"
+                  className="group w-full text-left"
                   aria-expanded={openIndex === index}
                 >
                   <div className="flex items-start gap-3">
-                    <span className="font-handwritten text-bulgarian-red font-bold flex-shrink-0">
+                    <span className="font-handwritten text-bulgarian-red flex-shrink-0 font-bold">
                       {String(index + 1).padStart(2, '0')}.
                     </span>
-                    <h3 className="font-handwritten text-lg md:text-xl text-walnut font-bold group-hover:text-bulgarian-red transition-colors">
+                    <h3 className="font-handwritten text-walnut group-hover:text-bulgarian-red text-lg font-bold transition-colors md:text-xl">
                       {faq.question}
                     </h3>
                   </div>
@@ -150,7 +170,7 @@ export default function FAQ() {
                         opacity: 0,
                         height: 0,
                         rotateX: -15,
-                        transformOrigin: 'top'
+                        transformOrigin: 'top',
                       }}
                       animate={{
                         opacity: 1,
@@ -164,12 +184,12 @@ export default function FAQ() {
                       }}
                       transition={{
                         duration: 0.4,
-                        ease: "easeOut"
+                        ease: 'easeOut',
                       }}
-                      className="overflow-hidden mt-4 ml-12"
+                      className="mt-4 ml-12 overflow-hidden"
                     >
-                      <div className="flex gap-4 items-start bg-old-paper/60 p-4 border-l-4 border-bulgarian-red">
-                        <div className="relative w-10 h-10 flex-shrink-0">
+                      <div className="bg-old-paper/60 border-bulgarian-red flex items-start gap-4 border-l-4 p-4">
+                        <div className="relative h-10 w-10 flex-shrink-0">
                           <Image
                             src="/Bachi ilia head logo_.webp"
                             alt="Бачо Илия"
@@ -178,7 +198,7 @@ export default function FAQ() {
                             className="object-contain"
                           />
                         </div>
-                        <p className="font-handwritten text-walnut text-lg md:text-xl leading-relaxed">
+                        <p className="font-handwritten text-walnut text-lg leading-relaxed md:text-xl">
                           {faq.answer}
                         </p>
                       </div>
@@ -188,14 +208,14 @@ export default function FAQ() {
 
                 {/* Separator */}
                 {index < faqData.length - 1 && (
-                  <div className="mt-6 border-b-2 border-dashed border-walnut/20" />
+                  <div className="border-walnut/20 mt-6 border-b-2 border-dashed" />
                 )}
               </motion.div>
             ))}
           </div>
 
           {/* Coffee Stain */}
-          <div className="absolute bottom-8 right-8 w-24 h-24 rounded-full bg-walnut/10 blur-sm opacity-40" />
+          <div className="bg-walnut/10 absolute right-8 bottom-8 h-24 w-24 rounded-full opacity-40 blur-sm" />
         </div>
       </div>
     </section>

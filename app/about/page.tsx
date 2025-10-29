@@ -6,13 +6,13 @@ export const metadata: Metadata = generateAboutMetadata();
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-vintage-cream">
+    <div className="bg-vintage-cream min-h-screen">
       {/* Hero Section with Video */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+      <section className="relative h-[400px] overflow-hidden md:h-[500px] lg:h-[600px]">
         {/* YouTube Video Background */}
-        <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 h-full w-full">
           <iframe
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] md:w-[200%] md:h-[200%] pointer-events-none"
+            className="pointer-events-none absolute top-1/2 left-1/2 h-[300%] w-[300%] -translate-x-1/2 -translate-y-1/2 md:h-[200%] md:w-[200%]"
             src="https://www.youtube.com/embed/xnPMI6cEhR4?autoplay=1&mute=1&controls=0&loop=1&playlist=xnPMI6cEhR4&modestbranding=1&rel=0&showinfo=0&disablekb=1&fs=0&iv_load_policy=3"
             title="Презентация Милки лукс"
             frameBorder="0"
@@ -23,15 +23,15 @@ export default function AboutPage() {
         </div>
 
         {/* Gradient Overlay - Moderate */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/20 z-10" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/50 to-black/20" />
 
         {/* Content */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+        <div className="absolute right-0 bottom-0 left-0 z-20 p-8">
           <div className="container mx-auto max-w-5xl">
-            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white mb-4 drop-shadow-lg">
+            <h1 className="font-heading mb-4 text-5xl text-white drop-shadow-lg md:text-6xl lg:text-7xl">
               Историята на Бачо Илия
             </h1>
-            <p className="font-body text-2xl md:text-3xl text-white max-w-3xl drop-shadow-md font-semibold">
+            <p className="font-body max-w-3xl text-2xl font-semibold text-white drop-shadow-md md:text-3xl">
               От 1995 година правим сирене точно както ти баба го правеше
             </p>
           </div>
@@ -39,32 +39,31 @@ export default function AboutPage() {
       </section>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 max-w-5xl py-12">
+      <div className="container mx-auto max-w-5xl px-4 py-12">
         {/* Our Story */}
         <section className="mb-16">
-          <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-8 shadow-vintage">
-            <h2 className="font-handwritten text-4xl text-traditional-brown mb-6">
+          <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-8">
+            <h2 className="font-handwritten text-traditional-brown mb-6 text-4xl">
               Как Започна Всичко
             </h2>
-            <div className="prose prose-lg max-w-none text-warm-brown">
-              <p className="font-handwritten text-xl md:text-2xl leading-relaxed mb-4 font-semibold">
-                Помниш ли как бабините сирена миришеха? Как киселото мляко беше с корица
-                отгоре и се ядеше с лъжица? Как айранът беше гъст и утоляваше жаждата
-                по-добре от всичко друго?
+            <div className="prose prose-lg text-warm-brown max-w-none">
+              <p className="font-handwritten mb-4 text-xl leading-relaxed font-semibold md:text-2xl">
+                Помниш ли как бабините сирена миришеха? Как киселото мляко беше с корица отгоре и се
+                ядеше с лъжица? Как айранът беше гъст и утоляваше жаждата по-добре от всичко друго?
               </p>
-              <p className="font-handwritten text-xl md:text-2xl leading-relaxed mb-4 font-semibold">
-                Точно за този вкус мечтаехме когато започнахме през 1995 година. Илия,
-                чийто дядо всички наричаха "Бачо", взе бабината рецепта за бяло сирене
-                и реши - няма повече да търся този вкус по магазините. Ще го правя сам.
+              <p className="font-handwritten mb-4 text-xl leading-relaxed font-semibold md:text-2xl">
+                Точно за този вкус мечтаехме когато започнахме през 1995 година. Илия, чийто дядо
+                всички наричаха "Бачо", взе бабината рецепта за бяло сирене и реши - няма повече да
+                търся този вкус по магазините. Ще го правя сам.
               </p>
-              <p className="font-handwritten text-xl md:text-2xl leading-relaxed mb-4 font-semibold">
-                Първото сирене го направи в малък цех в Пловдив. Само краве мляко, сол
-                и култура. Нищо повече. Съседите опитаха и казаха "Бачо Илия, това е като
-                на село!". Името си остана.
+              <p className="font-handwritten mb-4 text-xl leading-relaxed font-semibold md:text-2xl">
+                Първото сирене го направи в малък цех в Пловдив. Само краве мляко, сол и култура.
+                Нищо повече. Съседите опитаха и казаха "Бачо Илия, това е като на село!". Името си
+                остана.
               </p>
-              <p className="font-handwritten text-xl md:text-2xl leading-relaxed font-semibold">
-                Днес, 30 години по-късно, все още правим продуктите по същия начин.
-                Защото ако нещо е добро, защо да го променяш?
+              <p className="font-handwritten text-xl leading-relaxed font-semibold md:text-2xl">
+                Днес, 30 години по-късно, все още правим продуктите по същия начин. Защото ако нещо
+                е добро, защо да го променяш?
               </p>
             </div>
           </div>
@@ -72,31 +71,33 @@ export default function AboutPage() {
 
         {/* Milkylux Section */}
         <section className="mb-16">
-          <div className="bg-gradient-to-br from-bulgarian-red to-bulgarian-red text-white rounded-lg p-8 shadow-vintage">
-            <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
+          <div className="from-bulgarian-red to-bulgarian-red shadow-vintage rounded-lg bg-gradient-to-br p-8 text-white">
+            <div className="mb-6 flex flex-col items-center gap-6 md:flex-row">
               <div className="flex-1">
-                <h2 className="font-heading text-4xl text-white mb-4">
+                <h2 className="font-heading mb-4 text-4xl text-white">
                   Част от Семейството Milkylux
                 </h2>
-                <p className="font-body text-lg text-white leading-relaxed mb-4">
+                <p className="font-body mb-4 text-lg leading-relaxed text-white">
                   От 2015 година Бачо Илия е част от Milkylux - компания създадена през 1996 година,
-                  която произвежда традиционни български млечни продукти за пазарите в България и чужбина.
+                  която произвежда традиционни български млечни продукти за пазарите в България и
+                  чужбина.
                 </p>
-                <p className="font-body text-lg text-white leading-relaxed mb-4">
+                <p className="font-body mb-4 text-lg leading-relaxed text-white">
                   С над 27 години опит, производственият цех в град Бяла Черква разполага с площ от
-                  25,000 кв.м и преработва 130,000 литра мляко дневно. Милкилукс работи с първокатегорийни
-                  ферми от 6 региона - В. Търново, Русе, Плевен, Ловеч, Търговище и Враца.
+                  25,000 кв.м и преработва 130,000 литра мляко дневно. Милкилукс работи с
+                  първокатегорийни ферми от 6 региона - В. Търново, Русе, Плевен, Ловеч, Търговище и
+                  Враца.
                 </p>
-                <p className="font-body text-lg text-white leading-relaxed mb-6">
-                  Какво се промени? Цехът стана по-голям, опаковките по-хубави,
-                  контролът на качеството по-строг. Какво НЕ се промени? Рецептите.
-                  Тези остават същите като в началото.
+                <p className="font-body mb-6 text-lg leading-relaxed text-white">
+                  Какво се промени? Цехът стана по-голям, опаковките по-хубави, контролът на
+                  качеството по-строг. Какво НЕ се промени? Рецептите. Тези остават същите като в
+                  началото.
                 </p>
                 <a
                   href="https://milkylux.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-white text-bulgarian-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-cream transition-all hover:scale-105 shadow-lg"
+                  className="text-bulgarian-red hover:bg-cream inline-block rounded-lg bg-white px-8 py-4 text-lg font-bold shadow-lg transition-all hover:scale-105"
                 >
                   Разгледай Milkylux →
                 </a>
@@ -107,118 +108,131 @@ export default function AboutPage() {
 
         {/* Production Capacity & Quality */}
         <section className="mb-12 md:mb-20">
-          <h2 className="font-handwritten text-3xl md:text-4xl text-traditional-brown text-center mb-6 md:mb-10">
+          <h2 className="font-handwritten text-traditional-brown mb-6 text-center text-3xl md:mb-10 md:text-4xl">
             Производство и Качество
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
+          <div className="mb-6 grid grid-cols-1 gap-4 md:mb-8 md:grid-cols-2 md:gap-6">
             {/* Production Capacity */}
-            <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-6 shadow-vintage">
-              <h3 className="font-handwritten text-3xl text-traditional-brown mb-4">
+            <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
+              <h3 className="font-handwritten text-traditional-brown mb-4 text-3xl">
                 Производствен капацитет
               </h3>
-              <ul className="space-y-3 text-warm-brown font-handwritten">
+              <ul className="text-warm-brown font-handwritten space-y-3">
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">•</span>
+                  <span className="text-bulgarian-red text-xl font-bold">•</span>
                   <span>130,000 литра дневна преработка на мляко</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">•</span>
+                  <span className="text-bulgarian-red text-xl font-bold">•</span>
                   <span>100 тона сирене на смяна</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">•</span>
+                  <span className="text-bulgarian-red text-xl font-bold">•</span>
                   <span>20 тона кашкавал дневно</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">•</span>
+                  <span className="text-bulgarian-red text-xl font-bold">•</span>
                   <span>1,500 тона месечен капацитет специалитети</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">•</span>
+                  <span className="text-bulgarian-red text-xl font-bold">•</span>
                   <span>200 тона класически бели саламурени сирена месечно</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">•</span>
+                  <span className="text-bulgarian-red text-xl font-bold">•</span>
                   <span>25,000 кв.м производствена площ</span>
                 </li>
               </ul>
             </div>
 
             {/* Quality Certifications */}
-            <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-6 shadow-vintage">
-              <h3 className="font-handwritten text-3xl text-traditional-brown mb-4">
+            <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
+              <h3 className="font-handwritten text-traditional-brown mb-4 text-3xl">
                 Сертификати и награди
               </h3>
-              <ul className="space-y-3 text-warm-brown font-handwritten">
+              <ul className="text-warm-brown font-handwritten space-y-3">
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">✓</span>
-                  <span><strong>HACCP</strong> - система за самоконтрол и лицензиране</span>
+                  <span className="text-bulgarian-red text-xl font-bold">✓</span>
+                  <span>
+                    <strong>HACCP</strong> - система за самоконтрол и лицензиране
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">✓</span>
-                  <span><strong>IFS</strong> - International Food Standard сертификация</span>
+                  <span className="text-bulgarian-red text-xl font-bold">✓</span>
+                  <span>
+                    <strong>IFS</strong> - International Food Standard сертификация
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">✓</span>
-                  <span><strong>Kosher</strong> - сертификация за кошер продукти</span>
+                  <span className="text-bulgarian-red text-xl font-bold">✓</span>
+                  <span>
+                    <strong>Kosher</strong> - сертификация за кошер продукти
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">✓</span>
-                  <span><strong>Halal</strong> - сертификация за халал продукти</span>
+                  <span className="text-bulgarian-red text-xl font-bold">✓</span>
+                  <span>
+                    <strong>Halal</strong> - сертификация за халал продукти
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">✓</span>
-                  <span><strong>IQS</strong> - сертификация за качество</span>
+                  <span className="text-bulgarian-red text-xl font-bold">✓</span>
+                  <span>
+                    <strong>IQS</strong> - сертификация за качество
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-bulgarian-red font-bold text-xl">🏆</span>
-                  <span><strong>5 златни медала</strong> за качество от Inter Expo Center - София</span>
+                  <span className="text-bulgarian-red text-xl font-bold">🏆</span>
+                  <span>
+                    <strong>5 златни медала</strong> за качество от Inter Expo Center - София
+                  </span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-sunflower/20 to-sunflower/10 border-l-4 border-sunflower p-6 rounded">
-            <p className="font-handwritten text-warm-brown text-lg leading-relaxed text-center">
-              <strong>Използваме само мляко от първокатегорийни ферми</strong> от 6 региона на България.
-              Произвеждаме млечни продукти по оригинална българска технология с най-висок стандарт за качество.
+          <div className="from-sunflower/20 to-sunflower/10 border-sunflower rounded border-l-4 bg-gradient-to-r p-6">
+            <p className="font-handwritten text-warm-brown text-center text-lg leading-relaxed">
+              <strong>Използваме само мляко от първокатегорийни ферми</strong> от 6 региона на
+              България. Произвеждаме млечни продукти по оригинална българска технология с най-висок
+              стандарт за качество.
             </p>
           </div>
         </section>
 
         {/* Our Values */}
         <section className="mb-12 md:mb-20">
-          <h2 className="font-handwritten text-3xl md:text-4xl text-traditional-brown text-center mb-6 md:mb-10">
+          <h2 className="font-handwritten text-traditional-brown mb-6 text-center text-3xl md:mb-10 md:text-4xl">
             Как Правим Продуктите
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-6 shadow-vintage">
-              <h3 className="font-handwritten text-2xl text-traditional-brown mb-3 text-center">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+            <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
+              <h3 className="font-handwritten text-traditional-brown mb-3 text-center text-2xl">
                 Добро Мляко = Добро Сирене
               </h3>
               <p className="font-handwritten text-warm-brown text-center">
-                Работим с ферми където кравите пасат навън, не стоят в клетки.
-                Звучи просто, ама това прави огромна разлика във вкуса.
+                Работим с ферми където кравите пасат навън, не стоят в клетки. Звучи просто, ама
+                това прави огромна разлика във вкуса.
               </p>
             </div>
 
-            <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-6 shadow-vintage">
-              <h3 className="font-handwritten text-2xl text-traditional-brown mb-3 text-center">
+            <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
+              <h3 className="font-handwritten text-traditional-brown mb-3 text-center text-2xl">
                 Без Бързане
               </h3>
               <p className="font-handwritten text-warm-brown text-center">
-                Сиренето узрява минимум 30 дни. Киселото мляко се прави всеки ден прясно.
-                Айранът се пакетира същия ден. Не търсим начини да ускорим нещата.
+                Сиренето узрява минимум 30 дни. Киселото мляко се прави всеки ден прясно. Айранът се
+                пакетира същия ден. Не търсим начини да ускорим нещата.
               </p>
             </div>
 
-            <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-6 shadow-vintage">
-              <h3 className="font-handwritten text-2xl text-traditional-brown mb-3 text-center">
+            <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
+              <h3 className="font-handwritten text-traditional-brown mb-3 text-center text-2xl">
                 Четете Етикета
               </h3>
               <p className="font-handwritten text-warm-brown text-center">
-                Нашите продукти имат 3-4 съставки. Мляко, сол, култура. Толкова.
-                Ако видите списък с 15 неща на друга опаковка - запитайте се защо.
+                Нашите продукти имат 3-4 съставки. Мляко, сол, култура. Толкова. Ако видите списък с
+                15 неща на друга опаковка - запитайте се защо.
               </p>
             </div>
           </div>
@@ -226,27 +240,29 @@ export default function AboutPage() {
 
         {/* Timeline - Visual Modern Design */}
         <section className="mb-16 md:mb-24">
-          <h2 className="font-handwritten text-3xl md:text-5xl text-traditional-brown text-center mb-8 md:mb-16">
+          <h2 className="font-handwritten text-traditional-brown mb-8 text-center text-3xl md:mb-16 md:text-5xl">
             30 Години в 6 Ключови Момента
           </h2>
 
           {/* Timeline Container */}
-          <div className="relative max-w-5xl mx-auto">
+          <div className="relative mx-auto max-w-5xl">
             {/* Vertical Line (Mobile & Desktop) */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-bulgarian-red via-sunflower to-bulgarian-red md:transform md:-translate-x-1/2" />
+            <div className="from-bulgarian-red via-sunflower to-bulgarian-red absolute top-0 bottom-0 left-8 w-0.5 bg-gradient-to-b md:left-1/2 md:-translate-x-1/2 md:transform" />
 
             {/* Timeline Items */}
             <div className="space-y-12 md:space-y-16">
               {/* 1995 - Right Side (Mobile: always right, Desktop: alternating) */}
               <div className="relative flex items-start md:items-center">
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-bulgarian-red rounded-full border-4 border-old-paper md:transform md:-translate-x-1/2 z-10" />
+                <div className="bg-bulgarian-red border-old-paper absolute left-8 z-10 h-4 w-4 rounded-full border-4 md:left-1/2 md:-translate-x-1/2 md:transform" />
                 <div className="ml-16 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
-                  <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-4 md:p-6 shadow-vintage">
-                    <span className="inline-block bg-bulgarian-red text-white px-3 py-1 text-sm font-bold rounded mb-2">1995</span>
-                    <h3 className="font-handwritten text-xl md:text-2xl text-traditional-brown mb-2">
+                  <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-4 md:p-6">
+                    <span className="bg-bulgarian-red mb-2 inline-block rounded px-3 py-1 text-sm font-bold text-white">
+                      1995
+                    </span>
+                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
                       Първото Сирене
                     </h3>
-                    <p className="font-handwritten text-sm md:text-base text-warm-brown leading-relaxed">
+                    <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">
                       Илия прави първото сирене в малък цех в Пловдив. Съседите опитват и искат още.
                     </p>
                   </div>
@@ -255,15 +271,18 @@ export default function AboutPage() {
 
               {/* 1996 - Left Side (Desktop only) */}
               <div className="relative flex items-start md:items-center">
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-sunflower rounded-full border-4 border-old-paper md:transform md:-translate-x-1/2 z-10" />
-                <div className="ml-16 md:ml-0 md:w-1/2 md:ml-auto md:pl-12">
-                  <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-4 md:p-6 shadow-vintage">
-                    <span className="inline-block bg-sunflower text-traditional-brown px-3 py-1 text-sm font-bold rounded mb-2">1996</span>
-                    <h3 className="font-handwritten text-xl md:text-2xl text-traditional-brown mb-2">
+                <div className="bg-sunflower border-old-paper absolute left-8 z-10 h-4 w-4 rounded-full border-4 md:left-1/2 md:-translate-x-1/2 md:transform" />
+                <div className="ml-16 md:ml-0 md:ml-auto md:w-1/2 md:pl-12">
+                  <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-4 md:p-6">
+                    <span className="bg-sunflower text-traditional-brown mb-2 inline-block rounded px-3 py-1 text-sm font-bold">
+                      1996
+                    </span>
+                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
                       Създаване на Milkylux
                     </h3>
-                    <p className="font-handwritten text-sm md:text-base text-warm-brown leading-relaxed">
-                      Основава се дружество "Милки Лукс" ЕООД. Започва изграждането на модерен млекопреработвателен цех.
+                    <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">
+                      Основава се дружество "Милки Лукс" ЕООД. Започва изграждането на модерен
+                      млекопреработвателен цех.
                     </p>
                   </div>
                 </div>
@@ -271,14 +290,16 @@ export default function AboutPage() {
 
               {/* 1999 - Right Side */}
               <div className="relative flex items-start md:items-center">
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-bulgarian-red rounded-full border-4 border-old-paper md:transform md:-translate-x-1/2 z-10" />
+                <div className="bg-bulgarian-red border-old-paper absolute left-8 z-10 h-4 w-4 rounded-full border-4 md:left-1/2 md:-translate-x-1/2 md:transform" />
                 <div className="ml-16 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
-                  <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-4 md:p-6 shadow-vintage">
-                    <span className="inline-block bg-bulgarian-red text-white px-3 py-1 text-sm font-bold rounded mb-2">1999</span>
-                    <h3 className="font-handwritten text-xl md:text-2xl text-traditional-brown mb-2">
+                  <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-4 md:p-6">
+                    <span className="bg-bulgarian-red mb-2 inline-block rounded px-3 py-1 text-sm font-bold text-white">
+                      1999
+                    </span>
+                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
                       Старт на производството
                     </h3>
-                    <p className="font-handwritten text-sm md:text-base text-warm-brown leading-relaxed">
+                    <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">
                       Цехът в Бяла Черква започва работа с капацитет 130,000 литра мляко дневно.
                     </p>
                   </div>
@@ -287,14 +308,16 @@ export default function AboutPage() {
 
               {/* 2003 - Left Side (Desktop) */}
               <div className="relative flex items-start md:items-center">
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-sunflower rounded-full border-4 border-old-paper md:transform md:-translate-x-1/2 z-10" />
-                <div className="ml-16 md:ml-0 md:w-1/2 md:ml-auto md:pl-12">
-                  <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-4 md:p-6 shadow-vintage">
-                    <span className="inline-block bg-sunflower text-traditional-brown px-3 py-1 text-sm font-bold rounded mb-2">2003</span>
-                    <h3 className="font-handwritten text-xl md:text-2xl text-traditional-brown mb-2">
+                <div className="bg-sunflower border-old-paper absolute left-8 z-10 h-4 w-4 rounded-full border-4 md:left-1/2 md:-translate-x-1/2 md:transform" />
+                <div className="ml-16 md:ml-0 md:ml-auto md:w-1/2 md:pl-12">
+                  <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-4 md:p-6">
+                    <span className="bg-sunflower text-traditional-brown mb-2 inline-block rounded px-3 py-1 text-sm font-bold">
+                      2003
+                    </span>
+                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
                       Разширяване на гамата
                     </h3>
-                    <p className="font-handwritten text-sm md:text-base text-warm-brown leading-relaxed">
+                    <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">
                       Започваме производство на кашкавал и кисело мляко. 20 тона кашкавал дневно.
                     </p>
                   </div>
@@ -303,15 +326,18 @@ export default function AboutPage() {
 
               {/* 2015 - Right Side */}
               <div className="relative flex items-start md:items-center">
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-bulgarian-red rounded-full border-4 border-old-paper md:transform md:-translate-x-1/2 z-10" />
+                <div className="bg-bulgarian-red border-old-paper absolute left-8 z-10 h-4 w-4 rounded-full border-4 md:left-1/2 md:-translate-x-1/2 md:transform" />
                 <div className="ml-16 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
-                  <div className="bg-parchment border-2 border-traditional-brown rounded-lg p-4 md:p-6 shadow-vintage">
-                    <span className="inline-block bg-bulgarian-red text-white px-3 py-1 text-sm font-bold rounded mb-2">2015</span>
-                    <h3 className="font-handwritten text-xl md:text-2xl text-traditional-brown mb-2">
+                  <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-4 md:p-6">
+                    <span className="bg-bulgarian-red mb-2 inline-block rounded px-3 py-1 text-sm font-bold text-white">
+                      2015
+                    </span>
+                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
                       Присъединяване към Milkylux
                     </h3>
-                    <p className="font-handwritten text-sm md:text-base text-warm-brown leading-relaxed">
-                      Бачо Илия става част от семейството Milkylux. Международни сертификати, същите рецепти.
+                    <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">
+                      Бачо Илия става част от семейството Milkylux. Международни сертификати, същите
+                      рецепти.
                     </p>
                   </div>
                 </div>
@@ -319,15 +345,18 @@ export default function AboutPage() {
 
               {/* 2025 - Left Side (Desktop) with special styling */}
               <div className="relative flex items-start md:items-center">
-                <div className="absolute left-8 md:left-1/2 w-6 h-6 bg-gradient-to-br from-bulgarian-red to-sunflower rounded-full border-4 border-old-paper shadow-lg md:transform md:-translate-x-1/2 z-10 animate-pulse" />
-                <div className="ml-16 md:ml-0 md:w-1/2 md:ml-auto md:pl-12">
-                  <div className="bg-gradient-to-br from-bulgarian-red/10 to-sunflower/10 border-2 border-bulgarian-red rounded-lg p-4 md:p-6 shadow-xl">
-                    <span className="inline-block bg-gradient-to-r from-bulgarian-red to-sunflower text-white px-4 py-1 text-sm font-bold rounded mb-2">2025 - ДНЕС</span>
-                    <h3 className="font-handwritten text-xl md:text-2xl text-bulgarian-red mb-2">
+                <div className="from-bulgarian-red to-sunflower border-old-paper absolute left-8 z-10 h-6 w-6 animate-pulse rounded-full border-4 bg-gradient-to-br shadow-lg md:left-1/2 md:-translate-x-1/2 md:transform" />
+                <div className="ml-16 md:ml-0 md:ml-auto md:w-1/2 md:pl-12">
+                  <div className="from-bulgarian-red/10 to-sunflower/10 border-bulgarian-red rounded-lg border-2 bg-gradient-to-br p-4 shadow-xl md:p-6">
+                    <span className="from-bulgarian-red to-sunflower mb-2 inline-block rounded bg-gradient-to-r px-4 py-1 text-sm font-bold text-white">
+                      2025 - ДНЕС
+                    </span>
+                    <h3 className="font-handwritten text-bulgarian-red mb-2 text-xl md:text-2xl">
                       Днес
                     </h3>
-                    <p className="font-handwritten text-sm md:text-base text-warm-brown leading-relaxed font-semibold">
-                      27 години опит, 5 златни медала, 90+ магазина в цяла България. Хиляди семейства с нас всяка седмица.
+                    <p className="font-handwritten text-warm-brown text-sm leading-relaxed font-semibold md:text-base">
+                      27 години опит, 5 златни медала, 90+ магазина в цяла България. Хиляди
+                      семейства с нас всяка седмица.
                     </p>
                   </div>
                 </div>
@@ -337,24 +366,24 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-gradient-to-r from-bulgarian-red to-bulgarian-red text-vintage-cream rounded-lg p-6 md:p-10 text-center shadow-vintage">
-          <h2 className="font-handwritten text-3xl md:text-4xl mb-3 md:mb-4">
+        <section className="from-bulgarian-red to-bulgarian-red text-vintage-cream shadow-vintage rounded-lg bg-gradient-to-r p-6 text-center md:p-10">
+          <h2 className="font-handwritten mb-3 text-3xl md:mb-4 md:text-4xl">
             Опитай Продуктите Безплатно
           </h2>
-          <p className="font-handwritten text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto">
-            Участвай в нашето раздаване и спечели пакет с продукти. Вкус от село,
-            доставен до вратата ти.
+          <p className="font-handwritten mx-auto mb-6 max-w-2xl text-base md:mb-8 md:text-xl">
+            Участвай в нашето раздаване и спечели пакет с продукти. Вкус от село, доставен до
+            вратата ти.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center max-w-md md:max-w-none mx-auto">
+          <div className="mx-auto flex max-w-md flex-col justify-center gap-3 sm:flex-row md:max-w-none md:gap-4">
             <Link
               href="/"
-              className="w-full sm:w-auto inline-block bg-vintage-cream text-bulgarian-red px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg hover:bg-parchment transition-all hover:scale-105 shadow-lg"
+              className="bg-vintage-cream text-bulgarian-red hover:bg-parchment inline-block w-full rounded-lg px-6 py-3 text-base font-bold shadow-lg transition-all hover:scale-105 sm:w-auto md:px-8 md:py-4 md:text-lg"
             >
               Участвай в Раздаването
             </Link>
             <Link
               href="/products"
-              className="w-full sm:w-auto inline-block bg-transparent border-2 border-vintage-cream text-vintage-cream px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg hover:bg-vintage-cream hover:text-bulgarian-red transition-all hover:scale-105"
+              className="border-vintage-cream text-vintage-cream hover:bg-vintage-cream hover:text-bulgarian-red inline-block w-full rounded-lg border-2 bg-transparent px-6 py-3 text-base font-bold transition-all hover:scale-105 sm:w-auto md:px-8 md:py-4 md:text-lg"
             >
               Виж Продуктите
             </Link>

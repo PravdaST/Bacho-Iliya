@@ -8,6 +8,7 @@
 ## Features in This Version:
 
 ### Design:
+
 - ✅ Traditional Bulgarian vintage aesthetic (red/cream/sepia)
 - ✅ "Вкусът от детството на твоята трапеза" headline
 - ✅ Farm pattern background with sepia effects
@@ -15,6 +16,7 @@
 - ✅ Beautiful typography (Playfair Display + Inter)
 
 ### Content Sections:
+
 - ✅ Hero section with countryside background
 - ✅ "Защо да участваш?" (Why participate) value props
 - ✅ "Бабините рецепти" recipe grid (4 traditional dishes)
@@ -24,6 +26,7 @@
 - ✅ Footer with social links
 
 ### Technical:
+
 - Next.js 14.2.0
 - TypeScript
 - Tailwind CSS with custom vintage colors
@@ -33,6 +36,7 @@
 - Lucide icons
 
 ### To Run:
+
 ```bash
 cd /Users/simeonsirakov/projects-cursor/test-landing-page/BACHO-ILIA/giveaway-campaign
 npm install

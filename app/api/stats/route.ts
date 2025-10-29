@@ -36,10 +36,13 @@ export async function GET() {
   try {
     // Check Supabase configuration
     if (!isSupabaseConfigured()) {
-      return jsonResponse({
-        success: false,
-        error: 'Database not configured',
-      }, 503);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Database not configured',
+        },
+        503
+      );
     }
 
     // Get total count
@@ -49,10 +52,13 @@ export async function GET() {
 
     if (countError) {
       console.error('❌ Error getting total count:', countError);
-      return jsonResponse({
-        success: false,
-        error: 'Failed to get statistics',
-      }, 500);
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Failed to get statistics',
+        },
+        500
+      );
     }
 
     // Get recent entries (last 5)
@@ -67,15 +73,16 @@ export async function GET() {
     }
 
     // Format recent entries
-    const formattedRecent = recentEntries?.map(entry => {
-      // Extract first name only
-      const firstName = entry.name.split(' ')[0];
+    const formattedRecent =
+      recentEntries?.map((entry) => {
+        // Extract first name only
+        const firstName = entry.name.split(' ')[0];
 
-      return {
-        name: firstName,
-        timeAgo: timeAgo(entry.submitted_at),
-      };
-    }) || [];
+        return {
+          name: firstName,
+          timeAgo: timeAgo(entry.submitted_at),
+        };
+      }) || [];
 
     // Get product popularity (count selected_products array)
     const { data: allEntries, error: productsError } = await supabaseAdmin
@@ -85,7 +92,7 @@ export async function GET() {
     let productStats: Record<string, number> = {};
 
     if (!productsError && allEntries) {
-      allEntries.forEach(entry => {
+      allEntries.forEach((entry) => {
         try {
           const products = JSON.parse(entry.selected_products);
           products.forEach((productId: string) => {
@@ -112,12 +119,14 @@ export async function GET() {
         lastUpdated: new Date().toISOString(),
       },
     });
-
   } catch (error) {
     console.error('❌ Unexpected error in stats API:', error);
-    return jsonResponse({
-      success: false,
-      error: 'Internal server error',
-    }, 500);
+    return jsonResponse(
+      {
+        success: false,
+        error: 'Internal server error',
+      },
+      500
+    );
   }
 }
