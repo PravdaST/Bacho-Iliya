@@ -32,7 +32,12 @@
       "Bash(git log:*)",
       "Bash(dir:*)",
       "Bash(npm install:*)",
-      "Bash(npm run format:*)"
+      "Bash(npm run format:*)",
+      "mcp__supabase__get_project",
+      "Bash(gemini:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(sed:*)"
     ],
     "deny": [],
     "ask": []
