@@ -15,15 +15,19 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '27 Октомври 2024',
     readTime: '5 мин четене',
-    image: '/blog/lyutenica.webp',
+    image: '/blog/lutenitsa-on-bread.png',
     author: 'Екипът на Бачо Илия',
     content: `Всяка есен, когато първите студени ветрове започнат да напомнят за себе си, въздухът в българските дворове се изпълва с един неповторим, сладникав и леко опушен аромат. Това е ароматът на лютеницата – не просто зимнина, а истински символ на българския дом, традиция и, разбира се, вкусът от детството.
 
-При Бачо Илия ние вярваме, че някои неща не трябва да се променят. Точно както нашето сирене се прави по бабини рецепти, така и перфектната лютеница изисква търпение, любов и спазването на няколко златни тайни.
+В Бачо Илия вярваме, че някои неща не бива да се променят. Точно както нашето сирене се прави по бабини рецепти, така и перфектната лютеница изисква търпение, любов и спазването на няколко златни тайни.
+
+<div className="text-center my-8">
+  <img src="/blog/lutenitsa-ingredients.png" alt="Fresh ingredients for lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+</div>
 
 ## 1. Тайната на Суровината: Само Най-Доброто
 
-Няма как да направите истинска лютеница от некачествени продукти. Тайната на Бачо Илия е в избора на зеленчуци:
+Няма как да направите истинска лютеница от некачествени продукти. Тайната на Бачо Илия се крие в избора на зеленчуци:
 
 • **Червен пипер (Капия)**: Трябва да е месест, напълно узрял и да има силен, сладък аромат. Това е основата на вкуса.
 
@@ -32,6 +36,10 @@ const blogPosts = [
 • **Патладжан (по желание)**: Той добавя онази специфична, леко опушена дълбочина на вкуса.
 
 **Съвет от Бачо Илия**: Не бързайте! Изчакайте пиперът да узрее напълно. Качеството на лютеницата се определя още на полето.
+
+<div className="text-center my-8">
+  <img src="/blog/lutenitsa-cooking-process.png" alt="Traditional lutenitsa cooking process" className="w-full h-auto rounded-lg shadow-lg" />
+</div>
 
 ## 2. Тайната на Печенето: Огънят е Душата
 
@@ -93,6 +101,10 @@ const blogPosts = [
 6. **Подправяне**: Добавете олиото, солта, захарта и оцета. Варете още 10-15 минути.
 
 7. **Буркани**: Напълнете горещата лютеница в сухи, стерилизирани буркани. Затворете плътно и стерилизирайте за 10 минути.
+
+<div className="text-center my-8">
+  <img src="/blog/lutenitsa-jars.png" alt="Jars of homemade lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+</div>
 
 ## Вкусът от Детството
 
@@ -173,11 +185,13 @@ export default function BlogPostPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-walnut/10 border-walnut/20 relative mb-12 flex h-[400px] items-center justify-center border-2"
+            className="relative mb-12 flex h-[400px] items-center justify-center border-2 overflow-hidden"
           >
-            <span className="font-handwritten text-walnut/30 text-6xl">
-              {post.title.substring(0, 1)}
-            </span>
+            <img
+              src={post.image}
+              alt={post.title}
+              className="h-full w-full object-cover"
+            />
           </motion.div>
 
           <motion.div
@@ -209,6 +223,9 @@ export default function BlogPostPage() {
               <div className="via-bulgarian-red/30 my-8 h-px bg-gradient-to-r from-transparent to-transparent" />
 
               {/* Section 1 */}
+              <div className="text-center my-8">
+                <img src="/blog/lutenitsa-ingredients.png" alt="Fresh ingredients for lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+              </div>
               <section className="space-y-4">
                 <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl">
                   1. Тайната на Суровината: Само Най-Доброто
@@ -249,6 +266,9 @@ export default function BlogPostPage() {
               </section>
 
               {/* Section 2 */}
+              <div className="text-center my-8">
+                <img src="/blog/lutenitsa-cooking-process.png" alt="Traditional lutenitsa cooking process" className="w-full h-auto rounded-lg shadow-lg" />
+              </div>
               <section className="space-y-4">
                 <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl">
                   2. Тайната на Печенето: Огънят е Душата
@@ -284,6 +304,9 @@ export default function BlogPostPage() {
               </section>
 
               {/* Section 3 */}
+              <div className="text-center my-8">
+                <img src="/blog/lutenitsa-grinding.png" alt="Grinding ingredients for lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+              </div>
               <section className="space-y-4">
                 <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl">
                   3. Тайната на Смилането: Балансът
@@ -306,6 +329,9 @@ export default function BlogPostPage() {
               </section>
 
               {/* Section 4 */}
+              <div className="text-center my-8">
+                <img src="/blog/lutenitsa-boiling.png" alt="Lutenitsa boiling in a pot" className="w-full h-auto rounded-lg shadow-lg" />
+              </div>
               <section className="space-y-4">
                 <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl">
                   4. Тайната на Варенето: Търпението е Ключът
@@ -334,6 +360,9 @@ export default function BlogPostPage() {
               </section>
 
               {/* Section 5 */}
+              <div className="text-center my-8">
+                <img src="/blog/lutenitsa-spices.png" alt="Spices for lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+              </div>
               <section className="space-y-4">
                 <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl">
                   5. Тайната на Подправките: Времето и Мястото
@@ -369,6 +398,9 @@ export default function BlogPostPage() {
               <div className="via-bulgarian-red/30 my-8 h-px bg-gradient-to-r from-transparent to-transparent" />
 
               {/* Recipe Section */}
+              <div className="text-center my-8">
+                <img src="/blog/lutenitsa-recipe-dish.png" alt="Lutenitsa recipe and dish" className="w-full h-auto rounded-lg shadow-lg" />
+              </div>
               <section className="bg-old-paper/50 border-walnut/20 space-y-6 border-2 p-8">
                 <h2 className="font-handwritten text-bulgarian-red mb-6 text-3xl">
                   Рецепта за Истинска Домашна Лютеница
@@ -497,6 +529,9 @@ export default function BlogPostPage() {
               <div className="via-bulgarian-red/30 my-8 h-px bg-gradient-to-r from-transparent to-transparent" />
 
               {/* Conclusion */}
+              <div className="text-center my-8">
+                <img src="/blog/lutenitsa-jars.png" alt="Jars of homemade lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+              </div>
               <section className="bg-sunflower/10 border-sunflower/30 space-y-4 border-2 p-8">
                 <h2 className="font-handwritten text-bulgarian-red mb-4 text-3xl">
                   Вкусът от Детството

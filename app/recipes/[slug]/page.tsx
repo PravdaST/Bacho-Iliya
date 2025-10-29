@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getRecipeBySlug, getAllRecipeSlugs } from '@/lib/recipes-data';
+import { getRecipeBySlugFromDB, getAllRecipeSlugsFromDB } from '@/lib/supabase-data';
 import { RecipeSchema, BreadcrumbSchema } from '@/components/seo';
 import RecipeDetailClient from './RecipeDetailClient';
 import type { Metadata } from 'next';
@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
-  const recipe = getRecipeBySlug(resolvedParams.slug);
+  const recipe = await getRecipeBySlugFromDB(resolvedParams.slug);
 
   if (!recipe) {
     return {
@@ -33,7 +33,7 @@ export async function generateMetadata({
       'българска рецепта',
       'традиционна кухня',
       'бачо илия',
-      ...recipe.ingredients.slice(0, 5).map((ing) => ing.itemBg),
+      ...recipe.ingredients.slice(0, 5).map((ing: { item: string; itemBg: string }) => ing.itemBg),
     ],
     openGraph: {
       title: `${recipe.titleBg} - Рецепта`,
@@ -47,7 +47,7 @@ export async function generateMetadata({
 // Server Component - resolves async params
 export default async function RecipePage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const recipe = getRecipeBySlug(resolvedParams.slug);
+  const recipe = await getRecipeBySlugFromDB(resolvedParams.slug);
 
   if (!recipe) {
     notFound();
@@ -74,7 +74,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
 
 // Generate static paths for all recipes
 export async function generateStaticParams() {
-  const slugs = getAllRecipeSlugs();
+  const slugs = await getAllRecipeSlugsFromDB();
   return slugs.map((slug) => ({
     slug: slug,
   }));
