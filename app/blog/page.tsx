@@ -14,7 +14,7 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '27 Октомври 2024',
     readTime: '5 мин четене',
-    image: '/blog/lyutenica.webp',
+    image: '/blog/lutenitsa-on-bread.png',
   },
 ];
 
@@ -63,14 +63,12 @@ export default function BlogPage() {
                 className="border-walnut/20 group overflow-hidden border-2 bg-white shadow-xl transition-all duration-300 hover:shadow-2xl"
               >
                 {/* Blog Post Image */}
-                <div className="bg-old-paper relative h-56 overflow-hidden">
-                  <div className="bg-walnut/10 absolute inset-0" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-handwritten text-walnut/30 text-4xl">
-                      {post.title.substring(0, 2)}
-                    </span>
-                  </div>
-
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="h-full w-full object-cover"
+                  />
                   {/* Category Badge */}
                   <div className="bg-bulgarian-red font-handwritten absolute top-3 left-3 px-3 py-1 text-xs tracking-wider text-white">
                     {post.category}
