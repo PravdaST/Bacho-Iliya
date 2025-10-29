@@ -224,7 +224,7 @@ export async function GET() {
 
 **Решение - Опция 2 (Best Practice):**
 
-- Използвайте CMS като Strapi, Sanity или Contentful
+- Използвайте CMS - SUPABASE
 - Позволява на маркетинг екипа да управлява съдържанието
 
 **Приоритет:** 🟡 СРЕДЕН

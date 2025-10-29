@@ -10,3 +10,4 @@ export { OrganizationSchema } from './OrganizationSchema';
 export { GiveawayEventSchema } from './GiveawayEventSchema';
 export { default as RecipeSchema } from './RecipeSchema';
 export { default as BreadcrumbSchema } from './BreadcrumbSchema';
+export { FAQSchema } from './FAQSchema';

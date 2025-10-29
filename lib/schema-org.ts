@@ -29,14 +29,23 @@ interface ProductSchema {
     '@type': 'Brand';
     name: string;
   };
-  offers: {
-    '@type': 'Offer';
-    url: string;
-    priceCurrency: string;
-    price: string;
-    availability: string;
-    itemCondition: string;
-  }[];
+  offers:
+    | {
+        '@type': 'Offer';
+        url: string;
+        priceCurrency?: string;
+        price?: string;
+        availability: string;
+        itemCondition: string;
+      }
+    | {
+        '@type': 'Offer';
+        url: string;
+        priceCurrency?: string;
+        price?: string;
+        availability: string;
+        itemCondition: string;
+      }[];
   aggregateRating?: {
     '@type': 'AggregateRating';
     ratingValue: string;
@@ -192,14 +201,16 @@ export function generateProductSchema(
       '@type': 'Brand',
       name: 'Bacho Ilia / Бачо Илия',
     },
-    offers: product.sizes.map((size) => ({
+    // Single Offer without price (valid per schema.org spec)
+    // Цените не са публично достъпни - клиентите питат за цена
+    offers: {
       '@type': 'Offer',
       url: productUrl,
-      priceCurrency: 'BGN',
-      price: size.price?.replace(/[^\d.,]/g, '') || '0', // Extract number from "12.99 лв"
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition',
-    })),
+      // Note: price field is optional per schema.org/Offer specification
+      // We omit it since prices are provided on request only
+    },
     ...(product.testimonials &&
       product.testimonials.length > 0 && {
         aggregateRating: {
