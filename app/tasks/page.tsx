@@ -32,31 +32,6 @@ export default function TasksPage() {
     }
   };
 
-  const handleShare = async () => {
-    // When user clicks share, increment the counter
-    if (entryId) {
-      try {
-        // Call API to increment share count
-        const response = await fetch('/api/share', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ entryId }),
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          // Update local state
-          incrementShareCount();
-          console.log('✅ Share count incremented:', result.data.shareCount);
-        }
-      } catch (error) {
-        console.error('❌ Failed to track share:', error);
-      }
-    }
-  };
 
   const tasksList = [
     {
@@ -69,27 +44,6 @@ export default function TasksPage() {
       instruction: '1. Харесай поста ❤️  2. Тагни 2-ма приятели 👥  3. Последвай страницата ➕',
       embedUrl: 'https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FBacho.Iliya%2Fposts%2Fpfbid0chdESCDSnnd4dRdbqWDe6WqxvJcG3KGixQFszLHvUzvZTa6X3fgFCvfQTTRZw6xol&show_text=true&width=500',
       isCompleted: tasks.facebook,
-    },
-    {
-      id: 'instagram',
-      icon: '2',
-      title: 'Коментирай: Искам Бачо Илия',
-      description: 'Остави коментар под поста за раздаването с текст: "Искам Бачо Илия"',
-      actionLabel: 'Коментирай сега',
-      actionUrl: 'https://www.facebook.com/Bacho.Iliya/',
-      instruction: 'Напиши точно: Искам Бачо Илия',
-      isCompleted: tasks.instagram,
-    },
-    {
-      id: 'share',
-      icon: '3',
-      title: 'Сподели за БОНУС участия',
-      description:
-        'Всяко споделяне ти дава ДОПЪЛНИТЕЛНО участие в раздаването! Колкото повече споделяш, толкова по-големи са шансовете ти да спечелиш',
-      actionLabel: 'Сподели сега',
-      actionUrl: 'https://www.facebook.com/sharer/sharer.php?u=https://bacho-iliya.eu',
-      instruction: 'Сподели за БОНУС участие',
-      isCompleted: tasks.share,
     },
   ];
 
@@ -164,24 +118,6 @@ export default function TasksPage() {
             </p>
           </div>
 
-          {/* Entry ID */}
-          <div className="bg-bulgarian-red/5 border-bulgarian-red relative mb-8 border-l-4 p-6">
-            <p className="font-handwritten text-walnut/80 mb-3 text-base font-bold uppercase md:text-lg">
-              Твоят номер за потвърждение:
-            </p>
-            <div className="flex items-center justify-between gap-4">
-              <p className="font-handwritten text-bulgarian-red text-2xl font-bold md:text-3xl">
-                {entryId || 'Loading...'}
-              </p>
-              <button
-                onClick={handleCopyCode}
-                className="bg-bulgarian-red border-walnut/30 font-handwritten inline-flex flex-shrink-0 items-center gap-2 border-2 px-4 py-2 text-sm font-bold text-white transition-all hover:scale-105"
-              >
-                {copied ? '✓ КОПИРАН' : 'КОПИРАЙ'}
-              </button>
-            </div>
-          </div>
-
           {/* Progress Summary */}
           <div className="border-walnut/20 relative mb-8 border-b border-dashed pb-6">
             <div className="mb-3 flex items-center justify-between">
@@ -213,33 +149,11 @@ export default function TasksPage() {
                   instruction={task.instruction}
                   embedUrl={(task as any).embedUrl}
                   isCompleted={task.isCompleted}
-                  onComplete={() => toggleTask(task.id as 'facebook' | 'instagram' | 'share')}
-                  onAction={task.id === 'share' ? handleShare : undefined}
+                  onComplete={() => toggleTask(task.id as 'facebook')}
                 />
               ))}
             </div>
           </div>
-
-          {/* Share Counter Display */}
-          {shareCount > 0 && (
-            <div className="bg-sunflower/10 border-sunflower relative mb-8 border-l-4 p-6">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <h3 className="font-handwritten text-walnut mb-1 text-2xl">БОНУС Участия!</h3>
-                  <p className="font-handwritten text-walnut/70 text-sm">
-                    Всяко споделяне = допълнително участие
-                  </p>
-                </div>
-                <div className="border-sunflower border-4 bg-white px-6 py-4 text-center">
-                  <p className="text-bulgarian-red text-4xl font-bold">{shareCount}</p>
-                  <p className="font-handwritten text-walnut text-xs uppercase">Споделяния</p>
-                </div>
-              </div>
-              <p className="font-handwritten text-bulgarian-red text-center text-lg">
-                Общо участия: 1 + {shareCount} бонус = {1 + shareCount}
-              </p>
-            </div>
-          )}
 
           {/* Selected Products */}
           {selectedProductsList.length > 0 && (
