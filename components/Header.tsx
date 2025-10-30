@@ -11,6 +11,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mouseX, setMouseX] = useState(0);
   const [isHoveringNav, setIsHoveringNav] = useState(false);
+  const [centerX, setCenterX] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +19,15 @@ export default function Header() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const updateCenter = () => {
+      setCenterX(window.innerWidth / 2);
+    };
+    updateCenter();
+    window.addEventListener('resize', updateCenter);
+    return () => window.removeEventListener('resize', updateCenter);
   }, []);
 
   // Lock body scroll when mobile menu is open
@@ -44,8 +54,8 @@ export default function Header() {
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMouseX(e.clientX - rect.left);
+    // Използвай clientX директно за точна позиция на курсора
+    setMouseX(e.clientX);
   };
 
   const navItems = [
@@ -297,16 +307,15 @@ export default function Header() {
 
       {/* SVG Bump Effect - Follows Mouse */}
       <motion.svg
-        className="pointer-events-none absolute bottom-0 hidden translate-y-full transform lg:block"
+        className="pointer-events-none fixed hidden lg:block"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 400 20"
         width="400"
         height="20"
         fill={scrolled ? '#F5E6D3' : 'rgba(245, 230, 211, 0.98)'}
-        initial={{ left: '50%', x: '-50%' }}
+        style={{ top: '100px' }}
         animate={{
-          left: isHoveringNav ? `${mouseX}px` : '50%',
-          x: isHoveringNav ? '-50%' : '-50%',
+          left: isHoveringNav ? mouseX - 200 : centerX - 200,
         }}
         transition={{
           type: 'spring',
