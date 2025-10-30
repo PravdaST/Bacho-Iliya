@@ -38,11 +38,14 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Бачо Илия',
-    image: 'https://bacho-iliya.eu/logo.png',
+    image: [
+      'https://bacho-iliya.eu/logo.png',
+      'https://bacho-iliya.eu/products/sirene/BI-sirene-800-metal-480x480.png',
+      'https://bacho-iliya.eu/products/kashkaval/BI-kashkaval-300-metal-480x480.png',
+    ],
     description: 'Производител на автентични български млечни продукти',
     '@id': 'https://bacho-iliya.eu',
     url: 'https://bacho-iliya.eu',
-    telephone: '',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'BG',
@@ -50,8 +53,11 @@ export default function StructuredData() {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      addressCountry: 'BG',
+      latitude: 42.6977,  // Sofia, Bulgaria coordinates
+      longitude: 23.3219,
     },
+    priceRange: '€€',  // Medium price range
+    currenciesAccepted: 'BGN',
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -97,31 +103,56 @@ export default function StructuredData() {
   };
 
   // Product Schemas for all dairy products
-  const productSchemas = products.map((product) => ({
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.nameBg,
-    description: product.description,
-    image: `https://bacho-iliya.eu${product.image}`,
-    brand: {
-      '@type': 'Brand',
-      name: 'Бачо Илия',
-    },
-    manufacturer: {
-      '@type': 'Organization',
-      name: 'Бачо Илия',
-    },
-    category: product.id.includes('sirene')
-      ? 'Бяло сирене'
-      : product.id.includes('kashkaval')
-        ? 'Кашкавал'
-        : 'Кисело мляко',
-    offers: {
-      '@type': 'AggregateOffer',
-      availability: 'https://schema.org/InStock',
-      priceCurrency: 'BGN',
-    },
-  }));
+  const productSchemas = products.map((product) => {
+    // Determine price range based on product category
+    let lowPrice = '6.00';
+    let highPrice = '12.00';
+    if (product.id.includes('kashkaval')) {
+      lowPrice = '8.00';
+      highPrice = '15.00';
+    } else if (product.id.includes('mlyako')) {
+      lowPrice = '2.00';
+      highPrice = '4.00';
+    }
+
+    // Calculate priceValidUntil (30 days from now)
+    const priceValidUntil = new Date();
+    priceValidUntil.setDate(priceValidUntil.getDate() + 30);
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.nameBg,
+      description: product.description,
+      sku: product.id, // Add SKU for product identification
+      image: product.image.startsWith('http')
+        ? product.image
+        : `https://bacho-iliya.eu${product.image}`, // Fix double slash issue
+      brand: {
+        '@type': 'Brand',
+        name: 'Бачо Илия',
+      },
+      manufacturer: {
+        '@type': 'Organization',
+        name: 'Бачо Илия',
+      },
+      category: product.id.includes('sirene')
+        ? 'Бяло сирене'
+        : product.id.includes('kashkaval')
+          ? 'Кашкавал'
+          : 'Кисело мляко',
+      offers: {
+        '@type': 'AggregateOffer',
+        availability: 'https://schema.org/InStock',
+        priceCurrency: 'BGN',
+        lowPrice: lowPrice,
+        highPrice: highPrice,
+        offerCount: '1',
+        url: `https://bacho-iliya.eu/products/${product.id}`,
+        priceValidUntil: priceValidUntil.toISOString().split('T')[0],
+      },
+    };
+  });
 
   // Recipe Schemas for Bulgarian traditional dishes
   const recipeSchemas = [
@@ -319,9 +350,9 @@ export default function StructuredData() {
     organizationSchema,
     localBusinessSchema,
     eventSchema,
-    breadcrumbSchema,
+    // breadcrumbSchema removed - causing duplicate breadcrumbs on all pages
     aggregateRatingSchema,
-    faqSchema,
+    // faqSchema removed - now handled by FAQSchema component in app/page.tsx to avoid duplication
     ...productSchemas,
     ...recipeSchemas,
   ];

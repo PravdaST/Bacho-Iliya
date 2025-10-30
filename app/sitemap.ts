@@ -92,5 +92,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [`${BASE_URL}/recipes/${slug}.webp`],
   }));
 
-  return [...staticPages, ...productPages, ...recipePages];
+  // Blog post pages (critical for SEO - were missing!)
+  const blogSlugs = [
+    'taynite-na-lyutenicata',
+    'taynite-na-banitsata',
+    'taynite-na-perfektniya-tarator',
+    'taynite-na-obrednata-pitka',
+  ];
+
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
+    url: `${BASE_URL}/blog/${slug}`,
+    lastModified: new Date('2025-10-30'), // Updated today
+    images: [`${BASE_URL}/blog/${slug}-hero.png`],
+  }));
+
+  return [...staticPages, ...productPages, ...recipePages, ...blogPages];
 }

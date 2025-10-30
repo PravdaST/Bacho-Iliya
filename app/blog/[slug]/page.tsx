@@ -415,7 +415,7 @@ const blogPosts = [
 **Съвет от Бачо Илия:** Ако въздухът в стаята е студен, загрейте фурната на 50°C, след това я изключете и оставете тестото да втаса вътре. Ще получите идеална топла среда.
 
 <div className="text-center my-8">
-  <img src="/blog/pitka-rising.png" alt="Тесто за питка по време на втасване" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/pitka-rising-new.png" alt="Тесто за питка по време на втасване" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Тайна номер пет: Печенето – финалният акорд

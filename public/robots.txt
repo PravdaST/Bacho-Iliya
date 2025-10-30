@@ -1,18 +1,7 @@
 User-agent: *
-Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /my-tickets/
 
 # SEO optimization for Bacho Iliya
 Sitemap: https://bacho-iliya.eu/sitemap.xml
-
-# Disallow admin or private areas (if any)
-Disallow: /admin/
-Disallow: /api/
-
-# Allow search engines to crawl important pages
-Allow: /$
-Allow: /about/
-Allow: /recipes/
-Allow: /products/
-
-# Crawl delay (optional, helps with server load)
-Crawl-delay: 1
