@@ -57,80 +57,167 @@ function LoginForm() {
   };
 
   return (
-    <div className="bg-old-paper relative min-h-screen overflow-hidden px-4 py-32 sm:px-6 lg:px-8">
-      {/* Paper texture */}
-      <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
+    <div className="grid min-h-screen lg:grid-cols-2">
+      {/* Left Column - Hero & Info */}
+      <motion.div
+        className="bg-bulgarian-red relative flex flex-col justify-center px-8 py-16 lg:px-16 lg:py-24"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        {/* Subtle texture */}
+        <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-10" />
 
-      <div className="relative mx-auto max-w-lg">
-        {/* Page Header */}
-        <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="font-handwritten text-bulgarian-red mb-6 text-6xl md:text-7xl">
+        <div className="relative z-10 max-w-xl">
+          {/* Logo/Brand */}
+          <div className="mb-12">
+            <Link href="/" className="inline-block">
+              <h1 className="font-handwritten mb-3 text-5xl text-white lg:text-6xl">
+                Бачо Илия
+              </h1>
+              <p className="text-lg text-white/90">Автентични млечни продукти</p>
+            </Link>
+          </div>
+
+          {/* Heading */}
+          <h2 className="font-handwritten mb-6 text-4xl text-white lg:text-5xl">
             Влез в профила си
-          </h1>
-          <p className="text-walnut text-xl md:text-2xl">Виж билетите си и статистика</p>
-        </motion.div>
+          </h2>
+          <p className="mb-12 text-xl leading-relaxed text-white/90">
+            Виж билетите си, статистика и шансове за спечелване
+          </p>
 
-        {/* Error from redirect */}
-        {redirectError && (
-          <motion.div
-            className="mb-8 rounded-lg border-l-4 border-red-500 bg-red-50 p-6 shadow-md"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <div className="flex items-start gap-3">
-              <span className="text-2xl">⚠️</span>
-              <p className="text-lg leading-relaxed text-red-700">
-                {getErrorMessage(redirectError)}
-              </p>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Success Message */}
-        {success && (
-          <motion.div
-            className="relative mb-10 rounded-lg border-l-4 border-green-500 bg-green-50 p-8 shadow-lg"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-          >
-            <div className="bg-vintage-paper pointer-events-none absolute inset-0 rounded-lg opacity-10" />
-            <div className="relative z-10 text-center">
-              <span className="mb-5 block text-6xl">✅</span>
-              <h3 className="font-handwritten mb-4 text-3xl font-bold text-green-700 md:text-4xl">
-                Magic link изпратен!
-              </h3>
-              <p className="mb-3 text-lg leading-relaxed text-green-700">
-                Провери имейла си и кликни на линка за да влезеш.
-              </p>
-              <p className="text-base text-green-600">
-                Линкът е валиден 15 минути
-              </p>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Login Form */}
-        <motion.div
-          className="relative rounded-xl border-2 border-bulgarian-red/30 bg-white p-10 shadow-lg"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="bg-vintage-paper pointer-events-none absolute inset-0 rounded-xl opacity-15" />
-
-          <div className="relative z-10">
-            <h2 className="font-handwritten text-bulgarian-red mb-8 text-center text-4xl font-bold">
-              Въведи имейла си
-            </h2>
-
-            <p className="text-walnut mb-10 text-center text-lg leading-relaxed">
-              Ще ти изпратим magic link на имейла с който си се регистрирал
+          {/* Info Card */}
+          <div className="rounded-xl border-2 border-white/30 bg-white/10 p-8 backdrop-blur-sm">
+            <h3 className="font-handwritten mb-4 text-2xl text-white">
+              Какво е Magic Link?
+            </h3>
+            <p className="leading-relaxed text-white/90">
+              Magic Link е сигурен начин за вход без парола. Въведи имейла си и ще получиш линк
+              който работи само веднъж. Кликни на линка в имейла и веднага ще влезеш.
             </p>
+            <div className="mt-6 space-y-3">
+              <div className="flex items-center gap-3 text-white/90">
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>Без парола - по-сигурно</span>
+              </div>
+              <div className="flex items-center gap-3 text-white/90">
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>Валиден 15 минути</span>
+              </div>
+              <div className="flex items-center gap-3 text-white/90">
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>Използва се само веднъж</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Back to Home */}
+          <div className="mt-12">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-lg text-white/80 transition-colors hover:text-white"
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                />
+              </svg>
+              Обратно към началото
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Right Column - Login Form */}
+      <motion.div
+        className="bg-old-paper relative flex flex-col justify-center px-8 py-16 lg:px-16 lg:py-24"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        {/* Paper texture */}
+        <div className="bg-vintage-paper pointer-events-none absolute inset-0 opacity-20" />
+
+        <div className="relative z-10 mx-auto w-full max-w-md">
+          {/* Page Title - Mobile only */}
+          <div className="mb-8 text-center lg:hidden">
+            <h1 className="font-handwritten text-bulgarian-red mb-3 text-4xl">
+              Влез в профила си
+            </h1>
+            <p className="text-walnut text-lg">Виж билетите си и статистика</p>
+          </div>
+
+          {/* Error from redirect */}
+          {redirectError && (
+            <motion.div
+              className="mb-8 rounded-lg border-l-4 border-red-500 bg-red-50 p-6 shadow-md"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">⚠️</span>
+                <p className="text-lg leading-relaxed text-red-700">
+                  {getErrorMessage(redirectError)}
+                </p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Success Message */}
+          {success && (
+            <motion.div
+              className="relative mb-10 rounded-xl border-2 border-green-500 bg-green-50 p-8 shadow-lg"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <div className="bg-vintage-paper pointer-events-none absolute inset-0 rounded-xl opacity-10" />
+              <div className="relative z-10 text-center">
+                <span className="mb-5 block text-6xl">✅</span>
+                <h3 className="font-handwritten mb-4 text-3xl font-bold text-green-700">
+                  Magic link изпратен!
+                </h3>
+                <p className="mb-3 text-lg leading-relaxed text-green-700">
+                  Провери имейла си и кликни на линка за да влезеш.
+                </p>
+                <p className="text-base text-green-600">Линкът е валиден 15 минути</p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Login Form */}
+          <div className="relative rounded-xl border-2 border-walnut/20 bg-white p-8 shadow-lg lg:p-10">
+            <div className="bg-vintage-paper pointer-events-none absolute inset-0 rounded-xl opacity-15" />
+
+            <div className="relative z-10">
+              <h2 className="font-handwritten text-bulgarian-red mb-3 text-3xl font-bold">
+                Въведи имейла си
+              </h2>
+
+              <p className="text-walnut/70 mb-8 text-base leading-relaxed">
+                Ще ти изпратим magic link на имейла с който си се регистрирал
+              </p>
 
             {error && (
               <motion.div
@@ -184,10 +271,8 @@ function LoginForm() {
               </button>
             </form>
 
-            <div className="border-walnut/20 mt-10 border-t pt-8">
-              <p className="text-walnut/70 mb-4 text-center text-base">
-                Нямаш регистрация?
-              </p>
+            <div className="border-walnut/20 mt-8 border-t pt-6">
+              <p className="text-walnut/70 mb-4 text-center text-base">Нямаш регистрация?</p>
               <Link
                 href="/"
                 className="bg-sunflower text-dark-walnut hover:bg-sunflower/90 block rounded-lg px-6 py-4 text-center text-lg font-semibold shadow-md transition-all hover:shadow-lg"
@@ -196,43 +281,26 @@ function LoginForm() {
               </Link>
             </div>
           </div>
-        </motion.div>
 
-        {/* Info Box */}
-        <motion.div
-          className="bg-sunflower/10 border-sunflower/30 mt-10 rounded-lg border-2 p-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h3 className="font-handwritten text-dark-walnut mb-4 text-2xl font-bold">
-            Какво е Magic Link?
-          </h3>
-          <p className="text-walnut text-base leading-relaxed">
-            Magic Link е сигурен начин за вход без парола. След като въведеш имейла си, ще получиш
-            линк който работи само веднъж. Кликни на линка в имейла и веднага ще влезеш в профила
-            си.
-          </p>
-        </motion.div>
-
-        {/* Back to Home */}
-        <motion.div
-          className="mt-10 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <Link
-            href="/"
-            className="border-dark-walnut text-dark-walnut hover:bg-old-paper inline-flex items-center gap-2 rounded-lg border-2 bg-white px-6 py-3 text-base font-medium shadow-sm transition-all hover:shadow-md"
-          >
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Обратно към началото
-          </Link>
-        </motion.div>
-      </div>
+          {/* Back to Home - Mobile only */}
+          <div className="mt-8 text-center lg:hidden">
+            <Link
+              href="/"
+              className="border-dark-walnut text-dark-walnut hover:bg-white/50 inline-flex items-center gap-2 rounded-lg border-2 bg-white px-6 py-3 text-base font-medium shadow-sm transition-all"
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                />
+              </svg>
+              Обратно към началото
+            </Link>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
