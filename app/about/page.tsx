@@ -43,7 +43,7 @@ export default function AboutPage() {
         {/* Our Story */}
         <section className="mb-16">
           <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-8">
-            <h2 className="font-handwritten text-traditional-brown mb-6 text-4xl">
+            <h2 className="font-handwritten text-dark-walnut mb-6 text-4xl">
               Как Започна Всичко
             </h2>
             <div className="prose prose-lg text-warm-brown max-w-none">
@@ -108,13 +108,13 @@ export default function AboutPage() {
 
         {/* Production Capacity & Quality */}
         <section className="mb-12 md:mb-20">
-          <h2 className="font-handwritten text-traditional-brown mb-6 text-center text-3xl md:mb-10 md:text-4xl">
+          <h2 className="font-handwritten text-dark-walnut mb-6 text-center text-3xl md:mb-10 md:text-4xl">
             Производство и Качество
           </h2>
           <div className="mb-6 grid grid-cols-1 gap-4 md:mb-8 md:grid-cols-2 md:gap-6">
             {/* Production Capacity */}
             <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
-              <h3 className="font-handwritten text-traditional-brown mb-4 text-3xl">
+              <h3 className="font-handwritten text-dark-walnut mb-4 text-3xl">
                 Производствен капацитет
               </h3>
               <ul className="text-warm-brown font-handwritten space-y-3">
@@ -147,7 +147,7 @@ export default function AboutPage() {
 
             {/* Quality Certifications */}
             <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
-              <h3 className="font-handwritten text-traditional-brown mb-4 text-3xl">
+              <h3 className="font-handwritten text-dark-walnut mb-4 text-3xl">
                 Сертификати и награди
               </h3>
               <ul className="text-warm-brown font-handwritten space-y-3">
@@ -202,12 +202,12 @@ export default function AboutPage() {
 
         {/* Our Values */}
         <section className="mb-12 md:mb-20">
-          <h2 className="font-handwritten text-traditional-brown mb-6 text-center text-3xl md:mb-10 md:text-4xl">
+          <h2 className="font-handwritten text-dark-walnut mb-6 text-center text-3xl md:mb-10 md:text-4xl">
             Как Правим Продуктите
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
             <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
-              <h3 className="font-handwritten text-traditional-brown mb-3 text-center text-2xl">
+              <h3 className="font-handwritten text-dark-walnut mb-3 text-center text-2xl">
                 Добро Мляко = Добро Сирене
               </h3>
               <p className="font-handwritten text-warm-brown text-center">
@@ -217,7 +217,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
-              <h3 className="font-handwritten text-traditional-brown mb-3 text-center text-2xl">
+              <h3 className="font-handwritten text-dark-walnut mb-3 text-center text-2xl">
                 Без Бързане
               </h3>
               <p className="font-handwritten text-warm-brown text-center">
@@ -227,7 +227,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-6">
-              <h3 className="font-handwritten text-traditional-brown mb-3 text-center text-2xl">
+              <h3 className="font-handwritten text-dark-walnut mb-3 text-center text-2xl">
                 Четете Етикета
               </h3>
               <p className="font-handwritten text-warm-brown text-center">
@@ -240,7 +240,7 @@ export default function AboutPage() {
 
         {/* Timeline - Visual Modern Design */}
         <section className="mb-16 md:mb-24">
-          <h2 className="font-handwritten text-traditional-brown mb-8 text-center text-3xl md:mb-16 md:text-5xl">
+          <h2 className="font-handwritten text-dark-walnut mb-8 text-center text-3xl md:mb-16 md:text-5xl">
             30 Години в 6 Ключови Момента
           </h2>
 
@@ -259,7 +259,7 @@ export default function AboutPage() {
                     <span className="bg-bulgarian-red mb-2 inline-block rounded px-3 py-1 text-sm font-bold text-white">
                       1995
                     </span>
-                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
+                    <h3 className="font-handwritten text-dark-walnut mb-2 text-xl md:text-2xl">
                       Първото Сирене
                     </h3>
                     <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">
@@ -274,10 +274,10 @@ export default function AboutPage() {
                 <div className="bg-sunflower border-old-paper absolute left-8 z-10 h-4 w-4 rounded-full border-4 md:left-1/2 md:-translate-x-1/2 md:transform" />
                 <div className="ml-16 md:ml-0 md:ml-auto md:w-1/2 md:pl-12">
                   <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-4 md:p-6">
-                    <span className="bg-sunflower text-traditional-brown mb-2 inline-block rounded px-3 py-1 text-sm font-bold">
+                    <span className="bg-sunflower text-dark-walnut mb-2 inline-block rounded px-3 py-1 text-sm font-bold">
                       1996
                     </span>
-                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
+                    <h3 className="font-handwritten text-dark-walnut mb-2 text-xl md:text-2xl">
                       Създаване на Milkylux
                     </h3>
                     <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">
@@ -296,7 +296,7 @@ export default function AboutPage() {
                     <span className="bg-bulgarian-red mb-2 inline-block rounded px-3 py-1 text-sm font-bold text-white">
                       1999
                     </span>
-                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
+                    <h3 className="font-handwritten text-dark-walnut mb-2 text-xl md:text-2xl">
                       Старт на производството
                     </h3>
                     <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">
@@ -311,10 +311,10 @@ export default function AboutPage() {
                 <div className="bg-sunflower border-old-paper absolute left-8 z-10 h-4 w-4 rounded-full border-4 md:left-1/2 md:-translate-x-1/2 md:transform" />
                 <div className="ml-16 md:ml-0 md:ml-auto md:w-1/2 md:pl-12">
                   <div className="bg-parchment border-traditional-brown shadow-vintage rounded-lg border-2 p-4 md:p-6">
-                    <span className="bg-sunflower text-traditional-brown mb-2 inline-block rounded px-3 py-1 text-sm font-bold">
+                    <span className="bg-sunflower text-dark-walnut mb-2 inline-block rounded px-3 py-1 text-sm font-bold">
                       2003
                     </span>
-                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
+                    <h3 className="font-handwritten text-dark-walnut mb-2 text-xl md:text-2xl">
                       Разширяване на гамата
                     </h3>
                     <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">
@@ -332,7 +332,7 @@ export default function AboutPage() {
                     <span className="bg-bulgarian-red mb-2 inline-block rounded px-3 py-1 text-sm font-bold text-white">
                       2015
                     </span>
-                    <h3 className="font-handwritten text-traditional-brown mb-2 text-xl md:text-2xl">
+                    <h3 className="font-handwritten text-dark-walnut mb-2 text-xl md:text-2xl">
                       Присъединяване към Milkylux
                     </h3>
                     <p className="font-handwritten text-warm-brown text-sm leading-relaxed md:text-base">

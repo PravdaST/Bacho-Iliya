@@ -216,7 +216,7 @@ export default function WhereToBuyPage() {
           {/* Results count */}
           <div className="flex items-center gap-2">
             <div className="bg-dark-walnut/10 h-px flex-1" />
-            <p className="font-body text-dark-walnut/50 text-sm tracking-wider uppercase">
+            <p className="font-body text-dark-walnut/70 text-sm tracking-wider uppercase">
               Намерени магазини:{' '}
               <span className="text-heritage-red font-bold">{filteredStores.length}</span>
             </p>
@@ -263,7 +263,7 @@ export default function WhereToBuyPage() {
                         <p className="font-body text-dark-walnut leading-relaxed">
                           {store.address}
                         </p>
-                        <p className="font-body text-dark-walnut/50 mt-1 text-sm tracking-wider uppercase">
+                        <p className="font-body text-dark-walnut/70 mt-1 text-sm tracking-wider uppercase">
                           {store.city}
                         </p>
                       </div>

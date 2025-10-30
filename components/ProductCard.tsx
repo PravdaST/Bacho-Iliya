@@ -18,6 +18,13 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
     return rotations[index];
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onToggle();
+    }
+  };
+
   return (
     <motion.div
       className="relative"
@@ -26,6 +33,11 @@ export default function ProductCard({ product, isSelected, onToggle }: ProductCa
       transition={{ duration: 0.6, ease: 'easeOut' }}
       whileHover={{ scale: 1.05, rotate: 0 }}
       onClick={onToggle}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-pressed={isSelected}
+      aria-label={`${isSelected ? 'Премахни' : 'Избери'} ${product.nameBg}`}
     >
       {/* White Photo Frame - как в стари снимки */}
       <div className="relative cursor-pointer border-4 border-gray-200 bg-white p-6 shadow-2xl">

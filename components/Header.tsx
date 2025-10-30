@@ -72,7 +72,7 @@ export default function Header() {
               item.type === 'link' ? (
                 <Link key={item.href} href={item.href!}>
                   <motion.div
-                    className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex cursor-pointer items-center justify-center px-2 py-1 text-sm font-bold tracking-wider uppercase"
+                    className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex cursor-pointer items-center justify-center px-4 py-3 text-sm font-bold tracking-wider uppercase"
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -86,7 +86,7 @@ export default function Header() {
                 <motion.button
                   key={item.label}
                   onClick={() => scrollToSection((item as any).id)}
-                  className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex items-center justify-center px-2 py-1 text-sm font-bold tracking-wider uppercase"
+                  className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex items-center justify-center px-4 py-3 text-sm font-bold tracking-wider uppercase"
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -132,7 +132,7 @@ export default function Header() {
               item.type === 'link' ? (
                 <Link key={item.href} href={item.href!}>
                   <motion.div
-                    className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex cursor-pointer items-center justify-center px-2 py-1 text-sm font-bold tracking-wider uppercase"
+                    className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex cursor-pointer items-center justify-center px-4 py-3 text-sm font-bold tracking-wider uppercase"
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
@@ -146,7 +146,7 @@ export default function Header() {
                 <motion.button
                   key={item.label}
                   onClick={() => scrollToSection((item as any).id)}
-                  className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex items-center justify-center px-2 py-1 text-sm font-bold tracking-wider uppercase"
+                  className="text-dark-walnut hover:text-heritage-red font-heading group relative inline-flex items-center justify-center px-4 py-3 text-sm font-bold tracking-wider uppercase"
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
