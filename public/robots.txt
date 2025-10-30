@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Disallow: /api/
-Disallow: /my-tickets/
-
-# SEO optimization for Bacho Iliya
-Sitemap: https://bacho-iliya.eu/sitemap.xml
