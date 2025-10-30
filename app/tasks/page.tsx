@@ -62,11 +62,12 @@ export default function TasksPage() {
     {
       id: 'facebook',
       icon: '1',
-      title: 'Харесай поста за раздаването',
-      description: 'Отвори Facebook страницата на Бачо Илия и харесай поста за раздаването',
-      actionLabel: 'Харесай поста',
-      actionUrl: 'https://www.facebook.com/Bacho.Iliya/',
-      instruction: 'Отвори поста и натисни "Харесай"',
+      title: 'Харесай този пост за раздаването',
+      description: 'Виж поста по-долу, харесай го, тагни 2-ма приятели и последвай страницата',
+      actionLabel: 'Отвори в Facebook',
+      actionUrl: 'https://www.facebook.com/Bacho.Iliya/posts/pfbid0chdESCDSnnd4dRdbqWDe6WqxvJcG3KGixQFszLHvUzvZTa6X3fgFCvfQTTRZw6xol',
+      instruction: '1. Харесай поста ❤️  2. Тагни 2-ма приятели 👥  3. Последвай страницата ➕',
+      embedUrl: 'https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FBacho.Iliya%2Fposts%2Fpfbid0chdESCDSnnd4dRdbqWDe6WqxvJcG3KGixQFszLHvUzvZTa6X3fgFCvfQTTRZw6xol&show_text=true&width=500',
       isCompleted: tasks.facebook,
     },
     {
@@ -210,6 +211,7 @@ export default function TasksPage() {
                   actionLabel={task.actionLabel}
                   actionUrl={task.actionUrl}
                   instruction={task.instruction}
+                  embedUrl={(task as any).embedUrl}
                   isCompleted={task.isCompleted}
                   onComplete={() => toggleTask(task.id as 'facebook' | 'instagram' | 'share')}
                   onAction={task.id === 'share' ? handleShare : undefined}

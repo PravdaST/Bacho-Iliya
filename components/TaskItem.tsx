@@ -10,6 +10,7 @@ interface TaskItemProps {
   onComplete: () => void;
   instruction?: string;
   onAction?: () => void; // Optional callback for custom action
+  embedUrl?: string; // Optional Facebook post embed URL
 }
 
 export default function TaskItem({
@@ -22,6 +23,7 @@ export default function TaskItem({
   onComplete,
   instruction,
   onAction,
+  embedUrl,
 }: TaskItemProps) {
   const handleAction = () => {
     // Open link in new tab
@@ -76,6 +78,22 @@ export default function TaskItem({
           {instruction && (
             <div className="bg-sunflower/10 border-sunflower mb-4 border-l-4 p-3">
               <p className="font-handwritten text-walnut text-base">{instruction}</p>
+            </div>
+          )}
+
+          {/* Facebook Post Embed */}
+          {embedUrl && (
+            <div className="my-6 flex justify-center">
+              <iframe
+                src={embedUrl}
+                className="w-full max-w-[500px] rounded-xl border-2 border-walnut/30 shadow-lg"
+                height="660"
+                style={{ border: 'none', overflow: 'hidden' }}
+                scrolling="no"
+                frameBorder="0"
+                allowFullScreen={true}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              />
             </div>
           )}
 
