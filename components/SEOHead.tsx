@@ -56,6 +56,7 @@ export default function SEOHead({
         '@type': 'Product',
         '@id': 'https://bacho-iliya.eu/#sirene',
         name: 'Българско Сирене Бачо Илия',
+        image: 'https://bacho-iliya.eu/products/sirene/BI-sirene-400-metal-480x480.png',
         brand: {
           '@type': 'Brand',
           name: 'Бачо Илия',
@@ -65,9 +66,16 @@ export default function SEOHead({
           'Автентично българско сирене, направено по бабини рецепти. 100% естествено, без консерванти и химия. Истинският вкус от детството.',
         category: 'Млечни продукти',
         offers: {
-          '@type': 'Offer',
-          availability: 'https://schema.org/InStock',
+          '@type': 'AggregateOffer',
+          lowPrice: '6.00',
+          highPrice: '12.00',
           priceCurrency: 'BGN',
+          availability: 'https://schema.org/InStock',
+          offerCount: '1',
+          url: 'https://bacho-iliya.eu/products/sirene',
+          priceValidUntil: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000)
+            .toISOString()
+            .split('T')[0],
         },
         aggregateRating: {
           '@type': 'AggregateRating',
@@ -110,37 +118,7 @@ export default function SEOHead({
           priceCurrency: 'BGN',
         },
       },
-      // FAQPage Schema
-      {
-        '@type': 'FAQPage',
-        '@id': 'https://bacho-iliya.eu/#faq',
-        mainEntity: [
-          {
-            '@type': 'Question',
-            name: 'Какви продукти прави Бачо Илия?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Бачо Илия произвежда автентични български млечни продукти включително сирене, кисело мляко, кашкавал и други традиционни продукти по бабини рецепти.',
-            },
-          },
-          {
-            '@type': 'Question',
-            name: 'Има ли консерванти в продуктите на Бачо Илия?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Не, всички продукти на Бачо Илия са 100% естествени, без консерванти и химия. Правени са точно както бабините традиционни рецепти.',
-            },
-          },
-          {
-            '@type': 'Question',
-            name: 'Как мога да спечеля продукти от Бачо Илия?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Участвайте в нашето безплатно раздаване като изберете продукти, регистрирате се и завършите задачите. Обявяването на печелившите е до 7 дни.',
-            },
-          },
-        ],
-      },
+      // FAQPage Schema - Removed to prevent duplication (FAQ schema is in StructuredData.tsx)
     ],
   };
 
