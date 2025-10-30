@@ -307,15 +307,14 @@ export default function Header() {
 
       {/* SVG Bump Effect - Follows Mouse */}
       <motion.svg
-        className="pointer-events-none fixed hidden lg:block"
+        className="pointer-events-none absolute bottom-0 hidden translate-y-full transform lg:block"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 400 20"
         width="400"
         height="20"
         fill={scrolled ? '#F5E6D3' : 'rgba(245, 230, 211, 0.98)'}
         style={{
-          top: '100px',
-          filter: 'drop-shadow(0 4px 6px rgba(58, 42, 26, 0.15)) drop-shadow(0 2px 4px rgba(58, 42, 26, 0.1))'
+          filter: 'drop-shadow(rgba(58, 42, 26, 0.15) 0px 6px 3px) drop-shadow(rgba(58, 42, 26, 0.1) 0px 0px)'
         }}
         animate={{
           left: isHoveringNav ? mouseX - 200 : centerX - 200,
