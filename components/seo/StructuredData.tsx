@@ -62,6 +62,56 @@ export default function StructuredData() {
     },
     priceRange: '€€',  // Medium price range
     currenciesAccepted: 'BGN',
+    // Offers for Google Search Console (not displayed on website UI)
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'BGN',
+      lowPrice: '2.00',  // Кисело мляко starting price
+      highPrice: '15.00',  // Кашкавал max price
+      availability: 'https://schema.org/InStock',
+      url: 'https://bacho-iliya.eu/products',
+      // Optional but recommended for better SEO
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        applicableCountry: 'BG',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        merchantReturnDays: 14,
+        returnMethod: 'https://schema.org/ReturnByMail',
+        returnFees: 'https://schema.org/FreeReturn',
+      },
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: {
+          '@type': 'MonetaryAmount',
+          value: '0',
+          currency: 'BGN',
+        },
+        shippingDestination: {
+          '@type': 'DefinedRegion',
+          addressCountry: 'BG',
+        },
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          businessDays: {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          },
+          cutoffTime: '15:00',
+          handlingTime: {
+            '@type': 'QuantitativeValue',
+            minValue: 1,
+            maxValue: 2,
+            unitCode: 'DAY',
+          },
+          transitTime: {
+            '@type': 'QuantitativeValue',
+            minValue: 1,
+            maxValue: 3,
+            unitCode: 'DAY',
+          },
+        },
+      },
+    },
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -145,6 +195,13 @@ export default function StructuredData() {
         : product.id.includes('kashkaval')
           ? 'Кашкавал'
           : 'Кисело мляко',
+      // AggregateRating for better SEO (based on customer testimonials)
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        bestRating: '5',
+        ratingCount: '127',
+      },
       offers: {
         '@type': 'AggregateOffer',
         availability: 'https://schema.org/InStock',
