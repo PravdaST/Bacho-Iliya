@@ -313,7 +313,10 @@ export default function Header() {
         width="400"
         height="20"
         fill={scrolled ? '#F5E6D3' : 'rgba(245, 230, 211, 0.98)'}
-        style={{ top: '100px' }}
+        style={{
+          top: '100px',
+          filter: 'drop-shadow(0 4px 6px rgba(58, 42, 26, 0.15)) drop-shadow(0 2px 4px rgba(58, 42, 26, 0.1))'
+        }}
         animate={{
           left: isHoveringNav ? mouseX - 200 : centerX - 200,
         }}
