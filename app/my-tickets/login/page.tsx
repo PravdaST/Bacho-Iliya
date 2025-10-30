@@ -281,6 +281,7 @@ function LoginForm() {
               </Link>
             </div>
           </div>
+          </div>
 
           {/* Back to Home - Mobile only */}
           <div className="mt-8 text-center lg:hidden">
