@@ -9,6 +9,8 @@ import Image from 'next/image';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mouseX, setMouseX] = useState(0);
+  const [isHoveringNav, setIsHoveringNav] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +43,11 @@ export default function Header() {
     }
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMouseX(e.clientX - rect.left);
+  };
+
   const navItems = [
     { type: 'link', href: '/products', label: 'ПРОДУКТИ' },
     { type: 'link', href: '/recipes', label: 'РЕЦЕПТИ' },
@@ -64,7 +71,12 @@ export default function Header() {
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Desktop Navigation - Stonyfield Style: Split with Logo in Center */}
-        <div className="hidden items-center justify-between pt-8 pb-8 lg:flex">
+        <div
+          className="hidden items-center justify-between pt-8 pb-8 lg:flex"
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHoveringNav(true)}
+          onMouseLeave={() => setIsHoveringNav(false)}
+        >
           {/* Left Navigation */}
           <nav className="flex items-center space-x-6">
             {navItems.slice(0, 3).map((item, index) =>
@@ -283,20 +295,30 @@ export default function Header() {
         </AnimatePresence>
       </div>
 
-      {/* SVG Bump Effect - Stonyfield Style */}
-      <svg
-        className="pointer-events-none absolute bottom-0 left-1/2 hidden -translate-x-1/2 translate-y-full transform lg:block"
+      {/* SVG Bump Effect - Follows Mouse */}
+      <motion.svg
+        className="pointer-events-none absolute bottom-0 hidden translate-y-full transform lg:block"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 400 20"
         width="400"
         height="20"
         fill={scrolled ? '#F5E6D3' : 'rgba(245, 230, 211, 0.98)'}
+        initial={{ left: '50%', x: '-50%' }}
+        animate={{
+          left: isHoveringNav ? `${mouseX}px` : '50%',
+          x: isHoveringNav ? '-50%' : '-50%',
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 30,
+        }}
       >
         <path
           d="M100 0 C160 0 160 18 200 18 C240 18 240 0 300 0 Z"
           transform="scale(2,1) translate(-100,0)"
         />
-      </svg>
+      </motion.svg>
     </motion.header>
   );
 }
