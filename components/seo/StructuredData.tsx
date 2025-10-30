@@ -46,15 +46,19 @@ export default function StructuredData() {
     description: 'Производител на автентични български млечни продукти',
     '@id': 'https://bacho-iliya.eu',
     url: 'https://bacho-iliya.eu',
+    telephone: '+359 885 911 999',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'ул. Бачо Киро 108',
+      addressLocality: 'Бяла Черква',
+      addressRegion: 'Русе',
+      postalCode: '5220',
       addressCountry: 'BG',
-      addressLocality: 'България',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 42.6977,  // Sofia, Bulgaria coordinates
-      longitude: 23.3219,
+      latitude: 43.5889,  // Бяла Черква, Bulgaria
+      longitude: 25.6967,
     },
     priceRange: '€€',  // Medium price range
     currenciesAccepted: 'BGN',
