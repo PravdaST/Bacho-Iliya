@@ -42,13 +42,12 @@ export default function Header() {
   };
 
   const navItems = [
-    { type: 'link', href: '/about', label: 'ЗА НАС' },
     { type: 'link', href: '/products', label: 'ПРОДУКТИ' },
     { type: 'link', href: '/recipes', label: 'РЕЦЕПТИ' },
     { type: 'link', href: '/where-to-buy', label: 'МАГАЗИНИ' },
     { type: 'link', href: '/blog', label: 'БЛОГ' },
-    { type: 'link', href: '/#giveaway', label: 'РАЗДАВАНЕ' },
     { type: 'link', href: '/my-tickets', label: '🎟️ МОИТЕ БИЛЕТИ', highlight: true },
+    { type: 'link', href: '/#giveaway', label: 'РАЗДАВАНЕ' },
   ];
 
   return (
@@ -68,7 +67,7 @@ export default function Header() {
         <div className="hidden items-center justify-between pt-8 pb-8 lg:flex">
           {/* Left Navigation */}
           <nav className="flex items-center space-x-6">
-            {navItems.slice(0, 4).map((item, index) =>
+            {navItems.slice(0, 3).map((item, index) =>
               item.type === 'link' ? (
                 <Link key={item.href} href={item.href!}>
                   <motion.div
@@ -128,7 +127,7 @@ export default function Header() {
 
           {/* Right Navigation */}
           <nav className="flex items-center space-x-6">
-            {navItems.slice(4).map((item, index) =>
+            {navItems.slice(3).map((item, index) =>
               item.type === 'link' ? (
                 <Link key={item.href} href={item.href!}>
                   <motion.div

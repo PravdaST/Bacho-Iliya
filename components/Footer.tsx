@@ -62,6 +62,7 @@ export default function Footer() {
             </motion.h4>
             <ul className="space-y-3">
               {[
+                { label: 'За нас', href: '/about' },
                 { label: 'Продукти', href: '/products' },
                 { label: 'Рецепти', href: '/recipes' },
                 { label: 'Магазини', href: '/where-to-buy' },
