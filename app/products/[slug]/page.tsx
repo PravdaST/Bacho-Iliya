@@ -1,4 +1,4 @@
-import { getAllProductsFromDB, getProductBySlugFromDB } from '@/lib/supabase-data';
+import { getAllProducts, getProductBySlug } from '@/lib/products-data';
 import { notFound } from 'next/navigation';
 import ProductDetailClient from './ProductDetailClient';
 import { generateProductMetadata } from '@/lib/metadata';
@@ -13,7 +13,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
-  const product = await getProductBySlugFromDB(resolvedParams.slug);
+  const product = getProductBySlug(resolvedParams.slug);
 
   if (!product) {
     return {
@@ -28,7 +28,7 @@ export async function generateMetadata({
 // Server Component - resolves async params
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const product = await getProductBySlugFromDB(resolvedParams.slug);
+  const product = getProductBySlug(resolvedParams.slug);
 
   if (!product) {
     notFound();
@@ -66,8 +66,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 }
 
 // Generate static paths for all products
-export async function generateStaticParams() {
-  const products = await getAllProductsFromDB();
+export function generateStaticParams() {
+  const products = getAllProducts();
   return products.map((product) => ({
     slug: product.slug,
   }));
