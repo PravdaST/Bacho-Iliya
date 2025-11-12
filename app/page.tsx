@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { getAllRecipesFromDB } from '@/lib/supabase-data';
+import { recipes as allRecipes } from '@/lib/recipes-data';
 import ReferralDetector from '@/components/ReferralDetector';
 import FAQ from '@/components/FAQ';
 import BachoStory from '@/components/BachoStory';
@@ -10,10 +10,9 @@ import HomePageContent from '@/components/HomePageContent';
 // SEO Schema Components
 import { OrganizationSchema, GiveawayEventSchema, FAQSchema } from '@/components/seo';
 
-export default async function Home() {
-  // Prepare recipes data (Server Component - runs on server)
-  const allRecipes = await getAllRecipesFromDB();
-  const recipes = allRecipes.slice(0, 12).map((recipe) => {
+export default function Home() {
+  // Prepare recipes data - show 6 featured recipes on homepage
+  const recipes = allRecipes.slice(0, 6).map((recipe) => {
     // Calculate total time
     const prepMinutes = parseInt(recipe.prepTime) || 0;
     const cookMinutes = parseInt(recipe.cookTime) || 0;
