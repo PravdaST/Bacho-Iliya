@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getRecipeBySlugFromDB, getAllRecipeSlugsFromDB } from '@/lib/supabase-data';
+import { getRecipeBySlug, getAllRecipeSlugs } from '@/lib/recipes-data';
 import { RecipeSchema, BreadcrumbSchema } from '@/components/seo';
 import RecipeDetailClient from './RecipeDetailClient';
 import type { Metadata } from 'next';
@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
-  const recipe = await getRecipeBySlugFromDB(resolvedParams.slug);
+  const recipe = getRecipeBySlug(resolvedParams.slug);
 
   if (!recipe) {
     return {
@@ -47,7 +47,7 @@ export async function generateMetadata({
 // Server Component - resolves async params
 export default async function RecipePage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const recipe = await getRecipeBySlugFromDB(resolvedParams.slug);
+  const recipe = getRecipeBySlug(resolvedParams.slug);
 
   if (!recipe) {
     notFound();
@@ -73,8 +73,8 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
 }
 
 // Generate static paths for all recipes
-export async function generateStaticParams() {
-  const slugs = await getAllRecipeSlugsFromDB();
+export function generateStaticParams() {
+  const slugs = getAllRecipeSlugs();
   return slugs.map((slug) => ({
     slug: slug,
   }));
