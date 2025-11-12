@@ -471,6 +471,24 @@ export default function HomePageContent({ recipes }: HomePageContentProps) {
                 <div key={index} className="bg-walnut/30 h-2 w-2 rounded-full" />
               ))}
             </div>
+
+            {/* "Виж всички рецепти" Button */}
+            <motion.div
+              className="mt-12 flex justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <Link
+                href="/recipes"
+                className="bg-bulgarian-red hover:bg-dark-walnut font-handwritten group inline-flex items-center gap-3 border-4 border-walnut px-8 py-4 text-2xl text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl md:px-12 md:py-5 md:text-3xl"
+              >
+                <span>Виж всички рецепти</span>
+                <span className="text-3xl transition-transform group-hover:translate-x-1 md:text-4xl">
+                  →
+                </span>
+              </Link>
+            </motion.div>
           </div>
 
           <motion.div
