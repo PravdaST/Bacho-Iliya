@@ -367,7 +367,7 @@ const blogPosts = [
 **Съвет от Бачо Илия:** Когато разтваряте маята, използвайте <a href="/products/kiselo-mlyako-3-6">качествено кисело мляко Бачо Илия</a> вместо вода – питката става още по-вкусна, мека и ароматна. Киселото мляко придава онази нежна киселинка и пухкавост, която традиционните питки винаги са имали.
 
 <div className="text-center my-8">
-  <img src="/blog/pitka-ingredients.png" alt="Съставки за домашна питка" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/pitka-brashno.png" alt="Съставки за домашна питка" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Тайна номер две: Брашното – душата на тестото

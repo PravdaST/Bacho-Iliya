@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { Check, ShoppingBasket } from 'lucide-react';
 import { useScrollAnimation, fadeInVariants, staggerContainer } from '@/hooks/use-scroll-animation';
 import type { Product } from '@/lib/products-data';
+import { getRecipeBySlug } from '@/lib/recipes-data';
 
 interface ProductDetailClientProps {
   product: Product;
@@ -434,31 +435,46 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               </h2>
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {product.relatedRecipes.map((recipeSlug, idx) => (
-                  <motion.div key={recipeSlug} variants={fadeInVariants} custom={idx}>
-                    <Link href={`/recipes/${recipeSlug}`}>
-                      <motion.div
-                        className="border-walnut/20 relative cursor-pointer border-2 bg-white p-4 shadow-xl transition-shadow duration-300 hover:shadow-2xl"
-                        whileHover={{ y: -5 }}
-                      >
-                        <div className="bg-bulgarian-red/40 border-bulgarian-red/60 absolute -top-2 left-1/2 h-4 w-12 -translate-x-1/2 transform border-r border-l" />
+                {product.relatedRecipes.map((recipeSlug, idx) => {
+                  const recipe = getRecipeBySlug(recipeSlug);
+                  if (!recipe) return null;
 
-                        <p className="font-handwritten text-walnut text-center text-xl">
-                          {recipeSlug
-                            .split('-')
-                            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                            .join(' ')}
-                        </p>
+                  return (
+                    <motion.div key={recipeSlug} variants={fadeInVariants} custom={idx}>
+                      <Link href={`/recipes/${recipeSlug}`}>
+                        <motion.div
+                          className="border-walnut/20 relative cursor-pointer overflow-hidden border-2 bg-white shadow-xl transition-shadow duration-300 hover:shadow-2xl"
+                          whileHover={{ y: -5 }}
+                        >
+                          <div className="bg-bulgarian-red/40 border-bulgarian-red/60 absolute -top-2 left-1/2 h-4 w-12 -translate-x-1/2 transform border-r border-l z-10" />
 
-                        <div className="mt-4 text-center">
-                          <span className="font-handwritten text-bulgarian-red inline-block text-xs tracking-wider">
-                            ВИЖ РЕЦЕПТАТА →
-                          </span>
-                        </div>
-                      </motion.div>
-                    </Link>
-                  </motion.div>
-                ))}
+                          {/* Recipe Image */}
+                          <div className="relative h-48 w-full">
+                            <Image
+                              src={recipe.image}
+                              alt={recipe.titleBg}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+
+                          {/* Recipe Title */}
+                          <div className="p-4">
+                            <p className="font-handwritten text-walnut text-center text-xl line-clamp-2">
+                              {recipe.titleBg}
+                            </p>
+
+                            <div className="mt-4 text-center">
+                              <span className="font-handwritten text-bulgarian-red inline-block text-xs tracking-wider">
+                                ВИЖ РЕЦЕПТАТА →
+                              </span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           </motion.div>
