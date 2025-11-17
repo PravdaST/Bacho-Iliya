@@ -25,6 +25,15 @@ type Cluster = {
   created_at: string;
 };
 
+// Helper function to normalize titles for better matching
+function normalizeTitle(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[:\-–—,\.!?()«»]/g, '') // Remove punctuation
+    .replace(/\s+/g, ' ') // Normalize whitespace
+    .trim();
+}
+
 export default function AdminLearnPage() {
   const [activeTab, setActiveTab] = useState<'suggest' | 'cluster' | 'pillar' | 'manage'>('suggest');
   const [loading, setLoading] = useState(false);
@@ -797,10 +806,14 @@ export default function AdminLearnPage() {
                               {/* Pillar List */}
                               <div className="grid grid-cols-1 gap-2">
                                 {suggestedPillars.map((suggestedTitle: string, idx: number) => {
-                                  const pillar = clusterPillars.find((p: any) =>
-                                    p.title === suggestedTitle ||
-                                    p.title.toLowerCase().includes(suggestedTitle.toLowerCase())
-                                  );
+                                  // Improved title matching with normalization
+                                  const normalizedSuggested = normalizeTitle(suggestedTitle);
+                                  const pillar = clusterPillars.find((p: any) => {
+                                    const normalizedPillarTitle = normalizeTitle(p.title);
+                                    // Check if titles match with normalization (bidirectional substring match)
+                                    return normalizedPillarTitle.includes(normalizedSuggested) ||
+                                           normalizedSuggested.includes(normalizedPillarTitle);
+                                  });
                                   const isGenerated = !!pillar;
                                   const pillarKey = `${cluster.slug}-${suggestedTitle}`;
                                   const isGenerating = generatingPillars.has(pillarKey);
