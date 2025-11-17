@@ -264,7 +264,7 @@ export default function AdminLearnPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          pillarTitle,
+          title: pillarTitle,  // Fixed: use 'title' instead of 'pillarTitle'
           category: pillarCategory,
           parentClusterSlug: parentSlug || pillarParentSlug || null,
           keywords: pillarKeywords,

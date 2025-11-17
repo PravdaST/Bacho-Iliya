@@ -154,6 +154,14 @@ export async function POST(request: Request) {
       relatedPillars = []
     } = await request.json();
 
+    // Validate required fields
+    if (!pillarTitle) {
+      return NextResponse.json(
+        { error: 'Title is required' },
+        { status: 400 }
+      );
+    }
+
     // Generate slug
     const slug = slugify(pillarTitle);
 
