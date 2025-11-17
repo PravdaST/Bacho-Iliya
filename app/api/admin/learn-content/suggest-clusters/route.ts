@@ -5,47 +5,108 @@ const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const MODEL = 'google/gemini-2.5-flash-lite';
 
 async function callOpenRouter(messages: any[], temperature = 0.4, maxTokens = 4000) {
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://www.bacho-iliya.eu',
-      'X-Title': 'Bacho Iliya AI Cluster Suggestions'
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      messages,
-      temperature,
-      max_tokens: maxTokens,
-    })
-  });
+  try {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://www.bacho-iliya.eu',
+        'X-Title': 'Bacho Iliya AI Cluster Suggestions'
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        messages,
+        temperature,
+        max_tokens: maxTokens,
+      })
+    });
 
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`OpenRouter error ${response.status}: ${error}`);
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('[OpenRouter] API Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        body: errorText
+      });
+
+      // Provide more specific error messages
+      if (response.status === 401) {
+        throw new Error('OpenRouter API authentication failed. Please check your API key.');
+      } else if (response.status === 403) {
+        throw new Error('OpenRouter API access forbidden. Your API key may not have the required permissions.');
+      } else if (response.status === 429) {
+        throw new Error('OpenRouter API rate limit exceeded. Please try again later.');
+      } else {
+        throw new Error(`OpenRouter API error (${response.status}): ${errorText}`);
+      }
+    }
+
+    const data = await response.json();
+
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      console.error('[OpenRouter] Unexpected response format:', data);
+      throw new Error('OpenRouter returned an invalid response format');
+    }
+
+    return data.choices[0].message.content;
+  } catch (error: any) {
+    // Log the full error for debugging
+    console.error('[OpenRouter] Error calling API:', error);
+    throw error; // Re-throw to be handled by caller
   }
-
-  const data = await response.json();
-  return data.choices[0].message.content;
 }
 
 export async function POST(request: Request) {
   const supabase = supabaseAdmin;
 
+  // Validate critical environment variables
+  if (!OPENROUTER_API_KEY) {
+    console.error('[Suggest Clusters] OPENROUTER_API_KEY is not configured');
+    return NextResponse.json(
+      {
+        error: 'OpenRouter API key is not configured. Please set OPENROUTER_API_KEY in environment variables.',
+        hint: 'Check Vercel Dashboard → Settings → Environment Variables'
+      },
+      { status: 500 }
+    );
+  }
+
   try {
     // Fetch existing content to avoid duplicates
-    const { data: existingClusters } = await supabase
+    const { data: existingClusters, error: clustersError } = await supabase
       .from('blog_posts')
       .select('title, guide_category, guide_type')
       .eq('category', 'learn-guide')
       .eq('guide_type', 'cluster');
 
-    const { data: existingPillars } = await supabase
+    if (clustersError) {
+      console.error('[Suggest Clusters] Database error fetching clusters:', clustersError);
+      return NextResponse.json(
+        {
+          error: 'Failed to fetch existing clusters from database',
+          details: clustersError.message
+        },
+        { status: 500 }
+      );
+    }
+
+    const { data: existingPillars, error: pillarsError } = await supabase
       .from('blog_posts')
       .select('title, guide_category')
       .eq('category', 'learn-guide')
       .eq('guide_type', 'pillar');
+
+    if (pillarsError) {
+      console.error('[Suggest Clusters] Database error fetching pillars:', pillarsError);
+      return NextResponse.json(
+        {
+          error: 'Failed to fetch existing pillars from database',
+          details: pillarsError.message
+        },
+        { status: 500 }
+      );
+    }
 
     // Build context about existing content
     const existingClustersList = existingClusters?.map(c => `${c.title} (${c.guide_category})`).join(', ') || 'няма';
@@ -405,9 +466,23 @@ BRAND POSITIONING - БАЧО ИЛИЯ (употреба: естествено, �
     });
 
   } catch (error: any) {
-    console.error('Cluster suggestions error:', error);
+    console.error('[Suggest Clusters] Unexpected error:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name,
+      cause: error.cause
+    });
+
+    // Return detailed error in development, generic in production
     return NextResponse.json(
-      { error: error.message || 'Failed to suggest clusters' },
+      {
+        error: error.message || 'Failed to suggest clusters',
+        type: error.name || 'UnknownError',
+        ...(process.env.NODE_ENV === 'development' && {
+          stack: error.stack,
+          details: 'Check server logs for more information'
+        })
+      },
       { status: 500 }
     );
   }
