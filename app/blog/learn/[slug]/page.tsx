@@ -85,14 +85,16 @@ export default async function LearnGuidePage({ params }: Props) {
   await supabase.rpc('increment_blog_post_views', { post_slug: slug });
 
   // Fetch related guides (same category)
-  const { data: relatedGuides = [] } = await supabase
+  const { data: relatedGuidesData } = await supabase
     .from('blog_posts')
     .select('title, slug, excerpt, featured_image_url, guide_type')
     .eq('category', 'learn-guide')
     .eq('guide_category', guide.guide_category)
     .eq('is_published', true)
-    .neq('slug', params.slug)
+    .neq('slug', slug)
     .limit(3);
+
+  const relatedGuides = relatedGuidesData || [];
 
   // Calculate read time (rough estimate: 200 words per minute)
   const wordCount = guide.content.replace(/<[^>]*>/g, '').split(/\s+/).length;

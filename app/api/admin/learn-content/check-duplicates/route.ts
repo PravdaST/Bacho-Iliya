@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
         .replace(/[:\-–—,\.!?]/g, '')
         .trim();
 
-      const keywords = normalizedTitle.split(/\s+/).filter(w => w.length > 3);
+      const keywords = normalizedTitle.split(/\s+/).filter((w: string) => w.length > 3);
 
       if (keywords.length > 0) {
         let query = supabase
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
               .trim();
 
             // Check if at least 2 keywords match
-            const matchingKeywords = keywords.filter(kw =>
+            const matchingKeywords = keywords.filter((kw: string) =>
               postTitleNormalized.includes(kw)
             );
 
@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
       const contentKeywords = contentSample
         .replace(/[^\wа-яА-Я\s]/g, ' ')
         .split(/\s+/)
-        .filter(w => w.length > 4)
+        .filter((w: string) => w.length > 4)
         .slice(0, 10);
 
       if (contentKeywords.length > 0) {
@@ -142,7 +142,7 @@ export async function POST(request: NextRequest) {
             if (!post.content) return false;
 
             const postContentSample = post.content.substring(0, 500).toLowerCase();
-            const matchingWords = contentKeywords.filter(kw =>
+            const matchingWords = contentKeywords.filter((kw: string) =>
               postContentSample.includes(kw)
             );
 

@@ -108,11 +108,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Learn content pages (educational articles) - DYNAMIC from Supabase
-  const { data: learnGuides = [] } = await supabaseAdmin
+  const { data: learnGuidesData } = await supabaseAdmin
     .from('blog_posts')
     .select('slug, updated_at, featured_image_url')
     .eq('category', 'learn-guide')
     .eq('is_published', true);
+
+  const learnGuides = learnGuidesData || [];
 
   const learnPages: MetadataRoute.Sitemap = [
     // Learn index page

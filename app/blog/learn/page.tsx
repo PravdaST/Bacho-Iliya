@@ -83,14 +83,17 @@ export default async function LearnIndexPage({
     }
   }
 
-  const { data: guides = [] } = await query;
+  const { data: guidesData } = await query;
+  const guides = guidesData || [];
 
   // Count by category (guide_category is in Bulgarian in DB)
-  const { data: categoryCounts = [] } = await supabase
+  const { data: categoryCountsData } = await supabase
     .from('blog_posts')
     .select('guide_category')
     .eq('category', 'learn-guide')
     .eq('is_published', true);
+
+  const categoryCounts = categoryCountsData || [];
 
   // Count and convert Bulgarian category names to English slugs
   const counts = categoryCounts.reduce((acc: Record<string, number>, item) => {

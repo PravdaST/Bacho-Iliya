@@ -305,14 +305,14 @@ export async function POST(request: Request) {
     console.log('[Cluster] No duplicates found ✅');
 
     // Step 1: Check which pillars already exist (for smart linking)
-    const { data: existingPillars = [] } = await supabase
+    const { data: existingPillars } = await supabase
       .from('blog_posts')
       .select('title, slug')
       .eq('category', 'learn-guide')
       .eq('guide_type', 'pillar')
       .eq('guide_category', categoryBg);
 
-    const existingPillarTitles = existingPillars.map(p => p.title);
+    const existingPillarTitles = (existingPillars || []).map(p => p.title);
 
     // Step 2: Determine suggested pillars
     let suggestedPillars = getSuggestedPillars(category, title);
@@ -555,10 +555,10 @@ SPACING И ФОРМАТИРАНЕ:
 ВАЖНО: Всеки H2 трябва да има id атрибут (id="section-1", id="section-2" и т.н.) за да работят линковете в Table of Contents!
 
 SMART INTERNAL LINKING:
-${existingPillars.length > 0 ? `СЪЩЕСТВУВАЩИ ТЕМИ (добави линкове):
-${existingPillars.map((p, i) => `${i + 1}. "${p.title}" → <a href="/learn/${p.slug}">${p.title}</a>`).join('\n')}` : 'НЯМА създадени pillar теми още.'}
+${(existingPillars || []).length > 0 ? `СЪЩЕСТВУВАЩИ ТЕМИ (добави линкове):
+${(existingPillars || []).map((p, i) => `${i + 1}. "${p.title}" → <a href="/learn/${p.slug}">${p.title}</a>`).join('\n')}` : 'НЯМА създадени pillar теми още.'}
 
-${existingPillars.length < suggestedPillars.length ? `ПЛАНИРАНИ ТЕМИ (НЕ слагай линкове, само споменай):
+${(existingPillars || []).length < suggestedPillars.length ? `ПЛАНИРАНИ ТЕМИ (НЕ слагай линкове, само споменай):
 ${suggestedPillars.filter(sp => !existingPillarTitles.includes(sp)).map((p, i) => `${i + 1}. "${p}" → споменай БЕЗ линк`).join('\n')}` : ''}
 
 SEO ОПТИМИЗАЦИЯ:
@@ -901,7 +901,7 @@ IMPORTANT: NO text, NO logos, NO letters visible in the image. Pure photorealist
 
           // Find the "Подтеми накратко" section and append links
           updatedContent = updatedContent.replace(
-            /(<h2 id="section-3">.*?<\/h2>.*?<ul>)(.*?)(<\/ul>)/is,
+            /(<h2 id="section-3">[\s\S]*?<\/h2>[\s\S]*?<ul>)([\s\S]*?)(<\/ul>)/i,
             `$1$2${pillarLinksHtml}$3`
           );
 

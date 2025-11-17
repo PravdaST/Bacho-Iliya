@@ -233,13 +233,13 @@ Cluster статия: "${cluster.title}"
 
     if (relatedPillars && relatedPillars.length > 0) {
       // Fetch titles for provided slugs
-      const { data: pillarsFromDb = [] } = await supabase
+      const { data: pillarsFromDb } = await supabase
         .from('blog_posts')
         .select('title, slug')
         .in('slug', relatedPillars)
         .eq('guide_type', 'pillar');
 
-      relatedPillarsData = pillarsFromDb;
+      relatedPillarsData = pillarsFromDb || [];
     }
 
     const relatedPillarsList = relatedPillarsData

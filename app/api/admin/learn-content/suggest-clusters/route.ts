@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const MODEL = 'google/gemini-2.5-flash-lite';
 
-async function callOpenRouter(messages: any[], temperature = 0.8, maxTokens = 4000) {
+async function callOpenRouter(messages: any[], temperature = 0.4, maxTokens = 4000) {
   const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -357,7 +357,7 @@ BRAND POSITIONING - БАЧО ИЛИЯ (употреба: естествено, �
         .toLowerCase()
         .replace(/[:\-–—,\.!?]/g, '')
         .trim();
-      const keywords = normalizedTitle.split(/\s+/).filter(w => w.length > 3);
+      const keywords = normalizedTitle.split(/\s+/).filter((w: string) => w.length > 3);
 
       if (keywords.length > 0) {
         const { data: allPosts } = await supabase
@@ -371,7 +371,7 @@ BRAND POSITIONING - БАЧО ИЛИЯ (употреба: естествено, �
             .replace(/[:\-–—,\.!?]/g, '')
             .trim();
 
-          const matchingKeywords = keywords.filter(kw =>
+          const matchingKeywords = keywords.filter((kw: string) =>
             postTitleNormalized.includes(kw)
           );
 
