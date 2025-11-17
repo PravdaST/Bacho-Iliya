@@ -84,6 +84,27 @@ export default function BlogPage() {
           </p>
         </motion.div>
 
+        {/* Navigation Tabs */}
+        <motion.div
+          className="mx-auto mb-12 max-w-7xl flex justify-center gap-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <Link
+            href="/blog"
+            className="font-handwritten bg-bulgarian-red px-8 py-3 text-lg text-white shadow-md transition-all hover:shadow-lg"
+          >
+            📖 Блог статии
+          </Link>
+          <Link
+            href="/blog/learn"
+            className="font-handwritten border-2 border-bulgarian-red text-bulgarian-red bg-white px-8 py-3 text-lg shadow-md transition-all hover:bg-bulgarian-red hover:text-white hover:shadow-lg"
+          >
+            📚 Библиотека
+          </Link>
+        </motion.div>
+
         {/* Blog Grid */}
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">

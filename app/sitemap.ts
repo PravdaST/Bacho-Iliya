@@ -12,10 +12,11 @@
 import { MetadataRoute } from 'next';
 import { getAllProducts } from '@/lib/products-data';
 import { getAllRecipeSlugs } from '@/lib/recipes-data';
+import { supabaseAdmin } from '@/lib/supabase';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bacho-iliya.eu';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all products and recipes dynamically
   const products = getAllProducts();
   const recipeSlugs = getAllRecipeSlugs();
@@ -106,5 +107,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [`${BASE_URL}/blog/${slug}-hero.png`],
   }));
 
-  return [...staticPages, ...productPages, ...recipePages, ...blogPages];
+  // Learn content pages (educational articles) - DYNAMIC from Supabase
+  const { data: learnGuides = [] } = await supabaseAdmin
+    .from('blog_posts')
+    .select('slug, updated_at, featured_image_url')
+    .eq('category', 'learn-guide')
+    .eq('is_published', true);
+
+  const learnPages: MetadataRoute.Sitemap = [
+    // Learn index page
+    {
+      url: `${BASE_URL}/blog/learn`,
+      lastModified: new Date(),
+    },
+    // Individual learn guides
+    ...learnGuides.map((guide) => ({
+      url: `${BASE_URL}/blog/learn/${guide.slug}`,
+      lastModified: new Date(guide.updated_at),
+      images: guide.featured_image_url ? [guide.featured_image_url] : [],
+    })),
+  ];
+
+  return [...staticPages, ...productPages, ...recipePages, ...blogPages, ...learnPages];
 }
