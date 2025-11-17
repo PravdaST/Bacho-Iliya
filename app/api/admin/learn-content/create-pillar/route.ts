@@ -154,20 +154,23 @@ export async function POST(request: Request) {
       relatedPillars = []
     } = await request.json();
 
-    // Check for duplicates using comprehensive duplicate detection API
+    // Generate slug
     const slug = slugify(pillarTitle);
 
-    console.log('[Pillar] Checking for duplicates...');
-    const duplicateCheckResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/admin/learn-content/check-duplicates`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: pillarTitle, slug, parentClusterSlug })
-    });
+    console.log('[Pillar] Checking for exact duplicates (same slug)...');
 
-    const duplicateCheck = await duplicateCheckResponse.json();
+    // Simple duplicate check - only exact slug match
+    const { data: existingPost } = await supabase
+      .from('blog_posts')
+      .select('id, title, slug')
+      .eq('slug', slug)
+      .eq('category', 'learn-guide')
+      .single();
 
-    if (duplicateCheck.hasDuplicates) {
-      const { exactTitleMatch, similarTitles, exactSlugMatch } = duplicateCheck.duplicates;
+    if (existingPost) {
+      const exactTitleMatch = [existingPost];
+      const similarTitles: any[] = [];
+      const exactSlugMatch = [existingPost];
 
       // Prepare error message
       let errorMessage = '⚠️ Открити дублирания:\n\n';

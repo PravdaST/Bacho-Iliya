@@ -242,6 +242,11 @@ async function generateImage(prompt: string, slug: string): Promise<string | nul
 export async function POST(request: Request) {
   const supabase = supabaseAdmin;
 
+  // Determine base URL for internal API calls
+  const protocol = request.headers.get('x-forwarded-proto') || 'http';
+  const host = request.headers.get('host') || 'localhost:3009';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || `${protocol}://${host}`;
+
   try {
     const { title, category, keywords, mainTopic = 'dairy' } = await request.json();
 
@@ -907,7 +912,7 @@ IMPORTANT: NO text, NO logos, NO letters visible in the image. Pure photorealist
 
         try {
           // Call create-pillar endpoint internally
-          const pillarResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/admin/learn-content/create-pillar`, {
+          const pillarResponse = await fetch(`${baseUrl}/api/admin/learn-content/create-pillar`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
