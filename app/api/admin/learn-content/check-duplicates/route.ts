@@ -10,13 +10,31 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { title, slug, content, excludeId } = body;
+    const { title, slug, content, excludeId, parentClusterSlug } = body;
 
     if (!title && !slug && !content) {
       return NextResponse.json(
         { error: 'Трябва да предоставите поне едно поле за проверка (title, slug, или content)' },
         { status: 400 }
       );
+    }
+
+    // --- NEW: Fetch parent cluster title if slug is provided ---
+    let parentClusterTitle: string | null = null;
+    if (parentClusterSlug) {
+      const { data: parentCluster, error: parentError } = await supabase
+        .from('blog_posts')
+        .select('title')
+        .eq('slug', parentClusterSlug)
+        .single();
+
+      if (parentError) {
+        console.error('[Check Duplicates] Error fetching parent cluster:', parentError);
+        // Not a fatal error, so we just log it and continue
+      } else if (parentCluster) {
+        parentClusterTitle = parentCluster.title;
+        console.log(`[Check Duplicates] Will exclude parent cluster title: "${parentClusterTitle}"`);
+      }
     }
 
     const duplicates: {
@@ -52,7 +70,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 2. Check for similar titles (fuzzy matching - removing special chars and checking contains)
+    // 2. Check for similar titles (fuzzy matching)
     if (title && duplicates.exactTitleMatch.length === 0) {
       const normalizedTitle = title
         .toLowerCase()
@@ -75,12 +93,16 @@ export async function POST(request: NextRequest) {
 
         if (!error && data) {
           const similar = data.filter(post => {
+            // --- MODIFICATION: Exclude parent cluster from similarity check ---
+            if (parentClusterTitle && post.title === parentClusterTitle) {
+              return false;
+            }
+
             const postTitleNormalized = post.title
               .toLowerCase()
               .replace(/[:\-–—,\.!?]/g, '')
               .trim();
 
-            // Check if at least 2 keywords match
             const matchingKeywords = keywords.filter((kw: string) =>
               postTitleNormalized.includes(kw)
             );
@@ -116,7 +138,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 4. Check for similar content (if content provided - check first 500 chars)
+    // 4. Check for similar content (if content provided)
     if (content && content.length > 100) {
       const contentSample = content.substring(0, 500).toLowerCase();
       const contentKeywords = contentSample
@@ -146,7 +168,6 @@ export async function POST(request: NextRequest) {
               postContentSample.includes(kw)
             );
 
-            // If more than 50% of keywords match, consider it similar
             return matchingWords.length >= contentKeywords.length * 0.5;
           });
 
@@ -157,7 +178,6 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Calculate total duplicates
     const totalDuplicates =
       duplicates.exactTitleMatch.length +
       duplicates.similarTitles.length +

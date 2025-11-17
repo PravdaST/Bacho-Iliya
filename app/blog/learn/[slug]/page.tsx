@@ -131,7 +131,7 @@ export default async function LearnGuidePage({ params }: Props) {
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight font-['Amatic_SC']">
+        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight font-['Amatic_SC']">
           {guide.title}
         </h1>
 
@@ -166,7 +166,7 @@ export default async function LearnGuidePage({ params }: Props) {
         <div
           className="prose prose-lg max-w-none
             prose-headings:font-['Amatic_SC'] prose-headings:text-[#8B4513] prose-headings:font-bold
-            prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pt-8 prose-h2:border-t-2 prose-h2:border-[#F5E6D3]
+            prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pt-8 prose-h2:border-t-2 prose-h2:border-[#F5E6D3]
             prose-h3:text-3xl prose-h3:mt-12 prose-h3:mb-6
             prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
             prose-a:text-[#8B4513] prose-a:no-underline hover:prose-a:underline

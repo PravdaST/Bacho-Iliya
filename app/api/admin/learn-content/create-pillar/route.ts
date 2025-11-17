@@ -161,7 +161,7 @@ export async function POST(request: Request) {
     const duplicateCheckResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/admin/learn-content/check-duplicates`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: pillarTitle, slug })
+      body: JSON.stringify({ title: pillarTitle, slug, parentClusterSlug })
     });
 
     const duplicateCheck = await duplicateCheckResponse.json();
