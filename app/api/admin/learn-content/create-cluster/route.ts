@@ -1,0 +1,935 @@
+import { supabaseAdmin } from '@/lib/supabase';
+import { NextResponse } from 'next/server';
+
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const MODEL = 'google/gemini-2.5-flash-lite';
+
+// Category mapping: English slug -> Bulgarian display name
+const CATEGORY_LABELS: Record<string, string> = {
+  'dairy-products': 'Млечни продукти',
+  'recipes': 'Рецепти',
+  'health': 'Здраве',
+  'culture': 'Култура',
+  'products': 'Продукти',
+  'tradition': 'Традиции',
+  'guides': 'Гид-ове'
+};
+
+// РЕАЛНИ pillar suggestions based on category
+function getSuggestedPillars(category: string, clusterTitle: string): string[] {
+  const suggestions: Record<string, string[]> = {
+    recipes: [
+      'Таратор - класическата рецепта',
+      'Млечна баница със сирене и кисело мляко',
+      'Снежанка със сирене и чесън',
+      'Мусака с картофи и кисело мляко',
+      'Баница с кисело мляко вместо вода',
+      'Качамак със сирене и масло',
+      'Пърженки със сирене'
+    ],
+    health: [
+      'Lactobacillus bulgaricus - българската млечна бактерия',
+      'Как киселото мляко подпомага храносмилането',
+      'Ролята на киселото мляко за имунната система',
+      'Калций в киселото мляко за здрави кости',
+      'Киселото мляко в храненето на деца',
+      'Пробиотици и червата - научни факти'
+    ],
+    culture: [
+      'История на киселото мляко в България',
+      'Традиционно българско производство на сирене',
+      'Щастливи крави и качественото мляко',
+      'Българските млечни традиции',
+      'Киселото мляко в българския фолклор',
+      'Местно производство срещу индустриално'
+    ],
+    products: [
+      'Как се прави българското кисело мляко',
+      'Разлика между кисело мляко и айран',
+      'Видове българско сирене',
+      'Съхранение на млечни продукти',
+      'Как да изберем качествено кисело мляко',
+      'Без консерванти - защо е важно'
+    ],
+    tradition: [
+      'Киселото мляко в българската трапеза',
+      'Празници и млечни продукти',
+      'Стари български обичаи с мляко',
+      'Рецепти от бабините времена',
+      'Традиционни методи на приготвяне на сирене'
+    ],
+    guides: [], // Will be determined by AI
+  };
+
+  return suggestions[category] || [];
+}
+
+// Slugify function for creating URL-friendly slugs
+function slugify(text: string): string {
+  // DEFENSIVE: Check for null/undefined
+  if (!text || typeof text !== 'string') {
+    console.error('[slugify] ❌ Received invalid input:', text, 'type:', typeof text);
+    return 'invalid-slug';
+  }
+
+  const transliterationMap: { [key: string]: string } = {
+    'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ж': 'zh', 'з': 'z',
+    'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p',
+    'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'ts', 'ч': 'ch',
+    'ш': 'sh', 'щ': 'sht', 'ъ': 'a', 'ь': 'y', 'ю': 'yu', 'я': 'ya',
+    'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Е': 'E', 'Ж': 'Zh', 'З': 'Z',
+    'И': 'I', 'Й': 'Y', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N', 'О': 'O', 'П': 'P',
+    'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U', 'Ф': 'F', 'Х': 'H', 'Ц': 'Ts', 'Ч': 'Ch',
+    'Ш': 'Sh', 'Щ': 'Sht', 'Ъ': 'A', 'Ь': 'Y', 'Ю': 'Yu', 'Я': 'Ya'
+  };
+
+  return text
+    .split('')
+    .map(char => transliterationMap[char] || char)
+    .join('')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+async function callOpenRouter(messages: any[], temperature = 0.7, maxTokens = 20000) {
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+      'Content-Type': 'application/json',
+      'HTTP-Referer': 'https://www.bacho-iliya.eu',
+      'X-Title': 'Bacho Iliya Learn Content Generator'
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      messages,
+      temperature,
+      max_tokens: maxTokens,
+    })
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`OpenRouter error ${response.status}: ${error}`);
+  }
+
+  const data = await response.json();
+  return data.choices[0].message.content;
+}
+
+async function generateImage(prompt: string, slug: string): Promise<string | null> {
+  const NANOBANANA_API_KEY = process.env.NANOBANANA_GEMINI_API_KEY;
+
+  if (!NANOBANANA_API_KEY) {
+    console.warn('[Image] NANOBANANA_GEMINI_API_KEY not found, skipping image generation');
+    return null;
+  }
+
+  try {
+    console.log('[Image] Generating with Gemini 2.5 Flash Image...');
+
+    // Using Gemini Flash Image model via OpenRouter for image GENERATION
+    const imageResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://www.bacho-iliya.eu',
+        'X-Title': 'Bacho Iliya Image Generator'
+      },
+      body: JSON.stringify({
+        model: 'google/gemini-2.5-flash-image',
+        messages: [{
+          role: 'user',
+          content: prompt
+        }],
+        temperature: 0.8,
+        max_tokens: 1000,
+        // Image generation config for aspect ratio
+        image_config: {
+          aspect_ratio: '16:9' // Hero banner aspect ratio
+        }
+      })
+    });
+
+    if (!imageResponse.ok) {
+      const errorText = await imageResponse.text();
+      console.error('[Image] Generation failed:', errorText);
+      return null;
+    }
+
+    const data = await imageResponse.json();
+    console.log('[Image] Full response:', JSON.stringify(data, null, 2).substring(0, 500));
+
+    // According to OpenRouter docs, images are in message.images array
+    const message = data.choices[0]?.message;
+    const images = message?.images;
+
+    if (!images || images.length === 0) {
+      console.error('[Image] No images in response');
+      return null;
+    }
+
+    // Extract base64 data URL from first image
+    const base64DataUrl = images[0]?.image_url?.url;
+
+    if (!base64DataUrl || !base64DataUrl.startsWith('data:image')) {
+      console.error('[Image] Invalid image format:', base64DataUrl?.substring(0, 100));
+      return null;
+    }
+
+    console.log('[Image] Received base64 image, uploading to Supabase Storage...');
+
+    // Extract base64 data (remove "data:image/png;base64," prefix)
+    const base64Data = base64DataUrl.replace(/^data:image\/\w+;base64,/, '');
+    const imageBuffer = Buffer.from(base64Data, 'base64');
+
+    // Upload to Supabase Storage
+    const fileName = `learn-guides/${slug}-${Date.now()}.png`;
+    const supabase = supabaseAdmin;
+
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from('blog-images')
+      .upload(fileName, imageBuffer, {
+        contentType: 'image/png',
+        cacheControl: '3600',
+        upsert: false
+      });
+
+    if (uploadError) {
+      console.error('[Image] Upload error:', uploadError);
+      return null;
+    }
+
+    // Get public URL
+    const { data: publicUrlData } = supabase.storage
+      .from('blog-images')
+      .getPublicUrl(fileName);
+
+    const publicUrl = publicUrlData.publicUrl;
+    console.log('[Image] Uploaded successfully:', publicUrl);
+
+    return publicUrl;
+
+  } catch (error) {
+    console.error('[Image] Error:', error);
+    return null;
+  }
+}
+
+export async function POST(request: Request) {
+  const supabase = supabaseAdmin;
+
+  try {
+    const { title, category, keywords, mainTopic = 'dairy' } = await request.json();
+
+    // Validate required fields
+    if (!title) {
+      return NextResponse.json(
+        { error: 'Title is required' },
+        { status: 400 }
+      );
+    }
+
+    // Convert category to Bulgarian if it's an English slug
+    const categoryBg = CATEGORY_LABELS[category] || category;
+
+    // Check for duplicates using comprehensive duplicate detection API
+    console.log('[Cluster] 🔍 About to call slugify with title:', title, 'type:', typeof title);
+    const slug = slugify(title);
+
+    console.log('[Cluster] Checking for duplicates using direct Supabase query...');
+
+    // Direct duplicate check using Supabase (avoids fetch() in server-side)
+    const { data: exactTitleMatch } = await supabase
+      .from('blog_posts')
+      .select('id, title, slug, category, guide_type, is_published')
+      .eq('category', 'learn-guide')
+      .ilike('title', title)
+      .limit(1);
+
+    const { data: exactSlugMatch } = await supabase
+      .from('blog_posts')
+      .select('id, title, slug, category, guide_type, is_published')
+      .eq('category', 'learn-guide')
+      .eq('slug', slug)
+      .limit(1);
+
+    const duplicateCheck = {
+      hasDuplicates: (exactTitleMatch && exactTitleMatch.length > 0) || (exactSlugMatch && exactSlugMatch.length > 0),
+      duplicates: {
+        exactTitleMatch: exactTitleMatch || [],
+        similarTitles: [],
+        exactSlugMatch: exactSlugMatch || []
+      }
+    };
+
+    if (duplicateCheck.hasDuplicates) {
+      const { exactTitleMatch, similarTitles, exactSlugMatch } = duplicateCheck.duplicates;
+
+      // Prepare error message
+      let errorMessage = '⚠️ Открити дублирания:\n\n';
+
+      if (exactTitleMatch.length > 0) {
+        errorMessage += '❌ ИДЕНТИЧНО ЗАГЛАВИЕ:\n';
+        exactTitleMatch.forEach((post: any) => {
+          errorMessage += `- "${post.title}" (${post.guide_type})\n`;
+        });
+      }
+
+      if (exactSlugMatch.length > 0) {
+        errorMessage += '\n❌ ИДЕНТИЧЕН SLUG:\n';
+        exactSlugMatch.forEach((post: any) => {
+          errorMessage += `- "${post.title}" (/${post.slug})\n`;
+        });
+      }
+
+      if (similarTitles.length > 0) {
+        errorMessage += '\n⚠️ ПОДОБНИ ЗАГЛАВИЯ:\n';
+        similarTitles.forEach((post: any) => {
+          errorMessage += `- "${post.title}" (${post.guide_type})\n`;
+        });
+      }
+
+      return NextResponse.json(
+        {
+          error: errorMessage,
+          duplicate: true,
+          duplicates: duplicateCheck.duplicates
+        },
+        { status: 409 }
+      );
+    }
+
+    console.log('[Cluster] No duplicates found ✅');
+
+    // Step 1: Check which pillars already exist (for smart linking)
+    const { data: existingPillars = [] } = await supabase
+      .from('blog_posts')
+      .select('title, slug')
+      .eq('category', 'learn-guide')
+      .eq('guide_type', 'pillar')
+      .eq('guide_category', categoryBg);
+
+    const existingPillarTitles = existingPillars.map(p => p.title);
+
+    // Step 2: Determine suggested pillars
+    let suggestedPillars = getSuggestedPillars(category, title);
+
+    // If category is "guides" or custom, ask AI to suggest pillars
+    if (category === 'guides' || suggestedPillars.length === 0) {
+      const aiSuggestionPrompt = [
+        {
+          role: 'system',
+          content: `Ти си роден българин, ЕКСПЕРТ по млечни продукти, българска кухня, традиционни рецепти и здравословно хранене.
+
+Анализирай темата на cluster статията и предложи 4-8 КОНКРЕТНИ И СПЕЦИФИЧНИ pillar теми.
+
+🔴 КРИТИЧНО ВАЖНО - ЕСТЕСТВЕН БЪЛГАРСКИ ЕЗИК:
+- Пиши на РОДЕН български език (НЕ буквални преводи от английски!)
+- Правилна българска граматика и стилистика
+- Естествени български фрази, като че говориш с приятел
+- Избягвай изкуствени, преведени конструкции
+
+❌ ЗАБРАНЕНИ ГРЕШКИ:
+- "Пърженки със сирене" → ПРАВИЛНО: "Препечени филийки със сирене" или "Пържени филийки със сирене"
+- "Основи на X" → ПРАВИЛНО: конкретно българско ястие или понятие
+- "Напреднали техники" → ПРАВИЛНО: конкретна техника с име
+- Думи с -ing форми → ПРАВИЛНО: български аналози
+- Буквални преводи на английски термини
+
+❌ ЛОШИ ПРИМЕРИ (generic или буквални преводи):
+["Основи на киселото мляко", "Напреднали техники", "Пърженки със сирене"]
+
+✅ ПРАВИЛНИ ПРИМЕРИ - РЕЦЕПТИ:
+Cluster: "Традиционни рецепти с кисело мляко"
+→ ["Таратор - класическата рецепта", "Млечна баница стъпка по стъпка", "Снежанка със сирене и чесън", "Айрян - българската лятна напитка"]
+
+Cluster: "Печива и сладки с кисело мляко"
+→ ["Козунак с кисело мляко по бабината рецепта", "Меки мекици с кисело мляко", "Сладки баници със сирене", "Млечна пита с къдрици"]
+
+✅ ПРАВИЛНИ ПРИМЕРИ - ЗДРАВЕ:
+Cluster: "Здравословни ползи от киселото мляко"
+→ ["Как пробиотиците помагат на храносмилането", "Киселото мляко за силен имунитет", "Калций от млечните продукти", "Защо киселото мляко е полезно за стомаха"]
+
+✅ ПРАВИЛНИ ПРИМЕРИ - ПРОДУКТИ:
+Cluster: "Традиционни български млечни продукти"
+→ ["Българското кисело мляко - традиции и качество", "Бялото саламурено сирене", "Извара - забравеният деликатес", "Катък - гъстото кисело мляко"]
+
+🔵 РЕАЛНИ БЪЛГАРСКИ РЕЦЕПТИ (използвай САМО тези):
+Кисело мляко: таратор класическа рецепта, снежанка рецепта, яйца по панагюрски, кекс с кисело мляко, десерт с кисело мляко, соденки с кисело мляко, катми с кисело мляко
+Сирене: баница със сирене, бърза баница със сирене, пълнени чушки със сирене и яйце, сирене по шопски, миш маш рецепта, картофи със сирене на фурна, бухти със сирене, солен кекс със сирене, пържени филийки с яйце и сирене
+Десерти: млечна баница рецепта, сладкиш с прясно мляко, крем карамел рецепта, домашен млечен крем, грис халва с прясно мляко, палачинки с прясно мляко
+Айрян: как се прави айрян, студена супа с айрян, рецепта за айрян
+Извара/Катък: рецепти с извара, сладкиш с извара, как се прави катък, рецепта за катък, катък с чесън и орехи
+Регионални: качамак със сирене, таратор по селски, родопски клин рецепта, пататник рецепта, мекици със сирене и кисело мляко
+
+ПРАВИЛО: Анализирай ТЕМАТА внимателно и използвай САМО горните реални рецепти за pillars!
+
+Върни САМО валиден JSON array с конкретни БЪЛГАРСКИ теми (БЕЗ буквални преводи):
+["Конкретна българска тема 1", "Конкретна българска тема 2", ...]`
+        },
+        {
+          role: 'user',
+          content: `Cluster тема: "${title}"
+Категория: ${category}
+Keywords: ${keywords || 'няма'}
+
+Анализирай темата внимателно и предложи 4-8 КОНКРЕТНИ pillar теми които я допълват.`
+        }
+      ];
+
+      let aiResponse = await callOpenRouter(aiSuggestionPrompt, 0.8, 1000);
+      console.log('[AI Pillar Suggestions] Raw AI response:', aiResponse);
+
+      // Clean up markdown code fences
+      aiResponse = aiResponse.trim();
+      if (aiResponse.startsWith('```json')) {
+        aiResponse = aiResponse.replace(/^```json\s*/, '').replace(/\s*```$/, '');
+      } else if (aiResponse.startsWith('```')) {
+        aiResponse = aiResponse.replace(/^```\s*/, '').replace(/\s*```$/, '');
+      }
+
+      try {
+        suggestedPillars = JSON.parse(aiResponse);
+        console.log('[AI Pillar Suggestions] ✅ Parsed:', suggestedPillars.length, 'pillars');
+      } catch (e) {
+        console.error('[AI Pillar Suggestions] ❌ JSON parse failed:', e);
+        suggestedPillars = [];
+      }
+    }
+
+    // Step 3: Generate cluster content
+    const contentPrompt = [
+      {
+        role: 'system',
+        content: `Ти си ЕКСПЕРТЕН писател на образователно съдържание за млечни продукти и българска традиционна кухня. Пишеш на перфектен български език.
+
+КРИТИЧНО ВАЖНО - БЪЛГАРСКИ ЕЗИК:
+- Пиши на ЕСТЕСТВЕН български език (НЕ буквални преводи!)
+- Граматически перфектен български
+- Естествен, приятелски разговорен тон
+- Като че говориш с приятел за традиционната ни кухня
+
+КРИТИЧНО ВАЖНО - ЗАБРАНЕНИ НЕЩА:
+
+❌ АБСОЛЮТНО ЗАБРАНЕНО:
+- НИКАКВИ емотикони в текста или заглавията (📝, ✨, 🥛, 🧀, 🍲, 🤖, ✅, 📋, 📖, 📚)
+- НИКАКВИ измислени рецепти (Майонеза с кисело мляко, Крем карамел с кисело мляко)
+- НИКАКВИ несъществуващи комбинации (Шопска салата с кисело мляко)
+- НИКАКВИ буквални преводи от английски (Пърженки, French toast, и др.)
+- НЕ използвай думи с -ing форми или английски термини
+- H1 тагове
+- H2 със заглавието на статията в началото (template-ът вече го показва!)
+- <article>, <header>, <footer> тагове
+- Complex grids, cards, sections
+
+✅ ИЗИСКВАНИЯ ЗА ЕЗИК:
+- Естествен роден български език
+- Правилна граматика и стилистика
+- Като че говориш с приятел за българската кухня
+- Използвай само съществуващи български ястия и продукти
+
+🔵 РЕАЛНИ БЪЛГАРСКИ РЕЦЕПТИ И ТЕРМИНИ (използвай САМО тези):
+
+РЕЦЕПТИ С КИСЕЛО МЛЯКО:
+таратор класическа рецепта, снежанка рецепта, яйца по панагюрски, кекс с кисело мляко, десерт с кисело мляко, соденки с кисело мляко, катми с кисело мляко
+
+РЕЦЕПТИ СЪС СИРЕНЕ:
+баница със сирене, бърза баница със сирене, пълнени чушки със сирене и яйце, сирене по шопски, миш маш рецепта, картофи със сирене на фурна, бухти със сирене, солен кекс със сирене, пържени филийки с яйце и сирене
+
+ДЕСЕРТИ:
+млечна баница рецепта, сладкиш с прясно мляко, крем карамел рецепта, домашен млечен крем, грис халва с прясно мляко, палачинки с прясно мляко
+
+АЙРЯН:
+как се прави айрян, студена супа с айрян, рецепта за айрян, солен айрян
+
+ИЗВАРА/КАТЪК:
+рецепти с извара, сладкиш с извара, как се прави катък, рецепта за катък, катък с чесън и орехи, извара протеин, извара за фитнес
+
+РЕГИОНАЛНИ:
+качамак със сирене, таратор по селски, родопски клин рецепта, пататник рецепта, мекици със сирене и кисело мляко, родопско кисело мляко, родопско сирене
+
+ЗДРАВОСЛОВНИ ТЕРМИНИ:
+пробиотици, кисело мляко пробиотици, млечнокисели бактерии, лактобацили, здравословно храносмилане, без консерванти, протеини, храни богати на калций
+
+БРАНД ТЕРМИНИ:
+истинско българско кисело мляко, традиционни български млечни продукти, натурално кисело мляко, българско сирене без консерванти, качествено българско сирене, фермерски млечни продукти, занаятчийско сирене, кисело мляко по БДС, сирене по БДС, бабини рецепти със сирене, домашно кисело мляко рецепта
+
+🎯 BRAND POSITIONING - БАЧО ИЛИЯ (ВАЖНО: естествено, НЕ СПАМ):
+
+КАКВО Е БАЧО ИЛИЯ:
+- Семейна фирма с 30+ години традиция (основана 1990-те)
+- Истински български производител на млечни продукти
+- Традиционни рецепти, предавани от поколения
+- Без консерванти и изкуствени добавки
+- Качествено българско сирене и кисело мляко
+
+КАК ДА СПОМЕНАВАШ БАЧО ИЛИЯ (1-2 пъти на статия MAX):
+✅ ПРАВИЛНО - естествено включване:
+- "За приготвянето на таратора използвайте качествено българско кисело мляко като Бачо Илия"
+- "Истинското българско сирене без консерванти (като Бачо Илия) има автентичен вкус"
+- "За автентична баница изберете българско сирене по традиционна рецепта като Бачо Илия"
+- "Качественото кисело мляко като Бачо Илия е ключът към перфектния таратор"
+
+❌ ГРЕШНО - спам или агресивно:
+- "Бачо Илия е най-доброто кисело мляко" (твърде директно, изглежда като реклама)
+- Споменаване на Бачо Илия 5+ пъти (СПАМ)
+- "Само Бачо Илия прави истинско сирене" (твърде агресивно)
+- Споменаване на КОНКУРЕНТИ (НЕ споменавай Маджаров, ЛБ Булгарикум, Верея и др.)
+
+АЛТЕРНАТИВИ (вместо конкуренти):
+- "качествено българско кисело мляко" (общо)
+- "автентични български млечни продукти" (общо)
+- "проверени производители" (общо)
+- "традиционно българско сирене" (общо)
+
+✅ РАЗРЕШЕНО:
+- <p> параграфи
+- <h2> и <h3> заглавия (БЕЗ емотикони!)
+- <ul>, <li> списъци
+- <a href="/learn/SLUG"> internal links
+- <strong> за emphasis
+- <div class="tldr-section"> за резюмета
+- <table> таблици (ЗАДЪЛЖИТЕЛНО включи поне 1-2 таблици!)
+
+ТАБЛИЦИ (responsive, ЗАДЪЛЖИТЕЛНО използвай):
+<div class="overflow-x-auto my-6">
+  <table class="min-w-full border-collapse border border-zinc-300">
+    <thead>
+      <tr class="bg-zinc-100">
+        <th class="border border-zinc-300 px-4 py-2 text-left font-semibold">Колона 1</th>
+        <th class="border border-zinc-300 px-4 py-2 text-left font-semibold">Колона 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border border-zinc-300 px-4 py-2">Данни</td>
+        <td class="border border-zinc-300 px-4 py-2">Данни</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+ПРИМЕРИ ЗА ТАБЛИЦИ:
+- Сравнение на различни видове сирене (овче, краве, козе)
+- Хранителна стойност на 100г продукт
+- Времена за приготвяне на различни рецепти
+- Сравнение на традиционни vs. съвременни методи
+
+SPACING И ФОРМАТИРАНЕ:
+- Добави spacing между секции с празни редове
+- Използвай <h2> за главни секции (с голям шрифт)
+- Използвай <h3> за подсекции
+- Групирай параграфи логически
+- Всеки параграф да е 3-5 изречения
+
+СТРУКТУРА НА CLUSTER СТАТИЯ (3,500 думи):
+
+1. TLDR секция в началото:
+   <div class="tldr-section">
+     <h3>Ключови моменти</h3>
+     <p>Обобщение в 3-4 изречения...</p>
+   </div>
+
+2. TABLE OF CONTENTS (задължително БЕЗ емотикони):
+   <div class="toc-section my-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+     <h3 class="text-2xl font-bold mb-4">Съдържание</h3>
+     <ol class="space-y-2 list-decimal list-inside">
+       <li><a href="#section-1" class="text-blue-600 hover:underline">Общ преглед</a></li>
+       <li><a href="#section-2" class="text-blue-600 hover:underline">Основни концепции</a></li>
+       <li><a href="#section-3" class="text-blue-600 hover:underline">Подтеми накратко</a></li>
+       <li><a href="#section-4" class="text-blue-600 hover:underline">Практическо приложение</a></li>
+       <li><a href="#section-5" class="text-blue-600 hover:underline">Заключение</a></li>
+     </ol>
+   </div>
+
+3. Въведение (300 думи) - Директно <p> параграфи БЕЗ H2 заглавие!
+4. Общ преглед (500 думи) - <h2 id="section-1">Общ преглед</h2>
+5. Основни концепции (800 думи) - <h2 id="section-2">Основни концепции</h2>
+6. Подтеми накратко (1000 думи) - <h2 id="section-3">Подтеми накратко</h2> - Споменаване на всички ${suggestedPillars.length} pillar теми
+7. Практическо приложение (500 думи) - <h2 id="section-4">Практическо приложение</h2>
+8. Заключение (400 думи) - <h2 id="section-5">Заключение</h2>
+
+ВАЖНО: Всеки H2 трябва да има id атрибут (id="section-1", id="section-2" и т.н.) за да работят линковете в Table of Contents!
+
+SMART INTERNAL LINKING:
+${existingPillars.length > 0 ? `СЪЩЕСТВУВАЩИ ТЕМИ (добави линкове):
+${existingPillars.map((p, i) => `${i + 1}. "${p.title}" → <a href="/learn/${p.slug}">${p.title}</a>`).join('\n')}` : 'НЯМА създадени pillar теми още.'}
+
+${existingPillars.length < suggestedPillars.length ? `ПЛАНИРАНИ ТЕМИ (НЕ слагай линкове, само споменай):
+${suggestedPillars.filter(sp => !existingPillarTitles.includes(sp)).map((p, i) => `${i + 1}. "${p}" → споменай БЕЗ линк`).join('\n')}` : ''}
+
+SEO ОПТИМИЗАЦИЯ:
+- Използвай keywords естествено
+- Заглавия (H2, H3) с keywords
+- Първи параграф с main keyword
+
+ТЕМАТИКА:
+- Фокус върху млечни продукти (кисело мляко, айран, сирене)
+- Българска традиционна кухня
+- Здравословни ползи
+- Традиции и култура
+- Качество и производство
+
+ВАЖНО:
+- 3,500 думи (НЕ по-малко!)
+- Естествен, топъл тон
+- БЕЗ емотикони НАВСЯКЪДЕ
+- САМО реални български рецепти и традиции
+- Чист HTML код
+- Споменай "Бачо Илия" като пример за качествени продукти
+
+ФИНАЛНА ПРОВЕРКА ПРЕДИ ГЕНЕРИРАНЕ:
+1. Има ли емотикони? → ПРЕМАХНИ ГИ ВЕДНАГА
+2. Споменати ли са измислени рецепти? → ЗАМЕНИ С РЕАЛНИ
+3. Звучи ли като превод? → ПРЕНАПИШИ НА ЕСТЕСТВЕН БЪЛГАРСКИ`
+      },
+      {
+        role: 'user',
+        content: `Създай CLUSTER guide за тема: "${title}"
+Категория: ${category}
+Keywords: ${keywords || 'няма'}
+
+Pillar теми за споменаване: ${suggestedPillars.join(', ')}
+
+Генерирай пълно HTML съдържание (3,500 думи).`
+      }
+    ];
+
+    let content = await callOpenRouter(contentPrompt, 0.7, 20000);
+
+    // Clean up markdown code fences
+    content = content.trim();
+    if (content.startsWith('```html')) {
+      content = content.replace(/^```html\s*/, '').replace(/\s*```$/, '');
+    } else if (content.startsWith('```')) {
+      content = content.replace(/^```\s*/, '').replace(/\s*```$/, '');
+    }
+
+    // Step 4: Generate metadata with SEO-optimized title
+    const metaPrompt = [
+      {
+        role: 'system',
+        content: `Генерирай SEO metadata за статия за млечни продукти. Върни само валиден JSON:
+{
+  "title": "Атрактивно заглавие на български (55-65 символа)",
+  "meta_title": "SEO заглавие (50-60 символа)",
+  "meta_description": "SEO описание (150-160 символа)",
+  "slug": "url-friendly-slug-in-latin-only"
+}
+
+ПРАВИЛА ЗА ЗАГЛАВИЯ:
+✅ Използвай emotional triggers: "традиционен", "автентичен", "домашен", "здравословен"
+✅ Добавяй конкретика: цифри, години, проценти
+✅ Включи ключови думи естествено
+✅ Атрактивен език: "Пълен гид", "Всичко за", "Тайните на", "Как да"
+✅ Баланс между SEO и естественост
+
+ПРИМЕРИ ЗА ДОБРИ ЗАГЛАВИЯ:
+❌ Лошо: "Кисело мляко - ползи и видове"
+✅ Добро: "Българско кисело мляко: 7 здравни ползи и традиционни рецепти"
+
+❌ Лошо: "Сирене производство"
+✅ Добро: "Как се прави традиционно българско сирене: От фермата до масата"
+
+❌ Лошо: "Мляко качество"
+✅ Добро: "5 начина да разпознаете качественото прясно мляко"
+
+ВАЖНО: slug трябва да е САМО на латиница! Транслитерирай български текст към латиница.
+Пример: "Кисело мляко ползи" → "kiselo-mlyako-polzi"`
+      },
+      {
+        role: 'user',
+        content: `Заглавие (начално): ${title}\nCategory: ${categoryBg}\n\nГенерирай SEO-оптимизирано заглавие, което е атрактивно и кликабилно.`
+      }
+    ];
+
+    const metaResponse = await callOpenRouter(metaPrompt, 0.5, 500);
+    let metadata;
+    let optimizedTitle = title; // Default to original title
+    try {
+      const cleanMeta = metaResponse.trim()
+        .replace(/^```json\s*/, '')
+        .replace(/\s*```$/, '');
+      metadata = JSON.parse(cleanMeta);
+
+      // Use AI-generated optimized title if available
+      if (metadata.title) {
+        optimizedTitle = metadata.title;
+        console.log('[Cluster] ✅ SEO-optimized title:', optimizedTitle);
+      }
+
+      // Ensure slug is Latin
+      if (optimizedTitle && /[\u0400-\u04FF]/.test(metadata.slug)) {
+        console.log('[Cluster] 🔍 About to call slugify #2 with optimizedTitle:', optimizedTitle, 'type:', typeof optimizedTitle);
+        metadata.slug = slugify(optimizedTitle);
+      }
+    } catch (e) {
+      console.error('[Cluster] Metadata parsing failed, using fallback');
+      console.log('[Cluster] 🔍 About to call slugify #3 (fallback) with title:', title, 'type:', typeof title);
+      metadata = {
+        meta_title: title,
+        meta_description: title,
+        slug: slugify(title)
+      };
+    }
+
+    // Step 5: Extract excerpt from TLDR section
+    let excerpt = '';
+    try {
+      const tldrMatch = content.match(/<div class="tldr-section">[\s\S]*?<p>(.*?)<\/p>[\s\S]*?<\/div>/);
+      if (tldrMatch) {
+        excerpt = tldrMatch[1]
+          .replace(/<[^>]*>/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+          .substring(0, 200);
+      }
+    } catch (e) {
+      console.error('[Cluster] Failed to extract excerpt:', e);
+    }
+
+    // Step 6: Generate 4 images (1 hero + 3 section images)
+    let featuredImageUrl: string | null = null;
+    const sectionImageUrls: string[] = [];
+
+    try {
+      console.log('[Cluster] Generating 4 images for article...');
+
+      // Image 1: Hero image (general overview)
+      const heroPrompt = `Create a photorealistic, high-quality food photography image for article: "${optimizedTitle}".
+
+STYLE: Professional food photography, studio lighting, sharp focus, shallow depth of field, appetizing presentation
+SUBJECT: Fresh Bulgarian dairy products (white cheese, yogurt, milk) beautifully arranged on rustic wooden table
+DETAILS: Traditional Bulgarian tablecloth or linen, natural morning light, warm earthy tones, authentic Bulgarian kitchen setting
+MOOD: Inviting, appetizing, traditional yet modern, clean and fresh
+QUALITY: 8K resolution, professional food photography, magazine quality, realistic textures
+
+Category context: ${categoryBg}
+
+IMPORTANT: NO text, NO logos, NO letters visible in the image. Pure photorealistic food photography only.`;
+
+      featuredImageUrl = await generateImage(heroPrompt, `${metadata.slug}-hero`);
+      console.log('[Cluster] Hero image generated');
+
+      // Image 2: For "Основни концепции" section - Close-up of specific product
+      const section1Prompt = `Create a photorealistic close-up food photography image showing Bulgarian dairy product details.
+
+STYLE: Macro photography, dramatic lighting, extreme close-up, professional food styling
+SUBJECT: Single Bulgarian dairy product (yogurt or white cheese) with visible texture and details
+DETAILS: Shallow depth of field, focus on texture and quality, wooden spoon or traditional utensil, minimal styling
+MOOD: Educational, detailed, artisanal, authentic craftsmanship
+QUALITY: 8K resolution, sharp details, magazine quality
+
+Category context: ${categoryBg}
+
+IMPORTANT: NO text, NO logos, NO letters visible in the image. Pure photorealistic food photography only.`;
+
+      const section1Image = await generateImage(section1Prompt, `${metadata.slug}-section-1`);
+      if (section1Image) {
+        sectionImageUrls.push(section1Image);
+        console.log('[Cluster] Section 1 image generated');
+      }
+
+      // Image 3: For "Подтеми накратко" section - Traditional Bulgarian scene
+      const section2Prompt = `Create a photorealistic traditional Bulgarian kitchen scene with dairy products.
+
+STYLE: Environmental food photography, soft natural lighting, wide composition, authentic Bulgarian setting
+SUBJECT: Traditional Bulgarian kitchen counter with various dairy products, clay pots, copper vessels
+DETAILS: Embroidered traditional cloth, rustic wooden shelves, traditional Bulgarian pottery, warm morning light through window
+MOOD: Nostalgic, traditional, homey, authentic Bulgarian heritage
+QUALITY: 8K resolution, professional photography, magazine quality
+
+Category context: ${categoryBg}
+
+IMPORTANT: NO text, NO logos, NO letters visible in the image. Pure photorealistic food photography only.`;
+
+      const section2Image = await generateImage(section2Prompt, `${metadata.slug}-section-2`);
+      if (section2Image) {
+        sectionImageUrls.push(section2Image);
+        console.log('[Cluster] Section 2 image generated');
+      }
+
+      // Image 4: For "Практическо приложение" section - Ready-to-serve presentation
+      const section3Prompt = `Create a photorealistic food photography image of prepared Bulgarian dish with dairy products.
+
+STYLE: Food plating photography, professional presentation, top-down view, editorial food styling
+SUBJECT: Beautiful serving of traditional Bulgarian dish featuring dairy products (banitsa, tarator, shopska salad)
+DETAILS: Elegant white plate on rustic wooden table, fresh herbs, traditional garnish, clean composition
+MOOD: Appetizing, modern yet traditional, ready to serve, inviting
+QUALITY: 8K resolution, professional food plating, magazine quality
+
+Category context: ${categoryBg}
+
+IMPORTANT: NO text, NO logos, NO letters visible in the image. Pure photorealistic food photography only.`;
+
+      const section3Image = await generateImage(section3Prompt, `${metadata.slug}-section-3`);
+      if (section3Image) {
+        sectionImageUrls.push(section3Image);
+        console.log('[Cluster] Section 3 image generated');
+      }
+
+      console.log(`[Cluster] Generated ${1 + sectionImageUrls.length} images total`);
+    } catch (imageError) {
+      console.error('[Cluster] Failed to generate images:', imageError);
+    }
+
+    // Step 6.5: Inject section images into content
+    if (sectionImageUrls.length > 0) {
+      try {
+        console.log('[Cluster] Injecting section images into content...');
+
+        // Find H2 sections and insert images after them
+        let modifiedContent = content;
+
+        // Insert image 1 after section-2 (Основни концепции)
+        if (sectionImageUrls[0]) {
+          modifiedContent = modifiedContent.replace(
+            /(<h2 id="section-2">.*?<\/h2>)/i,
+            `$1\n<div class="my-8 rounded-xl overflow-hidden shadow-lg">\n  <img src="${sectionImageUrls[0]}" alt="Детайли на българските млечни продукти" class="w-full h-auto" />\n</div>`
+          );
+        }
+
+        // Insert image 2 after section-3 (Подтеми накратко)
+        if (sectionImageUrls[1]) {
+          modifiedContent = modifiedContent.replace(
+            /(<h2 id="section-3">.*?<\/h2>)/i,
+            `$1\n<div class="my-8 rounded-xl overflow-hidden shadow-lg">\n  <img src="${sectionImageUrls[1]}" alt="Традиционна българска кухня" class="w-full h-auto" />\n</div>`
+          );
+        }
+
+        // Insert image 3 after section-4 (Практическо приложение)
+        if (sectionImageUrls[2]) {
+          modifiedContent = modifiedContent.replace(
+            /(<h2 id="section-4">.*?<\/h2>)/i,
+            `$1\n<div class="my-8 rounded-xl overflow-hidden shadow-lg">\n  <img src="${sectionImageUrls[2]}" alt="Готово ястие с млечни продукти" class="w-full h-auto" />\n</div>`
+          );
+        }
+
+        content = modifiedContent;
+        console.log('[Cluster] Section images injected successfully');
+      } catch (injectError) {
+        console.error('[Cluster] Failed to inject section images:', injectError);
+      }
+    }
+
+    // Step 7: Save to database
+    const { data: savedPost, error: saveError } = await supabase
+      .from('blog_posts')
+      .insert({
+        title: optimizedTitle, // Use SEO-optimized title
+        slug: metadata.slug,
+        content,
+        excerpt: excerpt || metadata.meta_description,
+        category: 'learn-guide',
+        guide_type: 'cluster',
+        guide_category: categoryBg, // Use Bulgarian category name
+        suggested_pillars: suggestedPillars,
+        meta_title: metadata.meta_title,
+        meta_description: metadata.meta_description,
+        featured_image_url: featuredImageUrl,
+        is_published: false,
+      })
+      .select()
+      .single();
+
+    if (saveError) {
+      console.error('[Cluster] Save error:', saveError);
+      throw new Error(`Failed to save cluster: ${saveError.message}`);
+    }
+
+    console.log('[Cluster] ✅ Saved successfully:', savedPost.slug);
+
+    // Step 8: Auto-generate pillar articles for the cluster
+    const generatedPillars: any[] = [];
+
+    if (suggestedPillars && suggestedPillars.length > 0) {
+      console.log(`[Cluster] Starting auto-generation of ${suggestedPillars.length} pillars...`);
+
+      for (let i = 0; i < suggestedPillars.length; i++) {
+        const pillarTitle = suggestedPillars[i];
+        console.log(`[Pillar ${i + 1}/${suggestedPillars.length}] Generating: "${pillarTitle}"`);
+
+        try {
+          // Call create-pillar endpoint internally
+          const pillarResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/admin/learn-content/create-pillar`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              title: pillarTitle,
+              category,
+              keywords: `${keywords}, ${pillarTitle}`,
+              clusterSlug: savedPost.slug,
+              relatedPillars: generatedPillars.map(p => p.slug) // Link to already generated pillars
+            })
+          });
+
+          if (pillarResponse.ok) {
+            const pillarData = await pillarResponse.json();
+            generatedPillars.push(pillarData.data);
+            console.log(`[Pillar ${i + 1}/${suggestedPillars.length}] ✅ Generated: ${pillarData.data.slug}`);
+          } else {
+            const errorData = await pillarResponse.json();
+            console.error(`[Pillar ${i + 1}/${suggestedPillars.length}] ❌ Failed:`, errorData.error);
+          }
+
+          // Small delay to avoid rate limiting
+          await new Promise(resolve => setTimeout(resolve, 2000));
+
+        } catch (pillarError) {
+          console.error(`[Pillar ${i + 1}/${suggestedPillars.length}] ❌ Error:`, pillarError);
+        }
+      }
+
+      console.log(`[Cluster] ✅ Generated ${generatedPillars.length}/${suggestedPillars.length} pillars`);
+
+      // Step 9: Update cluster content with real internal links to generated pillars
+      if (generatedPillars.length > 0) {
+        console.log('[Cluster] Updating cluster with internal links to pillars...');
+
+        try {
+          let updatedContent = content;
+
+          // Add pillar links to "Подтеми накратко" section
+          const pillarLinksHtml = generatedPillars
+            .map(p => `<li><a href="/blog/learn/${p.slug}" class="text-blue-600 hover:text-blue-800 underline">${p.title}</a></li>`)
+            .join('\n');
+
+          // Find the "Подтеми накратко" section and append links
+          updatedContent = updatedContent.replace(
+            /(<h2 id="section-3">.*?<\/h2>.*?<ul>)(.*?)(<\/ul>)/is,
+            `$1$2${pillarLinksHtml}$3`
+          );
+
+          // Update database with linked content
+          await supabase
+            .from('blog_posts')
+            .update({ content: updatedContent })
+            .eq('id', savedPost.id);
+
+          console.log('[Cluster] ✅ Updated with pillar links');
+        } catch (updateError) {
+          console.error('[Cluster] Failed to update with pillar links:', updateError);
+        }
+      }
+    }
+
+    return NextResponse.json({
+      success: true,
+      cluster: savedPost,
+      suggested_pillars: suggestedPillars,
+      generated_pillars: generatedPillars.map(p => ({ title: p.title, slug: p.slug }))
+    });
+
+  } catch (error: any) {
+    console.error('Cluster generation error:', error);
+    return NextResponse.json(
+      { error: error.message || 'Failed to generate cluster' },
+      { status: 500 }
+    );
+  }
+}
