@@ -1012,8 +1012,8 @@ export default function AdminLearnPage() {
               <div>
                 <p className="text-green-800 font-bold text-lg">Успешно създадено!</p>
                 <p className="text-green-700 text-sm">
-                  {activeTab === 'create-cluster' && result.title && `Cluster: ${result.title}`}
-                  {activeTab === 'create-pillar' && result.title && `Pillar: ${result.title}`}
+                  {activeTab === 'cluster' && result.title && `Cluster: ${result.title}`}
+                  {activeTab === 'pillar' && result.title && `Pillar: ${result.title}`}
                   {!result.title && 'Съдържанието е генерирано и записано в базата данни'}
                 </p>
               </div>
