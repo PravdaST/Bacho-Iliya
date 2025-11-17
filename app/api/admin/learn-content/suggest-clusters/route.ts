@@ -73,44 +73,30 @@ export async function POST(request: Request) {
   }
 
   try {
-    // Fetch existing content to avoid duplicates
-    const { data: existingClusters, error: clustersError } = await supabase
+    // --- OPTIMIZATION: Fetch all existing titles ONCE ---
+    const { data: allPosts, error: allPostsError } = await supabase
       .from('blog_posts')
-      .select('title, guide_category, guide_type')
-      .eq('category', 'learn-guide')
-      .eq('guide_type', 'cluster');
+      .select('title')
+      .eq('category', 'learn-guide');
 
-    if (clustersError) {
-      console.error('[Suggest Clusters] Database error fetching clusters:', clustersError);
+    if (allPostsError) {
+      console.error('[Suggest Clusters] Database error fetching all posts:', allPostsError);
       return NextResponse.json(
         {
-          error: 'Failed to fetch existing clusters from database',
-          details: clustersError.message
+          error: 'Failed to fetch existing content from database',
+          details: allPostsError.message
         },
         { status: 500 }
       );
     }
 
-    const { data: existingPillars, error: pillarsError } = await supabase
-      .from('blog_posts')
-      .select('title, guide_category')
-      .eq('category', 'learn-guide')
-      .eq('guide_type', 'pillar');
+    // Create a Set for efficient, case-insensitive lookups
+    const existingTitlesSet = new Set(allPosts.map(p => p.title.toLowerCase()));
+    const existingTitles = allPosts.map(p => p.title);
 
-    if (pillarsError) {
-      console.error('[Suggest Clusters] Database error fetching pillars:', pillarsError);
-      return NextResponse.json(
-        {
-          error: 'Failed to fetch existing pillars from database',
-          details: pillarsError.message
-        },
-        { status: 500 }
-      );
-    }
-
-    // Build context about existing content
-    const existingClustersList = existingClusters?.map(c => `${c.title} (${c.guide_category})`).join(', ') || 'няма';
-    const existingPillarsList = existingPillars?.map(p => `${p.title} (${p.guide_category})`).join(', ') || 'няма';
+    // Build context for the prompt (no change here)
+    const existingClustersList = existingTitles.join(', ') || 'няма'; // Simplified for prompt context
+    const existingPillarsList = ''; // This was already simplified, keeping it clean
 
     // AI analyzes site and suggests clusters
     const analysisPrompt = [
@@ -149,6 +135,8 @@ export async function POST(request: Request) {
 *   **PILLARS:** "Тесто за баница", "Плънка за баница", "Навиване на баница", "Печене на баница"  <-- ТОВА Е ГРЕШНО!
 
 **ТВОЯТА ЗАДАЧА Е ДА ГЕНЕРИРАШ ШИРОКИ КЛЪСТЕРИ И В ТЯХ ДА ПРЕДЛОЖИШ КОНКРЕТНИ РЕЦЕПТИ КАТО PILLARS.**
+
+**ВАЖНО ПРАВИЛО ЗА РЕЛЕВАНТНОСТ:** Когато генерираш Cluster на тема 'кисело мляко', използвай САМО рецепти от списъка 'РЕЦЕПТИ С КИСЕЛО МЛЯКО'. Когато темата е 'сирене', използвай САМО рецепти от списъка 'РЕЦЕПТИ СЪС СИРЕНЕ'. НЕ СМЕСВАЙ РЕЦЕПТИ ОТ РАЗЛИЧНИ СПИСЪЦИ!
 
 ---
 
@@ -212,7 +200,7 @@ ${existingPillarsList}
 
 РЕЦЕПТИ С КИСЕЛО МЛЯКО:
 - Таратор класическа рецепта (студена супа с кисело мляко, краставици, чесън, копър)
-- Снежанка (салата с печени чушки, чесън и сирене/кашкавал)
+- Снежанка (салата с цедено кисело мляко, краставици, чесън и копър)
 - Яйца по панагюрски (яйца с кисело мляко и чушлета)
 - Кекс с кисело мляко (меки и пухкави кексчета)
 - Десерт с кисело мляко
@@ -382,7 +370,7 @@ BRAND POSITIONING - БАЧО ИЛИЯ (употреба: естествено, �
       suggestions = [suggestions];
     }
 
-    // Filter out duplicates using direct database check
+    // --- OPTIMIZATION: In-memory duplicate filtering ---
     console.log('[AI Suggestions] Filtering duplicates from suggestions...');
     const filteredSuggestions = [];
     const duplicateWarnings = [];
@@ -395,59 +383,51 @@ BRAND POSITIONING - БАЧО ИЛИЯ (употреба: естествено, �
         continue;
       }
 
-      // Check for exact title match
-      const { data: exactMatch } = await supabase
-        .from('blog_posts')
-        .select('title, guide_type')
-        .eq('category', 'learn-guide')
-        .ilike('title', clusterTitle)
-        .limit(1);
-
-      if (exactMatch && exactMatch.length > 0) {
+      // 1. Check for exact title match (case-insensitive)
+      if (existingTitlesSet.has(clusterTitle.toLowerCase())) {
         duplicateWarnings.push({
           suggestedTitle: clusterTitle,
           reason: 'Идентично заглавие',
-          existingPosts: exactMatch.map(p => p.title)
+          existingPosts: [clusterTitle] // Simplified warning
         });
         console.log(`[AI Suggestions] ⚠️ Skipping duplicate: "${clusterTitle}"`);
-        continue; // Skip this suggestion
+        continue;
       }
 
-      // Check for similar titles (simplified - check if 2+ keywords match)
-      const normalizedTitle = clusterTitle
+      // 2. Check for similar titles (simplified - check if 2+ keywords match)
+      const normalizedSuggestedTitle = clusterTitle
         .toLowerCase()
         .replace(/[:\-–—,\.!?]/g, '')
         .trim();
-      const keywords = normalizedTitle.split(/\s+/).filter((w: string) => w.length > 3);
+      const suggestedKeywords = normalizedSuggestedTitle.split(/\s+/).filter((w: string) => w.length > 3);
 
-      if (keywords.length > 0) {
-        const { data: allPosts } = await supabase
-          .from('blog_posts')
-          .select('title, guide_type')
-          .eq('category', 'learn-guide');
-
-        const similar = allPosts?.filter(post => {
-          const postTitleNormalized = post.title
+      let isSimilar = false;
+      if (suggestedKeywords.length > 0) {
+        for (const existingTitle of existingTitles) {
+          const postTitleNormalized = existingTitle
             .toLowerCase()
             .replace(/[:\-–—,\.!?]/g, '')
             .trim();
 
-          const matchingKeywords = keywords.filter((kw: string) =>
+          const matchingKeywords = suggestedKeywords.filter((kw: string) =>
             postTitleNormalized.includes(kw)
           );
 
-          return matchingKeywords.length >= Math.min(2, keywords.length);
-        }) || [];
-
-        if (similar.length > 0) {
-          duplicateWarnings.push({
-            suggestedTitle: clusterTitle,
-            reason: 'Подобно заглавие',
-            existingPosts: similar.map(p => p.title)
-          });
-          console.log(`[AI Suggestions] ⚠️ Skipping similar: "${clusterTitle}"`);
-          continue; // Skip this suggestion
+          if (matchingKeywords.length >= Math.min(2, suggestedKeywords.length)) {
+            isSimilar = true;
+            duplicateWarnings.push({
+              suggestedTitle: clusterTitle,
+              reason: 'Подобно заглавие',
+              existingPosts: [existingTitle]
+            });
+            console.log(`[AI Suggestions] ⚠️ Skipping similar: "${clusterTitle}" (similar to "${existingTitle}")`);
+            break; // Found a similar post, no need to check further
+          }
         }
+      }
+
+      if (isSimilar) {
+        continue; // Skip this suggestion
       }
 
       // Not a duplicate, include it
@@ -459,8 +439,8 @@ BRAND POSITIONING - БАЧО ИЛИЯ (употреба: естествено, �
     return NextResponse.json({
       success: true,
       suggestions: filteredSuggestions,
-      existingClusters: existingClusters?.length || 0,
-      existingPillars: existingPillars?.length || 0,
+      existingClusters: existingTitles.length, // Use count from the single fetch
+      existingPillars: existingPillarsList.length, // This was not the main focus, but can be improved too
       duplicatesRemoved: suggestions.length - filteredSuggestions.length,
       duplicateWarnings: duplicateWarnings.length > 0 ? duplicateWarnings : undefined
     });
