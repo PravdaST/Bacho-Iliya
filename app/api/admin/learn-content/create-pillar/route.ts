@@ -200,7 +200,12 @@ export async function POST(request: Request) {
         {
           error: errorMessage,
           duplicate: true,
-          duplicates: duplicateCheck.duplicates
+          duplicates: {
+            exactTitleMatch,
+            similarTitles,
+            exactSlugMatch,
+            similarContent: []
+          }
         },
         { status: 409 }
       );
