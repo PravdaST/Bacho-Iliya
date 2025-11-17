@@ -333,7 +333,8 @@ export default function AdminLearnPage() {
       }
 
       alert(`✅ Pillar "${pillarTitle}" е генериран успешно!`);
-      await fetchAllArticles(); // Refresh the list
+      await fetchClusters(); // Refresh clusters to update pillar count
+      await fetchAllArticles(); // Refresh the full article list
     } catch (err: any) {
       setError(err.message);
       alert(`❌ Грешка: ${err.message}`);
