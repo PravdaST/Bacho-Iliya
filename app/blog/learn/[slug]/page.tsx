@@ -5,17 +5,18 @@ import { ClockIcon } from '@/components/ui/Icon';
 import { Metadata } from 'next';
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const supabase = supabaseAdmin;
+  const { slug } = await params;
 
   const { data: guide } = await supabase
     .from('blog_posts')
     .select('title, meta_title, meta_description, featured_image_url, excerpt')
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .eq('category', 'learn-guide')
     .eq('is_published', true)
     .single();
@@ -60,12 +61,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function LearnGuidePage({ params }: Props) {
   const supabase = supabaseAdmin;
+  const { slug } = await params;
 
   // Fetch the guide
   const { data: guide, error } = await supabase
     .from('blog_posts')
     .select('*')
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .eq('category', 'learn-guide')
     .eq('is_published', true)
     .single();
@@ -80,7 +82,7 @@ export default async function LearnGuidePage({ params }: Props) {
   console.log('--- END PAGE COMPONENT ---');
 
   // Increment view count
-  await supabase.rpc('increment_blog_post_views', { post_slug: params.slug });
+  await supabase.rpc('increment_blog_post_views', { post_slug: slug });
 
   // Fetch related guides (same category)
   const { data: relatedGuides = [] } = await supabase
