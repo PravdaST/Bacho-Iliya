@@ -3,8 +3,20 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ClockIcon } from '@/components/ui/Icon';
 import { Metadata } from 'next';
-import TTSPlayer from '@/components/TTSPlayer';
+import dynamic from 'next/dynamic';
 import LearnSidebar from '@/components/LearnSidebar';
+
+// Dynamic import for TTSPlayer to avoid SSR issues with window.speechSynthesis
+const TTSPlayer = dynamic(() => import('@/components/TTSPlayer'), {
+  ssr: false,
+  loading: () => (
+    <div className="my-6 p-4 bg-gray-50 border border-gray-200 rounded-lg flex items-center gap-4 shadow-sm">
+      <div className="flex items-center gap-2 text-gray-600">
+        <span className="text-sm">Зареждане на аудио плейър...</span>
+      </div>
+    </div>
+  )
+});
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -203,7 +215,8 @@ export default async function LearnGuidePage({ params }: Props) {
             prose-img:rounded-lg prose-img:shadow-md prose-img:my-8
             prose-table:border-collapse prose-table:w-full prose-table:my-8 prose-table:shadow-md
             prose-th:bg-[#8B4513] prose-th:text-white prose-th:p-4 prose-th:text-left prose-th:font-semibold
-            prose-td:border prose-td:border-gray-300 prose-td:p-4 prose-td:bg-white"
+            prose-td:border prose-td:border-gray-300 prose-td:p-4 prose-td:bg-white
+            prose-blockquote:border-l-4 prose-blockquote:border-[#8B4513] prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600"
           dangerouslySetInnerHTML={{ __html: content }}
         />
 
