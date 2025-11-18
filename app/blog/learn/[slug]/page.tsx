@@ -23,39 +23,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .eq('is_published', true)
     .single();
 
-  console.log('--- METADATA ---');
-  console.log('Guide object in generateMetadata:', guide);
-  console.log('Guide title in generateMetadata:', guide?.title);
-  console.log('--- END METADATA ---');
-
   if (!guide) {
     return {
       title: 'Статия не е намерена | Бачо Илия',
     };
   }
 
+  // DRY: Extract repeated values
+  const pageTitle = guide.meta_title || guide.title;
+  const pageDescription = guide.excerpt || guide.meta_description;
+  const ogImage = guide.featured_image_url ? [
+    {
+      url: guide.featured_image_url,
+      width: 1200,
+      height: 630,
+      alt: guide.title,
+    }
+  ] : [];
+
   return {
-    title: guide.meta_title || guide.title,
-    description: guide.excerpt || guide.meta_description,
+    title: pageTitle,
+    description: pageDescription,
     openGraph: {
-      title: guide.meta_title || guide.title,
-      description: guide.excerpt || guide.meta_description,
-      images: guide.featured_image_url ? [
-        {
-          url: guide.featured_image_url,
-          width: 1200,
-          height: 630,
-          alt: guide.title,
-        }
-      ] : [],
+      title: pageTitle,
+      description: pageDescription,
+      images: ogImage,
       type: 'article',
       siteName: 'Бачо Илия',
       locale: 'bg_BG',
     },
     twitter: {
       card: 'summary_large_image',
-      title: guide.meta_title || guide.title,
-      description: guide.excerpt || guide.meta_description,
+      title: pageTitle,
+      description: pageDescription,
       images: guide.featured_image_url ? [guide.featured_image_url] : [],
     },
   };
@@ -77,11 +77,6 @@ export default async function LearnGuidePage({ params }: Props) {
   if (error || !guide) {
     notFound();
   }
-
-  console.log('--- PAGE COMPONENT ---');
-  console.log('Guide object in LearnGuidePage:', guide);
-  console.log('Guide title in LearnGuidePage:', guide?.title);
-  console.log('--- END PAGE COMPONENT ---');
 
   // Increment view count
   await supabase.rpc('increment_blog_post_views', { post_slug: slug });
