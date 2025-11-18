@@ -104,7 +104,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
     url: `${BASE_URL}/blog/${slug}`,
     lastModified: new Date('2025-10-30'), // Updated today
-    images: [`${BASE_URL}/blog/${slug}-hero.png`],
+    images: [`${BASE_URL}/blog/${slug}-hero.webp`],
   }));
 
   // Learn content pages (educational articles) - DYNAMIC from Supabase
