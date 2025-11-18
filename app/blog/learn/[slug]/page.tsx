@@ -36,10 +36,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: guide.meta_title || guide.title,
-    description: guide.meta_description || guide.excerpt,
+    description: guide.excerpt || guide.meta_description,
     openGraph: {
       title: guide.meta_title || guide.title,
-      description: guide.meta_description || guide.excerpt,
+      description: guide.excerpt || guide.meta_description,
       images: guide.featured_image_url ? [
         {
           url: guide.featured_image_url,
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title: guide.meta_title || guide.title,
-      description: guide.meta_description || guide.excerpt,
+      description: guide.excerpt || guide.meta_description,
       images: guide.featured_image_url ? [guide.featured_image_url] : [],
     },
   };
