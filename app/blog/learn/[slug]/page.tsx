@@ -112,7 +112,7 @@ export default async function LearnGuidePage({ params }: Props) {
   // --- Content Modification for Ingredients ---
   let content = guide.content;
   const ingredientsRegex = /(<h2[^>]*>Необходими продукти:?<\/h2>\s*<ul[^>]*>[\s\S]*?<\/ul>)/i;
-  content = content.replace(ingredientsRegex, (match) => {
+  content = content.replace(ingredientsRegex, (match: string) => {
     // This wraps the matched ingredients section (h2 + ul) in a styled div
     return `<div class="ingredients-section bg-amber-50 bg-opacity-50 p-6 rounded-lg shadow-inner border border-amber-200">${match}</div>`;
   });
