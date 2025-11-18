@@ -18,14 +18,14 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '27 Октомври 2024',
     readTime: '5 мин четене',
-    image: '/blog/.webp',
+    image: '/blog/lutenitsa-on-bread.png',
     author: 'Екипът на Бачо Илия',
     content: `Всяка есен, когато първите студени ветрове започнат да напомнят за себе си, въздухът в българските дворове се изпълва с един неповторим, сладникав и леко опушен аромат. Това е ароматът на лютеницата – не просто зимнина, а истински символ на българския дом, традиция и, разбира се, вкусът от детството.
 
 В Бачо Илия вярваме, че някои неща не бива да се променят. Точно както нашето сирене се прави по бабини рецепти, така и перфектната лютеница изисква търпение, любов и спазването на няколко златни тайни.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Fresh ingredients for lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/lutenitsa-ingredients.png" alt="Fresh ingredients for lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## 1. Тайната на Суровината: Само Най-Доброто
@@ -41,7 +41,7 @@ const blogPosts = [
 **Съвет от Бачо Илия**: Не бързайте! Изчакайте пиперът да узрее напълно. Качеството на лютеницата се определя още на полето.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Traditional lutenitsa cooking process" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/lutenitsa-cooking-process.png" alt="Traditional lutenitsa cooking process" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## 2. Тайната на Печенето: Огънят е Душата
@@ -61,7 +61,7 @@ const blogPosts = [
 • **Груба или Фина?** Истинската домашна лютеница не е като бебешка храна. Тя трябва да има текстура. Смелете по-голямата част от пипера и доматите, но оставете една малка част от пипера на ситно нарязани парченца.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Grinding roasted vegetables for lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/lutenitsa-grinding.png" alt="Grinding roasted vegetables for lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## 4. Тайната на Варенето: Търпението е Ключът
@@ -73,7 +73,7 @@ const blogPosts = [
 • **Кога е готова?** Когато бъркате и видите дъното на тенджерата за секунда-две, преди лютеницата да се стече обратно, значи е готова!
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Cooking lutenitsa slowly" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/lutenitsa-boiling.png" alt="Cooking lutenitsa slowly" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## 5. Тайната на Подправките: Времето и Мястото
@@ -87,7 +87,7 @@ const blogPosts = [
 • **Оцет (по желание)**: Малко оцет в края може да балансира сладостта и да служи като естествен консервант.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Adding spices to lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/lutenitsa-spices.png" alt="Adding spices to lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Рецепта за Истинска Домашна Лютеница
@@ -118,7 +118,7 @@ const blogPosts = [
 7. **Буркани**: Напълнете горещата лютеница в сухи, стерилизирани буркани. Затворете плътно и стерилизирайте за 10 минути.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Jars of homemade lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/lutenitsa-jars.png" alt="Jars of homemade lutenitsa" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Вкусът от Детството
@@ -136,12 +136,12 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '29 Октомври 2024',
     readTime: '7 мин четене',
-    image: '/blog/.webp',
+    image: '/blog/banitsa-sliced.png',
     author: 'Екипът на Бачо Илия',
     content: `Баницата е едно от най-обичаните и традиционни български ястия, символ на домашен уют и кулинарно майсторство. Приготвянето ѝ може да изглежда предизвикателство, но с правилните съставки, прецизни стъпки и няколко полезни съвета, всеки може да създаде истински шедьовър. В тази публикация ще разкрием тайните за приготвянето на перфектната домашна баница.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Ingredients for banitsa" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/banitsa-ingredients.png" alt="Ingredients for banitsa" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Съставки
@@ -157,7 +157,7 @@ const blogPosts = [
 *   Щипка сол (ако сиренето не е достатъчно солено)
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Assembling banitsa" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/banitsa-assembling.png" alt="Assembling banitsa" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Начин на приготвяне
@@ -172,7 +172,7 @@ const blogPosts = [
 *   **Охлаждане:** След като извадите баницата от фурната, покрийте я с чиста кърпа за 10-15 минути. Това ще я направи по-мека и сочна.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Banitsa baking in the oven" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/banitsa-baking.png" alt="Banitsa baking in the oven" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Полезни съвети
@@ -187,7 +187,7 @@ const blogPosts = [
 *   **Вариации:** Експериментирайте с добавяне на спанак, праз или тиква за различни вкусови преживявания.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Sliced banitsa" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/banitsa-sliced.png" alt="Sliced banitsa" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 Приготвянето на домашна баница е изкуство, което се усъвършенства с практика. Не се притеснявайте да експериментирате и да намерите своя собствен уникален подход. Добър апетит!`,
@@ -201,14 +201,14 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '29 Октомври 2024',
     readTime: '8 мин четене',
-    image: '/blog/.webp',
+    image: '/blog/tarator-hero.png',
     author: 'Екипът на Бачо Илия',
     content: `Има ли нещо по-българско от купа таратор в жегав летен следобед? Този бял, кремав, ароматен… едно хапване и времето спира. Връщаш се в двора на баба, където се чуват цикадите, а от кухнята тя вика: "Хайде на таратор, изстина!"
 
 Днес ще ви разкрия тайните на истинския български таратор – този, който не е просто студена супа, а спомен, усещане и любов в една купа.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Традиционен български таратор" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/tarator-hero.png" alt="Традиционен български таратор" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Защо бабиният таратор винаги беше най-вкусният?
@@ -244,7 +244,7 @@ const blogPosts = [
 Ако краставицата е горчива (знаете как се случва понякога), отрежете краищата и ги разтрийте с малко сол – това изважда горчивината. После изхвърлете краищата и нарежете останалата краставица спокойно.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Съставки за таратор" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/tarator-ingredients.png" alt="Съставки за таратор" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Тайна номер четири: Копърът и орехите – никога не ги забравяйте
@@ -264,7 +264,7 @@ const blogPosts = [
 И водата, която добавяте? Студена! Дори леденостудена. Някои баби дори слагаха кубчета лед в таратора си. Защото таторът трябва да е толкова студен, че да те разтърси когато го пийнеш.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Приготвяне на таратор" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/tarator-preparation.png" alt="Приготвяне на таратор" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Рецепта за Истински Домашен Таратор
@@ -308,7 +308,7 @@ const blogPosts = [
 • **Да върви перфектно със скара:** Сервирайте таратора в отделни купички до всяка чиния с кебапчета или кюфтета. Лъжица таратор между хапките скара е небесна комбинация.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Сервиран таратор" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/tarator-served.png" alt="Сервиран таратор" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Защо тараторът е повече от храна
@@ -338,14 +338,14 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '29 Октомври 2024',
     readTime: '9 мин четене',
-    image: '/blog/.webp',
+    image: '/blog/pitka-hero.png',
     author: 'Екипът на Бачо Илия',
     content: `Спомняте ли си как в баните дворове по празниците миришеше на прясна питка? Онзи златист кръгъл хляб, който баба ти изваждаше от пещта с толкова почит, сякаш държеше съкровище в ръцете си. Питката не беше просто храна – тя беше обред, благословия, символ. Тя беше моментът, когато цялото семейство се събираше на масата, скъсваше я заедно и споделяше не само хляба, но и любовта.
 
 Днес ще ви разкажа тайните на истинската българска обредна питка – тази, която се замесва с душа, изпича се с търпение и се споделя с обич.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Традиционна българска обредна питка" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/pitka-hero.png" alt="Традиционна българска обредна питка" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Защо питката е света за българите?
@@ -367,7 +367,7 @@ const blogPosts = [
 **Съвет от Бачо Илия:** Когато разтваряте маята, използвайте <a href="/products/kiselo-mlyako-3-6">качествено кисело мляко Бачо Илия</a> вместо вода – питката става още по-вкусна, мека и ароматна. Киселото мляко придава онази нежна киселинка и пухкавост, която традиционните питки винаги са имали.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Съставки за домашна питка" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/pitka-brashno.png" alt="Съставки за домашна питка" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Тайна номер две: Брашното – душата на тестото
@@ -395,7 +395,7 @@ const blogPosts = [
 **Съвет от баба:** Ако тестото ви се лепи, не добавяйте веднага брашно. Навлажнете ръцете си с малко олио – така ще можете да работите с тестото без да го стягате.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Замесено тесто за питка" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/pitka-dough.png" alt="Замесено тесто за питка" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Тайна номер четири: Втасването – когато времето е магия
@@ -411,7 +411,7 @@ const blogPosts = [
 **Съвет от Бачо Илия:** Ако въздухът в стаята е студен, загрейте фурната на 50°C, след това я изключете и оставете тестото да втаса вътре. Ще получите идеална топла среда.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Тесто за питка по време на втасване" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/pitka-rising-new.png" alt="Тесто за питка по време на втасване" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Тайна номер пет: Печенето – финалният акорд
@@ -429,7 +429,7 @@ const blogPosts = [
 **Съвет от баба:** "Питката е готова, когато почукаш по дъното и чуеш кух звук." Така бабите винаги са проверявали дали е изпечена.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Печене на традиционна питка" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/pitka-baking.png" alt="Печене на традиционна питка" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Рецепта за Истинска Домашна Обредна Питка
@@ -466,7 +466,7 @@ const blogPosts = [
 10. **Охлаждане:** Извадете питката, покрийте с кърпа за 5 минути. След това я оставете да изстине на скара.
 
 <div className="text-center my-8">
-  <img src="/blog/.webp" alt="Нарязана топла домашна питка" className="w-full h-auto rounded-lg shadow-lg" />
+  <img src="/blog/pitka-served-new.png" alt="Нарязана топла домашна питка" className="w-full h-auto rounded-lg shadow-lg" />
 </div>
 
 ## Полезни Съвети за Перфектна Питка

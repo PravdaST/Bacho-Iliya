@@ -14,7 +14,7 @@ import { getAllProducts } from '@/lib/products-data';
 import { getAllRecipeSlugs } from '@/lib/recipes-data';
 import { supabaseAdmin } from '@/lib/supabase';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.bacho-iliya.eu';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bacho-iliya.eu';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all products and recipes dynamically
@@ -104,7 +104,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
     url: `${BASE_URL}/blog/${slug}`,
     lastModified: new Date('2025-10-30'), // Updated today
-    images: [`${BASE_URL}/blog/${slug}-hero.webp`],
+    images: [`${BASE_URL}/blog/${slug}-hero.png`],
   }));
 
   // Learn content pages (educational articles) - DYNAMIC from Supabase

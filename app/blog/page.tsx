@@ -14,7 +14,7 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '27 Октомври 2024',
     readTime: '5 мин четене',
-    image: '/blog/lutenitsa-on-bread.webp',
+    image: '/blog/lutenitsa-on-bread.png',
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '29 Октомври 2024',
     readTime: '7 мин четене',
-    image: '/blog/banitsa-sliced.webp',
+    image: '/blog/banitsa-sliced.png',
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '29 Октомври 2024',
     readTime: '8 мин четене',
-    image: '/blog/tarator-hero.webp',
+    image: '/blog/tarator-hero.png',
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const blogPosts = [
     category: 'Бабини рецепти',
     date: '29 Октомври 2024',
     readTime: '9 мин четене',
-    image: '/blog/pitka-hero.webp',
+    image: '/blog/pitka-hero.png',
   },
 ];
 
