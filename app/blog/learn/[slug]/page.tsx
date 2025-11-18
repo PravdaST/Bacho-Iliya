@@ -3,20 +3,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ClockIcon } from '@/components/ui/Icon';
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+import TTSPlayerWrapper from '@/components/TTSPlayerWrapper';
 import LearnSidebar from '@/components/LearnSidebar';
-
-// Dynamic import for TTSPlayer to avoid SSR issues with window.speechSynthesis
-const TTSPlayer = dynamic(() => import('@/components/TTSPlayer'), {
-  ssr: false,
-  loading: () => (
-    <div className="my-6 p-4 bg-gray-50 border border-gray-200 rounded-lg flex items-center gap-4 shadow-sm">
-      <div className="flex items-center gap-2 text-gray-600">
-        <span className="text-sm">Зареждане на аудио плейър...</span>
-      </div>
-    </div>
-  )
-});
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -189,7 +177,7 @@ export default async function LearnGuidePage({ params }: Props) {
         </div>
 
         {/* TTS Player */}
-        <TTSPlayer text={plainTextContent} />
+        <TTSPlayerWrapper text={plainTextContent} />
 
         {/* Featured Image */}
         {guide.featured_image_url && (
