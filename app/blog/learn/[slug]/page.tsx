@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ClockIcon } from '@/components/ui/Icon';
 import { Metadata } from 'next';
+import TTSPlayer from '@/components/TTSPlayer';
+import LearnSidebar from '@/components/LearnSidebar';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -96,9 +98,24 @@ export default async function LearnGuidePage({ params }: Props) {
 
   const relatedGuides = relatedGuidesData || [];
 
+  // --- TTS Data Preparation ---
+  // Extract plain text for the TTS player
+  const plainTextContent = guide.content
+    .replace(/<[^>]*>/g, ' ') // Replace all HTML tags with a space
+    .replace(/\s+/g, ' ')      // Collapse whitespace
+    .trim();
+  
   // Calculate read time (rough estimate: 200 words per minute)
-  const wordCount = guide.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
+  const wordCount = plainTextContent.split(' ').length;
   const readTime = Math.ceil(wordCount / 200);
+
+  // --- Content Modification for Ingredients ---
+  let content = guide.content;
+  const ingredientsRegex = /(<h2[^>]*>Необходими продукти:?<\/h2>\s*<ul[^>]*>[\s\S]*?<\/ul>)/i;
+  content = content.replace(ingredientsRegex, (match) => {
+    // This wraps the matched ingredients section (h2 + ul) in a styled div
+    return `<div class="ingredients-section bg-amber-50 bg-opacity-50 p-6 rounded-lg shadow-inner border border-amber-200">${match}</div>`;
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#F5E6D3] to-white">
@@ -121,8 +138,16 @@ export default async function LearnGuidePage({ params }: Props) {
         </nav>
       </div>
 
-      {/* Article Header */}
-      <article className="container mx-auto px-4 py-8 max-w-4xl">
+      {/* Two-column layout: Sidebar + Content */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
+          {/* Sidebar - left column */}
+          <div className="lg:sticky lg:top-4 lg:self-start">
+            <LearnSidebar />
+          </div>
+
+          {/* Article Content - right column */}
+          <article className="max-w-4xl">
         {/* Category Badge */}
         <div className="mb-4">
           <span className="inline-block px-4 py-2 bg-[#8B4513] text-white rounded-full text-sm font-medium">
@@ -151,9 +176,12 @@ export default async function LearnGuidePage({ params }: Props) {
           <span>{guide.view_count || 0} прегледа</span>
         </div>
 
+        {/* TTS Player */}
+        <TTSPlayer text={plainTextContent} />
+
         {/* Featured Image */}
         {guide.featured_image_url && (
-          <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
+          <div className="my-8 rounded-xl overflow-hidden shadow-lg">
             <img
               src={guide.featured_image_url}
               alt={guide.title}
@@ -176,7 +204,7 @@ export default async function LearnGuidePage({ params }: Props) {
             prose-table:border-collapse prose-table:w-full prose-table:my-8 prose-table:shadow-md
             prose-th:bg-[#8B4513] prose-th:text-white prose-th:p-4 prose-th:text-left prose-th:font-semibold
             prose-td:border prose-td:border-gray-300 prose-td:p-4 prose-td:bg-white"
-          dangerouslySetInnerHTML={{ __html: guide.content }}
+          dangerouslySetInnerHTML={{ __html: content }}
         />
 
         {/* Related Guides */}
@@ -226,7 +254,10 @@ export default async function LearnGuidePage({ params }: Props) {
             ← Всички образователни статии
           </Link>
         </div>
-      </article>
+          </article>
+        </div>
+      </div>
     </div>
   );
 }
+
