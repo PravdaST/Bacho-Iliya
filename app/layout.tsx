@@ -9,7 +9,7 @@ import StickyCTA from '@/components/StickyCTA';
 import SEOHead from '@/components/SEOHead';
 import QueryProvider from '@/components/providers/QueryProvider';
 
-const siteUrl = 'https://bacho-iliya.eu';
+const siteUrl = 'https://www.bacho-iliya.eu';
 const siteName = 'Бачо Илия | Bacho Iliya | Bacho Ilya';
 
 export const metadata: Metadata = {
