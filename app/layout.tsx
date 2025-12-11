@@ -158,7 +158,7 @@ export default function RootLayout({
             height="1"
             width="1"
             style={{ display: 'none' }}
-            alt=""
+            alt="Facebook Pixel"
             src="https://www.facebook.com/tr?id=1157601959340766&ev=PageView&noscript=1"
           />
         </noscript>
