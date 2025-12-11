@@ -31,7 +31,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   // DRY: Extract repeated values
   const pageTitle = guide.meta_title || guide.title;
-  const pageDescription = guide.excerpt || guide.meta_description;
+  // Limit description to 155 chars for SEO
+  const rawDescription = guide.excerpt || guide.meta_description || '';
+  const pageDescription = rawDescription.length > 155
+    ? rawDescription.substring(0, 152) + '...'
+    : rawDescription;
   const ogImage = guide.featured_image_url ? [
     {
       url: guide.featured_image_url,

@@ -229,9 +229,13 @@ export function generateProductMetadata({
         })()
       : 'Цена при запитване'; // Fallback if no prices
 
+  // Build description and limit to 155 chars for SEO
+  const baseDesc = `${product.shortDescription} Цена: ${priceRange}.`;
+  const productDescription = baseDesc.length > 155 ? baseDesc.substring(0, 152) + '...' : baseDesc;
+
   return generateMetadata({
     title: `${product.name} - ${categoryName}`,
-    description: `${product.shortDescription} Цена: ${priceRange}. ${product.fullDescription?.substring(0, 100) || ''}`,
+    description: productDescription,
     path: productUrl,
     ogImage: ogImageUrl,
     ogType: 'product', // Product type for e-commerce Open Graph

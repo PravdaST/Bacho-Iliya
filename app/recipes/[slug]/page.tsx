@@ -25,9 +25,16 @@ export async function generateMetadata({
   const cookMinutes = parseInt(recipe.cookTime) || 0;
   const totalMinutes = prepMinutes + cookMinutes;
 
+  // Limit description to 155 chars for SEO
+  const suffix = ` ${totalMinutes} мин. ${recipe.servings} порции.`;
+  const maxDescLength = 155 - suffix.length;
+  const truncatedDesc = recipe.descriptionBg.length > maxDescLength
+    ? recipe.descriptionBg.substring(0, maxDescLength - 3) + '...'
+    : recipe.descriptionBg;
+
   return {
     title: `${recipe.titleBg} - Традиционна Българска Рецепта`,
-    description: `${recipe.descriptionBg} Време за приготвяне: ${totalMinutes} мин. Порции: ${recipe.servings}. Рецепта с продукти Бачо Илия.`,
+    description: `${truncatedDesc}${suffix}`,
     keywords: [
       recipe.titleBg,
       'българска рецепта',
