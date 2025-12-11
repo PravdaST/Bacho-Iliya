@@ -4,13 +4,13 @@
   "description": "Автентични български млечни продукти по бабини рецепти. Без консерванти, с любов от щастливи крави.",
   "icons": [
     {
-      "src": "/logo.png",
+      "src": "/bachoilia.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/logo.png",
+      "src": "/bachoilia.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
