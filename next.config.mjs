@@ -100,6 +100,12 @@ const nextConfig = {
         destination: '/blog/learn/rodopski-mlechni-specialiteti-smetana-katyk',
         permanent: true,
       },
+      // Redirect non-existent /en to homepage
+      {
+        source: '/en',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
 };
