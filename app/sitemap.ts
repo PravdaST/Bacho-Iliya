@@ -6,7 +6,7 @@
  * - Added image extensions for better image SEO
  * - Using accurate lastModified dates
  *
- * Access at: https://bacho-iliya.eu/sitemap.xml
+ * Access at: https://www.bacho-iliya.eu/sitemap.xml
  */
 
 import { MetadataRoute } from 'next';
