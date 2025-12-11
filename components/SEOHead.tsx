@@ -10,7 +10,7 @@ interface SEOHeadProps {
 export default function SEOHead({
   title = 'Бачо Илия | Bacho Ilia - Автентични Български Млечни Продукти | Безплатно Раздаване',
   description = 'Спечелете автентични млечни продукти от Бачо Илия (Bacho Ilia, Bacho Iliya). Истинско българско сирене, кисело мляко и кашкавал по бабините рецепти. 100% естествени продукти без консерванти.',
-  canonical = 'https://bacho-iliya.eu',
+  canonical = 'https://www.bacho-iliya.eu',
   ogImage = '/bacho-ilia-main.webp',
 }: SEOHeadProps) {
   const jsonLd = {
@@ -19,13 +19,13 @@ export default function SEOHead({
       // Organization Schema
       {
         '@type': 'Organization',
-        '@id': 'https://bacho-iliya.eu/#organization',
+        '@id': 'https://www.bacho-iliya.eu/#organization',
         name: 'Бачо Илия',
         alternateName: ['Bacho Ilia', 'Bacho Iliya', 'Бачо Илиа', 'Bacho Ilija'],
-        url: 'https://bacho-iliya.eu',
+        url: 'https://www.bacho-iliya.eu',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://bacho-iliya.eu/bacho-ilia-main.webp',
+          url: 'https://www.bacho-iliya.eu/bacho-ilia-main.webp',
           width: 800,
           height: 800,
         },
@@ -54,9 +54,9 @@ export default function SEOHead({
       // Product Schema - Sirene
       {
         '@type': 'Product',
-        '@id': 'https://bacho-iliya.eu/#sirene',
+        '@id': 'https://www.bacho-iliya.eu/#sirene',
         name: 'Българско Сирене Бачо Илия',
-        image: 'https://bacho-iliya.eu/products/sirene/BI-sirene-400-metal-480x480.png',
+        image: 'https://www.bacho-iliya.eu/products/sirene/BI-sirene-400-metal-480x480.png',
         brand: {
           '@type': 'Brand',
           name: 'Бачо Илия',
@@ -72,7 +72,7 @@ export default function SEOHead({
           priceCurrency: 'BGN',
           availability: 'https://schema.org/InStock',
           offerCount: '1',
-          url: 'https://bacho-iliya.eu/products/sirene',
+          url: 'https://www.bacho-iliya.eu/products/sirene',
           priceValidUntil: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000)
             .toISOString()
             .split('T')[0],
@@ -88,15 +88,15 @@ export default function SEOHead({
       // WebSite Schema
       {
         '@type': 'WebSite',
-        '@id': 'https://bacho-iliya.eu/#website',
-        url: 'https://bacho-iliya.eu',
+        '@id': 'https://www.bacho-iliya.eu/#website',
+        url: 'https://www.bacho-iliya.eu',
         name: 'Бачо Илия - Автентични Български Млечни Продукти',
         alternateName: 'Bacho Ilia',
         description: 'Традиционни български млечни продукти без консерванти',
         inLanguage: 'bg-BG',
         potentialAction: {
           '@type': 'SearchAction',
-          target: 'https://bacho-iliya.eu/?s={search_term_string}',
+          target: 'https://www.bacho-iliya.eu/?s={search_term_string}',
           'query-input': 'required name=search_term_string',
         },
       },

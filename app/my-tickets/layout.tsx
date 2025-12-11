@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-const siteUrl = 'https://bacho-iliya.eu';
+const siteUrl = 'https://www.bacho-iliya.eu';
 
 export const metadata: Metadata = {
   title: 'Моите Билети',

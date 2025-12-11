@@ -12,8 +12,8 @@ export default function StructuredData() {
     '@type': 'Organization',
     name: 'Бачо Илия',
     alternateName: ['Bacho Iliya', 'Bacho Ilya', 'Бачо Илья'],
-    url: 'https://bacho-iliya.eu',
-    logo: 'https://bacho-iliya.eu/logo.png',
+    url: 'https://www.bacho-iliya.eu',
+    logo: 'https://www.bacho-iliya.eu/logo.png',
     description:
       'Автентични български млечни продукти, създадени по традиционни рецепти. Естествени сирена, кашкавали и кисело мляко от щастливи крави.',
     sameAs: [
@@ -39,13 +39,13 @@ export default function StructuredData() {
     '@type': 'LocalBusiness',
     name: 'Бачо Илия',
     image: [
-      'https://bacho-iliya.eu/logo.png',
-      'https://bacho-iliya.eu/products/sirene/BI-sirene-800-metal-480x480.png',
-      'https://bacho-iliya.eu/products/kashkaval/BI-kashkaval-300-metal-480x480.png',
+      'https://www.bacho-iliya.eu/logo.png',
+      'https://www.bacho-iliya.eu/products/sirene/BI-sirene-800-metal-480x480.png',
+      'https://www.bacho-iliya.eu/products/kashkaval/BI-kashkaval-300-metal-480x480.png',
     ],
     description: 'Производител на автентични български млечни продукти',
-    '@id': 'https://bacho-iliya.eu',
-    url: 'https://bacho-iliya.eu',
+    '@id': 'https://www.bacho-iliya.eu',
+    url: 'https://www.bacho-iliya.eu',
     telephone: '+359 885 911 999',
     address: {
       '@type': 'PostalAddress',
@@ -69,7 +69,7 @@ export default function StructuredData() {
       lowPrice: '2.00',  // Кисело мляко starting price
       highPrice: '15.00',  // Кашкавал max price
       availability: 'https://schema.org/InStock',
-      url: 'https://bacho-iliya.eu/products',
+      url: 'https://www.bacho-iliya.eu/products',
       // Optional but recommended for better SEO
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
@@ -132,23 +132,23 @@ export default function StructuredData() {
     name: 'Раздаване на продукти Бачо Илия',
     description:
       'Спечели автентични български млечни продукти от Бачо Илия. Безплатно участие, истински продукти от щастливи крави.',
-    image: 'https://bacho-iliya.eu/logo.png',
+    image: 'https://www.bacho-iliya.eu/logo.png',
     startDate: giveawayStartDate,
     endDate: giveawayEndDate,
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
     location: {
       '@type': 'VirtualLocation',
-      url: 'https://bacho-iliya.eu/giveaway',
+      url: 'https://www.bacho-iliya.eu/giveaway',
     },
     organizer: {
       '@type': 'Organization',
       name: 'Бачо Илия',
-      url: 'https://bacho-iliya.eu',
+      url: 'https://www.bacho-iliya.eu',
     },
     offers: {
       '@type': 'Offer',
-      url: 'https://bacho-iliya.eu/giveaway',
+      url: 'https://www.bacho-iliya.eu/giveaway',
       price: '0',
       priceCurrency: 'BGN',
       availability: 'https://schema.org/InStock',
@@ -181,7 +181,7 @@ export default function StructuredData() {
       sku: product.id, // Add SKU for product identification
       image: product.image.startsWith('http')
         ? product.image
-        : `https://bacho-iliya.eu${product.image}`, // Fix double slash issue
+        : `https://www.bacho-iliya.eu${product.image}`, // Fix double slash issue
       brand: {
         '@type': 'Brand',
         name: 'Бачо Илия',
@@ -209,7 +209,7 @@ export default function StructuredData() {
         lowPrice: lowPrice,
         highPrice: highPrice,
         offerCount: '1',
-        url: `https://bacho-iliya.eu/products/${product.id}`,
+        url: `https://www.bacho-iliya.eu/products/${product.id}`,
         priceValidUntil: priceValidUntil.toISOString().split('T')[0],
       },
     };
@@ -221,7 +221,7 @@ export default function StructuredData() {
       '@context': 'https://schema.org',
       '@type': 'Recipe',
       name: 'Истинска баница с бяло сирене Бачо Илия',
-      image: 'https://bacho-iliya.eu/banica.webp',
+      image: 'https://www.bacho-iliya.eu/banica.webp',
       description: 'Традиционна българска баница с автентично бяло сирене Бачо Илия',
       keywords: 'баница, бяло сирене, българска рецепта, Бачо Илия',
       recipeCategory: 'Закуска',
@@ -264,7 +264,7 @@ export default function StructuredData() {
       '@context': 'https://schema.org',
       '@type': 'Recipe',
       name: 'Класическа шопска салата с бяло сирене Бачо Илия',
-      image: 'https://bacho-iliya.eu/shopska.webp',
+      image: 'https://www.bacho-iliya.eu/shopska.webp',
       description: 'Традиционна българска шопска салата с автентично бяло сирене',
       keywords: 'шопска салата, бяло сирене, българска салата, Bacho Iliya',
       recipeCategory: 'Салата',
@@ -286,7 +286,7 @@ export default function StructuredData() {
       '@context': 'https://schema.org',
       '@type': 'Recipe',
       name: 'Освежаващ таратор с кисело мляко Бачо Илия',
-      image: 'https://bacho-iliya.eu/tarator.webp',
+      image: 'https://www.bacho-iliya.eu/tarator.webp',
       description: 'Традиционна българска студена супа таратор с истинско кисело мляко',
       keywords: 'таратор, кисело мляко, студена супа, Bacho Ilya',
       recipeCategory: 'Студена супа',
@@ -307,7 +307,7 @@ export default function StructuredData() {
       '@context': 'https://schema.org',
       '@type': 'Recipe',
       name: 'Качамак с кашкавал Бачо Илия',
-      image: 'https://bacho-iliya.eu/kachamak.webp',
+      image: 'https://www.bacho-iliya.eu/kachamak.webp',
       description: 'Традиционно българско ястие качамак с автентичен кашкавал',
       keywords: 'качамак, кашкавал, българска рецепта, Бачо Илия',
       recipeCategory: 'Основно ястие',
@@ -335,13 +335,13 @@ export default function StructuredData() {
         '@type': 'ListItem',
         position: 1,
         name: 'Начало',
-        item: 'https://bacho-iliya.eu',
+        item: 'https://www.bacho-iliya.eu',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Раздаване',
-        item: 'https://bacho-iliya.eu/giveaway',
+        item: 'https://www.bacho-iliya.eu/giveaway',
       },
     ],
   };

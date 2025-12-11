@@ -14,7 +14,7 @@ import { getAllProducts } from '@/lib/products-data';
 import { getAllRecipeSlugs } from '@/lib/recipes-data';
 import { supabaseAdmin } from '@/lib/supabase';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bacho-iliya.eu';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.bacho-iliya.eu';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all products and recipes dynamically

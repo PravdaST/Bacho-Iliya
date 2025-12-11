@@ -19,7 +19,7 @@ import type { Product } from './products-data';
 // BASE CONFIGURATION
 // ============================================
 
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bacho-iliya.eu';
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.bacho-iliya.eu';
 export const SITE_NAME = 'Bacho Ilia / Бачо Илия';
 export const SITE_DESCRIPTION =
   'Автентични български млечни продукти с богата история и традиция. Сирена, кисели млека и млечни продукти от висококачествено мляко.';

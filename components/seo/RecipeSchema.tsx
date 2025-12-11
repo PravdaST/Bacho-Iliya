@@ -15,7 +15,7 @@ interface RecipeSchemaProps {
 }
 
 export default function RecipeSchema({ recipe }: RecipeSchemaProps) {
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://bacho-iliya.eu';
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.bacho-iliya.eu';
 
   const schema = {
     '@context': 'https://schema.org',
