@@ -80,7 +80,6 @@ export const metadata: Metadata = {
     canonical: siteUrl,
     languages: {
       'bg-BG': siteUrl,
-      'en-US': siteUrl + '/en',
     },
   },
   icons: {

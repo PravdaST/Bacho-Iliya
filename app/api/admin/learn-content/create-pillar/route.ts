@@ -322,7 +322,7 @@ Cluster статия: "${cluster.title}"
 - <p> параграфи
 - <h2> и <h3> заглавия (БЕЗ емотикони!)
 - <ul>, <li> списъци
-- <a href="/learn/SLUG"> internal links
+- <a href="/blog/learn/SLUG"> internal links
 - <strong> за emphasis
 - <div class="tldr-section"> за резюмета
 - <table> таблици с responsive класове
@@ -346,12 +346,12 @@ Cluster статия: "${cluster.title}"
 SMART INTERNAL LINKING:
 
 ${clusterExists && clusterData ? `CLUSTER СЪЩЕСТВУВА (линкни обратно):
-   "${clusterData.title}" → <a href="/learn/${clusterData.slug}">${clusterData.title}</a>
+   "${clusterData.title}" → <a href="/blog/learn/${clusterData.slug}">${clusterData.title}</a>
    Добави линк в началото И в заключението.` : `CLUSTER НЕ СЪЩЕСТВУВА ОЩЕ:
    Споменай общата тема без линк.`}
 
 ${relatedPillarsData.length > 0 ? `RELATED PILLARS (линкни към тях):
-${relatedPillarsData.map((p, i) => `   ${i + 1}. "${p.title}" → <a href="/learn/${p.slug}">${p.title}</a>`).join('\n')}
+${relatedPillarsData.map((p, i) => `   ${i + 1}. "${p.title}" → <a href="/blog/learn/${p.slug}">${p.title}</a>`).join('\n')}
    Добави 2-3 линка естествено в текста.` : `НЯМА други pillar теми още.`}
 
 ПРАВИЛО: САМО линкове към СЪЩЕСТВУВАЩИ guides!

@@ -517,7 +517,7 @@ Keywords: ${keywords || 'няма'}
 - <p> параграфи
 - <h2> и <h3> заглавия (БЕЗ емотикони!)
 - <ul>, <li> списъци
-- <a href="/learn/SLUG"> internal links
+- <a href="/blog/learn/SLUG"> internal links
 - <strong> за emphasis
 - <div class="tldr-section"> за резюмета
 - <table> таблици (ЗАДЪЛЖИТЕЛНО включи поне 1-2 таблици!)
@@ -584,7 +584,7 @@ SPACING И ФОРМАТИРАНЕ:
 
 SMART INTERNAL LINKING:
 ${(existingPillars || []).length > 0 ? `СЪЩЕСТВУВАЩИ ТЕМИ (добави линкове):
-${(existingPillars || []).map((p, i) => `${i + 1}. "${p.title}" → <a href="/learn/${p.slug}">${p.title}</a>`).join('\n')}` : 'НЯМА създадени pillar теми още.'}
+${(existingPillars || []).map((p, i) => `${i + 1}. "${p.title}" → <a href="/blog/learn/${p.slug}">${p.title}</a>`).join('\n')}` : 'НЯМА създадени pillar теми още.'}
 
 ${(existingPillars || []).length < suggestedPillars.length ? `ПЛАНИРАНИ ТЕМИ (НЕ слагай линкове, само споменай):
 ${suggestedPillars.filter(sp => !existingPillarTitles.includes(sp)).map((p, i) => `${i + 1}. "${p}" → споменай БЕЗ линк`).join('\n')}` : ''}
