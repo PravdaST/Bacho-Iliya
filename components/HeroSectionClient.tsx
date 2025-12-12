@@ -55,36 +55,23 @@ export default function HeroSectionClient() {
               Истински млечни продукти, направени точно както баба ги правеше
             </motion.p>
 
-            {/* CTA Button */}
+            {/* Giveaway Ended Notice */}
             <motion.div
               initial={{ y: 20, opacity: 0, scale: 0.95 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.8, type: 'spring' }}
             >
-              <motion.a
-                href="#giveaway"
-                className="bg-heritage-red hover:bg-dark-walnut inline-block w-full px-12 py-6 text-center transition-all duration-300 hover:scale-105 sm:w-auto sm:px-16 sm:py-8"
-                aria-label="Играй безплатно за продукти Бачо Илия"
-                animate={{
-                  boxShadow: [
-                    '0 20px 25px -5px rgba(164, 46, 46, 0.3), 0 10px 10px -5px rgba(164, 46, 46, 0.2)',
-                    '0 25px 35px -5px rgba(164, 46, 46, 0.5), 0 15px 15px -5px rgba(164, 46, 46, 0.4)',
-                    '0 20px 25px -5px rgba(164, 46, 46, 0.3), 0 10px 10px -5px rgba(164, 46, 46, 0.2)',
-                  ],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
+              <div
+                className="bg-gray-400 inline-block w-full px-12 py-6 text-center cursor-not-allowed sm:w-auto sm:px-16 sm:py-8 rounded-lg"
               >
                 <p
                   className="font-heading text-2xl font-bold tracking-wider uppercase sm:text-3xl"
                   style={{ color: '#ffffff' }}
                 >
-                  ИГРАЙ БЕЗПЛАТНО →
+                  ИГРАТА ПРИКЛЮЧИ
                 </p>
-              </motion.a>
+                <p className="text-white/80 text-sm mt-2">Благодарим на всички участници!</p>
+              </div>
             </motion.div>
 
             {/* Trust Badge */}

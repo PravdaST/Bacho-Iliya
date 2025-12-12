@@ -69,30 +69,17 @@ export default function GiveawayFormClient() {
         ))}
       </div>
 
-      {/* Continue Button */}
+      {/* Giveaway Ended Notice */}
       <div className="text-center">
         <button
-          onClick={handleContinue}
-          disabled={selectedProducts.length === 0}
-          aria-label="Продължи към регистрация"
-          className={`focus:ring-sunflower min-h-[56px] rounded-full px-8 py-5 text-lg font-bold shadow-lg transition-all duration-300 focus:ring-4 focus:ring-offset-2 focus:outline-none sm:px-12 sm:py-4 ${
-            selectedProducts.length > 0
-              ? 'bg-bulgarian-red text-white hover:scale-105 hover:bg-red-700 hover:shadow-2xl'
-              : 'cursor-not-allowed bg-gray-300 text-gray-500'
-          } `}
+          disabled={true}
+          className="focus:ring-sunflower min-h-[56px] rounded-full px-8 py-5 text-lg font-bold shadow-lg cursor-not-allowed bg-gray-400 text-white sm:px-12 sm:py-4"
         >
-          {selectedProducts.length > 0
-            ? `Участвай сега (${selectedProducts.length} продукта) →`
-            : 'Избери продукти за да продължиш'}
+          ИГРАТА ПРИКЛЮЧИ
         </button>
-        {selectedProducts.length === 0 && (
-          <p className="mt-4 text-sm text-gray-600">→ Можеш да избереш повече от един продукт</p>
-        )}
-        {selectedProducts.length > 0 && (
-          <p className="mt-4 text-sm font-semibold text-green-600">
-            ✓ Супер! Още само 2 минути до участието
-          </p>
-        )}
+        <p className="mt-4 text-sm text-gray-600">
+          Благодарим на всички участници! Победителите са изтеглени.
+        </p>
       </div>
     </div>
   );
